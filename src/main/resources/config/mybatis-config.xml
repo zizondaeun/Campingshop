@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+		<setting name="jdbcTypeForNull" value="NULL" />
+	</settings>
+<!-- 	<typeAliases> -->
+<!-- 		<typeAlias alias="board" type="com.camcam.vo.BoardVO" /> -->
+<!-- 		<typeAlias alias="member" type="com.camcam.vo.MemberVO" /> -->
+<!-- 	</typeAliases> -->
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver"
+					value="oracle.jdbc.driver.OracleDriver" />
+				<property name="url"
+					value="jdbc:oracle:thin:@localhost:1521:xe" />
+				<property name="username" value="jsp" />
+				<property name="password" value="jsp" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+<!-- 		<mapper resource="com/camcam/user/mapper/user-map.xml" /> -->
+		<mapper resource="com/camcam/product/mapper/product-map.xml" />
+<!-- 		<mapper resource="com/camcam/reply/mapper/reply-map.xml" /> -->
+<!-- 		<mapper resource="com/camcam/notice/mapper/notice-map.xml" /> -->
+<!-- 		<mapper resource="com/camcam/cart/mapper/cart-map.xml" /> -->
+	</mappers>
+</configuration>

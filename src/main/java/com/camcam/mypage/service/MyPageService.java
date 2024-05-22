@@ -1,4 +1,4 @@
-package com.camcam.user.service;
+package com.camcam.mypage.service;
 
 import com.camcam.user.vo.UserVO;
 

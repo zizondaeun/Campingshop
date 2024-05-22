@@ -1,4 +1,4 @@
-package com.camcam.user.mapper;
+package com.camcam.mypage.mapper;
 
 import com.camcam.user.vo.UserVO;
 

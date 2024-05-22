@@ -5,8 +5,9 @@
 <mapper namespace="com.camcam.user.mapper.MyPageMapper">
 	
 	<select id="selectMypage" resultType="com.camcam.user.vo.UserVO">
-		select *
+		select * 
 		from users
+		where user_id = #{userId}
 	</select>
 
 </mapper>

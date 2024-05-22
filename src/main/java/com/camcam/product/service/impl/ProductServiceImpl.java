@@ -20,8 +20,13 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public List<ProductVO> productList() {
-		return mapper.selectProductList();
+	public List<ProductVO> productList(int page) {
+		return mapper.selectProductList(page);
+	}
+
+	@Override
+	public int getTotal() {
+		return mapper.getTotal();
 	}
 
 }

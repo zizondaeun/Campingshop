@@ -1,8 +1,7 @@
 <%@ tag language="java" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<%@ attribute name="pageInfo" type="com.camcam.common.PageDTO"
-	required="true"%>
+<%@ attribute name="pageInfo" type="com.camcam.common.PageDTO" required="true"%>
 
 <div class="center">
 	<div class="pagination">
@@ -12,8 +11,7 @@
 			<a href="main.do?searchCondition=${searchCondition}&keyword=${keyword}&page=${pageInfo.startPage-1}">&laquo;</a>
 		</c:if>
 
-		<c:forEach var="p" begin="${pageInfo.startPage}"
-			end="${pageInfo.endPage}">
+		<c:forEach var="p" begin="${pageInfo.startPage}" end="${pageInfo.endPage}">
 			<a href="main.do?searchCondition=${searchCondition}&keyword=${keyword}&page=${p}" class="${p==pageInfo.page?'active':''}">${p}</a>
 		</c:forEach>
 

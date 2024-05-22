@@ -13,7 +13,9 @@ public class LoginFormControl implements Control {
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
+		String path = "WEB-INF/member/login.jsp";
+		path = "member/login.tiles";
+		 req.getRequestDispatcher(path).forward(req, resp);
 	}
 
 }

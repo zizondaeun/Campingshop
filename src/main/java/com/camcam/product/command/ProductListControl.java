@@ -22,14 +22,21 @@ public class ProductListControl implements Control {
 		String page = req.getParameter("page");
 		page = page ==null ? "1" : page; // 페이지 파라미터가 없을때 page = 1
 		
-		PageDTO pageDTO = new PageDTO(Integer.parseInt(page), 0);
-		
 		ProductService productService = new ProductServiceImpl();
 		
-		List<ProductVO> pList = productService.recentProductList();
+		int total = productService.getTotal();
+		System.out.println(total);
+		
+		
+		PageDTO pageDTO = new PageDTO(Integer.parseInt(page), total);
+		
+		
+		List<ProductVO> pList = productService.productList(Integer.parseInt(page));
 		for (ProductVO productVO : pList) {
 			System.out.println("productVO = " + productVO.toString());
 		}
+		
+		req.setAttribute("paging", pageDTO);
 		req.setAttribute("pList", pList);
 		
 		req.getRequestDispatcher(path).forward(req, resp);

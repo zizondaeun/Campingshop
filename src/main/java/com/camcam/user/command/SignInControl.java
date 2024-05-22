@@ -31,7 +31,7 @@ public class SignInControl implements Control {
         
         
         UserVO user = new UserVO();
-        user.setuserId(userId);
+        user.setUserId(userId);
         user.setPassWord(passWord);
         user.setUserName(userName);
         user.setEmail(email);

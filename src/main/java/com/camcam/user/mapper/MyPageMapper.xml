@@ -2,10 +2,11 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.camcam.user.mapper.UserMapper">
-	<insert id="insertReply" parameterType="com.camcam.user.vo.UserVO">
-		
+<mapper namespace="com.camcam.user.mapper.MyPageMapper">
 	
-	</insert>
+	<select id="selectMypage" resultType="com.camcam.user.vo.UserVO">
+		select *
+		from users
+	</select>
 
 </mapper>

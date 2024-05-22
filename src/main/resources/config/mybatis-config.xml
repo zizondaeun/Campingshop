@@ -30,5 +30,7 @@
 <!-- 		<mapper resource="com/camcam/reply/mapper/reply-map.xml" /> -->
 <!-- 		<mapper resource="com/camcam/notice/mapper/notice-map.xml" /> -->
 <!-- 		<mapper resource="com/camcam/cart/mapper/cart-map.xml" /> -->
+		<mapper resource="com/camcam/user/mapper/MyPageMapper.xml" />
+		
 	</mappers>
 </configuration>

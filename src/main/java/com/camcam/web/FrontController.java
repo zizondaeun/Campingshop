@@ -18,6 +18,7 @@ import com.camcam.product.command.ProductListControl;
 import com.camcam.user.command.LoginControl;
 import com.camcam.user.command.LoginFormControl;
 import com.camcam.user.command.LogoutControl;
+import com.camcam.user.command.MyPageControl;
 import com.camcam.user.command.SignInControl;
 import com.camcam.user.command.SignInFormControl;
 import com.camcam.user.command.UserListControl;
@@ -57,8 +58,8 @@ public class FrontController extends HttpServlet {
 		// 유저 관련(관리자)
 		map.put("/userList.do", new UserListControl());  // 회원 리스트
 		
-		
-		// 
+		//마이페이지
+		map.put("/myPage.do", new MyPageControl()); //마이페이지로 이동
 		
 		
 	}

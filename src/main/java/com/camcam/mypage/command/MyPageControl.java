@@ -23,8 +23,8 @@ public class MyPageControl implements Control {
 		
 		String path = "mypage/mypage.tiles";
 		
-		//req.getRequestDispatcher(path).forward(req, resp);
-		HttpUtils.forward(req, resp, path);
+		req.getRequestDispatcher(path).forward(req, resp);
+		//HttpUtils.forward(req, resp, path);
 		
 	}
 

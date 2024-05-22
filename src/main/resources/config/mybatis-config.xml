@@ -19,16 +19,18 @@
 					value="oracle.jdbc.driver.OracleDriver" />
 				<property name="url"
 					value="jdbc:oracle:thin:@localhost:1521:xe" />
-				<property name="username" value="jsp" />
-				<property name="password" value="jsp" />
+				<property name="username" value="campcamp" />
+				<property name="password" value="1234" />
 			</dataSource>
 		</environment>
 	</environments>
 	<mappers>
-<!-- 		<mapper resource="com/camcam/user/mapper/user-map.xml" /> -->
+		<mapper resource="com/camcam/user/mapper/user-map.xml" />
 		<mapper resource="com/camcam/product/mapper/product-map.xml" />
 <!-- 		<mapper resource="com/camcam/reply/mapper/reply-map.xml" /> -->
 <!-- 		<mapper resource="com/camcam/notice/mapper/notice-map.xml" /> -->
 <!-- 		<mapper resource="com/camcam/cart/mapper/cart-map.xml" /> -->
+		<mapper resource="com/camcam/mypage/mapper/MyPageMapper.xml" />
+		
 	</mappers>
 </configuration>

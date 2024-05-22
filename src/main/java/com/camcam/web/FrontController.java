@@ -14,6 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.camcam.common.Control;
 import com.camcam.home.command.HomeControl;
+import com.camcam.mypage.command.MyBoardControl;
+import com.camcam.mypage.command.MyPageControl;
+import com.camcam.product.command.ProductListControl;
 import com.camcam.user.command.LoginControl;
 import com.camcam.user.command.LoginFormControl;
 import com.camcam.user.command.LogoutControl;
@@ -39,7 +42,10 @@ public class FrontController extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		// url패턴과 실행할 Control(인터페이스) 구현클래스 정의
 		// 첫 화면
-		map.put("/home.do", new HomeControl()); 
+		map.put("/home.do", new HomeControl());
+		
+		// 제품 관련
+		map.put("/productList.do", new ProductListControl());
 		
 		// 유저 관련(유저)
 		map.put("/signInForm.do", new SignInFormControl());  // 회원가입 화면
@@ -52,8 +58,10 @@ public class FrontController extends HttpServlet {
 		// 유저 관련(관리자)
 		map.put("/userList.do", new UserListControl());  // 회원 리스트
 		
+		//마이페이지
+		map.put("/myPage.do", new MyPageControl()); //마이페이지로 이동
+		map.put("/myboard.do", new MyBoardControl()); //내 게시글 보기 누르면 이동
 		
-		// 
 		
 		
 	}

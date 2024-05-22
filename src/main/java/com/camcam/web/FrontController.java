@@ -14,11 +14,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.camcam.common.Control;
 import com.camcam.home.command.HomeControl;
+import com.camcam.mypage.command.MyBoardControl;
+import com.camcam.mypage.command.MyPageControl;
 import com.camcam.product.command.ProductListControl;
 import com.camcam.user.command.LoginControl;
 import com.camcam.user.command.LoginFormControl;
 import com.camcam.user.command.LogoutControl;
-import com.camcam.user.command.MyPageControl;
 import com.camcam.user.command.SignInControl;
 import com.camcam.user.command.SignInFormControl;
 import com.camcam.user.command.UserListControl;
@@ -46,7 +47,6 @@ public class FrontController extends HttpServlet {
 		// 제품 관련
 		map.put("/productList.do", new ProductListControl());
 		
-		
 		// 유저 관련(유저)
 		map.put("/signInForm.do", new SignInFormControl());  // 회원가입 화면
 		map.put("/signIn.do", new SignInControl());  // 회원가입 기능
@@ -60,6 +60,8 @@ public class FrontController extends HttpServlet {
 		
 		//마이페이지
 		map.put("/myPage.do", new MyPageControl()); //마이페이지로 이동
+		map.put("/myboard.do", new MyBoardControl()); //내 게시글 보기 누르면 이동
+		
 		
 		
 	}

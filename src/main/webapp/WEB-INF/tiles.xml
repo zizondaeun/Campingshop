@@ -35,5 +35,9 @@
 	<definition name="WILDCARD:*/*" extends="myweb.board">
 		<put-attribute name="body" value="/WEB-INF/view/{1}/{2}.jsp" />
 	</definition>
+<!-- 	
+	<definition name="WILDCARD:mypage/*" extends="myweb.board">
+		<put-attribute name="body" value="/WEB-INF/view/mypage/{1}.jsp" />
+	</definition> -->
 
 </tiles-definitions>

@@ -1,5 +1,7 @@
 package com.camcam.user.service;
 
-public interface UserService {
+import com.camcam.user.vo.UserVO;
 
+public interface UserService {
+	boolean addUser(UserVO user);
 }

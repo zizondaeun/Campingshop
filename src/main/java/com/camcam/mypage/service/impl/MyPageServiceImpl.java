@@ -1,10 +1,13 @@
 package com.camcam.mypage.service.impl;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.camcam.common.DataSource;
 import com.camcam.mypage.mapper.MyPageMapper;
 import com.camcam.mypage.service.MyPageService;
+import com.camcam.product.vo.QnAVO;
 import com.camcam.user.vo.UserVO;
 
 public class MyPageServiceImpl implements MyPageService {
@@ -17,8 +20,11 @@ public class MyPageServiceImpl implements MyPageService {
 	}
 
 	@Override
-	public UserVO getMyboard(String id) {
+	public List<QnAVO> getMyboard(String id) {
+		System.out.println("2222");
 		return mapper.selectMyboard(id);
 	}
+
+
 
 }

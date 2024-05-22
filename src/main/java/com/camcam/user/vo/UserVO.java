@@ -10,7 +10,7 @@ public class UserVO {
 	private String userName;
 	private String email;
 	private String userTel;
-	private DATE hireDate;
+	private String hireDate;
 	private String userResp;
 	private String address;
 

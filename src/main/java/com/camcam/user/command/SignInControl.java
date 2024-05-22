@@ -28,13 +28,17 @@ public class SignInControl implements Control {
         String userTel = req.getParameter("userTel");
         String address = req.getParameter("address");
 
+        
+        
         UserVO user = new UserVO();
-        user.setUserId(userId);
+        user.setuserId(userId);
         user.setPassWord(passWord);
         user.setUserName(userName);
         user.setEmail(email);
         user.setUserTel(userTel);
         user.setAddress(address);
+      
+        
 
         UserService svc = new UserServiceImpl();
         Map<String, Object> result = new HashMap<>();

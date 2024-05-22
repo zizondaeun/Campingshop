@@ -1,5 +1,7 @@
 package com.camcam.user.mapper;
 
-public interface UserMapper {
+import com.camcam.user.vo.UserVO;
 
+public interface UserMapper {
+	int insertReply(UserVO user);
 }

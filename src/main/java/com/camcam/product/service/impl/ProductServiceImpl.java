@@ -19,4 +19,9 @@ public class ProductServiceImpl implements ProductService{
 		return mapper.selectRecentProduct();
 	}
 
+	@Override
+	public List<ProductVO> productList() {
+		return mapper.selectProductList();
+	}
+
 }

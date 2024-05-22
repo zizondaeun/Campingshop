@@ -7,4 +7,15 @@
 		select * from products
 		order by input_date desc
 	</select>
+	
+	<select id="selectProductList">
+		select * from products
+		order by product_no
+	</select>
+	
+	<select id="getTotal" resultType="int">
+		select count(1)
+		from products
+	</select>
+	
 </mapper>

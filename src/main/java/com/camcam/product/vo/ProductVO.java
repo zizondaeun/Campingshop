@@ -24,6 +24,4 @@ public class ProductVO {
 	private double rating;
 	private String inputDate;
 	
-	
-	
 }

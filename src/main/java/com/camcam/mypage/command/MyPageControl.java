@@ -21,7 +21,6 @@ public class MyPageControl implements Control {
 //		
 //		req.setAttribute("result", vo);
 		
-		
 		String path = "mypage/mypage.tiles";
 		
 		//req.getRequestDispatcher(path).forward(req, resp);

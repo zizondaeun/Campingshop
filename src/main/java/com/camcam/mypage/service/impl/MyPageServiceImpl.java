@@ -16,4 +16,9 @@ public class MyPageServiceImpl implements MyPageService {
 		return mapper.selectMypage(id);
 	}
 
+	@Override
+	public UserVO getMyboard(String id) {
+		return mapper.selectMyboard(id);
+	}
+
 }

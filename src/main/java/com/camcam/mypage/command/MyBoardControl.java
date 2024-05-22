@@ -25,6 +25,7 @@ public class MyBoardControl implements Control {
 		req.setAttribute("list", vo);
 		
 		HttpUtils.forward(req, resp, path);
+		//
 		
 		
 	}

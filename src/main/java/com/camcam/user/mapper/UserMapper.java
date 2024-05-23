@@ -4,4 +4,5 @@ import com.camcam.user.vo.UserVO;
 
 public interface UserMapper {
 	int insertUser(UserVO user);
+	 int selectUserCountById(String userId);
 }

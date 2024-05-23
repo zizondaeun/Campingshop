@@ -29,7 +29,13 @@
 	<select id="selectMyorder" resultType="com.camcam.order.vo.OrderVO">
 		select * 
 		from orders
-		where order_no = #{orderNo}
+		where user_id = #{userId}
+	</select>
+	
+	<select id="getBoardpw" resultType="string">
+		select board_pw
+		from qna
+		where board_no = #{boardNo}
 	</select>
 	
 	

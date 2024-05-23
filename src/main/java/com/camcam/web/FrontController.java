@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.camcam.category.command.GetCategoryControl;
 import com.camcam.common.Control;
 import com.camcam.home.command.HomeControl;
 import com.camcam.mypage.command.MyBoardControl;
@@ -49,6 +50,8 @@ public class FrontController extends HttpServlet {
 		// 제품 관련
 		map.put("/productList.do", new ProductListControl());
 		
+		// 카테고리
+		map.put("/getCategory.do", new GetCategoryControl());
 		// 유저 관련(유저)
 		map.put("/signInForm.do", new SignInFormControl());  // 회원가입 화면
 		map.put("/signIn.do", new SignInControl());  // 회원가입 기능

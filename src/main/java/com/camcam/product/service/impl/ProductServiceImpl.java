@@ -1,6 +1,7 @@
 package com.camcam.product.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -29,5 +30,18 @@ public class ProductServiceImpl implements ProductService{
 	public int getTotal(SearchVO keyword) {
 		return mapper.getTotal(keyword);
 	}
+
+	@Override
+	public List<Map<String, String>> categoryTemp() {
+		// TODO Auto-generated method stub
+		return mapper.categoryTemp();
+	}
+
+//	@Override
+//	public List<CategoryVO> categoryList() {
+//		return mapper.selectCategoryList();
+//	}
+	
+	
 
 }

@@ -34,6 +34,11 @@ public class MyPageServiceImpl implements MyPageService {
 		return mapper.deleteBoardNo(boardNo) == 1;
 	}
 
+	@Override
+	public List<UserVO> getMyorder() {
+		return mapper.selectMyorder();
+	}
+
 
 
 }

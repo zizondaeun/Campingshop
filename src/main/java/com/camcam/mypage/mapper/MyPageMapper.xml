@@ -22,8 +22,15 @@
 		where board_no = #{boardNo}
 	</select>
 	
-	<select id="deleteBoardNo" parameterType="int">
+	<delete id="deleteBoardNo" parameterType="int">
 		delete from qna where board_no = #{boardNo}
+	</delete>
+	
+	<select id="selectMyorder" resultType="com.camcam.order.vo.OrderVO">
+		select * 
+		from orders
+		where order_no = #{orderNo}
 	</select>
+	
 	
 </mapper>

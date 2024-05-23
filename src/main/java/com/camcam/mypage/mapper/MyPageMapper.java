@@ -14,5 +14,7 @@ public interface MyPageMapper {
 	QnAVO selectBoardNo(int boardNo);
 	//내 게시글 삭제
 	int deleteBoardNo(int boardNo);
+	//내 주문내역
+	List<UserVO> selectMyorder();
 
 }

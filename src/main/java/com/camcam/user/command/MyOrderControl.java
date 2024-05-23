@@ -18,11 +18,11 @@ public class MyOrderControl implements Control {
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String path = "mypage/myorder.tiles";
 		
-//		String id = req.getParameter("userId");
-//	
-//		MyPageService svc = new MyPageServiceImpl();
-//		List<UserVO> list = svc.getMyorder();
-//		req.setAttribute("list", list);
+		String id = req.getParameter("userId");
+	
+		MyPageService svc = new MyPageServiceImpl();
+		List<UserVO> list = svc.getMyorder();
+		req.setAttribute("list", list);
 		
 		req.getRequestDispatcher(path).forward(req, resp);
 	}

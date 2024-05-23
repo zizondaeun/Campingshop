@@ -5,7 +5,7 @@
 <!-- <h3 align="center">MY POST</h3> -->
 <div class="container px-4">
 	<h3 align="center">MY POST</h3>
-	<form>
+	<form action="myBoard.do">
 	<div class="mb-3 row">
 		<label for="staticEmail" class="col-sm-2 col-form-label">NO</label>
 		<div class="col-sm-10">
@@ -36,17 +36,19 @@
 	</div>
 		<div align="center">
 			<a href="myBoardMod.do?bno=${result.boardNo}" class="btn btn-secondary">MODIFY</a>
-			<button  class="btn btn-dark (BS4)" id="delBtn">DELETE</button>
+			<button class="btn btn-dark (BS4)" id="delBtn">DELETE</button>
 		</div>
 	</form>
 </div>
 <script>
 	const bno = '${result.boardNo}';
 	console.log(bno);
+	//폼기능을 제외하고 아작스 호출해야함
+/* 	$('#delBtn').click(function(e) {
+			e.preventDefault();
+			alert('삭제되었습니다.')
+		}) */
 	
-	document.querySelector('#delBtn').addEventListener('click', function(){
-		console.log(document.querySelector('#delBtn'));
-	})
 </script>
 
 

@@ -14,5 +14,7 @@ public interface MyPageService {
 	QnAVO getBoardNo(int boardNo);
 	//내 게시글 삭제하기
 	boolean removeMyboard(int boardNo);
+	//내 주문내역 목록
+	List<UserVO> getMyorder();
 
 }

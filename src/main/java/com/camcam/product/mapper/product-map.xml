@@ -27,5 +27,43 @@
 		where product_name like '%'|| #{keyword}||'%'
 	</select>
 	
+<!-- 	<select id="selectCategoryList"> -->
+<!-- 		SELECT CASE WHEN NVL(PRE_CATEGORY, 'N') = 'N' THEN '대분류' -->
+<!--             ELSE ' ' -->
+<!--        END AS CATE_1, -->
+<!--        CASE WHEN NVL(PRE_CATEGORY, 'N') = 'N' THEN CATEGORY_NAME -->
+<!--             ELSE ' ' -->
+<!--        END AS CATE_2, -->
+<!--        CASE WHEN NVL(PRE_CATEGORY, 'N') = 'N' THEN ' ' -->
+<!--             ELSE '소분류' -->
+<!--        END AS CATE_3, -->
+<!--        CASE WHEN NVL(PRE_CATEGORY, 'N') = 'N' THEN ' ' -->
+<!--             ELSE CATEGORY_NAME -->
+<!--        END AS CATE_4 -->
+<!-- 		FROM CATEGORY C -->
+<!-- 		START WITH PRE_CATEGORY IS NULL -->
+<!-- 		CONNECT BY PRE_CATEGORY = PRIOR CATEGORY_CODE -->
+<!-- 		ORDER SIBLINGS BY CATEGORY_CODE DESC -->
+<!-- 	</select> -->
+	
+	<select id="categoryTemp" resultType="map">
+		SELECT CASE WHEN NVL(PRE_CATEGORY, 'N') = 'N' THEN '대분류'
+            ELSE ''
+       END AS CATE_1,
+       CASE WHEN NVL(PRE_CATEGORY, 'N') = 'N' THEN CATEGORY_NAME
+            ELSE ''
+       END AS CATE_2,
+       CASE WHEN NVL(PRE_CATEGORY, 'N') = 'N' THEN ''
+            ELSE '소분류'
+       END AS CATE_3,
+       CASE WHEN NVL(PRE_CATEGORY, 'N') = 'N' THEN ''
+            ELSE CATEGORY_NAME
+       END AS CATE_4
+		FROM CATEGORY C
+		START WITH PRE_CATEGORY IS NULL
+		CONNECT BY PRE_CATEGORY = PRIOR CATEGORY_CODE
+		ORDER SIBLINGS BY CATEGORY_CODE DESC
+	</select>
+	
 	
 </mapper>

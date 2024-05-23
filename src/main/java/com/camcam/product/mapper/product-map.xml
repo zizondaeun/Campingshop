@@ -8,14 +8,22 @@
 		order by input_date desc
 	</select>
 	
-	<select id="selectProductList">
-		select * from products
-		order by product_no
+	<select id="selectProductList" parameterType="int">
+		select r.*
+		from(select rownum rn,a.*
+				from (select *
+					from products b
+					order by b.product_no desc) a
+          <![CDATA[
+          where rownum <= (#{page} * 12)) r          
+          ]]>
+		where r.rn > (#{page} -1) * 12
 	</select>
 	
 	<select id="getTotal" resultType="int">
 		select count(1)
 		from products
 	</select>
+	
 	
 </mapper>

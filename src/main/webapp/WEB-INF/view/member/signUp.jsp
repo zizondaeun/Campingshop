@@ -240,7 +240,7 @@
           // AJAX 요청으로 서버에 아이디 중복 체크 요청
           // 서버 응답에 따라 아이디가 존재하면 버튼을 비활성화하고, 존재하지 않으면 버튼을 활성화
           var xhr = new XMLHttpRequest();
-          xhr.open("POST", true);
+          xhr.open("POST" ,);
           xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
           xhr.onreadystatechange = function () {
               if (xhr.readyState === 4 && xhr.status === 200) {

@@ -4,4 +4,7 @@ import com.camcam.user.vo.UserVO;
 
 public interface UserService {
 	boolean addUser(UserVO user);
+
+	boolean checkUserId(String userId); 
+	
 }

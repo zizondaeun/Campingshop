@@ -18,6 +18,7 @@ import com.camcam.home.command.HomeControl;
 import com.camcam.mypage.command.MyBoardControl;
 import com.camcam.mypage.command.MyPageControl;
 import com.camcam.product.command.ProductListControl;
+import com.camcam.user.command.CheckInControl;
 import com.camcam.user.command.LoginControl;
 import com.camcam.user.command.LoginFormControl;
 import com.camcam.user.command.LogoutControl;
@@ -55,6 +56,7 @@ public class FrontController extends HttpServlet {
 		// 유저 관련(유저)
 		map.put("/signInForm.do", new SignInFormControl());  // 회원가입 화면
 		map.put("/signIn.do", new SignInControl());  // 회원가입 기능
+		map.put("/checkUserId.do", new CheckInControl()); //회원가입 아이디중복 기능
 		map.put("/logForm.do", new LoginFormControl()); // 로그인 화면 
 		map.put("/login.do", new LoginControl());  // 로그인 기능
 		map.put("/logout.do", new LogoutControl());  // 로그아웃 기능

@@ -10,10 +10,20 @@
 		where user_id = #{userId}
 	</select>
 	
-	<select id="selectMyboard" resultType="com.camcam.product.vo.QnAVO" parameterType="String">
+	<select id="selectMyboard" resultType="com.camcam.product.vo.QnAVO" parameterType="string">
 		select * 
 		from qna
 		where user_id = #{userId}
+	</select>
+	
+	<select id="selectBoardNo" resultType="com.camcam.product.vo.QnAVO" parameterType="int">
+		select *
+		from qna
+		where board_no = #{boardNo}
+	</select>
+	
+	<select id="deleteBoardNo" parameterType="int">
+		delete from qna where board_no = #{boardNo}
 	</select>
 	
 </mapper>

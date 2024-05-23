@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <h3 align="center">MY BOARD</h3>
+<!-- userId님의 게시글 목록입니다!!!! -->
 <table class="table">
 	<thead>
 		<tr>
@@ -18,20 +19,24 @@
 	<c:forEach var="board" items="${list }">
 		<tr>
 			<th scope="row">${board.boardNo }</th>
-			<td><a href="#" style="text-decoration:none"><font color="black">QnA</font></a></td>
-			<td>${board.title }</td>
-			<td>${board.content }</td>
-			<td><fmt:formatDate value="${board.createDate }" pattern="yyyy-MM-dd" /></td>
+			<td><a href="#" style="text-decoration:none"><font color="#6c757d">QnA</font></a></td>
+			<td><a href="myBoardInfo.do?bno=${board.boardNo }" style="text-decoration:none"><font color="black">${board.title }</font></a></td>
+			<td><a href="myBoardInfo.do?bno=${board.boardNo }" style="text-decoration:none"><font color="black">${board.content }</font></a></td>
+			<td><fmt:formatDate value="${board.createDate }" pattern="yyyy/MM/dd" /></td>
 			<!-- <td><button>주문 상세</button></td> -->
 		</tr>
 	</c:forEach>
 	</tbody>
 </table>
 <script>
+//fetch로 글번호 넘겨서 페이지 이동
+const bno = '${board.boardNo}';
+
 let tr = document.querySelectorAll('tbody tr').forEach(function(number) {
 	number.addEventListener('click', function(e){
 		let th = e.target.parentElement.children[0].innerText;
-		console.log(th); //fetch로 글번호 넘겨서 페이지 이동
+		console.log(th); 
 	})
 });
+
 </script>

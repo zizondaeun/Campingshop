@@ -11,10 +11,19 @@ public class UserServiceImpl implements UserService{
 	
 	SqlSession session = DataSource.getInstance().openSession(true);
 	UserMapper mapper = session.getMapper(UserMapper.class);
+	
 	@Override
 	public boolean addUser(UserVO user) {
 		// TODO Auto-generated method stub
+		
 		return mapper.insertUser(user) == 1;
 	}
+
+	@Override
+	public boolean checkUserId(String userId) {
+		// TODO Auto-generated method stub
+		 return mapper.selectUserCountById(userId) > 0;
+	}
+	
 	
 }

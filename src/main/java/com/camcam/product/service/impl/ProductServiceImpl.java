@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.camcam.common.DataSource;
+import com.camcam.common.SearchVO;
 import com.camcam.product.mapper.ProductMapper;
 import com.camcam.product.service.ProductService;
 import com.camcam.product.vo.ProductVO;
@@ -20,13 +21,13 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public List<ProductVO> productList(int page) {
-		return mapper.selectProductList(page);
+	public List<ProductVO> productList(SearchVO search) {
+		return mapper.selectProductList(search);
 	}
 
 	@Override
-	public int getTotal() {
-		return mapper.getTotal();
+	public int getTotal(SearchVO keyword) {
+		return mapper.getTotal(keyword);
 	}
 
 }

@@ -2,25 +2,27 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<h3>게시판관리</h3>
+<h3 align="center">MY BOARD</h3>
 <table class="table">
 	<thead>
 		<tr>
-			<th scope="col">게시글번호</th>
-			<th scope="col">제목</th>
-			<th scope="col">내용</th>
-			<th scope="col">작성일</th>
-			<th>#</th>
+			<th scope="col">NO</th>
+			<th scope="col">BOARD</th>
+			<th scope="col">TITLE</th>
+			<th scope="col">CONTENT</th>
+			<th scope="col">DATE</th>
+			<!-- <th>#주문상세</th> -->
 		</tr>
 	</thead>
 	<tbody>
 	<c:forEach var="board" items="${list }">
 		<tr>
 			<th scope="row">${board.boardNo }</th>
+			<td><a href="#" style="text-decoration:none"><font color="black">QnA</font></a></td>
 			<td>${board.title }</td>
 			<td>${board.content }</td>
 			<td><fmt:formatDate value="${board.createDate }" pattern="yyyy-MM-dd" /></td>
-			<td><button>주문 상세</button></td>
+			<!-- <td><button>주문 상세</button></td> -->
 		</tr>
 	</c:forEach>
 	</tbody>

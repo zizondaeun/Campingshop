@@ -63,8 +63,9 @@ public class FrontController extends HttpServlet {
 		//마이페이지
 		map.put("/myPage.do", new MyPageControl()); //마이페이지로 이동
 		map.put("/myBoard.do", new MyBoardControl()); //내 게시글 보기 누르면 이동
+		//map.put("/myBoard.do", new MyBoardFormControl());
 		map.put("/myOrder.do", new MyOrderControl()); //주문내역 이동
-		map.put("/myInterest.do", new MyInterestControl()); //관심상품 이동
+		map.put("/myInterest.do", new MyInterestControl()); //게시판
 		
 		
 		

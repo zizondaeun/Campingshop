@@ -21,8 +21,17 @@ public class MyPageServiceImpl implements MyPageService {
 
 	@Override
 	public List<QnAVO> getMyboard(String id) {
-		System.out.println("2222");
 		return mapper.selectMyboard(id);
+	}
+
+	@Override
+	public QnAVO getBoardNo(int boardNo) {
+		return mapper.selectBoardNo(boardNo);
+	}
+
+	@Override
+	public boolean removeMyboard(int boardNo) {
+		return mapper.deleteBoardNo(boardNo) == 1;
 	}
 
 

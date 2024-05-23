@@ -10,5 +10,9 @@ public interface MyPageMapper {
 	UserVO selectMypage(String id);
 	//내 게시판관리
 	List<QnAVO> selectMyboard(String id);
+	//내 게시글 상세
+	QnAVO selectBoardNo(int boardNo);
+	//내 게시글 삭제
+	int deleteBoardNo(int boardNo);
 
 }

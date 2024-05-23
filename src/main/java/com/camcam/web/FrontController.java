@@ -15,6 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.camcam.common.Control;
 import com.camcam.home.command.HomeControl;
 import com.camcam.mypage.command.MyBoardControl;
+import com.camcam.mypage.command.MyBoardDelControl;
+import com.camcam.mypage.command.MyBoardInfoControl;
+import com.camcam.mypage.command.MyBoardModFormControl;
 import com.camcam.mypage.command.MyPageControl;
 import com.camcam.product.command.ProductListControl;
 import com.camcam.user.command.LoginControl;
@@ -62,7 +65,10 @@ public class FrontController extends HttpServlet {
 		
 		//마이페이지
 		map.put("/myPage.do", new MyPageControl()); //마이페이지로 이동
-		map.put("/myBoard.do", new MyBoardControl()); //내 게시글 보기 누르면 이동
+		map.put("/myBoard.do", new MyBoardControl()); //내 게시글 보기 누르면 이동,목룍show
+		map.put("/myBoardInfo.do", new MyBoardInfoControl()); //내 게시판 상세화면으로 이동
+		map.put("/myBoardMod.do", new MyBoardModFormControl()); //내 게시글 수정 기능
+		map.put("/myBoardDel.do" , new MyBoardDelControl()); //내 게시글 삭제 기능
 		map.put("/myOrder.do", new MyOrderControl()); //주문내역 이동
 		map.put("/myInterest.do", new MyInterestControl()); //관심상품 이동
 		

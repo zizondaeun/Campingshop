@@ -19,7 +19,7 @@ public class MyBoardDelControl implements Control {
 		MyPageService svc = new MyPageServiceImpl();
 		
 		if(svc.removeMyboard(Integer.parseInt(bno))) {
-			resp.sendRedirect("myBoard.do");
+			resp.sendRedirect("myPage.do");
 		}else {
 			resp.sendRedirect("삭제 에러");
 		}

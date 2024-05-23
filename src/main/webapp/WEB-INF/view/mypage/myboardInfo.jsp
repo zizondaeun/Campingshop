@@ -36,7 +36,7 @@
 	</div>
 		<div align="center">
 			<a href="myBoardMod.do?bno=${result.boardNo}" class="btn btn-secondary">MODIFY</a>
-			<a href="myBoardDel.do?bno=${result.boardNo}" class="btn btn-dark (BS4)" id="delBtn">DELETE</a>
+			<button  class="btn btn-dark (BS4)" id="delBtn">DELETE</button>
 		</div>
 	</form>
 </div>

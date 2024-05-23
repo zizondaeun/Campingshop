@@ -19,7 +19,10 @@ public class SignInControl implements Control {
 
     @Override
     public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
         resp.setContentType("application/json;charset=utf-8");
+        
+      
 
         String userId = req.getParameter("userId");
         String passWord = req.getParameter("passWord");
@@ -27,7 +30,11 @@ public class SignInControl implements Control {
         String email = req.getParameter("email");
         String userTel = req.getParameter("userTel");
         String address = req.getParameter("address");
+        
+        System.out.print(userId + "@@@@@@@@@@@@@");
 
+        UserService svc = new UserServiceImpl();
+        
         
         
         UserVO user = new UserVO();
@@ -37,22 +44,18 @@ public class SignInControl implements Control {
         user.setEmail(email);
         user.setUserTel(userTel);
         user.setAddress(address);
-      
-        
 
-        UserService svc = new UserServiceImpl();
         Map<String, Object> result = new HashMap<>();
+        result.put("exists", svc.checkUserId(userId));
 
         if (svc.addUser(user)) {
-            // 회원 가입 성공 시 로그인 페이지로 리다이렉트
+            System.out.println("등록성공.");
             resp.sendRedirect("logForm.do");
         } else {
-            // 실패 시 JSON 응답
-            result.put("retCode", "NG");
-            result.put("retVal", null);
-            Gson gson = new GsonBuilder().create();
-            String json = gson.toJson(result);
-            resp.getWriter().print(json);
+        	 resp.sendRedirect("signInForm.do?error=User ID already exists or another error occurred.");
         }
+        Gson gson = new GsonBuilder().create();
+        resp.getWriter().print(gson.toJson(result));
+        
     }
 }

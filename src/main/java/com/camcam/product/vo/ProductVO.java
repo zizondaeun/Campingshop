@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class ProductVO {
 	private int productNo;
-	private String categoryNo;
+	private String categoryCode;
 	private String productName;
 	private int price;
 	private int offPrice;

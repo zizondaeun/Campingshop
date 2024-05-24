@@ -13,7 +13,7 @@
 		from(select rownum rn,a.*
 				from (select *
 					from products b
-					where product_name like '%'|| #{keyword} ||'%'
+					where product_name like '%'|| #{keyword} ||'%' or category_code like #{keyword}
 					order by b.product_no desc) a
           <![CDATA[
           where rownum <= (#{page} * 12)) r          
@@ -24,7 +24,7 @@
 	<select id="getTotal" resultType="int" parameterType="com.camcam.common.SearchVO">
 		select count(1)
 		from products
-		where product_name like '%'|| #{keyword}||'%'
+		where product_name like '%'|| #{keyword}||'%' or category_code like #{keyword}
 	</select>
 	
 <!-- 	<select id="selectCategoryList"> -->

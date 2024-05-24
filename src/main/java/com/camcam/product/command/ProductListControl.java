@@ -21,10 +21,22 @@ public class ProductListControl implements Control {
 		String path = "product/productList.tiles";
 		
 		String page = req.getParameter("page");
+		String category = req.getParameter("category");
 		String kw = req.getParameter("keyword");
+		
+//		System.out.println("아ㅏ아아ㅏ아아" + category);
 
 		page = page ==null ? "1" : page; // 페이지 파라미터가 없을때 page = 1
-		kw = kw == null ? "" : kw;
+		
+		if(kw == null) {
+			if(category != null) {
+				kw = category;
+			} else {
+				kw = "";
+			}
+		}
+		
+//		System.out.println("아아ㅏ아아아아ㅏ아아ㅏ아아ㅏㅇ" + kw);
 		
 		SearchVO search = new SearchVO();
 		

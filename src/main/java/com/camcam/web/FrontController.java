@@ -1,6 +1,7 @@
 package com.camcam.web;
 
 import java.io.IOException;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -26,9 +27,13 @@ import com.camcam.mypage.command.UpdateMyBoardControl;
 import com.camcam.product.command.ProductInfoControl;
 import com.camcam.product.command.ProductListControl;
 import com.camcam.user.command.CheckInControl;
+import com.camcam.user.command.IdFindControl;
+import com.camcam.user.command.IdFindFormControl;
 import com.camcam.user.command.LoginControl;
 import com.camcam.user.command.LoginFormControl;
 import com.camcam.user.command.LogoutControl;
+import com.camcam.user.command.PwFindControl;
+import com.camcam.user.command.PwFindFormControl;
 import com.camcam.user.command.SignInControl;
 import com.camcam.user.command.SignInFormControl;
 import com.camcam.user.command.UserListControl;
@@ -69,6 +74,11 @@ public class FrontController extends HttpServlet {
 		map.put("/logout.do", new LogoutControl());  // 로그아웃 기능
 		map.put("/withdrawForm.do", new WithdrawFormControl());  // 회원탈퇴 화면
 		map.put("/withdraw.do", new WithdrawControl());  // 회원탈퇴 기능
+		//아이디/비밀번호 찾기
+		map.put("/idFindForm.do", new IdFindFormControl()); //아이디찾기 화면
+		map.put("/idFind.do", new IdFindControl());//아이디찾기 기능
+		map.put("/pwFindForm.do", new PwFindFormControl());//비밀번호 찾기 화면
+		map.put("/pwFind.do", new PwFindControl()); //비밀번호 찾기 비밀번호
 		// 유저 관련(관리자)
 		map.put("/userList.do", new UserListControl());  // 회원 리스트
 		

@@ -7,4 +7,7 @@ public interface UserService {
 
 	boolean checkUserId(String userId); 
 	
+	UserVO login(String id, String pw);
+	UserVO checkMember(String id);
+	
 }

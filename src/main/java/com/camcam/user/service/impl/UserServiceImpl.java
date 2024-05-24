@@ -24,6 +24,18 @@ public class UserServiceImpl implements UserService{
 		// TODO Auto-generated method stub
 		 return mapper.selectUserCountById(userId) > 0;
 	}
+
+	@Override
+	public UserVO login(String id, String pw) {
+		// TODO Auto-generated method stub
+		return mapper.selectMember(id, pw);
+	}
+
+	@Override
+	public UserVO checkMember(String id) {
+		// TODO Auto-generated method stub
+		return mapper.selectMember2(id);
+	}
 	
 	
 }

@@ -12,7 +12,8 @@ public interface MyPageService {
 	//내 게시판
 	List<QnAVO> getMyboard(String id);
 	//내 게시글 상세보기
-	QnAVO getBoardNo(int boardNo);
+	QnAVO getBoardNo(int boardNo); //게시글 조회
+	QnAVO getBoardNo(int boardNo, String pw); //수정하기위한 조회
 	//내 게시글 수정,삭제 위한 bno,pw가져오는거
 	boolean removeMyboard(int bno, String pw);
 	//내 게시글 수정

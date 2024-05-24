@@ -4,11 +4,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <div class="container px-4">
 	<h3 align="center">MY POST</h3>
-	<form action="myBoard.do" method="post">
+	<form action="myBoardMod.do" method="post">
 	<div class="mb-3 row">
 		<label for="staticEmail" class="col-sm-2 col-form-label">NO</label>
 		<div class="col-sm-10">
-			<input type="text" readonly class="form-control-plaintext" value="${result.boardNo }">
+			<input type="text" readonly class="form-control-plaintext" name="bno" value="${result.boardNo }">
 		</div>
 		<label for="staticEmail" class="col-sm-2 col-form-label">WRITER</label>
 		<div class="col-sm-10">
@@ -30,7 +30,7 @@
  	<div class="mb-3 row">
 		<label for="inputPassword" class="col-sm-2 col-form-label">PASSWORD</label>
 		<div class="col-sm-4">
-			<input type="password" class="form-control" id="boardPw" placeholder="비밀번호를 입력하세요">
+			<input type="password" name="boardPw" class="form-control" id="boardPw" placeholder="비밀번호를 입력하세요">
 		</div>
 	</div>
         <div align="center">
@@ -65,13 +65,6 @@
             alert('오류 발생');
         });
     });
-	//수정
-	document.querySelector('#modBtn').addEventListener('click', function(e){
-		e.preventDefault();
-		let pw = document.querySelector('#boardPw').value;
-		window.location.href = 'myBoardMod.do?bno=' + bno + '&boardPw=' + pw;
-	})
-	
 </script>
 
 

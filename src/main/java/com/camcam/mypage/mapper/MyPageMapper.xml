@@ -16,10 +16,11 @@
 		where user_id = #{userId}
 	</select>
 	
-	<select id="selectBoardNo" resultType="com.camcam.product.vo.QnAVO" parameterType="int">
+	<select id="selectBoardNo" resultType="com.camcam.product.vo.QnAVO" >
 		select *
 		from qna
-		where board_no = #{boardNo}
+		where board_no = #{boardNo} 
+		and board_pw = nvl(#{pw}, board_pw)
 	</select>
 	
 	<delete id="deleteBoardNo" parameterType="int">

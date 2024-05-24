@@ -1,5 +1,7 @@
 package com.camcam.user.service.impl;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.camcam.common.DataSource;
@@ -37,5 +39,11 @@ public class UserServiceImpl implements UserService{
 		return mapper.selectMember2(id);
 	}
 	
+	
+	@Override
+	public List<UserVO> userList() {
+		// TODO Auto-generated method stub
+		return mapper.selectUserList();
+	}
 	
 }

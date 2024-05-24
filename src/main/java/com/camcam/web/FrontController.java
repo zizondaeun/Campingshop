@@ -82,8 +82,6 @@ public class FrontController extends HttpServlet {
 		map.put("/myOrderList.do", new MyOrderListControl()); //주문내역 리스트로 이동
 		map.put("/myInterestList.do", new MyInterestListControl()); //관심상품 리스트로 이동
 		
-		
-		
 	}
 
 	// service.

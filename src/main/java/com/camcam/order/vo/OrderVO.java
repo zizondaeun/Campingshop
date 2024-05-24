@@ -14,10 +14,4 @@ public class OrderVO {
 	private int amount;
 	private String orderStatus;
 	
-	//orderdetail table
-	private String orderDetailNo;
-	private int quantity;
-	private String productName;
-	private int price;
-	
 }

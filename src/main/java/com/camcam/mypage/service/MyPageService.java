@@ -2,6 +2,7 @@ package com.camcam.mypage.service;
 
 import java.util.List;
 
+import com.camcam.order.vo.OrderDetailVO;
 import com.camcam.order.vo.OrderVO;
 import com.camcam.product.vo.QnAVO;
 import com.camcam.user.vo.UserVO;
@@ -20,5 +21,7 @@ public interface MyPageService {
 	boolean modifyMyboard(QnAVO vo);
 	//내 주문내역 목록
 	List<OrderVO> getMyorder(String id);
+	//상세주문 내역
+	List<OrderDetailVO> getOrderDetail(int ono);
 
 }

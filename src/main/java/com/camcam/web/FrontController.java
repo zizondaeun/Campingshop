@@ -20,6 +20,7 @@ import com.camcam.mypage.command.DeleteMyboardControl;
 import com.camcam.mypage.command.MyBoardInfoControl;
 import com.camcam.mypage.command.MyBoardModFormControl;
 import com.camcam.mypage.command.MyInterestListControl;
+import com.camcam.mypage.command.MyOrderDetailControl;
 import com.camcam.mypage.command.MyOrderListControl;
 import com.camcam.mypage.command.MyPageControl;
 import com.camcam.mypage.command.UpdateMyBoardControl;
@@ -80,6 +81,7 @@ public class FrontController extends HttpServlet {
 		map.put("/updateMyboard.do", new UpdateMyBoardControl()); //내 게시글 수정 기능
 		map.put("/deleteMyboard.do" , new DeleteMyboardControl()); //내 게시글 삭제 기능
 		map.put("/myOrderList.do", new MyOrderListControl()); //주문내역 리스트로 이동
+		map.put("/myOrderDetail.do", new MyOrderDetailControl()); //상세주문 내역 이동
 		map.put("/myInterestList.do", new MyInterestListControl()); //관심상품 리스트로 이동
 		
 	}

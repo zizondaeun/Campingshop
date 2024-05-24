@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.camcam.common.DataSource;
 import com.camcam.mypage.mapper.MyPageMapper;
 import com.camcam.mypage.service.MyPageService;
+import com.camcam.order.vo.OrderDetailVO;
 import com.camcam.order.vo.OrderVO;
 import com.camcam.product.vo.QnAVO;
 import com.camcam.user.vo.UserVO;
@@ -32,6 +33,10 @@ public class MyPageServiceImpl implements MyPageService {
 
 	@Override
 	public QnAVO getBoardNo(int boardNo, String pw) { //상세화면에서 pw체크하기
+		System.out.println(pw + "9999");
+		if(pw.equals("")) {
+			return null;
+		}
 		return mapper.selectBoardNo(boardNo, pw);
 	}
 
@@ -56,6 +61,11 @@ public class MyPageServiceImpl implements MyPageService {
 	@Override
 	public List<OrderVO> getMyorder(String id) {
 		return mapper.selectMyorder(id);
+	}
+
+	@Override
+	public List<OrderDetailVO> getOrderDetail(int ono) {
+		return mapper.selectDetail(ono);
 	}
 
 }

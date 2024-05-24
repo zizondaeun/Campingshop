@@ -21,6 +21,10 @@
 		where r.rn > (#{page} -1) * 12
 	</select>
 	
+	<select id="selectProductInfo" parameterType="int" resultType="com.camcam.product.vo.ProductVO">
+		select * from products where product_no = #{productNo}
+	</select>
+	
 	<select id="getTotal" resultType="int" parameterType="com.camcam.common.SearchVO">
 		select count(1)
 		from products

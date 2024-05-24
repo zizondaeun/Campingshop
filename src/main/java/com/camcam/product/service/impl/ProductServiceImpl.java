@@ -37,10 +37,11 @@ public class ProductServiceImpl implements ProductService{
 		return mapper.categoryTemp();
 	}
 
-//	@Override
-//	public List<CategoryVO> categoryList() {
-//		return mapper.selectCategoryList();
-//	}
+	@Override
+	public ProductVO productInfo(int productNo) {
+		return mapper.selectProductInfo(productNo);
+	}
+
 	
 	
 

@@ -12,8 +12,8 @@ public interface ProductService {
 	public List<ProductVO> productList(SearchVO search);
 	
 	public int getTotal(SearchVO search);
-	
-//	public List<CategoryVO> categoryList();
+
+	public ProductVO productInfo(int productNo);
 	
 	public List<Map<String, String>> categoryTemp();
 }

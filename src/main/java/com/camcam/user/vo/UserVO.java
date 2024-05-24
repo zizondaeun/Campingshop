@@ -13,5 +13,6 @@ public class UserVO {
 	private String hireDate;
 	private String userResp;
 	private String address;
-
+	
+	
 }

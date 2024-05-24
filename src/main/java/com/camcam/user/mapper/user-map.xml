@@ -27,5 +27,14 @@
    		 from users
    		 where user_id = #{id}
     </select>
-
+		
+	<select id="selectUserList" resultType="com.camcam.user.vo.UserVO">
+		select * from users
+		order by user_id
+	</select>
+	
+	 <delete id="delUserList" parameterType="String">
+		delete from users
+		where user_id=#{userId}
+	</delete>  
 </mapper>

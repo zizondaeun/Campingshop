@@ -242,10 +242,10 @@ footer{
     
   }
 }
-   </style>
+    </style>
 <div class="container">
   <!-- Heading -->
-  <h1>SIGN IN</h1>
+  <h1>Campcamp</h1>
   
   <!-- Links -->
   <ul class="links">
@@ -253,7 +253,10 @@ footer{
       <a href="#" id="signin">SIGN IN</a>
     </li>
     <li>
-      <a href="#" id="reset">RESET</a>
+      <a href="signInForm.do" id="signin">SIGN UP</a>
+    </li>
+    <li>
+      <a href="#" id="reset">ID/PW찾기</a>
     </li>
   </ul>
   
@@ -261,15 +264,15 @@ footer{
  <form action="login.do" method="post">
     <!-- email input -->
     <div class="first-input input__block first-input__block">
-       <input type="text" placeholder="id" class="input" id="email" name = "id"  />
+       <input type="text" minlength = "5"  placeholder="id" class="input" id="email" name = "id"  />
     </div>
     <!-- password input -->
     <div class="input__block">
-       <input type="password" placeholder="Password" class="input" id="password"  name =pw  />
+       <input type="password" minlength ="5" placeholder="Password" class="input" id="password"  name =pw  />
     </div>
     <!-- repeat password input -->
     <div class="input__block">
-       <input type="password" placeholder="Repeat password" class="input repeat__password" id="repeat__password"    />
+       <input type="password"  placeholder="Repeat password" class="input repeat__password" id="repeat__password"    />
     </div>
     <!-- sign in button -->
     <button class="signin__btn">

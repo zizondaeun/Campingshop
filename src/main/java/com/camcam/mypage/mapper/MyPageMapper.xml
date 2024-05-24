@@ -45,5 +45,10 @@
 		where board_no = #{boardNo}
 	</select>
 	
+	<select id="selectDetail" resultType="com.camcam.order.vo.OrderDetailVO" parameterType="int">
+		select *
+		from orderdetail
+		where order_no = #{orderNo}
+	</select>
 	
 </mapper>

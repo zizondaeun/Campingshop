@@ -1,7 +1,8 @@
 package com.camcam.order.vo;
 
+import java.util.Date;
+
 import lombok.Data;
-import oracle.sql.DATE;
 
 @Data
 public class OrderVO {
@@ -9,7 +10,7 @@ public class OrderVO {
 	private int orderNo;
 	private int cartNo;
 	private String userId;
-	private DATE orderDate;
+	private Date orderDate;
 	private String address;
 	private int amount;
 	private String orderStatus;

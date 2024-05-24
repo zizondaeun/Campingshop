@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.camcam.order.vo.OrderDetailVO;
 import com.camcam.order.vo.OrderVO;
 import com.camcam.product.vo.QnAVO;
 import com.camcam.user.vo.UserVO;
@@ -29,4 +30,6 @@ public interface MyPageMapper {
 
 	// 내 주문내역 리스트
 	List<OrderVO> selectMyorder(String id);
+	// 상세 주문 내역
+	List<OrderDetailVO> selectDetail(int ono);
 }

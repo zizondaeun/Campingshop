@@ -7,7 +7,7 @@
 	<thead>
 		<tr>
 			<th scope="col">NO</th>
-			<th scope="col">CART.NO</th>
+			<th scope="col">CART_NO</th>
 			<th scope="col">DATE</th>
 			<th scope="col">ADDRESS</th>
 			<th scope="col">AMOUNT</th>
@@ -31,7 +31,7 @@
 						<td>${order.address }</td>
 						<td>${order.amount }</td>
 						<td>${order.orderStatus }</td>
-						<td><button type="button" id="detail">주문 상세</button></td>
+						<td><button type="button" onclick="location.href='myOrderDetail.do?ono=${order.orderNo }';">주문 상세</button></td>
 					</tr>
 				</c:forEach>
 			</c:otherwise>

@@ -33,24 +33,30 @@ public class GetCategoryControl implements Control {
 		List<Map<String, Object>> categoryList = new ArrayList<>();
 		Map<String, Object> catMap = null;
 		List<String> catList = null;
+		List<String> codeList = null;
 		String curCateName = null, preCateName = null;
 		for (Map<String, String> map : list) {
-			String p_code, p_name, c_code, c_name;
+			String p_code, p_name, c_code, c_name, categoryCode;
 			p_code = map.get("CATE_1");
 			p_name = map.get("CATE_2");
 			c_code = map.get("CATE_3");
 			c_name = map.get("CATE_4");
+			categoryCode = String.valueOf(map.get("CATEGORY_CODE"));
+			
 			curCateName = p_name == null ? curCateName : p_name;
 			if (p_code != null) {
 				catMap = new HashMap<String, Object>();
 				catList = new ArrayList<>();
-				
-				catMap.put("대분류", p_name);
+				codeList = new ArrayList<>();
+				catMap.put("parent", p_name);
+				catMap.put("parentCode", categoryCode);
 			} else {
 				catList.add(c_name);
+				codeList.add(categoryCode);
 			}
 			if (!curCateName.equals(preCateName)) {
-				catMap.put("소분류", catList);
+				catMap.put("child", catList);
+				catMap.put("childCode", codeList);
 				categoryList.add(catMap);
 			}
 			preCateName = curCateName;

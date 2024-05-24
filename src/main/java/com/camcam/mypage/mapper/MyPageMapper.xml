@@ -26,6 +26,12 @@
 		delete from qna where board_no = #{boardNo}
 	</delete>
 	
+	<update id="updateBoardNo" parameterType="com.camcam.product.vo.QnAVO">
+		update qna
+		set title = #{title}, content = #{content}
+		where board_no = #{boardNo}
+	</update>
+	
 	<select id="selectMyorder" resultType="com.camcam.order.vo.OrderVO">
 		select * 
 		from orders

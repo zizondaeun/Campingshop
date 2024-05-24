@@ -19,5 +19,7 @@ public interface MyPageMapper {
 	List<OrderVO> selectMyorder();
 	//게시글 pw찾기(bno를 통해)
 	String getBoardpw(int bno);
+	//내 게시글 수정
+	int updateBoardNo(QnAVO vo);
 
 }

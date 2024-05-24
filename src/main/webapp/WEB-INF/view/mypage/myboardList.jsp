@@ -10,20 +10,29 @@
 			<th scope="col">NO</th>
 			<th scope="col">BOARD</th>
 			<th scope="col">TITLE</th>
-			<th scope="col">CONTENT</th>
+			<!-- <th scope="col">CONTENT</th> -->
 			<th scope="col">DATE</th>
 		</tr>
 	</thead>
 	<tbody>
-	<c:forEach var="board" items="${list }">
-		<tr>
-			<th scope="row">${board.boardNo }</th>
-			<td><a href="#" style="text-decoration:none"><font color="#6c757d">QnA</font></a></td>
-			<td><a href="myBoardInfo.do?bno=${board.boardNo }" style="text-decoration:none"><font color="black">${board.title }</font></a></td>
-			<td><a href="myBoardInfo.do?bno=${board.boardNo }" style="text-decoration:none"><font color="black">${board.content }</font></a></td>
-			<td><fmt:formatDate value="${board.createDate }" pattern="yyyy/MM/dd" /></td>
-		</tr>
-	</c:forEach>
+	<c:choose>
+		<c:when test="${empty list }">
+			<tr align="center">
+				<td colspan="4">조회된 결과가 없습니다</td>
+			</tr>
+		</c:when>
+		<c:otherwise>
+			<c:forEach var="board" items="${list }">
+				<tr>
+					<th scope="row">${board.boardNo }</th>
+					<td><a href="#" style="text-decoration: none"><font color="#6c757d">QnA</font></a></td>
+					<td><a href="myBoardInfo.do?bno=${board.boardNo }" style="text-decoration: none"><font color="black">${board.title }</font></a></td>
+					<!-- <td><a href="myBoardInfo.do?bno=${board.boardNo }" style="text-decoration:none"><font color="black">${board.content }</font></a></td> -->
+					<td><fmt:formatDate value="${board.createDate }" pattern="yyyy/MM/dd" /></td>
+				</tr>
+			</c:forEach>
+		</c:otherwise>
+	</c:choose>
 	</tbody>
 </table>
 <script>
@@ -36,5 +45,4 @@ let tr = document.querySelectorAll('tbody tr').forEach(function(number) {
 		console.log(th); 
 	})
 });
-
 </script>

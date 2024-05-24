@@ -12,9 +12,9 @@ import com.camcam.product.vo.QnAVO;
 import com.camcam.user.vo.UserVO;
 
 public class MyPageServiceImpl implements MyPageService {
-	SqlSession session = DataSource.getInstance().openSession(true); 
+	SqlSession session = DataSource.getInstance().openSession(true);
 	MyPageMapper mapper = session.getMapper(MyPageMapper.class);
-	
+
 	@Override
 	public UserVO getMypage(String id) {
 		return mapper.selectMypage(id);
@@ -26,42 +26,36 @@ public class MyPageServiceImpl implements MyPageService {
 	}
 
 	@Override
-	public QnAVO getBoardNo(int boardNo) {
-		return mapper.selectBoardNo(boardNo);
+	public QnAVO getBoardNo(int boardNo) { //단순히 게시글 상세화면만 
+		return mapper.selectBoardNo(boardNo, null);
+	}
+
+	@Override
+	public QnAVO getBoardNo(int boardNo, String pw) { //상세화면에서 pw체크하기
+		return mapper.selectBoardNo(boardNo, pw);
 	}
 
 	@Override
 	public boolean removeMyboard(int bno, String pw) {
-		//QnAVO qvo = mapper.selectBoardNo(vo.getBoardNo());
-		String correct = mapper.getBoardpw(bno); 
-		//System.out.println(correct + "987654" + pw);
-		if(correct.equals(pw)) {
+		// QnAVO qvo = mapper.selectBoardNo(vo.getBoardNo());
+		String correct = mapper.getBoardpw(bno);
+		// System.out.println(correct + "987654" + pw);
+		if (correct.equals(pw)) {
 			mapper.deleteBoardNo(bno);
 			return true;
-		}else {
+		} else {
 			return false;
 		}
 	}
 
 	@Override
 	public boolean modifyMyboard(QnAVO vo) {
-		String correct = mapper.getBoardpw(vo.getBoardNo());
-		if(correct.equals(vo.getBoardPw())) {
-			mapper.updateBoardNo(vo);
-			return true;
-		}else {
-			return false;
-		}
+		return mapper.updateBoardNo(vo) == 1;
 	}
-	
+
 	@Override
-	public List<OrderVO> getMyorder() {
-		return mapper.selectMyorder();
+	public List<OrderVO> getMyorder(String id) {
+		return mapper.selectMyorder(id);
 	}
-
-
-
-
-
 
 }

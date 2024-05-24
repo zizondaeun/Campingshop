@@ -15,10 +15,12 @@ import javax.servlet.http.HttpServletResponse;
 import com.camcam.category.command.GetCategoryControl;
 import com.camcam.common.Control;
 import com.camcam.home.command.HomeControl;
-import com.camcam.mypage.command.MyBoardControl;
+import com.camcam.mypage.command.MyBoardListControl;
 import com.camcam.mypage.command.DeleteMyboardControl;
 import com.camcam.mypage.command.MyBoardInfoControl;
 import com.camcam.mypage.command.MyBoardModFormControl;
+import com.camcam.mypage.command.MyInterestListControl;
+import com.camcam.mypage.command.MyOrderListControl;
 import com.camcam.mypage.command.MyPageControl;
 import com.camcam.mypage.command.UpdateMyBoardControl;
 import com.camcam.product.command.ProductInfoControl;
@@ -27,8 +29,6 @@ import com.camcam.user.command.CheckInControl;
 import com.camcam.user.command.LoginControl;
 import com.camcam.user.command.LoginFormControl;
 import com.camcam.user.command.LogoutControl;
-import com.camcam.user.command.MyInterestControl;
-import com.camcam.user.command.MyOrderControl;
 import com.camcam.user.command.SignInControl;
 import com.camcam.user.command.SignInFormControl;
 import com.camcam.user.command.UserListControl;
@@ -72,16 +72,15 @@ public class FrontController extends HttpServlet {
 		// 유저 관련(관리자)
 		map.put("/userList.do", new UserListControl());  // 회원 리스트
 		
-		//마이페이지
+		// 마이페이지
 		map.put("/myPage.do", new MyPageControl()); //마이페이지로 이동
-		map.put("/myBoard.do", new MyBoardControl()); //내 게시글 보기 누르면 이동,목룍show
+		map.put("/myBoardList.do", new MyBoardListControl()); //내 게시글 리스트로 이동
 		map.put("/myBoardInfo.do", new MyBoardInfoControl()); //내 게시판 상세화면으로 이동
 		map.put("/myBoardMod.do", new MyBoardModFormControl()); //내 게시글 수정 이동
-		map.put("/updateMyboard.do", new UpdateMyBoardControl()); //수정 후 변경된 화면
+		map.put("/updateMyboard.do", new UpdateMyBoardControl()); //내 게시글 수정 기능
 		map.put("/deleteMyboard.do" , new DeleteMyboardControl()); //내 게시글 삭제 기능
-		
-		map.put("/myOrder.do", new MyOrderControl()); //주문내역 이동
-		map.put("/myInterest.do", new MyInterestControl()); //관심상품 이동
+		map.put("/myOrderList.do", new MyOrderListControl()); //주문내역 리스트로 이동
+		map.put("/myInterestList.do", new MyInterestListControl()); //관심상품 리스트로 이동
 		
 		
 		

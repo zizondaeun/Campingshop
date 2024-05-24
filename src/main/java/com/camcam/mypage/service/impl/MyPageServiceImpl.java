@@ -26,12 +26,12 @@ public class MyPageServiceImpl implements MyPageService {
 	}
 
 	@Override
-	public QnAVO getBoardNo(int boardNo) {
+	public QnAVO getBoardNo(int boardNo) { //단순히 게시글 상세화면만 
 		return mapper.selectBoardNo(boardNo, null);
 	}
 
 	@Override
-	public QnAVO getBoardNo(int boardNo, String pw) {
+	public QnAVO getBoardNo(int boardNo, String pw) { //상세화면에서 pw체크하기
 		return mapper.selectBoardNo(boardNo, pw);
 	}
 
@@ -54,8 +54,8 @@ public class MyPageServiceImpl implements MyPageService {
 	}
 
 	@Override
-	public List<OrderVO> getMyorder() {
-		return mapper.selectMyorder();
+	public List<OrderVO> getMyorder(String id) {
+		return mapper.selectMyorder(id);
 	}
 
 }

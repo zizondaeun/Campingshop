@@ -33,7 +33,7 @@
 		where board_no = #{boardNo}
 	</update>
 	
-	<select id="selectMyorder" resultType="com.camcam.order.vo.OrderVO">
+	<select id="selectMyorder" resultType="com.camcam.order.vo.OrderVO" parameterType="string">
 		select * 
 		from orders
 		where user_id = #{userId}

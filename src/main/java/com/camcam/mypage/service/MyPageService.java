@@ -19,6 +19,6 @@ public interface MyPageService {
 	//내 게시글 수정
 	boolean modifyMyboard(QnAVO vo);
 	//내 주문내역 목록
-	List<OrderVO> getMyorder();
+	List<OrderVO> getMyorder(String id);
 
 }

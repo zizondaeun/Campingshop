@@ -12,21 +12,18 @@ import com.camcam.mypage.service.MyPageService;
 import com.camcam.mypage.service.impl.MyPageServiceImpl;
 import com.camcam.product.vo.QnAVO;
 
-public class MyBoardControl implements Control {
+public class MyBoardListControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String path = "mypage/myboard.tiles";
-		//String id = req.getParameter("userId");
+		String path = "mypage/myboardList.tiles";
+		String id = req.getParameter("userId");
 		
 		MyPageService svc = new MyPageServiceImpl();
 		List<QnAVO> list = svc.getMyboard("user01");
 		req.setAttribute("list", list);
 		
 		req.getRequestDispatcher(path).forward(req, resp);
-		
-		
-		
 	}
 
 }

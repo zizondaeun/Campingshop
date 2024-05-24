@@ -12,22 +12,21 @@ public interface MyPageMapper {
 	// 마이페이지
 	UserVO selectMypage(String id);
 
-	// 내 게시판관리
+	// 내 게시판리스트
 	List<QnAVO> selectMyboard(String id);
 
 	// 내 게시글 상세
 	QnAVO selectBoardNo(@Param("boardNo") int boardNo, @Param("pw") String pw);
 
-	// 내 게시글 삭제
-	int deleteBoardNo(int boardNo);
-
-	// 내 주문내역
-	List<OrderVO> selectMyorder();
-
 	// 게시글 pw찾기(bno를 통해)
 	String getBoardpw(int bno);
+
+	// 내 게시글 삭제
+	int deleteBoardNo(int boardNo);
 
 	// 내 게시글 수정
 	int updateBoardNo(QnAVO vo);
 
+	// 내 주문내역 리스트
+	List<OrderVO> selectMyorder(String id);
 }

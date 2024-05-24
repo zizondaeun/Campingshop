@@ -26,9 +26,9 @@ public class DeleteMyboardControl implements Control {
 		//vo.setBoardPw(pw);
 		
 		if(svc.removeMyboard(Integer.parseInt(bno),pw)) {
-			resp.sendRedirect("myBoard.do");
+			resp.sendRedirect("myBoardList.do");
 		}else {
-			resp.sendRedirect("error");
+			resp.sendRedirect("error.do");
 		}
 	}
 

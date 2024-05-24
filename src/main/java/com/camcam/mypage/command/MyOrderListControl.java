@@ -1,4 +1,4 @@
-package com.camcam.user.command;
+package com.camcam.mypage.command;
 
 import java.io.IOException;
 import java.util.List;
@@ -12,17 +12,15 @@ import com.camcam.mypage.service.MyPageService;
 import com.camcam.mypage.service.impl.MyPageServiceImpl;
 import com.camcam.order.vo.OrderVO;
 
-public class MyOrderControl implements Control {
+public class MyOrderListControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		//System.out.println("123456");
-		String path = "mypage/myorder.tiles";
-		
+		String path = "mypage/myorderList.tiles";
 		String id = req.getParameter("userId");
 	
 		MyPageService svc = new MyPageServiceImpl();
-		List<OrderVO> list = svc.getMyorder();
+		List<OrderVO> list = svc.getMyorder("user01");
 		req.setAttribute("list", list);
 		
 		req.getRequestDispatcher(path).forward(req, resp);

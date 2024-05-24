@@ -24,7 +24,7 @@
 		</div>
 		<label for="staticEmail" class="col-sm-2 col-form-label">CONTENT</label>
 		<div class="col-sm-10">
-    		<textarea readonly class="form-control-plaintext">${result.content}</textarea>
+    		<textarea readonly class="form-control-plaintext" rows="5" cols="30">${result.content}</textarea>
 		</div>
 	</div>
  	<div class="mb-3 row">
@@ -55,8 +55,8 @@
         })
         .then(response => {
             if (response.ok) {
-                window.location.href = 'myBoard.do';
-            } else {
+                window.location.href = 'myBoardList.do';
+            }else {
                 alert('비밀번호를 맞게 입력하세요');
             }
         })

@@ -90,18 +90,26 @@
 								</div>
 							</div>
 							<div class="text-center py-4">
-								<a class="h6 text-decoration-none text-truncate" href="">${product.productName }</a>
+								<a class="h6 text-decoration-none text-truncate" href="productInfo.do?pno=${product.productNo}&keyword=${keyword}">${product.productName }</a>
 								<div class="d-flex align-items-center justify-content-center mt-2">
-									<h5>
-										<fmt:formatNumber value="${product.offPrice }" />
-										원
-									</h5>
-									<h6 class="text-muted ml-2">
-										<del>
+									<c:if test="${product.offPrice == 0}">
+										<h5>
 											<fmt:formatNumber value="${product.price }" />
 											원
-										</del>
-									</h6>
+										</h5>
+									</c:if>
+									<c:if test="${product.offPrice != 0}">
+										<h5>
+											<fmt:formatNumber value="${product.offPrice }" />
+											원
+										</h5>
+										<h6 class="text-muted ml-2">
+											<del>
+												<fmt:formatNumber value="${product.price }" />
+												원
+											</del>
+										</h6>
+									</c:if>
 								</div>
 								<div class="d-flex align-items-center justify-content-center mb-1">
 									<small class="fa fa-star text-primary mr-1"></small> <small class="fa fa-star text-primary mr-1"></small> <small class="fa fa-star text-primary mr-1"></small> <small class="fa fa-star text-primary mr-1"></small> <small class="fa fa-star text-primary mr-1"></small> <small>(99)</small>
@@ -114,13 +122,13 @@
 					<nav>
 						<ul class="pagination justify-content-center">
 							<c:if test="${paging.prev }">
-							<li class="page-item disabled"><a class="page-link" href="productList.do?page=${paging.startPage-1}">Previous</span></a></li>
+								<li class="page-item disabled"><a class="page-link" href="productList.do?page=${paging.startPage-1}">Previous</span></a></li>
 							</c:if>
 							<c:forEach var="p" begin="${paging.startPage}" end="${paging.endPage}">
-							<li class="${p==paging.page?'page-item active':''}"><a class="page-link" href="productList.do?page=${p}">${p}</a></li>
+								<li class="${p==paging.page?'page-item active':''}"><a class="page-link" href="productList.do?page=${p}&keyword=${keyword}">${p}</a></li>
 							</c:forEach>
 							<c:if test="${pageInfo.next }">
-							<li class="page-item"><a class="page-link" href="productList.do?page=${paging.endPage+1}">Next</a></li>
+								<li class="page-item"><a class="page-link" href="productList.do?page=${paging.endPage+1}">Next</a></li>
 							</c:if>
 						</ul>
 					</nav>

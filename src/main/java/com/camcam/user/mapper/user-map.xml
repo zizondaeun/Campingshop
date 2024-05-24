@@ -14,5 +14,18 @@
 	<select id="selectUserCountById" parameterType="String" resultType="int">
         SELECT COUNT(*) FROM USERS WHERE user_id = #{userId}
     </select>
+    
+    <select id ="selectMember" resultType="com.camcam.user.vo.UserVO">
+    	select *
+   		 from users
+   		 where user_id = #{id}
+  		 and  password = #{pw}
+    </select>
+    
+    <select id ="selectMember2" resultType="com.camcam.user.vo.UserVO">
+    	select *
+   		 from users
+   		 where user_id = #{id}
+    </select>
 
 </mapper>

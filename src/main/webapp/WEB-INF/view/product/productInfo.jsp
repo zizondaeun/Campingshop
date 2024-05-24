@@ -1,20 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!-- Breadcrumb Start -->
     <div class="container-fluid">
         <div class="row px-xl-5">
             <div class="col-12">
                 <nav class="breadcrumb bg-light mb-30">
-                    <a class="breadcrumb-item text-dark" href="#">Home</a>
-                    <a class="breadcrumb-item text-dark" href="#">Shop</a>
+                    <a class="breadcrumb-item text-dark" href="home.do">Home</a>
+                    <a class="breadcrumb-item text-dark" href="productList.do?keyword=${keyword }">Shop</a>
                     <span class="breadcrumb-item active">Shop Detail</span>
                 </nav>
             </div>
         </div>
     </div>
     <!-- Breadcrumb End -->
-
-
+	
     <!-- Shop Detail Start -->
     <div class="container-fluid pb-5">
         <div class="row px-xl-5">
@@ -45,7 +46,7 @@
 
             <div class="col-lg-7 h-auto mb-30">
                 <div class="h-100 bg-light p-30">
-                    <h3>Product Name Goes Here</h3>
+                    <h3>${product.productName }</h3>
                     <div class="d-flex mb-3">
                         <div class="text-primary mr-2">
                             <small class="fas fa-star"></small>
@@ -56,10 +57,20 @@
                         </div>
                         <small class="pt-1">(99 Reviews)</small>
                     </div>
-                    <h3 class="font-weight-semi-bold mb-4">$150.00</h3>
-                    <p class="mb-4">Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit
-                        clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no sea
-                        Nonumy</p>
+                    <h3 class="font-weight-semi-bold mb-4">
+                    <c:choose>
+	                    <c:when test="${product.offPrice == 0}">
+		                    <fmt:formatNumber value="${product.price }" />원
+	                    </c:when>
+	                    <c:otherwise>
+	                    	<fmt:formatNumber value="${product.offPrice }" />원
+	                    	<small><del><fmt:formatNumber value="${product.price }" />원</del></small>
+	                    </c:otherwise>
+                    </c:choose>
+                    </h3>
+                    
+                    
+                    <p class="mb-4">${product.explain }</p>
                     <div class="d-flex mb-3">
                         <strong class="text-dark mr-3">Sizes:</strong>
                         <form>

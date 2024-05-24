@@ -1,12 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<style>
-body{
+    
+    <style>
+    body{
   font-family: 'Montserrat', sans-serif;
   background:white;
 }
@@ -105,7 +101,7 @@ form{
         margin:0 auto;
         border-radius:8px;
         border:none;
-        background: rgba(#0f132a,.1);
+        background: #DCEBFF;
         color : rgba(#0f132a,.3);
         padding:0 0 0 15px;
         font-size:14px;
@@ -246,35 +242,37 @@ footer{
     
   }
 }
-</style>
-</head>
-<body>
-	<div class="container">
+    </style>
+<div class="container">
   <!-- Heading -->
-  <h1>SIGN IN</h1>
+  <h1>Campcamp</h1>
   
   <!-- Links -->
   <ul class="links">
     <li>
       <a href="#" id="signin">SIGN IN</a>
     </li>
-   
-    
+    <li>
+      <a href="signInForm.do" id="signin">SIGN UP</a>
+    </li>
+    <li>
+      <a href="#" id="reset">ID/PW찾기</a>
+    </li>
   </ul>
   
   <!-- Form -->
-  <form  action="" method="post">
+ <form action="login.do" method="post">
     <!-- email input -->
     <div class="first-input input__block first-input__block">
-       <input type="email" placeholder="Email" class="input" id="email"   />
+       <input type="text" minlength = "5"  placeholder="id" class="input" id="email" name = "id"  />
     </div>
     <!-- password input -->
     <div class="input__block">
-       <input type="password" placeholder="Password" class="input" id="password"    />
+       <input type="password" minlength ="5" placeholder="Password" class="input" id="password"  name =pw  />
     </div>
     <!-- repeat password input -->
     <div class="input__block">
-       <input type="password" placeholder="Repeat password" class="input repeat__password" id="repeat__password"    />
+       <input type="password"  placeholder="Repeat password" class="input repeat__password" id="repeat__password"    />
     </div>
     <!-- sign in button -->
     <button class="signin__btn">
@@ -282,40 +280,9 @@ footer{
     </button>
   </form>
   <!-- separator -->
-  <div class="separator">
-    <p>OR</p>
-  </div>
-  <!-- google button -->
   
 </div>
 
-<footer>
-  <p>
-    Thank you for watching
-    <i class="fa fa-heart"></i> 
-    <i class="fa fa-heart"></i> 
-    <i class="fa fa-heart"></i> 
-  </p>
-  <p>
-    Chouaib Blgn :
-    <a href="https://www.facebook.com/chouaib45" >
-      <i class="fa fa-facebook"></i>
-    </a>
-    <a href="http://twitter.com/chouaibblgn45">
-      <i class="fa fa-twitter"></i> 
-    </a>
-    <a href="http://instagram.com/chouaib_blgn">
-      <i class="fa fa-instagram"></i> 
-    </a>
-    <a href="http://linkedin.com/in/chouaibblgn/">
-      <i class="fa fa-linkedin"></i>
-    </a>
-    <a href="https://www.behance.net/geek30">
-      <i class="fa fa-behance"></i>
-    </a>
-  </p>
-</footer>
-</body>
 <script>
 $(document).ready(function(){
     let signup = $(".links").find("li").find("#signup") ; 
@@ -363,4 +330,3 @@ $(document).ready(function(){
    })
 });
 </script>
-</html>

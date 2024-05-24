@@ -9,13 +9,15 @@ import com.camcam.product.vo.ProductVO;
 public interface ProductMapper {
 	// 홈화면 최근 등록물품 리스트 조회
 	public List<ProductVO> selectRecentProduct();
-	// 전체 상품 리스트 조회
+	// 전체 제품 리스트 조회
 	public List<ProductVO> selectProductList(SearchVO search);
+	
+	// 제품 상세조회
+	public ProductVO selectProductInfo(int productNo);
+	
 	// getTotal(검색x)
 	public int getTotal(SearchVO search);
 	
 	// 물품 카테고리 리스트
-//	public List<CategoryVO> selectCategoryList();
-	
 	public List<Map<String, String>> categoryTemp();
 }

@@ -15,6 +15,7 @@ public class UpdateMyBoardControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		//System.out.println("1004");
 		req.setCharacterEncoding("utf-8");
 		
 		String bno = req.getParameter("bno");
@@ -23,7 +24,7 @@ public class UpdateMyBoardControl implements Control {
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
 		//String date = req.getParameter("createDate");
-		
+		//System.out.println(bno + "1004");
 		MyPageService svc = new MyPageServiceImpl();
 		QnAVO vo = new QnAVO();
 		vo.setBoardNo(Integer.parseInt(bno));
@@ -32,6 +33,7 @@ public class UpdateMyBoardControl implements Control {
 		vo.setTitle(title);
 		vo.setContent(content);
 		//vo.setCreateDate(date);
+		req.setAttribute("result", vo);
 		
 		if(svc.modifyMyboard(vo)) {
 			resp.sendRedirect("myBoard.do");
@@ -39,7 +41,8 @@ public class UpdateMyBoardControl implements Control {
 			resp.sendRedirect("error");
 		}
 		
-		
+		String path = "mypage/myboardedit.tiles";
+		req.getRequestDispatcher(path).forward(req, resp);
 	}
 
 }

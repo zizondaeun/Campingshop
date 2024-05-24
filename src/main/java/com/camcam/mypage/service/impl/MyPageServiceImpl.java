@@ -45,7 +45,13 @@ public class MyPageServiceImpl implements MyPageService {
 
 	@Override
 	public boolean modifyMyboard(QnAVO vo) {
-		return false;
+		String correct = mapper.getBoardpw(vo.getBoardNo());
+		if(correct.equals(vo.getBoardPw())) {
+			mapper.updateBoardNo(vo);
+			return true;
+		}else {
+			return false;
+		}
 	}
 	
 	@Override

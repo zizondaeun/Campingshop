@@ -21,5 +21,11 @@
    		 where user_id = #{id}
   		 and  password = #{pw}
     </select>
+    
+    <select id ="selectMember2" resultType="com.camcam.user.vo.UserVO">
+    	select *
+   		 from users
+   		 where user_id = #{id}
+    </select>
 
 </mapper>

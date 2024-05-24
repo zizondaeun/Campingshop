@@ -10,4 +10,7 @@ public interface UserMapper {
 	 
 	 
 	 UserVO selectMember(@Param("id") String id, @Param("pw") String pw);
-	 UserVO selectMember2(String id);}
+	 UserVO selectMember2(String id);
+	 
+
+}

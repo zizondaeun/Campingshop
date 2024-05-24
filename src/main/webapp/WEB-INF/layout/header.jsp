@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"  %>    
+
 <div class="container-fluid">
 	<div class="row bg-secondary py-1 px-xl-5">
 		<div class="col-lg-6 d-none d-lg-block">
@@ -10,10 +12,18 @@
 			<div class="d-inline-flex align-items-center">
 				<div class="btn-group">
 					<button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">My Account</button>
-					<div class="dropdown-menu dropdown-menu-right">
+					<div class="dropdown-menu dropdown-menu-right">	
+					 <c:choose>
+          			<c:when test="${empty logId }">					
 						<button class="dropdown-item" type="button" onClick="location.href='logForm.do'">로그인</button>
 						<button class="dropdown-item" type="button" onClick="location.href='signInForm.do'">회원가입</button>
 						<button class="dropdown-item" type="button" onClick="location.href='myPage.do'">마이페이지</button>
+						</c:when>
+						<c:otherwise>
+						<button class="dropdown-item" type="button" onClick="logout()">로그아웃</button>
+						<button class="dropdown-item" type="button" onClick="location.href='logForm.do'">정보수정</button>					
+						</c:otherwise>
+					</c:choose>
 					</div>
 				</div>
 			</div>
@@ -45,3 +55,24 @@
 		</div>
 	</div>
 </div>
+
+<script>
+function logout() {
+    // 로그아웃 요청을 보냅니다.
+    fetch('logout.do', { method: 'POST' })
+        .then(response => {
+            if (response.ok) {
+                // 로그아웃이 성공하면 페이지를 새로 고칩니다.
+                location.reload();
+            } else {
+                // 로그아웃이 실패하면 오류 메시지를 표시합니다.
+                alert('로그아웃에 실패했습니다. 다시 시도해주세요.');
+            }
+        })
+        .catch(error => {
+            console.error('로그아웃 요청 중 오류가 발생했습니다:', error);
+            alert('로그아웃 요청 중 오류가 발생했습니다.');
+        });
+}
+</script>
+</script>

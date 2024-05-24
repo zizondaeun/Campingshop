@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<!-- <h3 align="center">MY POST</h3> -->
 <div class="container px-4">
 	<h3 align="center">MY POST</h3>
 	<form action="myBoard.do">
@@ -49,7 +48,7 @@
         e.preventDefault();
         let pw = document.querySelector('#boardPw').value;
         console.log(pw);
-        fetch('myBoardDel.do', {
+        fetch('deleteMyboard.do', {
             method: 'post',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: 'bno=' + bno + '&boardPw=' + pw
@@ -69,7 +68,7 @@
 	//수정
 	document.querySelector('#modBtn').addEventListener('click', function(e){
 		e.preventDefault();
-		window.location.href = 'myBoardMod.do?bno=' + bno;
+		window.location.href = 'myBoardMod.do?bno=' + bno + '&boardPw=' + pw;
 		
 	})
 	

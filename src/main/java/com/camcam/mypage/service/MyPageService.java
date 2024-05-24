@@ -19,5 +19,7 @@ public interface MyPageService {
 	List<OrderVO> getMyorder();
 	//내 게시글 수정,삭제 위한 bno,pw가져오는거
 	boolean removeMyboard(int bno, String pw);
+	//내 게시글 수정
+	boolean modifyMyboard(QnAVO vo);
 
 }

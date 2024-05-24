@@ -1,5 +1,23 @@
 package com.camcam.order.vo;
 
-public class OrderVO {
+import lombok.Data;
+import oracle.sql.DATE;
 
+@Data
+public class OrderVO {
+	//orders table
+	private int orderNo;
+	private int cartNo;
+	private String userId;
+	private DATE orderDate;
+	private String address;
+	private int amount;
+	private String orderStatus;
+	
+	//orderdetail table
+	private String orderDetailNo;
+	private int quantity;
+	private String productName;
+	private int price;
+	
 }

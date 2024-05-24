@@ -12,7 +12,6 @@
 			<th scope="col">TITLE</th>
 			<th scope="col">CONTENT</th>
 			<th scope="col">DATE</th>
-			<!-- <th>#주문상세</th> -->
 		</tr>
 	</thead>
 	<tbody>
@@ -23,7 +22,6 @@
 			<td><a href="myBoardInfo.do?bno=${board.boardNo }" style="text-decoration:none"><font color="black">${board.title }</font></a></td>
 			<td><a href="myBoardInfo.do?bno=${board.boardNo }" style="text-decoration:none"><font color="black">${board.content }</font></a></td>
 			<td><fmt:formatDate value="${board.createDate }" pattern="yyyy/MM/dd" /></td>
-			<!-- <td><button>주문 상세</button></td> -->
 		</tr>
 	</c:forEach>
 	</tbody>

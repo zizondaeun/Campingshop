@@ -17,12 +17,10 @@ public class MyBoardControl implements Control {
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String path = "mypage/myboard.tiles";
-		System.out.println("1111");
 		//String id = req.getParameter("userId");
 		
 		MyPageService svc = new MyPageServiceImpl();
 		List<QnAVO> list = svc.getMyboard("user01");
-		System.out.println(list);
 		req.setAttribute("list", list);
 		
 		req.getRequestDispatcher(path).forward(req, resp);

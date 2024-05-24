@@ -15,7 +15,6 @@ public class MyBoardInfoControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("12345");
 		String bno = req.getParameter("bno");
 		
 		MyPageService svc = new MyPageServiceImpl();

@@ -10,18 +10,19 @@ import javax.servlet.http.HttpServletResponse;
 import com.camcam.common.Control;
 import com.camcam.mypage.service.MyPageService;
 import com.camcam.mypage.service.impl.MyPageServiceImpl;
-import com.camcam.user.vo.UserVO;
+import com.camcam.order.vo.OrderVO;
 
 public class MyOrderControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		//System.out.println("123456");
 		String path = "mypage/myorder.tiles";
 		
 		String id = req.getParameter("userId");
 	
 		MyPageService svc = new MyPageServiceImpl();
-		List<UserVO> list = svc.getMyorder();
+		List<OrderVO> list = svc.getMyorder();
 		req.setAttribute("list", list);
 		
 		req.getRequestDispatcher(path).forward(req, resp);

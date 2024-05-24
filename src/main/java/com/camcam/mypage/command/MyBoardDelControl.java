@@ -9,19 +9,26 @@ import javax.servlet.http.HttpServletResponse;
 import com.camcam.common.Control;
 import com.camcam.mypage.service.MyPageService;
 import com.camcam.mypage.service.impl.MyPageServiceImpl;
+import com.camcam.product.vo.QnAVO;
 
 public class MyBoardDelControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String bno = req.getParameter("bno");
-		System.out.println(bno + "1004");
-		MyPageService svc = new MyPageServiceImpl();
+		resp.setContentType("text/json;charset=utf-8");
 		
-		if(svc.removeMyboard(Integer.parseInt(bno))) {
-			resp.sendRedirect("myPage.do");
+		String bno = req.getParameter("bno");
+		String pw = req.getParameter("boardPw");
+		//System.out.println(bno + "119" + pw);
+		MyPageService svc = new MyPageServiceImpl();
+		//QnAVO vo = new QnAVO();
+		//vo.setBoardNo(Integer.parseInt(bno));
+		//vo.setBoardPw(pw);
+		
+		if(svc.removeMyboard(Integer.parseInt(bno),pw)) {
+			resp.sendRedirect("myBoard.do");
 		}else {
-			resp.sendRedirect("삭제 에러");
+			resp.sendRedirect("error");
 		}
 	}
 

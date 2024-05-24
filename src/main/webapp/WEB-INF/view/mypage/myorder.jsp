@@ -7,23 +7,29 @@
 	<thead>
 		<tr>
 			<th scope="col">NO</th>
-			<th scope="col">BOARD</th>
-			<th scope="col">TITLE</th>
-			<th scope="col">CONTENT</th>
+			<th scope="col">CART.NO</th>
 			<th scope="col">DATE</th>
+			<th scope="col">ADDRESS</th>
+			<th scope="col">AMOUNT</th>
+			<th scope="col">STATUS</th>
 			<th scope="col">DETAIL</th>
 		</tr>
 	</thead>
 	<tbody>
-	<c:forEach var="board" items="${list }">
+	<c:forEach var="order" items="${list }">
 		<tr>
-			<th scope="row">${board.boardNo }</th>
-			<td><a href="#" style="text-decoration:none"><font color="#6c757d">QnA</font></a></td>
-			<td><a href="myBoardInfo.do?bno=${board.boardNo }" style="text-decoration:none"><font color="black">${board.title }</font></a></td>
-			<td><a href="myBoardInfo.do?bno=${board.boardNo }" style="text-decoration:none"><font color="black">${board.content }</font></a></td>
-			<td><fmt:formatDate value="${board.createDate }" pattern="yyyy/MM/dd" /></td>
-			<td><button>주문 상세</button></td>
+			<th scope="row">${order.orderNo }</th>
+			<td>${order.cartNo }</td>
+			<td><fmt:formatDate value="${order.orderDate }" pattern="yyyy/MM/dd" /></td>
+			<td>${order.address }</td>
+			<td>${order.amount }</td>
+			<td>${order.orderStatus }</td>
+			<td><button type="button" id="detail">주문 상세</button></td>
 		</tr>
 	</c:forEach>
 	</tbody>
 </table>
+<script>
+
+
+</script>

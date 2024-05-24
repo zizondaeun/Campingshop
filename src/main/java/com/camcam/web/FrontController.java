@@ -21,6 +21,7 @@ import com.camcam.mypage.command.MyBoardInfoControl;
 import com.camcam.mypage.command.MyBoardModFormControl;
 import com.camcam.mypage.command.MyPageControl;
 import com.camcam.mypage.command.UpdateMyBoardControl;
+import com.camcam.product.command.ProductInfoControl;
 import com.camcam.product.command.ProductListControl;
 import com.camcam.user.command.CheckInControl;
 import com.camcam.user.command.LoginControl;
@@ -53,7 +54,9 @@ public class FrontController extends HttpServlet {
 		map.put("/home.do", new HomeControl());
 		
 		// 제품 관련
-		map.put("/productList.do", new ProductListControl());
+		map.put("/productList.do", new ProductListControl()); // 제품 리스트
+		map.put("/productInfo.do", new ProductInfoControl()); // 제품 상세보기
+		
 		
 		// 카테고리
 		map.put("/getCategory.do", new GetCategoryControl());

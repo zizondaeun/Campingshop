@@ -39,6 +39,7 @@ public class UserServiceImpl implements UserService{
 		return mapper.selectMember2(id);
 	}
 	
+	
 	@Override
 	public List<UserVO> userList() {
 		// TODO Auto-generated method stub

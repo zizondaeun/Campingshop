@@ -13,4 +13,5 @@ public interface UserService {
 	UserVO checkMember(String id);
 	
 	public List<UserVO> userList();
+	
 }

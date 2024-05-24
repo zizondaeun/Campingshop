@@ -84,7 +84,7 @@ h3 {
 				alert("삭제되었습니다.")
 			} 
 		} 
-		
+		 
 	function delRow(){
 			let tr = event.target;
 			console.log(tr);

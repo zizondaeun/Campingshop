@@ -11,7 +11,7 @@ import com.camcam.mypage.service.MyPageService;
 import com.camcam.mypage.service.impl.MyPageServiceImpl;
 import com.camcam.product.vo.QnAVO;
 
-public class MyBoardDelControl implements Control {
+public class DeleteMyboardControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

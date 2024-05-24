@@ -16,10 +16,12 @@ import com.camcam.category.command.GetCategoryControl;
 import com.camcam.common.Control;
 import com.camcam.home.command.HomeControl;
 import com.camcam.mypage.command.MyBoardControl;
-import com.camcam.mypage.command.MyBoardDelControl;
+import com.camcam.mypage.command.DeleteMyboardControl;
 import com.camcam.mypage.command.MyBoardInfoControl;
 import com.camcam.mypage.command.MyBoardModFormControl;
 import com.camcam.mypage.command.MyPageControl;
+import com.camcam.mypage.command.UpdateMyBoardControl;
+import com.camcam.product.command.ProductInfoControl;
 import com.camcam.product.command.ProductListControl;
 import com.camcam.user.command.CheckInControl;
 import com.camcam.user.command.LoginControl;
@@ -52,7 +54,9 @@ public class FrontController extends HttpServlet {
 		map.put("/home.do", new HomeControl());
 		
 		// 제품 관련
-		map.put("/productList.do", new ProductListControl());
+		map.put("/productList.do", new ProductListControl()); // 제품 리스트
+		map.put("/productInfo.do", new ProductInfoControl()); // 제품 상세보기
+		
 		
 		// 카테고리
 		map.put("/getCategory.do", new GetCategoryControl());
@@ -72,8 +76,10 @@ public class FrontController extends HttpServlet {
 		map.put("/myPage.do", new MyPageControl()); //마이페이지로 이동
 		map.put("/myBoard.do", new MyBoardControl()); //내 게시글 보기 누르면 이동,목룍show
 		map.put("/myBoardInfo.do", new MyBoardInfoControl()); //내 게시판 상세화면으로 이동
-		map.put("/myBoardMod.do", new MyBoardModFormControl()); //내 게시글 수정 기능
-		map.put("/myBoardDel.do" , new MyBoardDelControl()); //내 게시글 삭제 기능
+		map.put("/myBoardMod.do", new MyBoardModFormControl()); //내 게시글 수정 이동
+		map.put("/updateMyboard.do", new UpdateMyBoardControl()); //수정 후 변경된 화면
+		map.put("/deleteMyboard.do" , new DeleteMyboardControl()); //내 게시글 삭제 기능
+		
 		map.put("/myOrder.do", new MyOrderControl()); //주문내역 이동
 		map.put("/myInterest.do", new MyInterestControl()); //관심상품 이동
 		

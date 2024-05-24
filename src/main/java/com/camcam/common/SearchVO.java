@@ -8,6 +8,7 @@ public class SearchVO {
 	private String searchCondition;
 	private String keyword;
 	
+	
 	// 댓글관련
 	private int boardNo;
 	private int rpage;

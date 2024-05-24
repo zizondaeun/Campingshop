@@ -34,7 +34,7 @@ public class MyPageServiceImpl implements MyPageService {
 	public boolean removeMyboard(int bno, String pw) {
 		//QnAVO qvo = mapper.selectBoardNo(vo.getBoardNo());
 		String correct = mapper.getBoardpw(bno); 
-		System.out.println(correct + "987654" + pw);
+		//System.out.println(correct + "987654" + pw);
 		if(correct.equals(pw)) {
 			mapper.deleteBoardNo(bno);
 			return true;
@@ -44,9 +44,22 @@ public class MyPageServiceImpl implements MyPageService {
 	}
 
 	@Override
+	public boolean modifyMyboard(QnAVO vo) {
+		String correct = mapper.getBoardpw(vo.getBoardNo());
+		if(correct.equals(vo.getBoardPw())) {
+			mapper.updateBoardNo(vo);
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	@Override
 	public List<OrderVO> getMyorder() {
 		return mapper.selectMyorder();
 	}
+
+
 
 
 

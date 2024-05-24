@@ -62,22 +62,22 @@ public class GetCategoryControl implements Control {
 			preCateName = curCateName;
 		}
 		// 결과보기.
-		for (Map<String, Object> tmap : categoryList) {
-			System.out.println(tmap);
-		}
+//		for (Map<String, Object> tmap : categoryList) {
+//			System.out.println(tmap);
+//		}
 
 		Gson gson = new GsonBuilder().create();
 		String json = gson.toJson(categoryList);
 
 		resp.getWriter().print(json);
 
-		for (Map<String, String> map : list) {
-			map.keySet();
-			for (String key : map.keySet()) {
-				System.out.println("key = " + key + " val = " + map.get(key));
-			}
-
-		}
+//		for (Map<String, String> map : list) {
+//			map.keySet();
+//			for (String key : map.keySet()) {
+//				System.out.println("key = " + key + " val = " + map.get(key));
+//			}
+//
+//		}
 	}
 
 //		List<CategoryVO> categoryList = productService.categoryTemp();

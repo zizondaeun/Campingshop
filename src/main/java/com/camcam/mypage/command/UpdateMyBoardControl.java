@@ -11,25 +11,38 @@ import com.camcam.mypage.service.MyPageService;
 import com.camcam.mypage.service.impl.MyPageServiceImpl;
 import com.camcam.product.vo.QnAVO;
 
-public class MyBoardDelControl implements Control {
+public class UpdateMyBoardControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.setContentType("text/json;charset=utf-8");
+		//System.out.println("1004");
+		req.setCharacterEncoding("utf-8");
 		
 		String bno = req.getParameter("bno");
 		String pw = req.getParameter("boardPw");
-		//System.out.println(bno + "119" + pw);
+		String id = req.getParameter("userId");
+		String title = req.getParameter("title");
+		String content = req.getParameter("content");
+		//String date = req.getParameter("createDate");
+		//System.out.println(bno + "1004");
 		MyPageService svc = new MyPageServiceImpl();
-		//QnAVO vo = new QnAVO();
-		//vo.setBoardNo(Integer.parseInt(bno));
-		//vo.setBoardPw(pw);
+		QnAVO vo = new QnAVO();
+		vo.setBoardNo(Integer.parseInt(bno));
+		vo.setBoardPw(pw);
+		vo.setUserId(id);
+		vo.setTitle(title);
+		vo.setContent(content);
+		//vo.setCreateDate(date);
+		req.setAttribute("result", vo);
 		
-		if(svc.removeMyboard(Integer.parseInt(bno),pw)) {
+		if(svc.modifyMyboard(vo)) {
 			resp.sendRedirect("myBoard.do");
 		}else {
 			resp.sendRedirect("error");
 		}
+		
+		String path = "mypage/myboardedit.tiles";
+		req.getRequestDispatcher(path).forward(req, resp);
 	}
 
 }

@@ -12,6 +12,8 @@ import com.camcam.common.Control;
 import com.camcam.review.service.ReviewService;
 import com.camcam.review.service.impl.ReviewServiceImpl;
 import com.camcam.review.vo.ReviewVO;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 public class AddReviewControl implements Control {
 
@@ -35,6 +37,19 @@ public class AddReviewControl implements Control {
 		Map<String, Object> result = new HashMap<>();
 		
 		ReviewService svc = new ReviewServiceImpl();
+		
+		if(svc.addReview(rvo)) {
+			result.put("retCode", "OK");
+			result.put("retVal", rvo);
+		} else {
+			result.put("retCode", "NG");
+			result.put("retVal", null);
+		}
+		
+		Gson gson = new GsonBuilder().create();
+		String json = gson.toJson(result);
+		
+		resp.getWriter().print(json);
 	}
 
 }

@@ -4,6 +4,28 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.camcam.review.mapper.ReviewMapper">
 	
+	<select id="selectReviewList" parameterType="com.camcam.common.SearchVO" resultType="com.camcam.review.vo.ReviewVO">
+		select r.*
+		from( select rownum rn, a.*
+		     from (select *
+		            from reviews 
+		            where product_no = #{boardNo}
+		            order by review_no) a
+		            <![CDATA[
+		     where rownum <= (#{rpage} * 5)) r
+		     ]]>         
+		where r.rn > (#{rpage} -1) * 5
+	</select>
+	
+	
+	
+	<insert id="insertReview" parameterType="com.camcam.review.vo.ReviewVO">
+		<selectKey resultType="int" keyProperty="reviewNo" order="BEFORE">
+		select reviews_no_seq.nextval from dual
+		</selectKey>
+		insert into reviews (review_no, user_id, product_no, content, rating)
+		values (#{reviewNo}, #{userId}, #{productNo}, #{content}, #{rating})
+	</insert>
 	
 	
 </mapper>

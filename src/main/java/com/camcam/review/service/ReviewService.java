@@ -1,5 +1,12 @@
 package com.camcam.review.service;
 
-public interface ReviewService {
+import java.util.List;
 
+import com.camcam.common.SearchVO;
+import com.camcam.review.vo.ReviewVO;
+
+public interface ReviewService {
+	List<ReviewVO> reviewList(SearchVO search);
+	
+	boolean addReview(ReviewVO rvo); // 리뷰 등록
 }

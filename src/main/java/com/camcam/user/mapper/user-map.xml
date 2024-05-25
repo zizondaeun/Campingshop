@@ -36,5 +36,20 @@
 		delete from users
 		where user_id=#{userId}
 	</delete>  	
+	
+	<select id="selectIdFined" resultType="com.camcam.user.vo.UserVO">
+    select user_id
+    from users
+    where user_name = #{userName}
+    and user_Tel = #{userTel}
+	</select>
+	
+	<select id = "selectPwFined" resultType="com.camcam.user.vo.UserVO">
+		select password
+   		 from users
+   		 where user_id = #{userName}
+  		 and  user_Tel = #{userTel}
+         and user_name = #{userName}
+	</select>
  
 </mapper>

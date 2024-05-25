@@ -257,11 +257,15 @@ footer{
   
   <!-- Links -->
   <ul class="links">
-    <li>
-      <a href="#" id="signin">SIGN UP</a>
+  	<li>
+      <a href="signInForm.do" id="signin">SIGN UP</a>
     </li>
+     <li>
+      <a href="logForm.do" id="signin">SIGN IN</a>
+    </li>
+    
     <li>
-      <a href="login.do" id="signin">SIGN IN</a>
+      <a href="idFindForm.do" id="reset">아이디/비밀번호 찾기</a>
     </li>
     
   </ul>
@@ -276,13 +280,16 @@ footer{
     
     <!-- password input -->
     <div class="input__block">
-       <input type="text" minlength = "5" name="userName" placeholder="비밀번호" class="input" id="password"    />
+       <input type="password" minlength = "5" name="password" placeholder="비밀번호" class="input" id="password"    />
+    </div>
+    <div class="input__block">
+       <input type="text"  name="userName" placeholder="이름" class="input" id="userName"    />
     </div>
 	<div class="input__block">
-       <input type="email" name="email" placeholder="email" placeholder="Password" class="input" id="password"    />
+       <input type="email" name="email" placeholder="email" placeholder="Password" class="input" id="email"    />
     </div>
 	<div class="input__block">
-       <input type="text" name="userTel" placeholder="전화번호" placeholder="Password" class="input" id="password"    />
+       <input type="text" name="userTel" placeholder="전화번호" placeholder="Password" class="input" id="userTel"    />
     </div>
     <!-- repeat password input -->
     <div class="input__block">

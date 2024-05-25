@@ -249,30 +249,29 @@ footer{
   
   <!-- Links -->
   <ul class="links">
-    <li>
-      <a href="#" id="signin">SIGN IN</a>
+  	<li>
+      <a href="pwFindForm.do" id="signin">비밀번호 찾기</a>
     </li>
     <li>
-      <a href="signInForm.do" id="signin">SIGN UP</a>
+      <a href="idFindForm.do" id="signin">아이디 찾기</a>
     </li>
     <li>
-      <a href="#" id="reset">ID/PW찾기</a>
+      <a href="logForm.do" id="reset">로그인</a>
     </li>
   </ul>
   
   <!-- Form -->
- <form action="login.do" method="post">
+ <form action="pwFind.do" method="post">
     <!-- email input -->
     <div class="first-input input__block first-input__block">
-       <input type="text" minlength = "5"  placeholder="id" class="input" id="email" name = "id"  />
+       <input type="text"   placeholder="아이디" class="input" id="id" name = "id"  />
     </div>
     <!-- password input -->
     <div class="input__block">
-       <input type="password" minlength ="5" placeholder="Password" class="input" id="password"  name =pw  />
+       <input type="text"  placeholder="이름" class="input" id="name"  name ="name"  />
     </div>
-    <!-- repeat password input -->
     <div class="input__block">
-       <input type="password"  placeholder="Repeat password" class="input repeat__password" id="repeat__password"    />
+       <input type="text"  placeholder="전화번호" class="input" id="tel"  name ="tel"  />
     </div>
     <!-- sign in button -->
     <button class="signin__btn">
@@ -280,7 +279,13 @@ footer{
     </button>
   </form>
   <!-- separator -->
-  
+  <% 
+            // user_id 출력
+            String passWord = (String) session.getAttribute("passWord");
+            if (passWord != null) {
+                out.println("찾은 비밀번호: " + passWord);
+            }
+            %>
 </div>
 
 <script>

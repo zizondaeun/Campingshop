@@ -12,8 +12,11 @@ public interface UserMapper {
 	 
 	 List<UserVO> selectUserList();
 	 
-	 UserVO selectMember(@Param("id") String id, @Param("pw") String pw);
+	 UserVO selectMember(@Param("id") String id, @Param("pw") String pw); //로그인
 	 UserVO selectMember2(String id);
+	 
+	 UserVO selectIdFined(@Param("userName") String userName, @Param("userTel") String userTel); // 아이디 찾기	
+	 UserVO selectPwFined(@Param("userId") String userId, @Param("userName")String userName,@Param("userTel") String userTel);
 	 
 	 
 

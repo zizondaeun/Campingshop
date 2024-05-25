@@ -9,6 +9,7 @@ import com.camcam.mypage.mapper.MyPageMapper;
 import com.camcam.mypage.service.MyPageService;
 import com.camcam.order.vo.OrderDetailVO;
 import com.camcam.order.vo.OrderVO;
+import com.camcam.product.vo.ProductVO;
 import com.camcam.product.vo.QnAVO;
 import com.camcam.user.vo.UserVO;
 
@@ -66,6 +67,11 @@ public class MyPageServiceImpl implements MyPageService {
 	@Override
 	public List<OrderDetailVO> getOrderDetail(int ono) {
 		return mapper.selectDetail(ono);
+	}
+
+	@Override
+	public List<ProductVO> getMywish(String id) {
+		return mapper.selectMywish(id);
 	}
 
 }

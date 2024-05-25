@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class ReviewVO {
 	// 리뷰 작성시 필요한 데이터
-	private int replyNo; // 리뷰번호
+	private int reviewNo; // 리뷰번호
 	private String userId; // 리뷰 작성자
 	private int productNo; // 리뷰 제품 번호
 	private String content; // 리뷰

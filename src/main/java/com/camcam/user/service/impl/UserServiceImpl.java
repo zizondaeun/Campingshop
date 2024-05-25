@@ -45,5 +45,17 @@ public class UserServiceImpl implements UserService{
 		// TODO Auto-generated method stub
 		return mapper.selectUserList();
 	}
+
+	@Override
+	public UserVO loginFind(String name, String tel) {
+		// TODO Auto-generated method stub
+		return mapper.selectIdFined(name, tel);
+	}
+
+	@Override
+	public UserVO pwFind(String id, String name, String tel) {
+		// TODO Auto-generated method stub
+		return mapper.selectPwFined(id, name, tel);
+	}
 	
 }

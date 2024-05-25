@@ -8,11 +8,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.camcam.common.Control;
 
-public class MyInterestListControl implements Control {
+public class MyWishListControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String path = "mypage/myinterestList.tiles";
+		String path = "mypage/mywishList.tiles";
 		
 		req.getRequestDispatcher(path).forward(req, resp);
 		

@@ -1,7 +1,6 @@
 package com.camcam.web;
 
 import java.io.IOException;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -16,17 +15,22 @@ import javax.servlet.http.HttpServletResponse;
 import com.camcam.category.command.GetCategoryControl;
 import com.camcam.common.Control;
 import com.camcam.home.command.HomeControl;
-import com.camcam.mypage.command.MyBoardListControl;
 import com.camcam.mypage.command.DeleteMyboardControl;
 import com.camcam.mypage.command.MyBoardInfoControl;
+import com.camcam.mypage.command.MyBoardListControl;
 import com.camcam.mypage.command.MyBoardModFormControl;
-import com.camcam.mypage.command.MyWishListControl;
 import com.camcam.mypage.command.MyOrderDetailControl;
 import com.camcam.mypage.command.MyOrderListControl;
 import com.camcam.mypage.command.MyPageControl;
+import com.camcam.mypage.command.MyWishListControl;
 import com.camcam.mypage.command.UpdateMyBoardControl;
 import com.camcam.product.command.ProductInfoControl;
 import com.camcam.product.command.ProductListControl;
+import com.camcam.review.command.AddReviewControl;
+import com.camcam.review.command.ModifyReviewControl;
+import com.camcam.review.command.RemoveReviewControl;
+import com.camcam.review.command.ReviewCountControl;
+import com.camcam.review.command.ReviewListControl;
 import com.camcam.user.command.CheckInControl;
 import com.camcam.user.command.IdFindControl;
 import com.camcam.user.command.IdFindFormControl;
@@ -63,9 +67,16 @@ public class FrontController extends HttpServlet {
 		map.put("/productList.do", new ProductListControl()); // 제품 리스트
 		map.put("/productInfo.do", new ProductInfoControl()); // 제품 상세보기
 		
+		// 리뷰 관련
+		map.put("/reviewList.do", new ReviewListControl()); // 리뷰보기
+		map.put("/addReview.do", new AddReviewControl()); // 리뷰작성
+		map.put("/modReview.do", new ModifyReviewControl()); // 리뷰수정
+		map.put("/removeReview.do", new RemoveReviewControl()); // 리뷰삭제
+		map.put("/getTotalCnt.do", new ReviewCountControl()); // 리뷰 총 개수
 		
 		// 카테고리
 		map.put("/getCategory.do", new GetCategoryControl());
+		
 		// 유저 관련(유저)
 		map.put("/signInForm.do", new SignInFormControl());  // 회원가입 화면
 		map.put("/signIn.do", new SignInControl());  // 회원가입 기능

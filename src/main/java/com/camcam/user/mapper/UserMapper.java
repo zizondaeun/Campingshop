@@ -18,6 +18,7 @@ public interface UserMapper {
 	 UserVO selectIdFined(@Param("userName") String userName, @Param("userTel") String userTel); // 아이디 찾기	
 	 UserVO selectPwFined(@Param("userId") String userId, @Param("userName")String userName,@Param("userTel") String userTel);
 	 
-	 
+	 int updateUser(UserVO userId);//개인정보수정
+	 int deleteUser(String userId);//아이디삭제
 
 }

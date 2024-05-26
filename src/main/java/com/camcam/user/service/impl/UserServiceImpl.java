@@ -57,5 +57,23 @@ public class UserServiceImpl implements UserService{
 		// TODO Auto-generated method stub
 		return mapper.selectPwFined(id, name, tel);
 	}
+
+	@Override
+	public boolean userModefy(UserVO userId) {
+		// TODO Auto-generated method stub
+		return mapper.updateUser(userId) == 1;
+	}
+
+	@Override
+	public boolean modifyUser(String userId) {
+		// TODO Auto-generated method stub
+		return mapper.deleteUser(userId) == 1;
+	}
+
+	
+
+	
+
+	
 	
 }

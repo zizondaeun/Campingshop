@@ -26,5 +26,7 @@ public interface MyPageService {
 	List<OrderDetailVO> getOrderDetail(int ono);
 	//내 관심상품 목록
 	List<ProductVO> getMywish(String id);
+	//관심상품 삭제
+	boolean removeMywish(ProductVO vo);
 
 }

@@ -9,7 +9,7 @@ public interface ReviewMapper {
 	// 리뷰 리스트
 	List<ReviewVO> selectReviewList(SearchVO search);
 	// 리뷰 개수
-	
+	int getTotalCnt(int productNo);
 	// 리뷰 작성
 	int insertReview(ReviewVO rvo);
 }

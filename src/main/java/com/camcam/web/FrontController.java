@@ -72,7 +72,7 @@ public class FrontController extends HttpServlet {
 		map.put("/addReview.do", new AddReviewControl()); // 리뷰작성
 		map.put("/modReview.do", new ModifyReviewControl()); // 리뷰수정
 		map.put("/removeReview.do", new RemoveReviewControl()); // 리뷰삭제
-		map.put("/getTotalCnt.do", new ReviewCountControl()); // 리뷰 총 개수
+		map.put("/getReviewTotalCnt.do", new ReviewCountControl()); // 리뷰 총 개수
 		
 		// 카테고리
 		map.put("/getCategory.do", new GetCategoryControl());

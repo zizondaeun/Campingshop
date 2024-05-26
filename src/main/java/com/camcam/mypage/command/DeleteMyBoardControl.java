@@ -11,7 +11,7 @@ import com.camcam.mypage.service.MyPageService;
 import com.camcam.mypage.service.impl.MyPageServiceImpl;
 import com.camcam.product.vo.QnAVO;
 
-public class DeleteMyboardControl implements Control {
+public class DeleteMyBoardControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -19,17 +19,14 @@ public class DeleteMyboardControl implements Control {
 		
 		String bno = req.getParameter("bno");
 		String pw = req.getParameter("boardPw");
-		//System.out.println(bno + "119" + pw);
+		
 		MyPageService svc = new MyPageServiceImpl();
 		//QnAVO vo = new QnAVO();
 		//vo.setBoardNo(Integer.parseInt(bno));
 		//vo.setBoardPw(pw);
+			
+		svc.removeMyboard(Integer.parseInt(bno),pw);
 		
-		if(svc.removeMyboard(Integer.parseInt(bno),pw)) {
-			resp.sendRedirect("myBoardList.do");
-		}else {
-			resp.sendRedirect("error.do");
-		}
 	}
 
 }

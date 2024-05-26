@@ -41,6 +41,7 @@
 </div>
 <script>
 	const bno = '${result.boardNo}';
+	const userId = '${logId}';
 	console.log(bno);
 	//폼기능을 제외하고 아작스 호출해야함
     //delete 버튼 클릭 이벤트
@@ -55,7 +56,7 @@
         })
         .then(response => {
             if (response.ok) {
-                window.location.href = 'myBoardList.do';
+                window.location.href = 'myBoardList.do?userId=' + userId;
             }else {
                 alert('비밀번호를 맞게 입력하세요');
             }

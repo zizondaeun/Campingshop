@@ -35,4 +35,6 @@ public interface MyPageMapper {
 	List<OrderDetailVO> selectDetail(int ono);
 	// 내 관심상품 리스트
 	List<ProductVO> selectMywish(String id);
+	// 관심상품 삭제
+	int deleteMywish(ProductVO vo);
 }

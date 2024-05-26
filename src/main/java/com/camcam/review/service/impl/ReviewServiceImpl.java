@@ -33,5 +33,4 @@ public class ReviewServiceImpl implements ReviewService{
 	public void modRating() {
 		mapper.updateRating();
 	}
-
 }

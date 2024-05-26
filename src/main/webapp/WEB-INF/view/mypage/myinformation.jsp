@@ -1,8 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-    
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>개인정보수정</title>
     <style>
+       <style>
     body{
   font-family: 'Montserrat', sans-serif;
   background:white;
@@ -52,7 +58,6 @@ h1{
      }
    }
 }
-
 
 form{
   width:100%;
@@ -244,95 +249,124 @@ footer{
   }
 }
     </style>
+</head>
+<body>
 <div class="container">
   <!-- Heading -->
   <h1>Campcamp</h1>
   
   <!-- Links -->
   <ul class="links">
-  <li>
-      <a href="idFindForm.do" id="signin">아이디 찾기</a>
+  	 <li>
+      <a href="logForm.do" id="signin">SIGN IN</a>
     </li>
-   <li>
-      <a href="pwFindForm.do" id="signin">비밀번호 찾기</a>
-    </li>
-    
+  	<li>
+      <a href="withdrawForm.do" id="signin">회원탈퇴</a>
+   </li>
    
-    <li>
-      <a href="logForm.do" id="reset">로그인</a>
-    </li>
+    
   </ul>
-  
-  <!-- Form -->
- <form action="idFind.do" method="post">
+    <form action="signIn.do" method="post">
     <!-- email input -->
     <div class="first-input input__block first-input__block">
-       <input type="text"   placeholder="이름" class="input" id="name" name = "name"  />
-    </div>
-    <!-- password input -->
-    <div class="input__block">
-       <input type="text"  placeholder="전화번호" class="input" id="tel"  name ="tel"  />
-    </div>
-    <!-- repeat password input -->
-    <div class="input__block">
-       <input type="password"  placeholder="Repeat password" class="input repeat__password" id="repeat__password"    />
-    </div>
-    <!-- sign in button -->
-    <button class="signin__btn">
-      Sign in
-    </button>
-  </form>
-  <!-- separator -->
-  <c:set var="userId" value="${sessionScope.name}" />
-  <c:if test="${not empty userId}">
-    <p>찾은 ID: ${userId}</p>
-  </c:if>
-</div>
-
-<script>
-$(document).ready(function(){
-    let signup = $(".links").find("li").find("#signup") ; 
-    let signin = $(".links").find("li").find("#signin") ;
-    let reset  = $(".links").find("li").find("#reset")  ; 
-    let first_input = $("form").find(".first-input");
-    let hidden_input = $("form").find(".input__block").find("#repeat__password");
-    let signin_btn  = $("form").find(".signin__btn");
-  
-    //----------- sign up ---------------------
-    signup.on("click",function(e){
-      e.preventDefault();
-      $(this).parent().parent().siblings("h1").text("SIGN UP");
-      $(this).parent().css("opacity","1");
-      $(this).parent().siblings().css("opacity",".6");
-      first_input.removeClass("first-input__block").addClass("signup-input__block");
-      hidden_input.css({
-        "opacity" : "1",
-        "display" : "block"
-      });
-      signin_btn.text("Sign up");
-    });
+       <input type = "text" minlength = "5" name = "userId"id="userId" placeholder="아이디" class="input" disabled/>
+       </div>
+      
     
+    <!-- password input -->
+    
+   <div class="input__block">
+        <input type="password" minlength="5" name="password" placeholder="비밀번호" class="input" id="password" disabled />
+        <button id="activatePassword" class="btn btn-primary">비밀번호 수정하기</button>
+    </div>
+    <div class="input__block">
+        <input type="text" name="userName" placeholder="이름" class="input" id="userName" disabled />
+        <button id="activateUserName" class="btn btn-primary">이름 수정하기</button>
+    </div>
+    <div class="input__block">
+        <input type="email" name="email" placeholder="email" class="input" id="email" disabled />
+        <button id="activateEmail" class="btn btn-primary">이메일 수정하기</button>
+    </div>
+    <div class="input__block">
+        <input type="text" name="userTel" placeholder="전화번호" class="input" id="userTel" disabled />
+        <button id="activateUserTel" class="btn btn-primary" class="btn btn-outline-secondary">전화번호 수정하기</button>
+    </div>
+    <div class="input__block">
+        <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+        <input type="text" id="sample6_address" name="address" placeholder="주소"><br>
+    </div>
+	
+    <!-- sign in button -->
+	</div>
+	<div class="input__block">
+    <input type="submit" value="수정하기" id="submitButton" disabled>
+	</div>
+  </form>
   
-   //----------- sign in ---------------------
-   signin.on("click",function(e){
-      e.preventDefault();
-      $(this).parent().parent().siblings("h1").text("SIGN IN");
-      $(this).parent().css("opacity","1");
-      $(this).parent().siblings().css("opacity",".6");
-      first_input.addClass("first-input__block")
-        .removeClass("signup-input__block");
-      hidden_input.css({
-        "opacity" : "0",
-        "display" : "none"
-      });
-      signin_btn.text("Sign in");
+  </div>
+  <% // URL에서 error 매개변수 값을 가져옴
+            String error = request.getParameter("error");
+            if (error != null && !error.isEmpty()) {
+        %>
+            <div style="color: red; text-align: center;"><%= error %></div>
+        <% } %>
+  
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script>
+        function sample6_execDaumPostcode() {
+            new daum.Postcode({
+                oncomplete: function(data) {
+                    var addr = ''; // 주소 변수
+                    var extraAddr = ''; // 참고항목 변수
+
+                    if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                        addr = data.roadAddress;
+                    } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                        addr = data.jibunAddress;
+                    }
+
+                    if (data.userSelectedType === 'R') {
+                        if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
+                            extraAddr += data.bname;
+                        }
+                        if (data.buildingName !== '' && data.apartment === 'Y') {
+                            extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                        }
+                        if (extraAddr !== '') {
+                            extraAddr = ' (' + extraAddr + ')';
+                        }                    
+                    } else {                      
+                    }        
+                    document.getElementById("sample6_address").value = addr;
+                }
+            }).open();
+        }
+    </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        function activateInput(buttonId, inputId) {
+            let button = document.getElementById(buttonId);
+            let input = document.getElementById(inputId);
+
+            if (button && input) {
+                button.addEventListener('click', function() {
+                    // 입력 필드를 활성화
+                    input.disabled = false;
+                    // 버튼을 비활성화하거나 다른 작업 수행
+                    button.disabled = true;
+                    button.textContent = "수정중";
+                });
+            }
+        }
+
+        activateInput('activatePassword', 'password');
+        activateInput('activateUserName', 'userName');
+        activateInput('activateEmail', 'email');
+        activateInput('activateUserTel', 'userTel');
     });
-   
-   //----------- reset ---------------------
-   reset.on("click",function(e){
-     e.preventDefault();
-     $(this).parent().parent().siblings("form")
-     .find(".input__block").find(".input").val("");
-   })
-});
-</script>
+
+    
+      
+    </script>
+</body>
+</html>

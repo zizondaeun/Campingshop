@@ -17,6 +17,9 @@ public interface UserService {
 	
 	public List<UserVO> userList();
 	
+	boolean userModefy(UserVO userId);
+	
+	boolean modifyUser(String userId);
 	
 	
 	

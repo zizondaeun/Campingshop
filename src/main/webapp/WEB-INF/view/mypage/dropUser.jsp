@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     
     <style>
     body{
@@ -246,49 +245,50 @@ footer{
     </style>
 <div class="container">
   <!-- Heading -->
-  <h1>Campcamp</h1>
+  <h1>회원탈퇴</h1>
   
   <!-- Links -->
-  <ul class="links">
-  <li>
-      <a href="idFindForm.do" id="signin">아이디 찾기</a>
-    </li>
-   <li>
-      <a href="pwFindForm.do" id="signin">비밀번호 찾기</a>
-    </li>
-    
-   
-    <li>
-      <a href="logForm.do" id="reset">로그인</a>
-    </li>
-  </ul>
+
   
   <!-- Form -->
- <form action="idFind.do" method="post">
+ <form action="withdraw.do" method="post">
     <!-- email input -->
     <div class="first-input input__block first-input__block">
-       <input type="text"   placeholder="이름" class="input" id="name" name = "name"  />
+ 
+       <input type="text" minlength = "5"  placeholder="아이디입력" class="userId" id="userId" name = "userId"  />
     </div>
-    <!-- password input -->
-    <div class="input__block">
-       <input type="text"  placeholder="전화번호" class="input" id="tel"  name ="tel"  />
-    </div>
-    <!-- repeat password input -->
-    <div class="input__block">
-       <input type="password"  placeholder="Repeat password" class="input repeat__password" id="repeat__password"    />
-    </div>
+    
     <!-- sign in button -->
     <button class="signin__btn">
-      Sign in
+      회원탈퇴
     </button>
   </form>
   <!-- separator -->
-  <c:set var="userId" value="${sessionScope.name}" />
-  <c:if test="${not empty userId}">
-    <p>찾은 ID: ${userId}</p>
-  </c:if>
+  
 </div>
+<script>
+    function submitForm() {
+        const form = document.getElementById('withdrawForm');
+        const formData = new FormData(form);
 
+        fetch('withdraw.do', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                alert('삭제 성공');
+                window.location.href = 'main.do';
+            } else {
+                alert('처리 중 에러');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('처리 중 에러');
+        });
+    }
 <script>
 $(document).ready(function(){
     let signup = $(".links").find("li").find("#signup") ; 

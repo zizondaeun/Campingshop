@@ -31,5 +31,19 @@
 		values (#{reviewNo}, #{userId}, #{productNo}, #{content}, #{rating})
 	</insert>
 	
+	<update id="updateRating">
+		update products p
+		set rating = (
+		    select nvl(avg(r.rating), 0)
+		    from reviews r
+		    where r.product_no = p.product_no
+		)
+		where exists (
+		    select 1
+		    from reviews r
+		    where r.product_no = p.product_no
+		)
+	</update>
+	
 	
 </mapper>

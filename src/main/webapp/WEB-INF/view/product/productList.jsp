@@ -112,7 +112,31 @@
 									</c:if>
 								</div>
 								<div class="d-flex align-items-center justify-content-center mb-1">
-									<small class="fa fa-star text-primary mr-1"></small> <small class="fa fa-star text-primary mr-1"></small> <small class="fa fa-star text-primary mr-1"></small> <small class="fa fa-star text-primary mr-1"></small> <small class="fa fa-star text-primary mr-1"></small> <small>(99)</small>
+									${product.rating }
+									<c:forEach begin="1" end="${product.truncRating}">
+										<small class="fa fa-star text-primary mr-1"></small>
+									</c:forEach>
+									<c:if test="${product.rating-product.truncRating > 0}">
+										<c:choose>
+											<c:when test="${product.rating-product.truncRating >= 0.5}">
+												<small class="fas fa-star-half-alt text-primary mr-1"></small>
+												<c:forEach begin="1" end="${4-product.truncRating}">
+													<small class="far fa-star text-primary mr-1"></small>
+												</c:forEach>
+											</c:when>
+											<c:otherwise>
+												<c:forEach begin="1" end="${5-product.truncRating}">
+													<small class="far fa-star text-primary mr-1"></small>
+												</c:forEach>
+											</c:otherwise>
+										</c:choose>
+									</c:if>
+									<c:if test="${product.rating == 0 }">
+										<c:forEach begin="1" end="5">
+											<small class="far fa-star text-primary mr-1"></small>
+										</c:forEach>
+									</c:if>
+									<small>(${product.reviewCnt })</small>
 								</div>
 							</div>
 						</div>

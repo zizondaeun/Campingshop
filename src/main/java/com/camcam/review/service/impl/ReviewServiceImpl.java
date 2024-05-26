@@ -29,4 +29,8 @@ public class ReviewServiceImpl implements ReviewService{
 		return mapper.getTotalCnt(productNo);
 	}
 
+	@Override
+	public void modRating() {
+		mapper.updateRating();
+	}
 }

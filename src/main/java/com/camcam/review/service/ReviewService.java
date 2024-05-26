@@ -10,4 +10,6 @@ public interface ReviewService {
 	int totalCount(int productNo);
 	
 	boolean addReview(ReviewVO rvo); // 리뷰 등록
+	
+	void modRating(); // 평점수정
 }

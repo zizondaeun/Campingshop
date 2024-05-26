@@ -10,14 +10,18 @@
 		     from (select *
 		            from reviews 
 		            where product_no = #{boardNo}
-		            order by review_no) a
+		            order by rdate desc) a
 		            <![CDATA[
-		     where rownum <= (#{rpage} * 5)) r
+		     where rownum <= (#{rpage} * 4)) r
 		     ]]>         
-		where r.rn > (#{rpage} -1) * 5
+		where r.rn > (#{rpage} -1) * 4
 	</select>
 	
-	
+	<select id="getTotalCnt">
+		select count(1)
+		from reviews
+		where product_no = #{productNo}
+	</select>
 	
 	<insert id="insertReview" parameterType="com.camcam.review.vo.ReviewVO">
 		<selectKey resultType="int" keyProperty="reviewNo" order="BEFORE">
@@ -26,6 +30,20 @@
 		insert into reviews (review_no, user_id, product_no, content, rating)
 		values (#{reviewNo}, #{userId}, #{productNo}, #{content}, #{rating})
 	</insert>
+	
+	<update id="updateRating">
+		update products p
+		set rating = (
+		    select nvl(avg(r.rating), 0)
+		    from reviews r
+		    where r.product_no = p.product_no
+		)
+		where exists (
+		    select 1
+		    from reviews r
+		    where r.product_no = p.product_no
+		)
+	</update>
 	
 	
 </mapper>

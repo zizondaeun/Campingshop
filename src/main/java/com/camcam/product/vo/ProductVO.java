@@ -15,6 +15,9 @@ public class ProductVO {
 	private double rating;
 	private String inputDate;
 	
+	private int reviewCnt;
+	private double truncRating; // 소수점 이하 버린 평점
+	
 	private String userId;
 	private int likeStatus; //좋아요없다 0, 좋아요했다 1
 	

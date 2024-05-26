@@ -41,6 +41,7 @@ public class AddReviewControl implements Control {
 		if(svc.addReview(rvo)) {
 			result.put("retCode", "OK");
 			result.put("retVal", rvo);
+			svc.modRating();
 		} else {
 			result.put("retCode", "NG");
 			result.put("retVal", null);

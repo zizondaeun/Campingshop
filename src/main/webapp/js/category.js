@@ -6,8 +6,8 @@ fetch('getCategory.do')
 	.then(resolve => resolve.json())
 	.then(result => {
 		result.forEach(e => {
-			console.log(e);
-			console.log(e.parent);
+//			console.log(e);
+//			console.log(e.parent);
 			//			console.log(e.child[0]);
 			let nav = document.querySelector('.categorynav');
 			let pdiv = document.createElement('div');
@@ -21,7 +21,7 @@ fetch('getCategory.do')
 			let ca;
 			e.child.forEach(e => {
 				ca = document.createElement('a');
-				console.log(e);
+//				console.log(e);
 				cdiv.className = 'dropdown-menu position-absolute rounded-0 border-0 m-0';
 				ca.className = 'dropdown-item';
 				ca.setAttribute('href', `#`);

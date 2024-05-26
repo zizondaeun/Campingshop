@@ -37,7 +37,7 @@ public class UpdateMyBoardControl implements Control {
 		//req.setAttribute("result", vo);
 
 		if (svc.modifyMyboard(vo)) {
-			resp.sendRedirect("myBoardList.do?bno=" + bno);
+			resp.sendRedirect("myBoardList.do?userId=" + id);
 		} else {
 			resp.sendRedirect("myBoardMod.do?bno=" + bno);
 		}

@@ -4,7 +4,6 @@ import lombok.Data;
 
 @Data
 public class OrderDetailVO {
-	//orderdetail table
 		private String orderDetailNo;
 		private int orderNo;
 		private String userId;
@@ -12,5 +11,4 @@ public class OrderDetailVO {
 		private String productName;
 		private int price;
 		private int amount;
-		
 }

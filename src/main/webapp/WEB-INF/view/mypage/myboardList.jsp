@@ -15,8 +15,8 @@
 <div class="table-container">
 	<div class="description">
 		<span
-			style="display: inline-block; width: 97%; font-size: 15px; padding: 10px; text-align: right;">
-			<span id=""></span> 님의 게시글입니다.
+			style="display: inline-block; width: 100%; font-size: 15px; padding: 10px; text-align: right;">
+			<span>[${logId }]</span> 님의 게시글입니다.
 		</span>
 	</div>
 	<table class="table">

@@ -51,5 +51,20 @@
   		 and  user_Tel = #{userTel}
          and user_name = #{userName}
 	</select>
+	
+	<update id="updateUser">
+        update users
+		set password = #{pw},
+   		user_name = #{userName},
+    	email = #{email},
+    	user_tel = #{userTel},
+    	address = #{address}
+    	where user_id = #{userId};
+    </update>
+    
+    <delete id="deleteUser" parameterType="String">
+    	delete from users
+		where user_id= #{userId}
+    </delete>
  
 </mapper>

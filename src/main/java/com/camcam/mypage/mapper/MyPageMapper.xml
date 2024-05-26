@@ -51,4 +51,16 @@
 		where order_no = #{orderNo}
 	</select>
 	
+	<select id="selectMywish" resultType="com.camcam.product.vo.ProductVO" parameterType="string">
+		select P.*
+		from products P join likes L on (P.product_no = L.product_no)
+		where user_id = #{userId}
+	</select>
+	
+	<delete id="deleteMywish" parameterType="com.camcam.product.vo.ProductVO">
+		delete from likes 
+		where product_no = #{productNo} 
+		and user_id = #{userId}
+	</delete>
+	
 </mapper>

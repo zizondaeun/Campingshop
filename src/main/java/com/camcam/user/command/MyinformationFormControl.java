@@ -13,7 +13,11 @@ public class MyinformationFormControl implements Control {
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
+		
+		req.setCharacterEncoding("utf-8");
+		String path = "WEB-INF/mypage/myinformation.jsp";
+		path = "mypage/myinformation.tiles";
+		 req.getRequestDispatcher(path).forward(req, resp);
 	}
 
 }

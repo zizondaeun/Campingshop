@@ -15,8 +15,8 @@
 <div class="table-container">
 	<div class="description">
 		<span
-			style="display: inline-block; width: 97%; font-size: 15px; padding: 10px; text-align: right;">
-			<span id=""></span> 님의 주문 목록입니다.
+			style="display: inline-block; width: 100%; font-size: 15px; padding: 10px; text-align: right;">
+			<span>[${logId }]</span> 님의 주문 목록입니다.
 		</span>
 	</div>
 		<table class="table">
@@ -49,8 +49,7 @@
 								<td>${order.amount }</td>
 								<td>${order.orderStatus }</td>
 								<td><button type="button"
-										onclick="location.href='myOrderDetail.do?ono=${order.orderNo }';">주문
-										상세</button></td>
+										onclick="location.href='myOrderDetail.do?ono=${order.orderNo }';">상세보기</button></td>
 							</tr>
 						</c:forEach>
 					</c:otherwise>

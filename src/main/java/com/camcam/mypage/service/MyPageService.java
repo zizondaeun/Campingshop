@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.camcam.order.vo.OrderDetailVO;
 import com.camcam.order.vo.OrderVO;
+import com.camcam.product.vo.ProductVO;
 import com.camcam.product.vo.QnAVO;
 import com.camcam.user.vo.UserVO;
 
@@ -23,5 +24,9 @@ public interface MyPageService {
 	List<OrderVO> getMyorder(String id);
 	//상세주문 내역
 	List<OrderDetailVO> getOrderDetail(int ono);
+	//내 관심상품 목록
+	List<ProductVO> getMywish(String id);
+	//관심상품 삭제
+	boolean removeMywish(ProductVO vo);
 
 }

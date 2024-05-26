@@ -6,7 +6,6 @@ import lombok.Data;
 
 @Data
 public class OrderVO {
-	//orders table
 	private int orderNo;
 	private int cartNo;
 	private String userId;

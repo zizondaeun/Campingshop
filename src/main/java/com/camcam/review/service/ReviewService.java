@@ -7,6 +7,7 @@ import com.camcam.review.vo.ReviewVO;
 
 public interface ReviewService {
 	List<ReviewVO> reviewList(SearchVO search);
+	int totalCount(int productNo);
 	
 	boolean addReview(ReviewVO rvo); // 리뷰 등록
 }

@@ -16,7 +16,7 @@
 	<div class="description">
 		<span
 			style="display: inline-block; width: 100%; font-size: 15px; padding: 10px; text-align: right;">
-			<span id=""></span> 님의 주문 목록입니다.
+			<span>[${logId }]</span> 님의 주문 목록입니다.
 		</span>
 	</div>
 		<table class="table">

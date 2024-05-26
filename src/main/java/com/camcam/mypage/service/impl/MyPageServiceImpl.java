@@ -74,4 +74,9 @@ public class MyPageServiceImpl implements MyPageService {
 		return mapper.selectMywish(id);
 	}
 
+	@Override
+	public boolean removeMywish(ProductVO vo) {
+		return mapper.deleteMywish(vo) == 1;
+	}
+
 }

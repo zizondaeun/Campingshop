@@ -33,11 +33,15 @@ import com.camcam.review.command.ReviewCountControl;
 import com.camcam.review.command.ReviewListControl;
 import com.camcam.user.command.CheckInControl;
 import com.camcam.user.command.IdFindControl;
+import com.camcam.user.command.IdFindForm2Control;
 import com.camcam.user.command.IdFindFormControl;
 import com.camcam.user.command.LoginControl;
 import com.camcam.user.command.LoginFormControl;
 import com.camcam.user.command.LogoutControl;
+import com.camcam.user.command.MyinformationControl;
+import com.camcam.user.command.MyinformationFormControl;
 import com.camcam.user.command.PwFindControl;
+import com.camcam.user.command.PwFindForm2Control;
 import com.camcam.user.command.PwFindFormControl;
 import com.camcam.user.command.SignInControl;
 import com.camcam.user.command.SignInFormControl;
@@ -88,9 +92,13 @@ public class FrontController extends HttpServlet {
 		map.put("/withdraw.do", new WithdrawControl());  // 회원탈퇴 기능
 		//아이디/비밀번호 찾기
 		map.put("/idFindForm.do", new IdFindFormControl()); //아이디찾기 화면
+		map.put("/inFindForm2.do", new IdFindForm2Control()); //아이디찾기2 화면 
 		map.put("/idFind.do", new IdFindControl());//아이디찾기 기능
+		
 		map.put("/pwFindForm.do", new PwFindFormControl());//비밀번호 찾기 화면
+		map.put("/pwFindForm2.do", new PwFindForm2Control());//비밀번호 찾기 화면
 		map.put("/pwFind.do", new PwFindControl()); //비밀번호 찾기 비밀번호
+		
 		// 유저 관련(관리자)
 		map.put("/userList.do", new UserListControl());  // 회원 리스트
 		
@@ -104,6 +112,9 @@ public class FrontController extends HttpServlet {
 		map.put("/myOrderList.do", new MyOrderListControl()); //주문내역 리스트로 이동
 		map.put("/myOrderDetail.do", new MyOrderDetailControl()); //상세주문 내역 이동
 		map.put("/myWishList.do", new MyWishListControl()); //관심상품 리스트로 이동
+		map.put("/myinformationForm.do", new MyinformationFormControl());//개인정보수정 화면
+		map.put("/myinformation", new MyinformationControl()); //개인정보수정 기능
+		
 		
 	}
 

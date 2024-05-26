@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     
     <style>
     body{
@@ -282,13 +283,10 @@ footer{
     </button>
   </form>
   <!-- separator -->
-  <% 
-            // user_id 출력
-            String userId = (String) session.getAttribute("name");
-            if (userId != null) {
-                out.println("찾은 ID: " + userId);
-            }
-            %>
+  <c:set var="userId" value="${sessionScope.name}" />
+  <c:if test="${not empty userId}">
+    <p>찾은 ID: ${userId}</p>
+  </c:if>
 </div>
 
 <script>

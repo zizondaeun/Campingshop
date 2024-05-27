@@ -33,15 +33,7 @@ public class ProductInfoControl implements Control {
 		
 		ReviewVO reviewDetail = reviewService.totalCount(Integer.parseInt(pNo));
 		
-		// 해당 유저가 해당 상품에 좋아요 수가 1 이상이면 
-		if(productService.getLikeVal(productInfo)) {
-			// 좋아요 제거진행
-			productService.removeLike(productInfo);
-		} else {
-			// 좋아요 추가진행
-			productService.addLike(productInfo);
-			
-		};
+		
 		
 		int truncRate;
 		if(reviewDetail.getTotalCnt() != 0) {

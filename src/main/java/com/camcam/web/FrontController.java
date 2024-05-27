@@ -12,6 +12,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.camcam.cart.command.AddCartControl;
+import com.camcam.cart.command.CartListControl;
+import com.camcam.cart.command.ModifyCartControl;
+import com.camcam.cart.command.RemoveCartControl;
 import com.camcam.category.command.GetCategoryControl;
 import com.camcam.common.Control;
 import com.camcam.home.command.HomeControl;
@@ -84,6 +88,13 @@ public class FrontController extends HttpServlet {
 		// 좋아요 변경 관련
 		map.put("/addLikes.do", new AddLikesControl()); // 좋아요 추가
 		map.put("/removeLikes.do", new RemoveLikesControl()); // 좋아요 추가
+		
+		// 장바구니 관련
+		map.put("/cartList.do", new CartListControl()); // 장바구니 보기
+		map.put("/addCart.do", new AddCartControl()); // 장바구니 담기
+		map.put("/modCart.do", new ModifyCartControl()); // 장바구니 수정
+		map.put("/removeCart.do", new RemoveCartControl()); // 장바구니 삭제
+		
 		
 		
 		// 카테고리

@@ -43,9 +43,41 @@
 				<h3>${product.productName }</h3>
 				<div class="d-flex mb-3">
 					<div class="text-primary mr-2">
-						<small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star-half-alt"></small> <small class="far fa-star"></small>
+						<c:forEach begin="1" end="${reviewDetail.truncRating}">
+							<small class="fas fa-star"></small>
+						</c:forEach>
+						<c:if test="${reviewDetail.totalCnt != 0 }">
+							<c:if test="${(reviewDetail.sumRate/reviewDetail.totalCnt)-reviewDetail.truncRating > 0}">
+								<c:choose>
+									<c:when test="${(reviewDetail.sumRate/reviewDetail.totalCnt)-reviewDetail.truncRating >= 0.5}">
+										<small class="fas fa-star-half-alt"></small>
+										<c:forEach begin="1" end="${4-product.truncRating}">
+											<small class="far fa-star"></small>
+										</c:forEach>
+									</c:when>
+									<c:otherwise>
+										<c:forEach begin="1" end="${5-reviewDetail.truncRating}">
+											<small class="far fa-star"></small>
+										</c:forEach>
+									</c:otherwise>
+								</c:choose>
+							</c:if>
+						</c:if>
+							<c:if test="${reviewDetail.totalCnt == 0 }">
+								<c:forEach begin="1" end="5">
+									<small class="far fa-star"></small>
+								</c:forEach>
+							</c:if>
+						<!-- 						<small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star-half-alt"></small> <small class="far fa-star"></small> -->
+						<c:if test="${reviewDetail.totalCnt == 0}">
+							0.0
+						</c:if>
+						<c:if test="${reviewDetail.totalCnt != 0}">
+							${reviewDetail.sumRate/reviewDetail.totalCnt }
+						</c:if>
+						
 					</div>
-					<small class="pt-1">(99 Reviews)</small>
+					<small class="pt-1">(${reviewDetail.totalCnt } Reviews)</small>
 				</div>
 				<h3 class="font-weight-semi-bold mb-4">
 					<c:choose>
@@ -95,7 +127,7 @@
 		<div class="col">
 			<div class="bg-light p-30">
 				<div class="nav nav-tabs mb-4">
-					<a class="nav-item nav-link text-dark active" data-toggle="tab" href="#tab-pane-1">Description</a> <a class="nav-item nav-link text-dark" data-toggle="tab" href="#tab-pane-2">Information</a> <a class="nav-item nav-link text-dark reviewBtn" data-toggle="tab" href="#tab-pane-3">Reviews (${reviewCnt })</a>
+					<a class="nav-item nav-link text-dark active" data-toggle="tab" href="#tab-pane-1">Description</a> <a class="nav-item nav-link text-dark" data-toggle="tab" href="#tab-pane-2">Information</a> <a class="nav-item nav-link text-dark reviewBtn" data-toggle="tab" href="#tab-pane-3">Reviews (${reviewDetail.totalCnt })</a>
 				</div>
 				<div class="tab-content">
 					<div class="tab-pane fade show active" id="tab-pane-1">
@@ -126,29 +158,15 @@
 									<li class="list-group-item px-0">1. 반품 및 교환은 제품 발송 전, 헬리녹스 고객센터(02-730-1928), Q/A 게시판, 카카오톡 채널로 사전에 문의하셔야 처리가 가능합니다.</li>
 									<li class="list-group-item px-0">2. 반품 및 교환은 상품을 수령한 날로부터 7일 이내 접수해주셔야 가능합니다.</li>
 									<li class="list-group-item px-0">3. 반품 및 교환 주소 : 인천시 서구 가석로 30, 광양프런티어밸리 3차 1017호 헬리녹스(02-730-1928)</li>
-									<li class="list-group-item px-0">4. 반품 및 교환이 불가능한 경우<br>- 포장이 훼손되어 상품 가치가 현저히 감소한 경우.<br>
-
-->상품택 제거, 종이안내서 훼손 및 분실 등.<br>
-
-- 구매자의 사용 또는 일부 소비에 의하여 상품 가치가 현저히 감소한 경우.
-<br>
-- 기간 경과에 의하여 재판매가 불가 할 정도로 상품가치가 현저히 감소한 경우.
-<br>
-- 악세사리류는 포장 특성상 개봉 시 반품 및 교환이 불가능합니다.
-<br>
-- 기타, '전자상거래 등에서의 소비자보호에 관한 법률'이 정하는 청약철회 제한사유에 해당되는 경우.
-<br>
-※ 반품/교환 시 상기 내용을 충족시키지 않는 경우, 반송될 수 있습니다.
-<br>
-5. 반품 및 교환 처리기간 : 제품 입고 후 입고순으로 검수가 진행되며, 검수완료 후 개별 연락드릴 예정입니다. (최대 1~2주 소요)</li>
+									<li class="list-group-item px-0">4. 반품 및 교환이 불가능한 경우<br>- 포장이 훼손되어 상품 가치가 현저히 감소한 경우.<br> ->상품택 제거, 종이안내서 훼손 및 분실 등.<br> - 구매자의 사용 또는 일부 소비에 의하여 상품 가치가 현저히 감소한 경우. <br> - 기간 경과에 의하여 재판매가 불가 할 정도로 상품가치가 현저히 감소한 경우. <br> - 악세사리류는 포장 특성상 개봉 시 반품 및 교환이 불가능합니다. <br> - 기타, '전자상거래 등에서의 소비자보호에 관한 법률'이 정하는 청약철회 제한사유에 해당되는 경우. <br> ※ 반품/교환 시 상기 내용을 충족시키지 않는 경우, 반송될 수 있습니다. <br> 5. 반품 및 교환 처리기간 : 제품 입고 후 입고순으로 검수가 진행되며, 검수완료 후 개별 연락드릴 예정입니다. (최대 1~2주 소요)
+									</li>
 								</ul>
 							</div>
 							<div class="col-md-6">
 								<p>[반품 및 교환 택배비용]</p>
 								<ul class="list-group list-group-flush">
-									<li class="list-group-item px-0">1. 반품 택배비 : 기본 배송료는 6,000원(왕복택배비) 입니다. 상품별 차등 부과되며, 제주지역 및 도서산간 지역은 배송비가 추가될 수 있습니다.<br>
-
-(고가품등 특정 제품에 대한 반품 택배비는 제품에 따라 다르게 적용될 수 있습니다.)</li>
+									<li class="list-group-item px-0">1. 반품 택배비 : 기본 배송료는 6,000원(왕복택배비) 입니다. 상품별 차등 부과되며, 제주지역 및 도서산간 지역은 배송비가 추가될 수 있습니다.<br> (고가품등 특정 제품에 대한 반품 택배비는 제품에 따라 다르게 적용될 수 있습니다.)
+									</li>
 									<li class="list-group-item px-0">2. 고객님의 변심으로 교환 및 반품을 하실 경우 택배비는 고객님께서 부담하셔야 합니다. (예 : 단순변심, 색상 및 사이즈 교환 등 포함)</li>
 									<li class="list-group-item px-0">3. 물품에 이상이 있어 반품 및 교환을 원하시는 경우 택배비는 헬리녹스가 부담합니다.</li>
 									<li class="list-group-item px-0">4. 고객님의 불량의심으로 접수시, 불량판정이 아닐 경우 택배비는 고객님께 청구됩니다.</li>
@@ -161,9 +179,8 @@
 							<div class="col-md-12">
 								<ul class="list-group list-group-flush">
 									<li class="list-group-item px-0">-품질 보증 기간 : 구입일로부터 1년 이내 무상수리 (조립 불량, 봉재 불량)</li>
-									<li class="list-group-item px-0">-품질 보증 기간이란? 제조자 과실로 발생된 경우 제조회사로 보상 (무료 수선, 교환, 환불)을 청구할 수 있는 기간을 의미합니다. 보상은 구입가격을 기준으로 하여, 보상 순서는 정상 회복이 가능한 경우에는 무료 수선해드리며, 정상 회복이 불가능할 경우에는 동일 제품 또는 동종 제품으로 교환해 드립니다.<br>
-
-제조물 책임 (PL) 2억 원 보험 가입 / 고객센터 : 02-730-1928 상담 시간 : 10:00~16:00</li>
+									<li class="list-group-item px-0">-품질 보증 기간이란? 제조자 과실로 발생된 경우 제조회사로 보상 (무료 수선, 교환, 환불)을 청구할 수 있는 기간을 의미합니다. 보상은 구입가격을 기준으로 하여, 보상 순서는 정상 회복이 가능한 경우에는 무료 수선해드리며, 정상 회복이 불가능할 경우에는 동일 제품 또는 동종 제품으로 교환해 드립니다.<br> 제조물 책임 (PL) 2억 원 보험 가입 / 고객센터 : 02-730-1928 상담 시간 : 10:00~16:00
+									</li>
 								</ul>
 							</div>
 						</div>
@@ -182,21 +199,23 @@
 						<div class="row">
 							<div class="col-md-6">
 								<div class="reviewHeader">
-									<h4 class="mb-4">${reviewCnt } review for "${product.productName }"</h4>
+									<h4 class="mb-4">${reviewDetail.totalCnt } review for "${product.productName }"</h4>
 									<div class="media mb-4 reviewTemplate" style="display: none;">
 										<div class="media-body">
 											<h6 class="reviewer">
 												John Doe<small> - <i>01 Jan 2045</i></small>
 											</h6>
-											<div class="text-primary mb-2 ratingStarList">
-											</div>
+											<div class="text-primary mb-2 ratingStarList"></div>
 											<p class="reviewContent">Diam amet duo labore stet elitr ea clita ipsum, tempor labore accusam ipsum et no at. Kasd diam tempor rebum magna dolores sed sed eirmod ipsum.</p>
 										</div>
 									</div>
 								</div>
 								<div class="justify-content-center">
 									<ul class="pagination">
-										<li><a href="#">1</a></li> <li><a href="#" class="active">2</a></li> <li><a href="#">3</a></li> <li><a href="#">4</a></li>
+										<li><a href="#">1</a></li>
+										<li><a href="#" class="active">2</a></li>
+										<li><a href="#">3</a></li>
+										<li><a href="#">4</a></li>
 									</ul>
 								</div>
 							</div>
@@ -206,30 +225,24 @@
 								<div class="d-flex my-3">
 									<p class="mb-0 mr-2">Your Rating * :</p>
 									<div class="text-primary reviewRating">
-										<i class="far fa-star ratingStar"></i> 
-										<i class="far fa-star ratingStar"></i> 
-										<i class="far fa-star ratingStar"></i> 
-										<i class="far fa-star ratingStar"></i> 
-										<i class="far fa-star ratingStar"></i>
+										<i class="far fa-star ratingStar"></i> <i class="far fa-star ratingStar"></i> <i class="far fa-star ratingStar"></i> <i class="far fa-star ratingStar"></i> <i class="far fa-star ratingStar"></i>
 									</div>
 								</div>
-									<div class="form-group">
-										<label for="content">Your Review *</label>
-										<textarea id="message" cols="30" rows="5" class="form-control"></textarea>
-									</div>
-									<div class="form-group">
-										<input type="hidden" class="form-control" name="rating" id="rating" value="0" readonly> 
-										<input type="hidden" class="form-control" name="pno" id="productNo" value="${product.productNo}" readonly>
-										<input type="hidden" class="form-control" name="user" id="userId" value="${logId}" readonly>
-									</div>
-									<div class="form-group mb-0">
-										<c:if test="${logId == null}">
-											<input type="submit" disabled value="Leave Your Review" class="btn btn-primary px-3">
-										</c:if>
-										<c:if test="${logId != null}">
-											<input type="button" value="Leave Your Review" id="addReview" class="btn btn-primary px-3">
-										</c:if>
-									</div>
+								<div class="form-group">
+									<label for="content">Your Review *</label>
+									<textarea id="message" cols="30" rows="5" class="form-control"></textarea>
+								</div>
+								<div class="form-group">
+									<input type="hidden" class="form-control" name="rating" id="rating" value="0" readonly> <input type="hidden" class="form-control" name="pno" id="productNo" value="${product.productNo}" readonly> <input type="hidden" class="form-control" name="user" id="userId" value="${logId}" readonly>
+								</div>
+								<div class="form-group mb-0">
+									<c:if test="${logId == null}">
+										<input type="submit" disabled value="Leave Your Review" class="btn btn-primary px-3">
+									</c:if>
+									<c:if test="${logId != null}">
+										<input type="button" value="Leave Your Review" id="addReview" class="btn btn-primary px-3">
+									</c:if>
+								</div>
 							</div>
 						</div>
 					</div>

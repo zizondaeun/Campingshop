@@ -25,7 +25,7 @@ public class ReviewServiceImpl implements ReviewService{
 	}
 
 	@Override
-	public int totalCount(int productNo) {
+	public ReviewVO totalCount(int productNo) {
 		return mapper.getTotalCnt(productNo);
 	}
 

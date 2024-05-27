@@ -29,7 +29,7 @@
 		</a>
 		</div>
 		<div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-		<a href="#">
+		<a href="myinformationForm.do?userId=${logId }">
 			<div class="d-flex align-items-center bg-light mb-4" style="padding: 30px;">
 				<h1 class="fas fa-address-book text-primary m-0 mr-3"></h1>
 				<h5 class="font-weight-semi-bold m-0">개인정보수정</h5>

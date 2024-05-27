@@ -13,7 +13,9 @@ public class IdFindForm2Control implements Control {
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
+		String path = "WEB-INF/member/idFind2.jsp";
+		path = "member/idFind2.tiles";
+		 req.getRequestDispatcher(path).forward(req, resp);
 	}
 
 }

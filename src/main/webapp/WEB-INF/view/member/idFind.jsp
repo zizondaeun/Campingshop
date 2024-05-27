@@ -250,44 +250,47 @@ footer{
   
   <!-- Links -->
   <ul class="links">
-  <li>
-      <a href="idFindForm.do" id="signin">아이디 찾기</a>
-    </li>
-   <li>
-      <a href="pwFindForm.do" id="signin">비밀번호 찾기</a>
-    </li>
-    
-   
     <li>
-      <a href="logForm.do" id="reset">로그인</a>
+      <a href="idFindForm.do" id="idFind">아이디 찾기</a>
+    </li>
+    <li>
+      <a href="pwFindForm.do" id="pwFind">비밀번호 찾기</a>
+    </li>
+    <li>
+      <a href="logForm.do" id="login">로그인</a>
     </li>
   </ul>
   
   <!-- Form -->
- <form action="idFind.do" method="post">
-    <!-- email input -->
+  <form action="idFind.do" method="post">
+    <!-- name input -->
     <div class="first-input input__block first-input__block">
-       <input type="text"   placeholder="이름" class="input" id="name" name = "name"  />
+      <input type="text" placeholder="이름" class="input" id="name" name="name" required />
     </div>
-    <!-- password input -->
+    <!-- phone number input -->
     <div class="input__block">
-       <input type="text"  placeholder="전화번호" class="input" id="tel"  name ="tel"  />
-    </div>
-    <!-- repeat password input -->
-    <div class="input__block">
-       <input type="password"  placeholder="Repeat password" class="input repeat__password" id="repeat__password"    />
+      <input type="text" placeholder="전화번호" class="input" id="tel" name="tel" required />
     </div>
     <!-- sign in button -->
-    <button class="signin__btn">
-      Sign in
+    <button type="submit" class="signin__btn">
+      Find ID
     </button>
   </form>
-  <!-- separator -->
-  <c:set var="userId" value="${sessionScope.name}" />
+  
+  <!-- Display userId if available -->
+  <c:set var="userId" value="${sessionScope.userId}" />
   <c:if test="${not empty userId}">
     <p>찾은 ID: ${userId}</p>
   </c:if>
+  
+  <!-- Display error message if available -->
+  <c:if test="${not empty sessionScope.errorMessage}">
+    <p style="color: red;">${sessionScope.errorMessage}</p>
+    <c:remove var="errorMessage" scope="session"/>
+  </c:if>
 </div>
+
+
 
 <script>
 $(document).ready(function(){

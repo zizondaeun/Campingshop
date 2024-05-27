@@ -17,8 +17,8 @@
 		where r.rn > (#{rpage} -1) * 4
 	</select>
 	
-	<select id="getTotalCnt">
-		select count(1)
+	<select id="getTotalCnt" parameterType="int" resultType="com.camcam.review.vo.ReviewVO">
+		select count(1) as total_cnt, sum(rating) as sum_rate
 		from reviews
 		where product_no = #{productNo}
 	</select>

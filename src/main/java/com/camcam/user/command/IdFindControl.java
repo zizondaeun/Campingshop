@@ -26,13 +26,14 @@ public class IdFindControl implements Control {
         UserService svc = new UserServiceImpl();
 
         UserVO uvo = svc.loginFind(name, tel);
+        
 
+        HttpSession session = req.getSession();
         if (uvo != null) {
-            HttpSession session = req.getSession();
-            session.setAttribute("name", uvo.getUserId());
+            session.setAttribute("userId", uvo.getUserId());
             resp.sendRedirect("idFindForm.do");
-            
         } else {
+            session.setAttribute("errorMessage", "아이디를 찾을 수 없습니다. 다시 시도해 주세요.");
             resp.sendRedirect("idFindForm.do");
         }
 	}

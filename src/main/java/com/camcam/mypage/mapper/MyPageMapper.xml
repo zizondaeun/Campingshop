@@ -63,4 +63,10 @@
 		and user_id = #{userId}
 	</delete>
 	
+	<select id="selectMydelivery" resultType="com.camcam.delivery.vo.DeliveryVO" parameterType="string">
+		select *
+		from delivery
+		where user_id = #{userId}
+	</select>
+	
 </mapper>

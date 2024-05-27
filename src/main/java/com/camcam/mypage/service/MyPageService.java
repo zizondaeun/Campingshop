@@ -2,6 +2,7 @@ package com.camcam.mypage.service;
 
 import java.util.List;
 
+import com.camcam.delivery.vo.DeliveryVO;
 import com.camcam.order.vo.OrderDetailVO;
 import com.camcam.order.vo.OrderVO;
 import com.camcam.product.vo.ProductVO;
@@ -28,5 +29,7 @@ public interface MyPageService {
 	List<ProductVO> getMywish(String id);
 	//관심상품 삭제
 	boolean removeMywish(ProductVO vo);
+	//내 배송정보 내역
+	List<DeliveryVO> getMydelivery(String id);
 
 }

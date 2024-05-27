@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.camcam.delivery.vo.DeliveryVO;
 import com.camcam.order.vo.OrderDetailVO;
 import com.camcam.order.vo.OrderVO;
 import com.camcam.product.vo.ProductVO;
@@ -37,4 +38,7 @@ public interface MyPageMapper {
 	List<ProductVO> selectMywish(String id);
 	// 관심상품 삭제
 	int deleteMywish(ProductVO vo);
+	
+	// 내 배송정보 내역
+	List<DeliveryVO> selectMydelivery(String id);
 }

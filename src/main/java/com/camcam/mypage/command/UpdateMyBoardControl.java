@@ -15,7 +15,6 @@ public class UpdateMyBoardControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// System.out.println("1004");
 		req.setCharacterEncoding("utf-8");
 
 		String bno = req.getParameter("bno");

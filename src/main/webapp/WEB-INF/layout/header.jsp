@@ -19,7 +19,7 @@
 						<button class="dropdown-item" type="button" onClick="location.href='signInForm.do'">회원가입</button>
 						</c:when>
 						<c:otherwise>
-						<button class="dropdown-item" type="button" onClick="location.href='myPage.do'">마이페이지</button>
+						<button class="dropdown-item" type="button" onClick="location.href='myPage.do?userId=${logId}'">마이페이지</button>
 						<button class="dropdown-item" type="button" onClick="location.href='logForm.do'">정보수정</button>					
 						<button class="dropdown-item" type="button" onClick="logout()">로그아웃</button>
 						</c:otherwise>

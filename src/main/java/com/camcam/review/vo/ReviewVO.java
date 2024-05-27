@@ -15,4 +15,5 @@ public class ReviewVO {
 	// 리뷰 조회시 필요한 데이터
 	private int totalCnt; // 리뷰 개수
 	private int sumRate; // 평점 총합
+	private double truncRating; // 소수점 아래 자른 평점
 }

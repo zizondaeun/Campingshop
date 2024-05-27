@@ -12,6 +12,7 @@ import com.camcam.product.service.impl.ProductServiceImpl;
 import com.camcam.product.vo.ProductVO;
 import com.camcam.review.service.ReviewService;
 import com.camcam.review.service.impl.ReviewServiceImpl;
+import com.camcam.review.vo.ReviewVO;
 
 public class ProductInfoControl implements Control {
 
@@ -25,11 +26,20 @@ public class ProductInfoControl implements Control {
 		ProductService productService = new ProductServiceImpl();
 		ReviewService reviewService = new ReviewServiceImpl();
 		ProductVO productInfo = productService.productInfo(Integer.parseInt(pNo));
-		int reviewCnt = reviewService.totalCount(Integer.parseInt(pNo));
+		ReviewVO reviewDetail = reviewService.totalCount(Integer.parseInt(pNo));
+		
+		int truncRate;
+		if(reviewDetail.getTotalCnt() != 0) {
+			truncRate = reviewDetail.getSumRate() / reviewDetail.getTotalCnt();
+		} else {
+			truncRate = 0;
+		}
+		
+		reviewDetail.setTruncRating(truncRate);
 		
 		req.setAttribute("product", productInfo);
 		req.setAttribute("keyword", keyword);
-		req.setAttribute("reviewCnt", reviewCnt);
+		req.setAttribute("reviewDetail", reviewDetail);
 		
 		req.getRequestDispatcher(path).forward(req, resp);
 		

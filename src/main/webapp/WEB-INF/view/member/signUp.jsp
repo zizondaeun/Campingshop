@@ -280,7 +280,7 @@ footer{
     
     <!-- password input -->
     <div class="input__block">
-       <input type="password" minlength = "5" name="password" placeholder="비밀번호" class="input" id="password"    />
+       <input type="passWord" minlength = "5" name="passWord" placeholder="비밀번호" class="input" id="passWord"    />
     </div>
     <div class="input__block">
        <input type="text"  name="userName" placeholder="이름" class="input" id="userName"    />

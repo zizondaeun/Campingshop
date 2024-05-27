@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.camcam.common.Control;
 import com.camcam.review.service.ReviewService;
 import com.camcam.review.service.impl.ReviewServiceImpl;
+import com.camcam.review.vo.ReviewVO;
 
 public class ReviewCountControl implements Control {
 
@@ -18,9 +19,9 @@ public class ReviewCountControl implements Control {
 		
 		ReviewService svc = new ReviewServiceImpl();
 		
-		int cnt = svc.totalCount(Integer.parseInt(pno));
+		ReviewVO cnt = svc.totalCount(Integer.parseInt(pno));
 		
-		resp.getWriter().print("{\"totalCount\":" + cnt + "}");
+		resp.getWriter().print("{\"totalCount\":" + cnt.getTotalCnt() + "}");
 	}
 
 }

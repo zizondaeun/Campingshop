@@ -51,7 +51,7 @@
 								<c:choose>
 									<c:when test="${(reviewDetail.sumRate/reviewDetail.totalCnt)-reviewDetail.truncRating >= 0.5}">
 										<small class="fas fa-star-half-alt"></small>
-										<c:forEach begin="1" end="${4-product.truncRating}">
+										<c:forEach begin="1" end="${4-reviewDetail.truncRating}">
 											<small class="far fa-star"></small>
 										</c:forEach>
 									</c:when>
@@ -69,12 +69,7 @@
 								</c:forEach>
 							</c:if>
 						<!-- 						<small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star-half-alt"></small> <small class="far fa-star"></small> -->
-						<c:if test="${reviewDetail.totalCnt == 0}">
-							0.0
-						</c:if>
-						<c:if test="${reviewDetail.totalCnt != 0}">
-							${reviewDetail.sumRate/reviewDetail.totalCnt }
-						</c:if>
+						
 						
 					</div>
 					<small class="pt-1">(${reviewDetail.totalCnt } Reviews)</small>
@@ -103,14 +98,14 @@
 					</button>
 				</div>
 				<div class="d-flex align-items-center mb-4 pt-2">
-					<div class="input-group quantity mr-3" style="width: 130px;">
-						<div class="input-group-btn">
+					<div class="input-group quantity mr-3" style="width: 150px;">
+						<div class="input-group-btn minusBtn">
 							<button class="btn btn-primary btn-minus">
 								<i class="fa fa-minus"></i>
 							</button>
 						</div>
-						<input type="text" class="form-control bg-secondary border-0 text-center" value="1">
-						<div class="input-group-btn">
+						<input type="text" class="form-control bg-secondary border-0 text-center cntInput" value="1">
+						<div class="input-group-btn addBtn">
 							<button class="btn btn-primary btn-plus">
 								<i class="fa fa-plus"></i>
 							</button>
@@ -228,6 +223,7 @@
 										<i class="far fa-star ratingStar"></i> <i class="far fa-star ratingStar"></i> <i class="far fa-star ratingStar"></i> <i class="far fa-star ratingStar"></i> <i class="far fa-star ratingStar"></i>
 									</div>
 								</div>
+								${userReviewCnt }
 								<div class="form-group">
 									<label for="content">Your Review *</label>
 									<textarea id="message" cols="30" rows="5" class="form-control"></textarea>
@@ -369,7 +365,9 @@
 <!-- Products End -->
 
 <script>
+	const userReviewCnt = '${userReviewCnt}'
 	const pno = '${product.productNo}';
 	const writer = '${logId}';
 </script>
 <script src="js/review.js"></script>
+<script src="js/productInfo.js"></script>

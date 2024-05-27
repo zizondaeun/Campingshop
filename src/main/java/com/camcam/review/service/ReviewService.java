@@ -12,4 +12,6 @@ public interface ReviewService {
 	boolean addReview(ReviewVO rvo); // 리뷰 등록
 	
 	void modRating(); // 평점수정
+	
+	int getUserReviewCnt(ReviewVO rvo);
 }

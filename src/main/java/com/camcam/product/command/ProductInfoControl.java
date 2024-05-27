@@ -20,13 +20,20 @@ public class ProductInfoControl implements Control {
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String path = "product/productInfo.tiles";
 		String pNo = req.getParameter("pno");
+		String userId = req.getParameter("uid");
 		String keyword = req.getParameter("keyword");
+		
+		userId = userId ==null ? " " : userId;
 		
 		
 		ProductService productService = new ProductServiceImpl();
 		ReviewService reviewService = new ReviewServiceImpl();
 		ProductVO productInfo = productService.productInfo(Integer.parseInt(pNo));
+		productInfo.setUserId(userId);
+		
 		ReviewVO reviewDetail = reviewService.totalCount(Integer.parseInt(pNo));
+		
+		
 		
 		int truncRate;
 		if(reviewDetail.getTotalCnt() != 0) {

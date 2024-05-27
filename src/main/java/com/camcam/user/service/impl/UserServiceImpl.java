@@ -70,6 +70,11 @@ public class UserServiceImpl implements UserService{
 		return mapper.deleteUser(userId) == 1;
 	}
 
+	@Override
+	public UserVO getUserById(String userId) {
+		// TODO Auto-generated method stub
+		 return mapper.selectUser(userId);	}
+
 	
 
 	

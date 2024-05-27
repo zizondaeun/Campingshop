@@ -20,5 +20,8 @@ public interface UserMapper {
 	 
 	 int updateUser(UserVO userId);//개인정보수정
 	 int deleteUser(String userId);//아이디삭제
+	 
+	  UserVO selectUser(String userId);
+	 
 
 }

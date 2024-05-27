@@ -21,6 +21,7 @@ public interface UserService {
 	
 	boolean modifyUser(String userId);
 	
-	
+    UserVO getUserById(String userId);
+
 	
 }

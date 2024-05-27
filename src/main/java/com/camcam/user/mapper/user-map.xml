@@ -66,5 +66,11 @@
     	delete from users
 		where user_id= #{userId}
     </delete>
+    
+    <select id="selectUser">
+    	select *
+   		 from users
+   		 where user_id = #{id}
+    </select>
  
 </mapper>

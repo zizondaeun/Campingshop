@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.camcam.common.DataSource;
+import com.camcam.delivery.vo.DeliveryVO;
 import com.camcam.mypage.mapper.MyPageMapper;
 import com.camcam.mypage.service.MyPageService;
 import com.camcam.order.vo.OrderDetailVO;
@@ -77,6 +78,11 @@ public class MyPageServiceImpl implements MyPageService {
 	@Override
 	public boolean removeMywish(ProductVO vo) {
 		return mapper.deleteMywish(vo) == 1;
+	}
+
+	@Override
+	public List<DeliveryVO> getMydelivery(String id) {
+		return mapper.selectMydelivery(id);
 	}
 
 }

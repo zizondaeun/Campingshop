@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <style>
 .table-container {
-	width: 80%; 
+	width: 60%; 
 	margin: 0 auto; 
 	border: 1px solid #ccc;
 	padding: 20px;
@@ -58,10 +59,10 @@
 	<table class="table">
 		<thead class="table-header">
 			<tr>
-				<th scope="col">NO</th>
-				<th scope="col">BOARD</th>
-				<th scope="col">TITLE</th>
-				<th scope="col">DATE</th>
+				<th scope="col">배송번호</th>
+				<th scope="col">주문번호</th>
+				<th scope="col">주문일자</th>
+				<th scope="col">배송상태</th>
 			</tr>
 		</thead>
 		<tbody class="table-body">
@@ -72,12 +73,12 @@
 					</tr>
 				</c:when>
 				<c:otherwise>
-					<c:forEach var="board" items="${list }">
+					<c:forEach var="delivery" items="${list }">
 						<tr>
-							<th scope="row">${board.boardNo }</th>
-							<td><a href="#" style="text-decoration: none"><font color="#6c757d">QnA</font></a></td>
-							<td><a href="myBoardInfo.do?bno=${board.boardNo }" style="text-decoration: none"><font color="black">${board.title }</font></a></td>
-							<td><fmt:formatDate value="${board.createDate }" pattern="yyyy/MM/dd" /></td>
+							<td scope="row">${delivery.deliNo }</td>
+							<td>${delivery.orderNo }</td>
+							<td><fmt:formatDate value="${delivery.deliDate }" pattern="yyyy/MM/dd" /></td>
+							<td>${delivery.deliStatus }</td>
 						</tr>
 					</c:forEach>
 				</c:otherwise>
@@ -86,3 +87,6 @@
 	</table>
 </div>
 </div>
+<script>
+
+</script>

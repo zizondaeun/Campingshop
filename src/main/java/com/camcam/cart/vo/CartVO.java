@@ -1,5 +1,10 @@
 package com.camcam.cart.vo;
 
-public class CartVO {
+import lombok.Data;
 
+@Data
+public class CartVO {
+	private int cartNo;
+	private String userId;
+	private int productNo;
 }

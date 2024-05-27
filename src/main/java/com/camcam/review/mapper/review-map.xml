@@ -45,5 +45,11 @@
 		)
 	</update>
 	
+	<select id="getUserReviewCnt" parameterType="com.camcam.review.vo.ReviewVO" resultType="int">
+		select count(*) as user_review_cnt
+		from reviews 
+		where user_id = #{userId} and product_no=#{productNo}
+	</select>
+	
 	
 </mapper>

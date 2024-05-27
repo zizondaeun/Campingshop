@@ -20,4 +20,9 @@ public interface ProductMapper {
 	
 	// 물품 카테고리 리스트
 	public List<Map<String, String>> categoryTemp();
+	
+	// 찜하기 관련
+	public int getLikeVal(ProductVO product);
+	public int insertLike(ProductVO product); // 찜하기 추가
+	public int deleteLike(ProductVO product); // 찜하기 제거
 }

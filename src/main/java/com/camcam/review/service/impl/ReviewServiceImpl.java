@@ -10,7 +10,7 @@ import com.camcam.review.mapper.ReviewMapper;
 import com.camcam.review.service.ReviewService;
 import com.camcam.review.vo.ReviewVO;
 
-public class ReviewServiceImpl implements ReviewService{
+public class ReviewServiceImpl implements ReviewService {
 	SqlSession session = DataSource.getInstance().openSession(true);
 	ReviewMapper mapper = session.getMapper(ReviewMapper.class);
 	
@@ -32,5 +32,10 @@ public class ReviewServiceImpl implements ReviewService{
 	@Override
 	public void modRating() {
 		mapper.updateRating();
+	}
+
+	@Override
+	public int getUserReviewCnt(ReviewVO rvo) {
+		return mapper.getUserReviewCnt(rvo);
 	}
 }

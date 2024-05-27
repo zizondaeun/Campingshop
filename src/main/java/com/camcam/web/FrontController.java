@@ -16,6 +16,7 @@ import com.camcam.category.command.GetCategoryControl;
 import com.camcam.common.Control;
 import com.camcam.home.command.HomeControl;
 import com.camcam.mypage.command.DeleteMyBoardControl;
+import com.camcam.mypage.command.DeleteMyWishControl;
 import com.camcam.mypage.command.MyBoardInfoControl;
 import com.camcam.mypage.command.MyBoardListControl;
 import com.camcam.mypage.command.MyBoardModFormControl;
@@ -112,6 +113,7 @@ public class FrontController extends HttpServlet {
 		map.put("/myOrderList.do", new MyOrderListControl()); //주문내역 리스트로 이동
 		map.put("/myOrderDetail.do", new MyOrderDetailControl()); //상세주문 내역 이동
 		map.put("/myWishList.do", new MyWishListControl()); //관심상품 리스트로 이동
+		map.put("/deleteMywish.do", new DeleteMyWishControl()); //관심상품 삭제 기능
 		map.put("/myinformationForm.do", new MyinformationFormControl());//개인정보수정 화면
 		map.put("/myinformation", new MyinformationControl()); //개인정보수정 기능
 		

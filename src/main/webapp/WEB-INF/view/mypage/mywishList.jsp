@@ -74,7 +74,8 @@
     </div>
     <script>
     	let userId = '${logId}';
-    	console.log(userId + "555555");
+    	//console.log(userId + "555555");
+    	
         let btns = document.querySelectorAll('.delBtn');
         btns.forEach(function(btn) {
             btn.addEventListener('click', function(e) {

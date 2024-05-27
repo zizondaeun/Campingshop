@@ -13,4 +13,6 @@ public class QnAVO {
 	private Date createDate;
 	private String boardPw;
 	
+	private int page;
+	
 }

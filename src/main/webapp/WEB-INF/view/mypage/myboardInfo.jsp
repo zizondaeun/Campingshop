@@ -54,13 +54,14 @@
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: 'bno=' + bno + '&boardPw=' + pw
         })
-        .then(response => {
-            if (response.ok) {
+        .then(response => response.json())
+		.then(data => {
+			if (data.status == 'success') {
                 window.location.href = 'myBoardList.do?userId=' + userId;
             }else {
                 alert('비밀번호를 맞게 입력하세요');
-            }
-        })
+            } 
+		})	            
         .catch(err => {
             console.log(err);
             alert('오류 발생');

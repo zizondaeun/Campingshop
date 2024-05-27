@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.camcam.common.Control;
 import com.camcam.mypage.service.MyPageService;
 import com.camcam.mypage.service.impl.MyPageServiceImpl;
-import com.camcam.product.vo.QnAVO;
 
 public class DeleteMyBoardControl implements Control {
 
@@ -25,8 +24,11 @@ public class DeleteMyBoardControl implements Control {
 		//vo.setBoardNo(Integer.parseInt(bno));
 		//vo.setBoardPw(pw);
 			
-		svc.removeMyboard(Integer.parseInt(bno),pw);
-		
+		if(svc.removeMyboard(Integer.parseInt(bno),pw)) { //console에 
+			resp.getWriter().write("{\"status\": \"success\", \"message\": \"게시글이 성공적으로 삭제되었습니다.\"}");
+		}else {
+			resp.getWriter().write("{\"status\": \"fail\", \"message\": \"게시글 삭제 실패.\"}");
+		}
 	}
 
 }

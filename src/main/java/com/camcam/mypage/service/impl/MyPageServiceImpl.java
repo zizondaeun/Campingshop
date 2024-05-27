@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.camcam.common.DataSource;
+import com.camcam.common.SearchVO;
 import com.camcam.delivery.vo.DeliveryVO;
 import com.camcam.mypage.mapper.MyPageMapper;
 import com.camcam.mypage.service.MyPageService;
@@ -24,8 +25,8 @@ public class MyPageServiceImpl implements MyPageService {
 	}
 
 	@Override
-	public List<QnAVO> getMyboard(String id) {
-		return mapper.selectMyboard(id);
+	public List<QnAVO> getMyboard(QnAVO vo) {
+		return mapper.boardListPaging(vo);
 	}
 
 	@Override
@@ -83,6 +84,11 @@ public class MyPageServiceImpl implements MyPageService {
 	@Override
 	public List<DeliveryVO> getMydelivery(String id) {
 		return mapper.selectMydelivery(id);
+	}
+
+	@Override
+	public int getTotal(QnAVO vo) {
+		return mapper.getTotalCnt(vo);
 	}
 
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="my" %>	
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <style>
@@ -48,6 +49,7 @@
 			</c:choose>
 		</tbody>
 	</table>
+	<my:paging pageInfo="${paging }"/>
 </div>
 <script>
 	//글번호 넘겨서 title 클릭하면 페이지 이동(myboardInfo.do로 이동)
@@ -59,4 +61,5 @@
 			console.log(th);
 		})
 	});
+	console.log('${paging }');
 </script>

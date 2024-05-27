@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.camcam.common.Control;
-import com.camcam.common.HttpUtils;
 import com.camcam.mypage.service.MyPageService;
 import com.camcam.mypage.service.impl.MyPageServiceImpl;
 import com.camcam.product.vo.ProductVO;

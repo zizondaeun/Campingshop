@@ -42,6 +42,21 @@ public class ProductServiceImpl implements ProductService{
 		return mapper.selectProductInfo(productNo);
 	}
 
+	@Override
+	public boolean getLikeVal(ProductVO product) {
+		return mapper.getLikeVal(product) >= 1;
+	}
+	@Override
+	public boolean addLike(ProductVO product) {
+		return mapper.insertLike(product) == 1;
+	}
+
+	@Override
+	public boolean removeLike(ProductVO product) {
+		return mapper.deleteLike(product) == 1;
+	}
+
+
 	
 	
 

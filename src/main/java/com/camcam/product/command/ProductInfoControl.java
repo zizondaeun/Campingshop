@@ -20,13 +20,28 @@ public class ProductInfoControl implements Control {
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String path = "product/productInfo.tiles";
 		String pNo = req.getParameter("pno");
+		String userId = req.getParameter("uid");
 		String keyword = req.getParameter("keyword");
+		
+		userId = userId ==null ? " " : userId;
 		
 		
 		ProductService productService = new ProductServiceImpl();
 		ReviewService reviewService = new ReviewServiceImpl();
 		ProductVO productInfo = productService.productInfo(Integer.parseInt(pNo));
+		productInfo.setUserId(userId);
+		
 		ReviewVO reviewDetail = reviewService.totalCount(Integer.parseInt(pNo));
+		
+		// 해당 유저가 해당 상품에 좋아요 수가 1 이상이면 
+		if(productService.getLikeVal(productInfo)) {
+			// 좋아요 제거진행
+			productService.removeLike(productInfo);
+		} else {
+			// 좋아요 추가진행
+			productService.addLike(productInfo);
+			
+		};
 		
 		int truncRate;
 		if(reviewDetail.getTotalCnt() != 0) {

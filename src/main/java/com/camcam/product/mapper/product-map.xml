@@ -35,6 +35,20 @@
 		where product_name like '%'|| #{keyword}||'%' or category_code like #{keyword}
 	</select>
 	
+	<select id="getLikeVal" resultType="com.camcam.product.vo.ProductVO" parameterType="com.camcam.product.vo.ProductVO">
+		select count(*) from likes
+		where product_no = #{productNo} and user_id = #{userId}
+	</select>
+	
+	<insert id="insertLike" parameterType="com.camcam.product.vo.ProductVO">
+		insert into likes (user_id, product_no)
+		values (#{userId},#{productNo})
+	</insert>
+	
+	<delete id="deleteLike" parameterType="com.camcam.product.vo.ProductVO">
+		delete from likes 
+		where user_id = #{userId} and product_no = #{productNo}
+	</delete>
 <!-- 	<select id="selectCategoryList"> -->
 <!-- 		SELECT CASE WHEN NVL(PRE_CATEGORY, 'N') = 'N' THEN '대분류' -->
 <!--             ELSE ' ' -->

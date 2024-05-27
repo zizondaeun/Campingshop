@@ -16,4 +16,9 @@ public interface ProductService {
 	public ProductVO productInfo(int productNo);
 	
 	public List<Map<String, String>> categoryTemp();
+	
+	// 찜하기 관련
+	public boolean getLikeVal(ProductVO product);
+	public boolean addLike(ProductVO product);
+	public boolean removeLike(ProductVO product);
 }

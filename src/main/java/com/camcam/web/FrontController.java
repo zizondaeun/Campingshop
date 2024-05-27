@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.camcam.category.command.GetCategoryControl;
 import com.camcam.common.Control;
 import com.camcam.home.command.HomeControl;
+import com.camcam.likes.command.AddLikesControl;
+import com.camcam.likes.command.RemoveLikesControl;
 import com.camcam.mypage.command.DeleteMyBoardControl;
 import com.camcam.mypage.command.DeleteMyWishControl;
 import com.camcam.mypage.command.MyBoardInfoControl;
@@ -78,6 +80,11 @@ public class FrontController extends HttpServlet {
 		map.put("/modReview.do", new ModifyReviewControl()); // 리뷰수정
 		map.put("/removeReview.do", new RemoveReviewControl()); // 리뷰삭제
 		map.put("/getReviewTotalCnt.do", new ReviewCountControl()); // 리뷰 총 개수
+		
+		// 좋아요 변경 관련
+		map.put("/addLikes.do", new AddLikesControl()); // 좋아요 추가
+		map.put("/removeLikes.do", new RemoveLikesControl()); // 좋아요 추가
+		
 		
 		// 카테고리
 		map.put("/getCategory.do", new GetCategoryControl());

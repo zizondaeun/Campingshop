@@ -37,9 +37,9 @@
 							<th scope="row">${detail.orderNo }</th>
 							<td>${detail.orderDetailNo }</td>
 							<td>${detail.productName }</td>
-							<td>${detail.quantity }</td>
-							<td>${detail.price }</td>
-							<td>${detail.amount }</td>
+							<td>${detail.quantity }개</td>
+							<td><fmt:formatNumber value="${detail.price }"/>원</td>
+							<td><fmt:formatNumber value="${detail.amount }"/>원</td>
 						</tr>
 					</c:forEach>
 				</c:otherwise>

@@ -69,7 +69,7 @@
 			<c:choose>
 				<c:when test="${empty list }">
 					<tr align="center">
-						<td colspan="4">조회된 결과가 없습니다</td>
+						<td colspan="5">조회된 결과가 없습니다</td>
 					</tr>
 				</c:when>
 				<c:otherwise>
@@ -78,7 +78,14 @@
 							<td scope="row">${delivery.deliNo }</td>
 							<td>${delivery.orderNo }</td>
 							<td><fmt:formatDate value="${delivery.deliDate }" pattern="yyyy/MM/dd" /></td>
-							<td>${delivery.deliStatus }</td>
+							<c:choose>
+								<c:when test="${delivery.deliStatus eq 1 }">
+									<td>배송완료</td>
+								</c:when>
+								<c:otherwise>
+									<td>배송 중</td>
+								</c:otherwise>
+							</c:choose>
 						</tr>
 					</c:forEach>
 				</c:otherwise>

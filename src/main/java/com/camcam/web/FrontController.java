@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.camcam.cart.command.AddCartControl;
 import com.camcam.cart.command.CartListControl;
+import com.camcam.cart.command.GetCartListControl;
 import com.camcam.cart.command.ModifyCartControl;
 import com.camcam.cart.command.RemoveCartControl;
 import com.camcam.category.command.GetCategoryControl;
@@ -90,6 +91,7 @@ public class FrontController extends HttpServlet {
 		map.put("/removeLikes.do", new RemoveLikesControl()); // 좋아요 추가
 		
 		// 장바구니 관련
+		map.put("/getCartList.do", new GetCartListControl()); // 장바구니 리스트 JSON 변환
 		map.put("/cartList.do", new CartListControl()); // 장바구니 보기
 		map.put("/addCart.do", new AddCartControl()); // 장바구니 담기
 		map.put("/modCart.do", new ModifyCartControl()); // 장바구니 수정

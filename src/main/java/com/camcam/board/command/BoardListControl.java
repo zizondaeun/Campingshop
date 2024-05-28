@@ -20,7 +20,6 @@ public class BoardListControl implements Control {
 		
 		BoardService svc = new BoardServiceImpl();
 		List<QnAVO> list = svc.boardList();
-		System.out.println(list + "1004");
 		
 		req.setAttribute("boardList", list);
 		

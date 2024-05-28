@@ -6,4 +6,5 @@ import com.camcam.cart.vo.CartVO;
 
 public interface CartService {
 	List<CartVO> cartList(String userId);
+	boolean updateCart(CartVO cvo);
 }

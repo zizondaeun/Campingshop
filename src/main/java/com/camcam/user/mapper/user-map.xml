@@ -32,9 +32,15 @@
 		order by user_id
 	</select>
 	
+	<select id = "selectLoginForm" resultType="com.camcam.user.vo.UserVO"> 
+	select * 
+	from users
+	where user_id = #{userId}
+	</select>
+	
 	 <delete id="delUserList" parameterType="String">
 		delete from users
-		where user_id=#{userId}
+		where user_id = #{userId}
 	</delete>  	
 	
 	<select id="selectIdFined" resultType="com.camcam.user.vo.UserVO">
@@ -54,17 +60,19 @@
 	
 	<update id="updateUser">
         update users
-		set password = #{pw},
+		set password = #{passWord},
    		user_name = #{userName},
     	email = #{email},
     	user_tel = #{userTel},
     	address = #{address}
-    	where user_id = #{userId};
+    	where user_id = #{userId}
     </update>
     
     <delete id="deleteUser" parameterType="String">
     	delete from users
-		where user_id= #{userId}
+		where user_id= user_id
+		and  password = #{passWord}
+   
     </delete>
     
     <select id="selectUser">

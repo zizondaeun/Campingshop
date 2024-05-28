@@ -1,24 +1,3 @@
-package com.camcam.user.vo;
-
-import lombok.Data;
-import oracle.sql.DATE;
-
-@Data
-public class UserVO {
-	private String userId;
-	private String passWord;
-	private String userName;
-	private String email;
-	private String userTel;
-	private String hireDate;
-	private String userResp;
-	private String address;
-	
-	
-}
-
-
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -278,53 +257,44 @@ footer{
   
   <!-- Links -->
   <ul class="links">
-  	 <li>
+      <li>
       <a href="logForm.do" id="signin">SIGN IN</a>
     </li>
-  	<li>
+     <li>
       <a href="withdrawForm.do" id="signin">회원탈퇴</a>
    </li>
    
     
   </ul>
-    <form action="signIn.do" method="post">
-    <!-- email input -->
+    <form action="myinformation.do" method="get">
     <div class="first-input input__block first-input__block">
-       <input type = "text" minlength = "5" name = "userId"id="userId" placeholder="아이디" class="input" disabled/>
-       </div>
-      
-    
-    <!-- password input -->
-    
-   <div class="input__block">
-        <input type="password" minlength="5" name="password" placeholder="비밀번호" class="input" id="password" disabled />
-        <button id="activatePassword" class="btn btn-primary">비밀번호 수정하기</button>
+        <input type="text" minlength="5" name="userId" id="userId" value="${user.userId}" class="input"  />
     </div>
     <div class="input__block">
-        <input type="text" name="userName" placeholder="이름" class="input" id="userName" disabled />
-        <button id="activateUserName" class="btn btn-primary">이름 수정하기</button>
+        <input type="password" minlength="5" name="passWord" value="${user.passWord}" class="input" id="password" />
     </div>
     <div class="input__block">
-        <input type="email" name="email" placeholder="email" class="input" id="email" disabled />
-        <button id="activateEmail" class="btn btn-primary">이메일 수정하기</button>
+        <input type="text" name="userName" value="${user.userName}" class="input" id="userName" />
     </div>
     <div class="input__block">
-        <input type="text" name="userTel" placeholder="전화번호" class="input" id="userTel" disabled />
-        <button id="activateUserTel" class="btn btn-primary" class="btn btn-outline-secondary">전화번호 수정하기</button>
+        <input type="email" name="email" value="${user.email}" class="input" id="email" />
+    </div>
+    <div class="input__block">
+        <input type="text" name="userTel" value="${user.userTel}" class="input" id="userTel" />
     </div>
     <div class="input__block">
         <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-        <input type="text" id="sample6_address" name="address" placeholder="주소"><br>
+        <input type="text" id="sample6_address" name="address" value="${user.address}"><br>
     </div>
-	
-    <!-- sign in button -->
-	</div>
-	<div class="input__block">
-    <input type="submit" value="수정하기" id="submitButton" disabled>
-	</div>
-  </form>
+    <div class="input__block">
+        <input type="submit" value="수정하기" id="submitButton">
+    </div>
+</form>
   
   </div>
+
+   
+ 
   <% // URL에서 error 매개변수 값을 가져옴
             String error = request.getParameter("error");
             if (error != null && !error.isEmpty()) {

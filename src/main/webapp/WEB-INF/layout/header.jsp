@@ -17,10 +17,12 @@
           			<c:when test="${empty logId }">					
 						<button class="dropdown-item" type="button" onClick="location.href='logForm.do'">로그인</button>
 						<button class="dropdown-item" type="button" onClick="location.href='signInForm.do'">회원가입</button>
+
 						</c:when>
 						<c:otherwise>
+		
+						<!--  <button class="dropdown-item" type="button" onClick="location.href='myPage.do'">마이페이지</button> -->
 						<button class="dropdown-item" type="button" onClick="location.href='myPage.do?userId=${logId}'">마이페이지</button>
-						<button class="dropdown-item" type="button" onClick="location.href='logForm.do'">정보수정</button>					
 						<button class="dropdown-item" type="button" onClick="logout()">로그아웃</button>
 						</c:otherwise>
 					</c:choose>
@@ -74,5 +76,4 @@ function logout() {
             alert('로그아웃 요청 중 오류가 발생했습니다.');
         });
 }
-</script>
 </script>

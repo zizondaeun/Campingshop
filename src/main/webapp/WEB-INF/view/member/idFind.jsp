@@ -279,9 +279,7 @@ footer{
   
   <!-- Display userId if available -->
   <c:set var="userId" value="${sessionScope.userId}" />
-  <c:if test="${not empty userId}">
-    <p>찾은 ID: ${userId}</p>
-  </c:if>
+ 
   
   <!-- Display error message if available -->
   <c:if test="${not empty sessionScope.errorMessage}">
@@ -291,7 +289,16 @@ footer{
 </div>
 
 
-
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function() {
+    document.querySelector(".signin__btn").addEventListener("click", function() {
+        var userId = '<c:out value="${sessionScope.userId}" />';
+        if (userId) {
+            alert('아이디는 : ' + userId + ' 입니다');
+        }
+    });
+});
+    </script>
 <script>
 $(document).ready(function(){
     let signup = $(".links").find("li").find("#signup") ; 

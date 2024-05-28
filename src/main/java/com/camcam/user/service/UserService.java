@@ -17,10 +17,14 @@ public interface UserService {
 	
 	public List<UserVO> userList();
 	
+	
+	public UserVO loginFinds(String id);
+	
 	boolean userModefy(UserVO userId);
 	
-	boolean modifyUser(String userId);
+	boolean modifyUser(String passWord); //회원탈퇴
 	
-	
+    UserVO getUserById(String userId);
+
 	
 }

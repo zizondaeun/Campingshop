@@ -65,10 +65,23 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public boolean modifyUser(String userId) {
+	public boolean modifyUser(String passWord) {
 		// TODO Auto-generated method stub
-		return mapper.deleteUser(userId) == 1;
+		return mapper.deleteUser(passWord) == 1;
 	}
+
+	@Override
+	public UserVO getUserById(String userId) {
+		// TODO Auto-generated method stub
+		 return mapper.selectUser(userId);	}
+
+	@Override
+	public UserVO loginFinds(String id) {
+		// TODO Auto-generated method stub
+		return mapper.selectLoginForm(id);
+	}
+
+	
 
 	
 

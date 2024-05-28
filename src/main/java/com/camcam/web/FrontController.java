@@ -136,7 +136,7 @@ public class FrontController extends HttpServlet {
 		map.put("/myWishList.do", new MyWishListControl()); //관심상품 리스트로 이동
 		map.put("/deleteMywish.do", new DeleteMyWishControl()); //관심상품 삭제 기능
 		map.put("/myinformationForm.do", new MyinformationFormControl());//개인정보수정 화면
-		map.put("/myinformation", new MyinformationControl()); //개인정보수정 기능
+		map.put("/myinformation.do", new MyinformationControl()); //개인정보수정 기능
 		
 		// QnA
 		map.put("/boardList.do", new BoardListControl()); //qna 게시판 이동

@@ -10,5 +10,11 @@
 		where user_id=#{userId}
 		order by cart_no
 	</select>
+	
+	<update id="updateCart" parameterType="com.camcam.cart.vo.CartVO">
+		update carts
+		set qty = qty + #{qty}
+		where cart_no = #{cartNo}
+	</update>
 
 </mapper>

@@ -16,7 +16,7 @@
 	<div class="description">
 		<span
 			style="display: inline-block; width: 100%; font-size: 15px; padding: 10px; text-align: right;">
-			<span>[${logId }]</span> 님의 게시글입니다.
+			<span>[${logId }]</span> 님의 게시글 내역입니다.
 		</span>
 	</div>
 	<table class="table">
@@ -40,7 +40,7 @@
 						<tr>
 							<th scope="row">${board.boardNo }</th>
 							<td><a href="#" style="text-decoration: none"><font color="#6c757d">QnA</font></a></td>
-							<td><a href="myBoardInfo.do?bno=${board.boardNo }" style="text-decoration: none"><font color="black">${board.title }</font></a></td>
+							<td><a href="myBoardInfo.do?bno=${board.boardNo }" style="text-decoration: none"><font color="#6c757d">${board.title }</font></a></td>
 							<td><fmt:formatDate value="${board.createDate }" pattern="yyyy/MM/dd" /></td>
 						</tr>
 					</c:forEach>
@@ -50,7 +50,7 @@
 	</table>
 </div>
 <script>
-	//fetch로 글번호 넘겨서 페이지 이동
+	//글번호 넘겨서 title 클릭하면 페이지 이동(myboardInfo.do로 이동)
 	const bno = '${board.boardNo}';
 
 	let tr = document.querySelectorAll('tbody tr').forEach(function(number) {

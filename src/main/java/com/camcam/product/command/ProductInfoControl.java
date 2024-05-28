@@ -30,8 +30,13 @@ public class ProductInfoControl implements Control {
 		ReviewService reviewService = new ReviewServiceImpl();
 		ProductVO productInfo = productService.productInfo(Integer.parseInt(pNo));
 		productInfo.setUserId(userId);
+		ReviewVO review = new ReviewVO();
+		review.setUserId(userId);
+		review.setProductNo(Integer.parseInt(pNo));
+		int userReviewCnt = reviewService.getUserReviewCnt(review);
 		
 		ReviewVO reviewDetail = reviewService.totalCount(Integer.parseInt(pNo));
+		
 		
 		
 		
@@ -47,6 +52,7 @@ public class ProductInfoControl implements Control {
 		req.setAttribute("product", productInfo);
 		req.setAttribute("keyword", keyword);
 		req.setAttribute("reviewDetail", reviewDetail);
+		req.setAttribute("userReviewCnt", userReviewCnt);
 		
 		req.getRequestDispatcher(path).forward(req, resp);
 		

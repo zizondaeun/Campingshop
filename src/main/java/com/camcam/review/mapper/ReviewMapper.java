@@ -16,4 +16,6 @@ public interface ReviewMapper {
 //	int getReviewCnt(ReviewVO rvo);
 	// 리뷰 작성시 product의 rating 업데이트
 	void updateRating();
+	
+	int getUserReviewCnt(ReviewVO rvo);
 }

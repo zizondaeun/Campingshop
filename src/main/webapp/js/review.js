@@ -29,19 +29,19 @@ function makeTemplate(review = {}) {
 	console.log(review);
 	let tmpl = document.querySelector('div.reviewTemplate').cloneNode(true);
 	tmpl.style.display = 'block';
-	
-	
-	for(let i=0; i<review.rating; i++){
+
+
+	for (let i = 0; i < review.rating; i++) {
 		let iStar = document.createElement('i');
 		iStar.className = 'fas fa-star';
 		tmpl.querySelector('.ratingStarList').appendChild(iStar);
 	}
-	for (let i=0; i<5-review.rating; i++){
+	for (let i = 0; i < 5 - review.rating; i++) {
 		let iStar = document.createElement('i');
 		iStar.className = 'far fa-star';
 		tmpl.querySelector('.ratingStarList').appendChild(iStar);
 	}
-	
+
 	tmpl.setAttribute('data-rno', review.reviewNo);
 	tmpl.querySelector('.reviewer').innerHTML = `${review.userId}<small> - <i>${review.rdate}</i></small>`;
 	tmpl.querySelector('.reviewContent').innerText = review.content;
@@ -168,7 +168,7 @@ function executeRating(stars) {
 			}
 			let rating = 0;
 			document.querySelectorAll('.ratingStar').forEach((val, idx) => {
-					console.log(val);
+				console.log(val);
 				if (val.className == 'ratingStar fas fa-star') {
 					rating++;
 				}
@@ -181,35 +181,39 @@ function executeRating(stars) {
 executeRating(ratingStars);
 
 document.getElementById('addReview').addEventListener('click', function(e) {
-
-	let rating = document.getElementById('rating').value;
-	let content = document.getElementById('message').value;
-	if (content == "") {
-		alert("리뷰를 입력해주세요.");
-	} else if (writer == "") {
-		alert("로그인후 이용해주세요.")
-	} else if (rating == 0){
-		alert("평점을 입력하세요.")
+	if (userReviewCnt > 0) {
+		alert('이미 작성한 후기가 있습니다.')
 	} else {
-		fetch('addReview.do', {
-			method: 'post',
-			headers: {'Content-Type': 'application/x-www-form-urlencoded' },
-			body: 'pno=' + pno + '&user=' + writer + '&content=' + content + '&rating=' + rating
-		})
-			.then(resolve => resolve.json())
-			.then(result => {
-				if (result.retCode == 'OK') {
-					//location.reload();
-					showList();
-					alert('등록완료');
-				} else if (result.retCode == 'NG') {
-					alert('등록실패');
-				} else {
-					alert('알수없는 반환값');
-				}
-				document.getElementById('message').value = "";
+		let rating = document.getElementById('rating').value;
+		let content = document.getElementById('message').value;
+		if (content == "") {
+			alert("리뷰를 입력해주세요.");
+		} else if (writer == "") {
+			alert("로그인후 이용해주세요.")
+		} else if (rating == 0) {
+			alert("평점을 입력하세요.")
+		} else {
+			fetch('addReview.do', {
+				method: 'post',
+				headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+				body: 'pno=' + pno + '&user=' + writer + '&content=' + content + '&rating=' + rating
 			})
-			.catch(err => console.log(err))
+				.then(resolve => resolve.json())
+				.then(result => {
+					if (result.retCode == 'OK') {
+						//location.reload();
+						showList();
+						alert('등록완료');
+						document.getElementById('addReview').disabled = true;
+					} else if (result.retCode == 'NG') {
+						alert('등록실패');
+					} else {
+						alert('알수없는 반환값');
+					}
+					document.getElementById('message').value = "";
+				})
+				.catch(err => console.log(err))
 
+		}
 	}
 })

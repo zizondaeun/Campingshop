@@ -63,6 +63,7 @@ let basket = {
 			console.log(event.target.nodeName);
 		if (event.target.nodeName == "BUTTON" || event.target.nodeName == "I") {
 			console.log(event.target);
+			console.log(event.target.className)
 			if(event.target.className.indexOf("plus") != -1) {
 				qty = 1;
 			}
@@ -84,7 +85,7 @@ let basket = {
 			.then(result => {
 				console.log(result)
 				qtyElem.value = parseInt(qtyElem.value) + qty; // 수량 변경
-				sumElem.innerText = (price * qty);
+				sumElem.innerText = (price * qtyElem.value).numberFormat() + "원";
 				
 				basket.cartCount += qty;
 				basket.cartTotal += (price * qty);
@@ -93,6 +94,36 @@ let basket = {
 			err => console.log(err);
 			
 		}
+		
+	},
+	delItem: function(){
+		let no;
+		let removeEle;
+		if(event.target.nodeName == "BUTTON") {
+			no = event.target.parentElement.parentElement.dataset.id;
+			removeEle = event.target.parentElement.parentElement;
+		} else {
+			no = event.target.parentElement.parentElement.parentElement.dataset.id;
+			removeEle = event.target.parentElement.parentElement.parentElement;
+		}
+		console.log(removeEle)
+		fetch('delCart.do', {
+			method: 'post',
+			headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+			body: 'no=' + no
+		})
+			.then(resolve => resolve.json())
+			.then(no, (result) => {
+				let price = document.querySelector('#p_price' + no).value; // 단가
+				let qty = document.querySelector('#p_num' + no).value; // 현재수량
+				// 합계반영
+				basket.cartCount -= qty;
+				basket.cartTotal -= (price * qty);
+				basket.reCalc();
+				
+				removeEle.remove();
+			})
+			.catch(err => console.log(err));
 		
 	}
 

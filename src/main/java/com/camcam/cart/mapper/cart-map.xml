@@ -16,5 +16,10 @@
 		set qty = qty + #{qty}
 		where cart_no = #{cartNo}
 	</update>
+	
+	<delete id="deleteCart" parameterType="int">
+		delete carts
+		where cart_no = #{cartNo}
+	</delete>
 
 </mapper>

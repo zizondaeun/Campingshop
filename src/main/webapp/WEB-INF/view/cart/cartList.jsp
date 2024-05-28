@@ -30,8 +30,8 @@
 						<td class="align-middle basketprice"><input type="hidden" name="p_price" id="p_price0" class="p_price" value="20000">$150</td>
 						<td class="align-middle">
 							<div class="input-group quantity mx-auto updown" style="width: 100px;">
-								<div class="input-group-btn" onclick="javascript: basket.changePNum(0);">
-									<button class="btn btn-sm btn-primary btn-minus minusBtn" >
+								<div class="input-group-btn">
+									<button class="btn btn-sm btn-primary btn-minus minusBtn" onclick="javascript: basket.changePNum(0);">
 										<i class="fa fa-minus minusBtn"></i>
 									</button>
 								</div>
@@ -44,7 +44,7 @@
 							</div>
 						</td>
 						<td class="align-middle sum">$150</td>
-						<td class="align-middle"><button class="btn btn-sm btn-danger">
+						<td class="align-middle"><button class="btn btn-sm btn-danger" onclick="javascript:basket.delItem();">
 								<i class="fa fa-times"></i>
 							</button></td>
 					</tr>

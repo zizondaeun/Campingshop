@@ -3,7 +3,11 @@
 <mapper namespace="com.camcam.cart.mapper.CartMapper">
 
 	<select id="selectCartList" resultType="com.camcam.cart.vo.CartVO">
-		select * from carts
+		select c.*, p.product_img , p.product_name
+		from carts c
+		join products p
+		on c.product_no = p.product_no
+		where user_id=#{userId}
 		order by cart_no
 	</select>
 

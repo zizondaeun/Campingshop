@@ -46,8 +46,15 @@
 								<td><fmt:formatDate value="${order.orderDate }"
 										pattern="yyyy/MM/dd" /></td>
 								<td>${order.address }</td>
-								<td>${order.amount }</td>
-								<td>${order.orderStatus }</td>
+								<td><fmt:formatNumber value="${order.amount }"/>원</td>
+								<c:choose>
+									<c:when test="${order.orderStatus eq 1}">
+										<td>주문완료</td>
+									</c:when>
+									<c:otherwise>
+										<td>일단 대기...</td>
+									</c:otherwise>
+								</c:choose>
 								<td><button type="button"
 										onclick="location.href='myOrderDetail.do?ono=${order.orderNo }';">상세보기</button></td>
 							</tr>

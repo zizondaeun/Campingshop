@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.camcam.common.SearchVO;
 import com.camcam.delivery.vo.DeliveryVO;
 import com.camcam.order.vo.OrderDetailVO;
 import com.camcam.order.vo.OrderVO;
@@ -41,4 +42,9 @@ public interface MyPageMapper {
 	
 	// 내 배송정보 내역
 	List<DeliveryVO> selectMydelivery(String id);
+	
+	// 페이징
+	int getTotalCnt(QnAVO vo);
+	
+	List<QnAVO> boardListPaging(QnAVO vo);
 }

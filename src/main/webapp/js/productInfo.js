@@ -14,7 +14,7 @@ function plusNumber(){
 }
 
 function minusNumber(){
-	if(Number(document.querySelector('.cntInput').value) > 0) {
+	if(Number(document.querySelector('.cntInput').value) > 1) {
 		document.querySelector('.cntInput').value = Number(document.querySelector('.cntInput').value)-1;
 	} else {
 		alert('0보다 큰 값을 입력하세요')

@@ -2,6 +2,7 @@ package com.camcam.mypage.service;
 
 import java.util.List;
 
+import com.camcam.common.SearchVO;
 import com.camcam.delivery.vo.DeliveryVO;
 import com.camcam.order.vo.OrderDetailVO;
 import com.camcam.order.vo.OrderVO;
@@ -13,7 +14,7 @@ public interface MyPageService {
 	//마이페이지 
 	UserVO getMypage(String id);
 	//내 게시판
-	List<QnAVO> getMyboard(String id);
+	List<QnAVO> getMyboard(QnAVO vo);
 	//내 게시글 상세보기
 	QnAVO getBoardNo(int boardNo); //게시글 조회
 	QnAVO getBoardNo(int boardNo, String pw); //수정하기위한 조회
@@ -31,5 +32,7 @@ public interface MyPageService {
 	boolean removeMywish(ProductVO vo);
 	//내 배송정보 내역
 	List<DeliveryVO> getMydelivery(String id);
+	//페이징
+	int getTotal(QnAVO vo);
 
 }

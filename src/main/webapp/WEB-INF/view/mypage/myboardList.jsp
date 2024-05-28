@@ -5,13 +5,37 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <style>
 .table-container {
-	width: 80%; 
+	width: 70%; 
 	margin: 0 auto; 
 	border: 1px solid #ccc;
 	padding: 20px;
 }
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.table-header th {
+    border-bottom: 2px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+.table-body td {
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+.table-body td.title {
+    text-align: left;
+}
+.table-body td a {
+    color: #6c757d;
+    text-decoration: none;
+}
+.table-body td div img {
+    width: 13px;
+    height: 13px;
+}
 </style>
-
 <h3 align="center">MY BOARD</h3>
 <div class="table-container">
 	<div class="description">
@@ -24,6 +48,7 @@
 		<thead class="table-header">
 			<tr>
 				<th scope="col">NO</th>
+				<th scope="col"></th>
 				<th scope="col">BOARD</th>
 				<th scope="col">TITLE</th>
 				<th scope="col">DATE</th>
@@ -33,14 +58,15 @@
 			<c:choose>
 				<c:when test="${empty list }">
 					<tr align="center">
-						<td colspan="4">조회된 결과가 없습니다</td>
+						<td colspan="5">조회된 결과가 없습니다</td>
 					</tr>
 				</c:when>
 				<c:otherwise>
 					<c:forEach var="board" items="${list }">
 						<tr>
-							<th scope="row">${board.boardNo }</th>
-							<td><a href="#" style="text-decoration: none"><font color="#6c757d">QnA</font></a></td>
+							<td>${board.boardNo }</td>
+							<td><div><img src="productImg/게시판잠금이미지.gif"></div></td>
+							<td><a href="boardList.do?" style="text-decoration:underline; text-underline-offset:3px;"><font color="#6c757d">QnA</font></a></td>
 							<td><a href="myBoardInfo.do?bno=${board.boardNo }" style="text-decoration: none"><font color="#6c757d">${board.title }</font></a></td>
 							<td><fmt:formatDate value="${board.createDate }" pattern="yyyy/MM/dd" /></td>
 						</tr>
@@ -73,8 +99,8 @@
 	//글번호 넘겨서 title 클릭하면 페이지 이동(myboardInfo.do로 이동)
 	const bno = '${board.boardNo}';
 
-	let tr = document.querySelectorAll('tbody tr').forEach(function(number) {
-		number.addEventListener('click', function(e) {
+	let tr = document.querySelectorAll('tbody tr').forEach(function(row) {
+		row.addEventListener('click', function(e) {
 			let th = e.target.parentElement.children[0].innerText;
 			console.log(th);
 		})

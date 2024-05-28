@@ -16,7 +16,12 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Override
 	public List<QnAVO> boardList() {
-		return mapper.selectBoard();
+		return mapper.boardList();
+	}
+
+	@Override
+	public QnAVO getBoard(int boardNo) {
+		return mapper.selectBoard(boardNo);
 	}
 
 }

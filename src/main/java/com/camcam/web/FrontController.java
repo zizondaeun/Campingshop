@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.camcam.board.command.BoardInfoControl;
 import com.camcam.board.command.BoardListControl;
 import com.camcam.cart.command.AddCartControl;
 import com.camcam.cart.command.CartListControl;
@@ -139,7 +140,8 @@ public class FrontController extends HttpServlet {
 		map.put("/myinformation.do", new MyinformationControl()); //개인정보수정 기능
 		
 		// QnA
-		map.put("/boardList.do", new BoardListControl()); //qna 게시판 이동
+		map.put("/boardList.do", new BoardListControl()); //qna 게시판으로 이동(리스트)
+		map.put("/boardInfo.do", new BoardInfoControl()); //qna 상세화면으로 이동
 		
 	}
 

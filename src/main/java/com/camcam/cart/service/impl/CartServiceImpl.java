@@ -19,4 +19,10 @@ public class CartServiceImpl implements CartService{
 		return mapper.selectCartList(userId);
 	}
 
+
+	@Override
+	public boolean updateCart(CartVO cvo) {
+		return mapper.updateCart(cvo) == 1;
+	}
+
 }

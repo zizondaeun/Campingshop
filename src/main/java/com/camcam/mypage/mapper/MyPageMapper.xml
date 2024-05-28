@@ -4,7 +4,7 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.camcam.mypage.mapper.MyPageMapper">
 	
-	<select id="boardListPaging" parameterType="com.camcam.product.vo.QnAVO"> <!-- = getMyboard -->
+	<select id="boardListPaging" parameterType="com.camcam.mypage.vo.PageVO"> <!-- = getMyboard -->
 		SELECT r.*
 		FROM (
     			SELECT rownum rn, a.*
@@ -15,11 +15,44 @@
         				ORDER BY b.board_no DESC
     				) a
     				<![CDATA[
-   				WHERE rownum <= (#{page} * 5)
+   				WHERE rownum <= (#{page} * 12)
 				) r
 				]]>
-		WHERE r.rn > (#{page} - 1) * 5
+		WHERE r.rn > (#{page} - 1) * 12
 	</select>
+		
+	<select id="orderListPaging" parameterType="com.camcam.mypage.vo.PageVO"><!-- getMyorder -->
+		SELECT r.*
+		FROM (
+    			SELECT rownum rn, a.*
+    			FROM (
+        				SELECT *
+        				FROM orders b
+        				where b.user_id = #{userId}
+        				ORDER BY b.order_no DESC
+    				) a
+    				<![CDATA[
+   				WHERE rownum <= (#{page} * 12)
+				) r
+				]]>
+		WHERE r.rn > (#{page} - 1) * 12
+	</select>
+	
+	<select id="wishListPaging" parameterType="com.camcam.mypage.vo.PageVO"><!-- getMyorder -->
+        SELECT r.*
+        FROM (
+                SELECT rownum rn, a.*
+                FROM (
+                        select P.*
+                        from products P join likes L on (P.product_no = L.product_no)
+                        where user_id = #{userId}
+                    ) a
+                    <![CDATA[
+                   WHERE rownum <= (#{page} * 12)
+                ) r
+                ]]>
+        WHERE r.rn > (#{page} - 1) * 12
+    </select>
 	
 	<select id="selectMypage" resultType="com.camcam.user.vo.UserVO">
 		select * 
@@ -27,13 +60,13 @@
 		where user_id = #{userId}
 	</select>
 	
-	<select id="selectMyboard" resultType="com.camcam.product.vo.QnAVO" parameterType="string">
+ 	<select id="selectMyboard" resultType="com.camcam.board.vo.QnAVO" parameterType="string">
 		select * 
 		from qna
 		where user_id = #{userId}
-	</select>
+	</select> 
 	
-	<select id="selectBoardNo" resultType="com.camcam.product.vo.QnAVO" >
+	<select id="selectBoardNo" resultType="com.camcam.board.vo.QnAVO" >
 		select *
 		from qna
 		where board_no = #{boardNo} 
@@ -44,17 +77,17 @@
 		delete from qna where board_no = #{boardNo}
 	</delete>
 	
-	<update id="updateBoardNo" parameterType="com.camcam.product.vo.QnAVO">
+	<update id="updateBoardNo" parameterType="com.camcam.board.vo.QnAVO">
 		update qna
 		set title = #{title}, content = #{content}
 		where board_no = #{boardNo}
 	</update>
 	
-	<select id="selectMyorder" resultType="com.camcam.order.vo.OrderVO" parameterType="string">
+ 	<select id="selectMyorder" resultType="com.camcam.mypage.vo.PageVO" parameterType="string">
 		select * 
 		from orders
 		where user_id = #{userId}
-	</select>
+	</select> 
 	
 	<select id="getBoardpw" resultType="string">
 		select board_pw
@@ -66,12 +99,6 @@
 		select *
 		from orderdetail
 		where order_no = #{orderNo}
-	</select>
-	
-	<select id="selectMywish" resultType="com.camcam.product.vo.ProductVO" parameterType="string">
-		select P.*
-		from products P join likes L on (P.product_no = L.product_no)
-		where user_id = #{userId}
 	</select>
 	
 	<delete id="deleteMywish" parameterType="com.camcam.product.vo.ProductVO">
@@ -86,9 +113,21 @@
 		where user_id = #{userId}
 	</select>
 
-	<select id="getTotalCnt" resultType="int" parameterType="com.camcam.product.vo.QnAVO">
+	<select id="getBoardTotalCnt" resultType="int" parameterType="com.camcam.mypage.vo.PageVO">
 		select count(1)
 		from qna
+		where user_id = #{userId}
+	</select>
+
+	<select id="getOrderTotalCnt" resultType="int" parameterType="com.camcam.mypage.vo.PageVO">
+		select count(1)
+		from orders
+		where user_id = #{userId}
+	</select>
+
+	<select id="getWishTotalCnt" resultType="int" parameterType="com.camcam.mypage.vo.PageVO">
+		select count(1)
+		from likes
 		where user_id = #{userId}
 	</select>
 	

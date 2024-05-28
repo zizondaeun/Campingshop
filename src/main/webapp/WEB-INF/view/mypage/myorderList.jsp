@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="my" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <style>
@@ -62,6 +63,26 @@
 					</c:otherwise>
 				</c:choose>
 			</tbody>
+			<p style="font-size: 13px;">- 주문상세의 조회 버튼을 클릭하시면, 주문상세 내역을 확인하실 수 있습니다.</p>
 		</table>
+		<div class="center">
+			<nav>
+				<ul class="pagination justify-content-center">
+				<c:if test="${paging.prev }">
+					<!-- 이전페이지 여부 체크 -->
+					<li class="page-item"><a class="page-link" href="myOrderList.do?page=${paging.startPage - 1}"><span>&laquo;</span></a></li>
+				</c:if>
+	
+				<c:forEach var="p" begin="${paging.startPage}" end="${paging.endPage}">
+					<li class="${p == paging.page ? 'page-item active' : 'page-item'}"><a class="page-link" href="myOrderList.do?page=${p}"><span>${p}</span></a></li>
+				</c:forEach>
+	
+				<c:if test="${paging.next }">
+					<!-- 이후페이지 여부 체크 -->
+					<li class="page-item"><a class="page-link" href="myOrderList.do?page=${paging.endPage + 1}"><span>&raquo;</span></a></li>
+				</c:if>
+				</ul>
+			</nav>
+		</div>
 </div>
 <script></script>

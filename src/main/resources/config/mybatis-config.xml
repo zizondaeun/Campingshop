@@ -33,6 +33,7 @@
 <!-- 		<mapper resource="com/camcam/notice/mapper/notice-map.xml" /> -->
 <!-- 		<mapper resource="com/camcam/cart/mapper/cart-map.xml" /> -->
 		<mapper resource="com/camcam/mypage/mapper/MyPageMapper.xml" />
+		<mapper resource="com/camcam/board/mapper/BoardMapper.xml" />
 		
 	</mappers>
 </configuration>

@@ -4,15 +4,15 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.camcam.board.vo.QnAVO;
 import com.camcam.common.DataSource;
-import com.camcam.common.SearchVO;
 import com.camcam.delivery.vo.DeliveryVO;
 import com.camcam.mypage.mapper.MyPageMapper;
 import com.camcam.mypage.service.MyPageService;
+import com.camcam.mypage.vo.PageVO;
 import com.camcam.order.vo.OrderDetailVO;
 import com.camcam.order.vo.OrderVO;
 import com.camcam.product.vo.ProductVO;
-import com.camcam.product.vo.QnAVO;
 import com.camcam.user.vo.UserVO;
 
 public class MyPageServiceImpl implements MyPageService {
@@ -25,7 +25,7 @@ public class MyPageServiceImpl implements MyPageService {
 	}
 
 	@Override
-	public List<QnAVO> getMyboard(QnAVO vo) {
+	public List<QnAVO> getMyboard(PageVO vo) {
 		return mapper.boardListPaging(vo);
 	}
 
@@ -61,21 +61,31 @@ public class MyPageServiceImpl implements MyPageService {
 		return mapper.updateBoardNo(vo) == 1;
 	}
 
-	@Override
-	public List<OrderVO> getMyorder(String id) {
-		return mapper.selectMyorder(id);
-	}
+//	@Override
+//	public List<OrderVO> getMyorder(PageVO vo) {
+//		return mapper.selectMyorder(vo);
+//	}
 
+	@Override
+	public List<OrderVO> getMyorder(PageVO vo) {
+		return mapper.orderListPaging(vo);
+	}
+	
 	@Override
 	public List<OrderDetailVO> getOrderDetail(int ono) {
 		return mapper.selectDetail(ono);
 	}
 
-	@Override
-	public List<ProductVO> getMywish(String id) {
-		return mapper.selectMywish(id);
-	}
+//	@Override
+//	public List<ProductVO> getMywish(String id) {
+//		return mapper.selectMywish(id);
+//	}
 
+	@Override
+	public List<ProductVO> getMywish(PageVO vo) {
+		return mapper.wishListPaging(vo);
+	}
+	
 	@Override
 	public boolean removeMywish(ProductVO vo) {
 		return mapper.deleteMywish(vo) == 1;
@@ -87,8 +97,20 @@ public class MyPageServiceImpl implements MyPageService {
 	}
 
 	@Override
-	public int getTotal(QnAVO vo) {
-		return mapper.getTotalCnt(vo);
+	public int getBoardTotal(PageVO vo) {
+		return mapper.getBoardTotalCnt(vo);
 	}
+
+	@Override
+	public int getOrderTotal(PageVO vo) {
+		return mapper.getOrderTotalCnt(vo);
+	}
+
+	@Override
+	public int getWishTotal(PageVO vo) {
+		return mapper.getWishTotalCnt(vo);
+	}
+
+
 
 }

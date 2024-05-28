@@ -25,20 +25,20 @@
 					</tr>
 				</thead>
 				<tbody class="align-middle" id="basket">
-					<tr data-id="0">
+					<tr data-id="0" style="display:none;">
 						<td class="align-middle firstData"><img src="img/product-1.jpg" alt="" style="width: 50px;"> Product Name</td>
 						<td class="align-middle basketprice"><input type="hidden" name="p_price" id="p_price0" class="p_price" value="20000">$150</td>
 						<td class="align-middle">
 							<div class="input-group quantity mx-auto updown" style="width: 100px;">
-								<div class="input-group-btn">
-									<button class="btn btn-sm btn-primary btn-minus">
-										<i class="fa fa-minus"></i>
+								<div class="input-group-btn" onclick="javascript: basket.changePNum(0);">
+									<button class="btn btn-sm btn-primary btn-minus minusBtn" >
+										<i class="fa fa-minus minusBtn"></i>
 									</button>
 								</div>
-								<input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value="1">
+								<input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value="1" onkeyup="javascript: basket.changePNum(0);">
 								<div class="input-group-btn">
-									<button class="btn btn-sm btn-primary btn-plus">
-										<i class="fa fa-plus"></i>
+									<button class="btn btn-sm btn-primary btn-plus plusBtn" onclick="javascript: basket.changePNum(0);">
+										<i class="fa fa-plus minusBtn"></i>
 									</button>
 								</div>
 							</div>

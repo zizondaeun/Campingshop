@@ -4,12 +4,12 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.camcam.common.SearchVO;
+import com.camcam.board.vo.QnAVO;
 import com.camcam.delivery.vo.DeliveryVO;
+import com.camcam.mypage.vo.PageVO;
 import com.camcam.order.vo.OrderDetailVO;
 import com.camcam.order.vo.OrderVO;
 import com.camcam.product.vo.ProductVO;
-import com.camcam.product.vo.QnAVO;
 import com.camcam.user.vo.UserVO;
 
 public interface MyPageMapper {
@@ -17,7 +17,7 @@ public interface MyPageMapper {
 	UserVO selectMypage(String id);
 
 	// 내 게시판 리스트
-	List<QnAVO> selectMyboard(String id);
+	List<QnAVO> selectMyboard(PageVO vo); //
 
 	// 내 게시글 상세
 	QnAVO selectBoardNo(@Param("boardNo") int boardNo, @Param("pw") String pw);
@@ -32,11 +32,11 @@ public interface MyPageMapper {
 	int updateBoardNo(QnAVO vo);
 
 	// 내 주문내역 리스트
-	List<OrderVO> selectMyorder(String id);
+	List<OrderVO> selectMyorder(PageVO vo); //
 	// 상세 주문 내역
 	List<OrderDetailVO> selectDetail(int ono);
 	// 내 관심상품 리스트
-	List<ProductVO> selectMywish(String id);
+	List<ProductVO> selectMywish(PageVO vo); //
 	// 관심상품 삭제
 	int deleteMywish(ProductVO vo);
 	
@@ -44,7 +44,14 @@ public interface MyPageMapper {
 	List<DeliveryVO> selectMydelivery(String id);
 	
 	// 페이징
-	int getTotalCnt(QnAVO vo);
+	int getBoardTotalCnt(PageVO vo); //board
+	int getOrderTotalCnt(PageVO vo); //order
+	int getWishTotalCnt(PageVO vo); //wish
 	
-	List<QnAVO> boardListPaging(QnAVO vo);
+	List<QnAVO> boardListPaging(PageVO vo); //게시글 페이징
+
+	List<OrderVO> orderListPaging(PageVO vo); //주문리스트 페이징
+
+	List<ProductVO> wishListPaging(PageVO vo); //위시리스트 페이징
+
 }

@@ -63,6 +63,7 @@
 					</c:otherwise>
 				</c:choose>
 			</tbody>
+			<p style="font-size: 13px;">- 주문상세의 조회 버튼을 클릭하시면, 주문상세 내역을 확인하실 수 있습니다.</p>
 		</table>
 		<div class="center">
 			<nav>

@@ -8,11 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.camcam.board.vo.QnAVO;
 import com.camcam.common.Control;
 import com.camcam.common.PageDTO;
 import com.camcam.mypage.service.MyPageService;
 import com.camcam.mypage.service.impl.MyPageServiceImpl;
-import com.camcam.product.vo.QnAVO;
+import com.camcam.mypage.vo.PageVO;
 
 public class MyBoardListControl implements Control {
 
@@ -30,13 +31,13 @@ public class MyBoardListControl implements Control {
 		//현재 페이지
 		page = page == null ? "1" : page; //page가 null이면 1페이지로, 아니면 page로
 		//총 데이터 개수 구하기
-		QnAVO vo = new QnAVO();
+		PageVO vo = new PageVO();
 		vo.setUserId(id);
 		vo.setPage(Integer.parseInt(page));
+		
 		List<QnAVO> list = svc.getMyboard(vo);
 		//전체 페이지
-		PageDTO pageDTO = new PageDTO(Integer.parseInt(page), svc.getTotal(vo)); 
-
+		PageDTO pageDTO = new PageDTO(Integer.parseInt(page), svc.getBoardTotal(vo)); 
 		req.setAttribute("list", list);
 		req.setAttribute("paging", pageDTO);
 		

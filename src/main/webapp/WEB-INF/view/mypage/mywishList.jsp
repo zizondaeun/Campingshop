@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="my" %>	
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
  <style>
@@ -59,7 +60,7 @@
                                 <td><img src="productImg/${wish.productImg }" width="100" height="100" />${wish.productImg }</td>
                                 <td>${wish.productName }</td>
                                 <td><input type="number" name="cnt" value="1" min="1" max="1" step="1">개</td>
-                                <td>${wish.price }원</td>
+                                <td><fmt:formatNumber value="${wish.price }"/>원</td>
                                 <td><button type="button" class="cartBtn">CART</button></td>
                                 <td><button type="button" class="delBtn">DELETE</button></td>
                             </tr>
@@ -68,10 +69,32 @@
                 </c:choose>
             </tbody>
         </table>
+		<div class="center">
+			<nav>
+				<ul class="pagination justify-content-center">
+				<c:if test="${paging.prev }">
+					<!-- 이전페이지 여부 체크 -->
+					<li class="page-item"><a class="page-link" href="myWishList.do?page=${paging.startPage - 1}"><span>&laquo;</span></a></li>
+				</c:if>
+	
+				<c:forEach var="p" begin="${paging.startPage}" end="${paging.endPage}">
+					<li class="${p == paging.page ? 'page-item active' : 'page-item'}"><a class="page-link" href="myWishList.do?page=${p}"><span>${p}</span></a></li>
+				</c:forEach>
+	
+				<c:if test="${paging.next }">
+					<!-- 이후페이지 여부 체크 -->
+					<li class="page-item"><a class="page-link" href="myWishList.do?page=${paging.endPage + 1}"><span>&raquo;</span></a></li>
+				</c:if>
+				</ul>
+			</nav>
+		</div>
+		
+		<hr />
+		
         <div align="center">
             <button type="button" class="seldel">선택삭제</button>
         </div>
-    </div>
+	</div>
     <script>
     	let userId = '${logId}';
     	//console.log(userId + "555555");

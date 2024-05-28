@@ -50,25 +50,23 @@
 		</tbody>
 	</table>
 	<div class="center">
-		<div class="pagination">
-
+		<nav>
+			<ul class="pagination justify-content-center">
 			<c:if test="${paging.prev }">
 				<!-- 이전페이지 여부 체크 -->
-				<a href="myBoardList.do?page=${paging.startPage-1}">&laquo;</a>
+				<li class="page-item"><a class="page-link" href="myBoardList.do?page=${paging.startPage - 1}"><span>&laquo;</span></a></li>
 			</c:if>
 
-			<c:forEach var="p" begin="${paging.startPage}"
-				end="${paging.endPage}">
-				<a href="myBoardList.do?page=${p}"
-					class="${p==paging.page?'active':''}">${p}</a>
+			<c:forEach var="p" begin="${paging.startPage}" end="${paging.endPage}">
+				<li class="${p == paging.page ? 'page-item active' : 'page-item'}"><a class="page-link" href="myBoardList.do?page=${p}"><span>${p}</span></a></li>
 			</c:forEach>
 
 			<c:if test="${paging.next }">
 				<!-- 이후페이지 여부 체크 -->
-				<a href="myBoardList.do?page=${paging.endPage+1}">&raquo;</a>
+				<li class="page-item"><a class="page-link" href="myBoardList.do?page=${paging.endPage + 1}"><span>&raquo;</span></a></li>
 			</c:if>
-
-		</div>
+			</ul>
+		</nav>
 	</div>
 </div>
 <script>
@@ -81,5 +79,4 @@
 			console.log(th);
 		})
 	});
-	
 </script>

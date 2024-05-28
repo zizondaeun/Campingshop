@@ -62,8 +62,31 @@ let basket = {
 		let qty = -1;
 		if (event.target.nodeName == "I") {
 			if(event.target.className.indexOf("up") != -1) {
-				qty
+				qty = 1;
 			}
+		else if (event.target.nodeName == "INPUT") {
+			if(event.key == "ArrowUp") {
+				qty = 1;
+			}
+		}
+		price = document.querySelector('#p_price' + no).value;
+		qtyElem = document.querySelector('#p_num' + no);
+		sumElem = document.querySelector('#p_sum' + no);
+		
+		fetch('editCart.do', {
+			method: 'post',
+			headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+			body: 'no=' + no + '&qty=' + qty
+		})
+			.then(resolve => resolve.json())
+			.then(result => {
+				console.log(result)
+				qtyElem.value = parseInt(qtyElem.value) + qty; // 수량 변경
+				sumElem.innerText = (price * qty);
+				basket.reCalc();
+			}),
+			err => console.log(err);
+			
 		}
 		
 	}

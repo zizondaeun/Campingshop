@@ -63,11 +63,16 @@
 								</c:choose>
 							</c:if>
 						</c:if>
-							<c:if test="${reviewDetail.totalCnt == 0 }">
-								<c:forEach begin="1" end="5">
-									<small class="far fa-star"></small>
-								</c:forEach>
-							</c:if>
+						<c:if test="${(reviewDetail.sumRate/reviewDetail.totalCnt) - reviewDetail.truncRating == 0 && (reviewDetail.sumRate/reviewDetail.totalCnt) != 0 }">
+							<c:forEach begin="1" end="${5-reviewDetail.truncRating}">
+								<small class="far fa-star"></small>
+							</c:forEach>
+						</c:if>
+						<c:if test="${reviewDetail.totalCnt == 0 }">
+							<c:forEach begin="1" end="5">
+								<small class="far fa-star"></small>
+							</c:forEach>
+						</c:if>
 						<!-- 						<small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star-half-alt"></small> <small class="far fa-star"></small> -->
 						
 						

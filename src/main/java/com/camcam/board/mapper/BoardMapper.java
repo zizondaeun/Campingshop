@@ -5,7 +5,10 @@ import java.util.List;
 import com.camcam.board.vo.QnAVO;
 
 public interface BoardMapper {
-	//게시글 목록
-	List<QnAVO> selectBoard();
+	//QnA 목록
+	List<QnAVO> boardList();
+	//QnA 상세화면
+	QnAVO selectBoard(int boardNo);
+
 
 }

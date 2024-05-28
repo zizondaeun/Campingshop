@@ -4,10 +4,16 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.camcam.board.mapper.BoardMapper">
 
- 	<select id="selectBoard" resultType="com.camcam.board.vo.QnAVO">
+ 	<select id="boardList" resultType="com.camcam.board.vo.QnAVO">
 		select * 
 		from qna
-		order by board_no
+		order by board_no desc
 	</select> 
+	
+	<select id="selectBoard" resultType="com.camcam.board.vo.QnAVO" parameterType="int">
+		select *
+		from qna 
+		where board_no = #{boardNo}
+	</select>
 
 </mapper>

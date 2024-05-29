@@ -19,6 +19,7 @@
 					<tr>
 						<th>Products</th>
 						<th>Price</th>
+						<th>Discount</th>
 						<th>Quantity</th>
 						<th>Total</th>
 						<th>Remove</th>
@@ -28,6 +29,7 @@
 					<tr data-id="0" style="display:none;">
 						<td class="align-middle firstData"><img src="img/product-1.jpg" alt="" style="width: 50px;"> Product Name</td>
 						<td class="align-middle basketprice"><input type="hidden" name="p_price" id="p_price0" class="p_price" value="20000">$150</td>
+						<td class="align-middle basketdiscount"><input type="hidden" name="p_discount" id="p_discount0" class="p_discount" value="10000">$150</td>
 						<td class="align-middle">
 							<div class="input-group quantity mx-auto updown" style="width: 100px;">
 								<div class="input-group-btn">
@@ -58,16 +60,16 @@
 			<div class="bg-light p-30 mb-5">
 				<div class="border-bottom pb-2">
 					<div class="d-flex justify-content-between mb-3" id="sum_p_price">
-						<h6>Subtotal</h6>
+						<h6>금액합산</h6>
 						<h6>$150</h6>
 					</div>
-					<div class="d-flex justify-content-between">
-						<h6 class="font-weight-medium">Shipping</h6>
+					<div class="d-flex justify-content-between" id="sum_p_discount">
+						<h6 class="font-weight-medium">할인금액</h6>
 						<h6 class="font-weight-medium">$10</h6>
 					</div>
 				</div>
 				<div class="pt-2">
-					<div class="d-flex justify-content-between mt-2">
+					<div class="d-flex justify-content-between mt-2" id="sum_p_result">
 						<h5>Total</h5>
 						<h5>$160</h5>
 					</div>

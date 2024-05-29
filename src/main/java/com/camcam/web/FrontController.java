@@ -20,6 +20,7 @@ import com.camcam.cart.command.CartListControl;
 import com.camcam.cart.command.GetCartListControl;
 import com.camcam.cart.command.ModifyCartControl;
 import com.camcam.cart.command.RemoveCartControl;
+import com.camcam.cart.command.UserTotalCartCntControl;
 import com.camcam.category.command.GetCategoryControl;
 import com.camcam.common.Control;
 import com.camcam.home.command.HomeControl;
@@ -99,8 +100,7 @@ public class FrontController extends HttpServlet {
 		map.put("/addCart.do", new AddCartControl()); // 장바구니 담기
 		map.put("/modCart.do", new ModifyCartControl()); // 장바구니 수정
 		map.put("/removeCart.do", new RemoveCartControl()); // 장바구니 삭제
-		
-		
+		map.put("/userTotalCartCnt.do", new UserTotalCartCntControl()); // 장바구니 삭제
 		
 		// 카테고리
 		map.put("/getCategory.do", new GetCategoryControl());

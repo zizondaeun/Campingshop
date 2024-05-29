@@ -3,7 +3,7 @@
 <mapper namespace="com.camcam.cart.mapper.CartMapper">
 
 	<select id="selectCartList" resultType="com.camcam.cart.vo.CartVO">
-		select c.*, p.product_img , p.product_name
+		select c.cart_no, c.user_id, c.product_no, c.qty ,p.product_name, p.off_price, p.price, p.product_img, (p.price-p.off_price) as discount
 		from carts c
 		join products p
 		on c.product_no = p.product_no
@@ -21,5 +21,10 @@
 		delete carts
 		where cart_no = #{cartNo}
 	</delete>
+	
+	<insert id="insertCart" parameterType="com.camcam.cart.vo.CartVO">
+		insert into carts(cart_no, user_id, product_no, qty)
+		values (carts_no_seq.nextval, #{userId}, #{productNo}, #{qty})
+	</insert>
 
 </mapper>

@@ -11,4 +11,6 @@ public interface CartMapper {
 	int updateCart(CartVO cvo);
 	// 카트 삭제
 	int deleteCart(int cartNo);
+	// 카트 등록
+	int insertCart(CartVO cvo);
 }

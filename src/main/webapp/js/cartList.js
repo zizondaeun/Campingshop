@@ -15,6 +15,7 @@ Number.prototype.numberFormat = function() {
 let basket = {
 	cartCount: 0, //전체수량
 	cartTotal: 0, //전체금액
+	cartTotalDiscount: 0, // 전체할인금액
 
 	list: function() {
 		fetch('getCartList.do', {
@@ -27,16 +28,19 @@ let basket = {
 				console.log(result);
 				result.forEach((val, idx) => {
 					basket.cartCount += val.qty;
-					basket.cartTotal += (val.qty * val.price);
+					basket.cartTotal += val.qty * val.price;
+					basket.cartTotalDiscount += val.qty *(val.discount);
 					
 					const rowTr = document.querySelector('tr[data-id="0"]').cloneNode(true);
 					rowTr.style.display = 'table-row';
 					rowTr.setAttribute('data-id', val.cartNo);
 					rowTr.querySelector('.firstData').innerHTML = `<img src="productImg/${val.productImg}" alt="${val.productImg}" style="width: 50px;"> ${val.productName}</td>`;
 					rowTr.querySelector('.basketprice').childNodes[1].textContent = val.price.numberFormat() + "원";
-					console.log(rowTr);
 					rowTr.querySelector('td.basketprice input').value = val.price;
 					rowTr.querySelector('td.basketprice input').setAttribute('id', 'p_price'+ val.cartNo);
+					rowTr.querySelector('.basketdiscount').childNodes[1].textContent = val.discount.numberFormat() + "원";
+					rowTr.querySelector('td.basketdiscount input').value = val.discount;
+					rowTr.querySelector('td.basketdiscount input').setAttribute('id', 'p_discount'+ val.cartNo);
 					rowTr.querySelector('div.updown input').value = val.qty;
 					rowTr.querySelector('div.updown input').setAttribute('id','p_num'+val.cartNo)
 					// event
@@ -44,7 +48,7 @@ let basket = {
 					rowTr.querySelector('.minusBtn').onclick = () => basket.changePNum(val.cartNo);
 					rowTr.querySelector('.plusBtn').onclick = () => basket.changePNum(val.cartNo);
 					// 개별합계
-					rowTr.querySelector('td.sum').textContent = (val.qty * val.price).numberFormat() + "원";
+					rowTr.querySelector('td.sum').textContent = (val.qty * (val.price-val.discount)).numberFormat() + "원";
 					rowTr.querySelector('td.sum').setAttribute('id', 'p_sum' + val.cartNo)
 					document.querySelector('#basket').append(rowTr);
 				});
@@ -55,7 +59,11 @@ let basket = {
 	reCalc: function (){
 		// 수량, 금액 합계 계산
 		// 합계 자리에 출력
+		console.log(basket.cartTotal)
 		document.querySelector('#sum_p_price h6:nth-child(2)').textContent = basket.cartTotal.numberFormat()+'원';
+		console.log(basket.cartTotalDiscount);
+		document.querySelector('#sum_p_discount h6:nth-child(2)').textContent = "-"+ Number(basket.cartTotalDiscount).numberFormat()+'원';
+		document.querySelector('#sum_p_result h5:nth-child(2)').textContent = (basket.cartTotal - Number(basket.cartTotalDiscount)).numberFormat()+'원';
 	},
 	changePNum: function(no){
 		console.log(event);
@@ -73,6 +81,7 @@ let basket = {
 			}
 		}
 		price = document.querySelector('#p_price' + no).value;
+		discount = Number(document.querySelector('#p_discount' + no).value);
 		qtyElem = document.querySelector('#p_num' + no);
 		sumElem = document.querySelector('#p_sum' + no);
 		
@@ -84,11 +93,14 @@ let basket = {
 			.then(resolve => resolve.json())
 			.then(result => {
 				console.log(result)
+				console.log(qtyElem);
+				console.log(sumElem);
 				qtyElem.value = parseInt(qtyElem.value) + qty; // 수량 변경
-				sumElem.innerText = (price * qtyElem.value).numberFormat() + "원";
+				sumElem.innerText = ((price-discount) * qtyElem.value).numberFormat() + "원";
 				
 				basket.cartCount += qty;
 				basket.cartTotal += (price * qty);
+				basket.cartTotalDiscount += (discount * qty)
 				basket.reCalc();
 			}),
 			err => console.log(err);
@@ -107,24 +119,25 @@ let basket = {
 			removeEle = event.target.parentElement.parentElement.parentElement;
 		}
 		console.log(removeEle)
-		fetch('delCart.do', {
+		fetch('removeCart.do', {
 			method: 'post',
 			headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
 			body: 'no=' + no
 		})
 			.then(resolve => resolve.json())
-			.then(no, (result) => {
+			.then((result) => {
 				let price = document.querySelector('#p_price' + no).value; // 단가
 				let qty = document.querySelector('#p_num' + no).value; // 현재수량
+				let discount = document.querySelector('#p_discount' + no).value; // 현재수량
 				// 합계반영
 				basket.cartCount -= qty;
 				basket.cartTotal -= (price * qty);
+				basket.cartTotalDiscount -= (discount * qty)
 				basket.reCalc();
 				
 				removeEle.remove();
 			})
 			.catch(err => console.log(err));
-		
 	}
 
 }

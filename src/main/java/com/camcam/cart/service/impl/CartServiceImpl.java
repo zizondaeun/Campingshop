@@ -37,4 +37,10 @@ public class CartServiceImpl implements CartService{
 		return mapper.insertCart(cvo) == 1;
 	}
 
+
+	@Override
+	public int getUserToProductCnt(CartVO cvo) {
+		return mapper.getUserToProductCnt(cvo);
+	}
+
 }

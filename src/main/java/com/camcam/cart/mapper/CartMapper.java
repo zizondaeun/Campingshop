@@ -13,4 +13,6 @@ public interface CartMapper {
 	int deleteCart(int cartNo);
 	// 카트 등록
 	int insertCart(CartVO cvo);
+	// 유저가 해당 제품을 담은 이력이 있는지 확인
+	int getUserToProductCnt(CartVO cvo);
 }

@@ -26,5 +26,11 @@
 		insert into carts(cart_no, user_id, product_no, qty)
 		values (carts_no_seq.nextval, #{userId}, #{productNo}, #{qty})
 	</insert>
+	
+	<select id="getUserToProductCnt" parameterType="com.camcam.cart.vo.CartVO" resultType="int">
+		select count(*) as confirm_cnt 
+		from carts 
+		where user_id = #{userId} and product_no = #{productNo}
+	</select>
 
 </mapper>

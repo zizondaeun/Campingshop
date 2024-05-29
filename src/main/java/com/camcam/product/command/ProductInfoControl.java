@@ -6,6 +6,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.camcam.cart.service.CartService;
+import com.camcam.cart.service.impl.CartServiceImpl;
+import com.camcam.cart.vo.CartVO;
 import com.camcam.common.Control;
 import com.camcam.product.service.ProductService;
 import com.camcam.product.service.impl.ProductServiceImpl;
@@ -28,6 +31,7 @@ public class ProductInfoControl implements Control {
 		
 		ProductService productService = new ProductServiceImpl();
 		ReviewService reviewService = new ReviewServiceImpl();
+		CartService cartService = new CartServiceImpl();
 		ProductVO productInfo = productService.productInfo(Integer.parseInt(pNo));
 		productInfo.setUserId(userId);
 		ReviewVO review = new ReviewVO();
@@ -37,8 +41,13 @@ public class ProductInfoControl implements Control {
 		
 		ReviewVO reviewDetail = reviewService.totalCount(Integer.parseInt(pNo));
 		
+		CartVO cart = new CartVO();
+		cart.setUserId(userId);
+		System.out.println("1111111111111111" + cart.getUserId());
+		cart.setProductNo(Integer.parseInt(pNo));
 		
-		
+		int userToProductCnt = cartService.getUserToProductCnt(cart);
+		System.out.println("ddddddddddddddddfdfsdfdfd" + userToProductCnt);
 		
 		int truncRate;
 		if(reviewDetail.getTotalCnt() != 0) {
@@ -53,6 +62,7 @@ public class ProductInfoControl implements Control {
 		req.setAttribute("keyword", keyword);
 		req.setAttribute("reviewDetail", reviewDetail);
 		req.setAttribute("userReviewCnt", userReviewCnt);
+		req.setAttribute("userToProductCnt", userToProductCnt);
 		
 		req.getRequestDispatcher(path).forward(req, resp);
 		

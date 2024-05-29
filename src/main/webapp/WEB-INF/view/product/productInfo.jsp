@@ -20,7 +20,8 @@ img{
 				<a class="breadcrumb-item text-dark" href="home.do">Home</a> <a class="breadcrumb-item text-dark" href="productList.do?keyword=${keyword }">Shop</a> <span class="breadcrumb-item active">Shop Detail</span>
 			</nav>
 		</div>
-	</div>
+		
+	</div> 
 </div>
 <!-- Breadcrumb End -->
 

@@ -17,10 +17,17 @@ public class BoardInfoControl implements Control {
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String path = "board/board.tiles";
 		String bno = req.getParameter("bno");
-		System.out.println(bno + "1004");
+		String page = req.getParameter("page");
+		String sc = req.getParameter("searchCondition");
+		String kw = req.getParameter("keyword");
+		
 		BoardService svc = new BoardServiceImpl();
 		QnAVO vo = svc.getBoard(Integer.parseInt(bno));
+		
 		req.setAttribute("result", vo);
+		req.setAttribute("page", page);
+		req.setAttribute("searchCondition", sc);
+		req.setAttribute("keyword", kw);
 		
 		req.getRequestDispatcher(path).forward(req, resp);
 	}

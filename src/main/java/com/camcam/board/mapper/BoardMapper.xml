@@ -10,6 +10,46 @@
 		order by board_no desc
 	</select> 
 	
+	<select id="boardListPaging" parameterType="com.camcam.common.SearchVO">
+		select r.*
+		from (select rownum rn, a.*
+			from (select *
+					from qna b
+					where 
+					<choose>
+						<when test="searchCondition == 'T'.toString()">
+							title like '%' ||#{keyword}|| '%'
+						</when>
+						<when test="searchCondition == 'W'.toString()">
+							user_id like '%' ||#{keyword}|| '%'
+						</when>
+						<otherwise>
+							title like '%' ||#{keyword}|| '%' or user_id like '%' ||#{keyword}|| '%'
+						</otherwise>
+					</choose>
+					order by b.board_no desc) a
+			<![CDATA[
+			where rownum <= (#{page} * 12) or #{page} = 0)r
+			]]>
+		where r.rn > (#{page} - 1) * 12
+	</select>
+	
+	<select id="getTotalCnt" resultType="int" parameterType="com.camcam.common.SearchVO">
+		select count(1) from qna
+		where
+		<choose>
+			<when test="searchCondition == 'T'.toString()">
+				title like '%' ||#{keyword}|| '%'
+			</when>
+			<when test="searchCondition == 'W'.toString()">
+				user_id like '%' ||#{keyword}|| '%'
+			</when>
+			<otherwise>
+				title like '%' ||#{keyword}|| '%' or user_id like '%' ||#{keyword}|| '%'
+			</otherwise>
+		</choose>
+	</select>
+	
 	<select id="selectBoard" resultType="com.camcam.board.vo.QnAVO" parameterType="int">
 		select *
 		from qna 

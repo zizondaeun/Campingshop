@@ -12,8 +12,15 @@ public class OrderControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-
+		String path = "order/order.tiles";
+		
+		String pno = req.getParameter("pno");
+		String cnt = req.getParameter("cnt");
+		
+		req.setAttribute("productNo", pno);
+		req.setAttribute("cnt", cnt);
+		
+		req.getRequestDispatcher(path).forward(req, resp);
 	}
 
 }

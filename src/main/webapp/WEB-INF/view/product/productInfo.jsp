@@ -6,7 +6,11 @@
 .bodyImg {
 	width: 500px;
 	height: 500px;
-	display: flex;
+	overflow: hidden;
+
+}
+img{
+	display:blcok;
 }
 </style>
 <div class="container-fluid">
@@ -139,7 +143,8 @@
 						<div class="bodyImg">
 							<img src="productImg/${product.productImg2 }" alt="Image"
 								onclick="window.open(this.src)"> 
-							<h3> ${product.explain }</h3>
+							<img src="productImg/${product.explain } " alt="Image"
+								onclick="window.open(this.src)">
 							<img src="productImg/${product.productImg3 }" alt="Image"
 								onclick="window.open(this.src)">
 						</div>

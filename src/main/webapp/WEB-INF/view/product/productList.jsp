@@ -72,10 +72,13 @@
 					<div class="col-lg-4 col-md-6 col-sm-6 pb-1">
 						<div class="product-item bg-light mb-4">
 							<div class="product-img position-relative overflow-hidden">
-								<img class="img-fluid w-100" src="productImg/${product.productImg }" alt="">
-								<div class="product-action">
-									<a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a> <a class="btn btn-outline-dark btn-square" href="productInfo.do?pno=${product.productNo}&keyword=${keyword}"><i class="fa fa-search"></i></a>
-								</div>
+								<input type="hidden" id="${product.productNo }" value="${product.productNo }">
+								<a href="productInfo.do?pno=${product.productNo}&keyword=${keyword}">
+									<img class="img-fluid w-100" src="productImg/${product.productImg }" alt="">
+								</a>
+<!-- 								<div class="product-action"> -->
+<%-- 									<a class="btn btn-outline-dark btn-square" href="addCart.do?cnt=1&pno=${product.productNo }&uid=${logId}"><i class="fa fa-shopping-cart"></i></a> <a class="btn btn-outline-dark btn-square" href="productInfo.do?pno=${product.productNo}&keyword=${keyword}"><i class="fa fa-search"></i></a> --%>
+<!-- 								</div> -->
 							</div>
 							<div class="text-center py-4">
 								<a class="h6 text-decoration-none text-truncate" href="productInfo.do?pno=${product.productNo}&uid=${logId }&&keyword=${keyword}">${product.productName }</a>
@@ -160,3 +163,4 @@
 	</div>
 </div>
 <!-- Shop End -->
+<script src="js/productList.js"></script>

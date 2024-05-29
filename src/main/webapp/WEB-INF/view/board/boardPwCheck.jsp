@@ -17,7 +17,7 @@
             <div>
                 <input type="hidden" name="bno" value="${result.boardNo }">
                 <input type="hidden" name="userId" value="${result.userId }">
-                <input type="password" name="pw">
+                <input type="password" name="boardPw">
                 <button type="submit" id="subBtn">확인</button>
             </div>
         </div>

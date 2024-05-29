@@ -25,13 +25,18 @@ public class BoardServiceImpl implements BoardService {
 		return mapper.getTotalCnt(search);
 	}
 
-	@Override
-	public QnAVO getBoard(QnAVO vo) {
-		return mapper.selectBoard(vo);
-	}
+//	@Override
+//	public QnAVO getBoard(QnAVO vo) {
+//		return mapper.selectBoard(vo);
+//	}
 
 	@Override
 	public QnAVO getBoardPw(QnAVO vo) {
 		return mapper.selectBoardPw(vo);
+	}
+
+	@Override
+	public boolean addBoard(QnAVO vo) {
+		return mapper.insertBoard(vo) == 1;
 	}
 }

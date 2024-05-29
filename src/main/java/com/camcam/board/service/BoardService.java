@@ -11,10 +11,10 @@ public interface BoardService {
 	//페이징 전체건수
 	int getTotal(SearchVO search);
 	
-	//QnA 상세화면
-	QnAVO getBoard(QnAVO vo); //
-	//QnA pw체크
+	//QnA 상세화면 전 pw체크
 	QnAVO getBoardPw(QnAVO vo);
+	//QnA 글 등록
+	boolean addBoard(QnAVO vo);
 
 	
 }

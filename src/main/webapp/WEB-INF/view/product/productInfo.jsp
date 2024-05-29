@@ -98,7 +98,7 @@
 				<p class="mb-4">${product.explain }</p>
 				<div class="d-flex mb-3"></div>
 				<div class="d-flex mb-4">
-					<button class="btn btn-primary px-3">
+					<button class="btn btn-primary px-3" id="likeBtn">
 						<i class="fas fa-heart"></i> Add To Wish List
 					</button>
 				</div>
@@ -372,7 +372,12 @@
 <script>
 	const userReviewCnt = '${userReviewCnt}'
 	const pno = '${product.productNo}';
-	const writer = '${logId}';
+ 	const writer = '${logId}';
 </script>
 <script src="js/review.js"></script>
+<script>
+	const pno2 = '${product.productNo}';
+ 	const logId = '${logId}';
+	const cartUserToProduct = '${userToProductCnt}'
+</script>
 <script src="js/productInfo.js"></script>

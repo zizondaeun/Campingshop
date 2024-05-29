@@ -4,7 +4,8 @@
 
 document.querySelector('.addBtn').addEventListener('click', plusNumber);
 document.querySelector('.minusBtn').addEventListener('click', minusNumber);
-document.querySelector('#addCart').addEventListener('click', addCart)
+document.querySelector('#addCart').addEventListener('click', addCart);
+document.querySelector('#likeBtn').addEventListener('click', modLike);
 
 function plusNumber(){
 	if(Number(document.querySelector('.cntInput').value) < 9) {
@@ -23,20 +24,32 @@ function minusNumber(){
 }
 
 function addCart() {
-	let cnt = document.querySelector('.cntInput').value
-	fetch('addCart.do', {
-		method: 'post',
-		headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-		body: `uid=${writer}&pno=${pno}&cnt=${cnt}`
-	})
-		.then(resolve => resolve.json())
-		.then(result => {
-			console.log(result);
-			if(result.retCode == 'OK'){
-				if(confirm('장바구니에 담았습니다. 장바구니로 이동하시겠습니까?')){
-					location.href='cartList.do'
-				}
-			}
+	if(cartUserToProduct == 0) {
+		let cnt = document.querySelector('.cntInput').value
+		fetch('addCart.do', {
+			method: 'post',
+			headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+			body: `uid=${logId}&pno=${pno2}&cnt=${cnt}`
 		})
-		.catch(err => console.log(err));
+			.then(resolve => resolve.json())
+			.then(result => {
+				console.log(result);
+				if(result.retCode == 'OK'){
+					if(confirm('장바구니에 담았습니다. 장바구니로 이동하시겠습니까?')){
+						document.getElementById('addCart').disabled = true;
+						location.href='cartList.do';
+					}
+				}
+			})
+			.catch(err => console.log(err));
+		
+	} else {
+		if(confirm('이미 장바구니에 담은 제품입니다. 장바구니로 이동하시겠습니까?')){
+			location.href='cartList.do';
+		}
+	}
+}
+
+function modLike(){
+	
 }

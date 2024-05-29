@@ -88,5 +88,18 @@
 		ORDER SIBLINGS BY CATEGORY_CODE DESC
 	</select>
 	
+		<!-- 관리자 상품등록  -->
+	<insert id="insertBoard" parameterType="com.camcam.product.vo.ProductVO">
+		insert into products (category_code, product_no, product_name, price, explain, product_Img, product_Img2, product_img3)
+		values (#{categoryCode}, PRODUCT_NO_SEQ.nextVal, #{productName}, #{price}, #{explain}, #{productImg}, #{productImg2}, #{productImg3})
+	</insert>
+	
+	<select id="categoryList" resultType="map">
+	  select category_code as "category_code", category_name as "category_name", pre_category as "pre_category"
+	  from category c
+	  START WITH PRE_CATEGORY IS NULL
+	  CONNECT BY PRE_CATEGORY = PRIOR CATEGORY_CODE
+	  ORDER SIBLINGS BY CATEGORY_CODE
+	</select>
 	
 </mapper>

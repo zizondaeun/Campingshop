@@ -25,10 +25,9 @@ public class ProductInfoControl implements Control {
 		String pNo = req.getParameter("pno");
 		String userId = req.getParameter("uid");
 		String keyword = req.getParameter("keyword");
-		
-		userId = userId ==null ? " " : userId;
-		
-		
+
+		userId = userId == null ? " " : userId;
+
 		ProductService productService = new ProductServiceImpl();
 		ReviewService reviewService = new ReviewServiceImpl();
 		CartService cartService = new CartServiceImpl();
@@ -38,34 +37,37 @@ public class ProductInfoControl implements Control {
 		review.setUserId(userId);
 		review.setProductNo(Integer.parseInt(pNo));
 		int userReviewCnt = reviewService.getUserReviewCnt(review);
-		
+
 		ReviewVO reviewDetail = reviewService.totalCount(Integer.parseInt(pNo));
-		
+
 		CartVO cart = new CartVO();
 		cart.setUserId(userId);
 		System.out.println("1111111111111111" + cart.getUserId());
 		cart.setProductNo(Integer.parseInt(pNo));
-		
+
 		int userToProductCnt = cartService.getUserToProductCnt(cart);
 		System.out.println("ddddddddddddddddfdfsdfdfd" + userToProductCnt);
-		
+		System.out.println("확인" + productInfo);
+		System.out.println(productInfo.getProductImg());
+		System.out.println("설명" + productInfo.getExplain());
+
 		int truncRate;
-		if(reviewDetail.getTotalCnt() != 0) {
+		if (reviewDetail.getTotalCnt() != 0) {
 			truncRate = reviewDetail.getSumRate() / reviewDetail.getTotalCnt();
 		} else {
 			truncRate = 0;
 		}
-		
+
 		reviewDetail.setTruncRating(truncRate);
-		
+
 		req.setAttribute("product", productInfo);
 		req.setAttribute("keyword", keyword);
 		req.setAttribute("reviewDetail", reviewDetail);
 		req.setAttribute("userReviewCnt", userReviewCnt);
 		req.setAttribute("userToProductCnt", userToProductCnt);
-		
+
 		req.getRequestDispatcher(path).forward(req, resp);
-		
+
 	}
 
 }

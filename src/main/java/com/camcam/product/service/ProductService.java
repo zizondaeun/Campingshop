@@ -8,17 +8,23 @@ import com.camcam.product.vo.ProductVO;
 
 public interface ProductService {
 	public List<ProductVO> recentProductList();
-	
+
 	public List<ProductVO> productList(SearchVO search);
-	
+
 	public int getTotal(SearchVO search);
 
 	public ProductVO productInfo(int productNo);
-	
+
 	public List<Map<String, String>> categoryTemp();
-	
+
+	boolean addProduct(ProductVO product);
+
+	public List<Map<String, String>> categoryList();
+
 	// 찜하기 관련
 	public boolean getLikeVal(ProductVO product);
+
 	public boolean addLike(ProductVO product);
+
 	public boolean removeLike(ProductVO product);
 }

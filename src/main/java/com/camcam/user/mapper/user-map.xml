@@ -3,82 +3,90 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.camcam.user.mapper.UserMapper">
-	
-	
 
-	<insert id="insertUser" parameterType="com.camcam.user.vo.UserVO">
-		insert into USERS(user_id, password, user_name, email, user_tel, user_resp, address)
+
+
+	<insert id="insertUser"
+		parameterType="com.camcam.user.vo.UserVO">
+		insert into USERS(user_id, password, user_name, email,
+		user_tel, user_resp, address)
 		values(#{userId},#{passWord},#{userName},#{email},#{userTel},#{userResp},#{address})
 	</insert>
-	
-	<select id="selectUserCountById" parameterType="String" resultType="int">
-        SELECT COUNT(*) FROM USERS WHERE user_id = #{userId}
-    </select>
-    
-    <select id ="selectMember" resultType="com.camcam.user.vo.UserVO">
-    	select *
-   		 from users
-   		 where user_id = #{id}
-  		 and  password = #{pw}
-    </select>
-    
-    <select id ="selectMember2" resultType="com.camcam.user.vo.UserVO">
-    	select *
-   		 from users
-   		 where user_id = #{id}
-    </select>
-		<select id="selectUserList" resultType="com.camcam.user.vo.UserVO">
+
+	<select id="selectUserCountById" parameterType="String"
+		resultType="int">
+		SELECT COUNT(*) FROM USERS WHERE user_id = #{userId}
+	</select>
+
+	<select id="selectMember" resultType="com.camcam.user.vo.UserVO">
+		select *
+		from users
+		where user_id = #{id}
+		and password = #{pw}
+	</select>
+
+	<select id="selectMember2"
+		resultType="com.camcam.user.vo.UserVO">
+		select *
+		from users
+		where user_id = #{id}
+	</select>
+	<select id="selectUserList"
+		resultType="com.camcam.user.vo.UserVO">
 		select * from users
 		order by user_id
 	</select>
-	
-	<select id = "selectLoginForm" resultType="com.camcam.user.vo.UserVO"> 
-	select * 
-	from users
-	where user_id = #{userId}
-	</select>
-	
-	 <delete id="delUserList" parameterType="String">
-		delete from users
+
+	<select id="selectLoginForm"
+		resultType="com.camcam.user.vo.UserVO">
+		select *
+		from users
 		where user_id = #{userId}
-	</delete>  	
-	
-	<select id="selectIdFined" resultType="com.camcam.user.vo.UserVO">
-    select user_id
-    from users
-    where user_name = #{userName}
-    and user_Tel = #{userTel}
 	</select>
-	
-	<select id = "selectPwFined" resultType="com.camcam.user.vo.UserVO">
+
+	<!-- <delete id="deleteUser" parameterType="String"> 
+	 	delete from users 
+	 	where user_id = #{userId} 
+	</delete>  -->
+
+	<select id="selectIdFined"
+		resultType="com.camcam.user.vo.UserVO">
+		select user_id
+		from users
+		where user_name = #{userName}
+		and user_Tel = #{userTel}
+	</select>
+
+	<select id="selectPwFined"
+		resultType="com.camcam.user.vo.UserVO">
 		select password
-   		 from users
-   		 where user_id = #{userName}
-  		 and  user_Tel = #{userTel}
-         and user_name = #{userName}
+		from users
+		where user_id = #{userName}
+		and user_Tel = #{userTel}
+		and user_name = #{userName}
 	</select>
-	
+
 	<update id="updateUser">
-        update users
+		update users
 		set password = #{passWord},
-   		user_name = #{userName},
-    	email = #{email},
-    	user_tel = #{userTel},
-    	address = #{address}
-    	where user_id = #{userId}
-    </update>
-    
-    <delete id="deleteUser" parameterType="String">
-    	delete from users
+		user_name = #{userName},
+		email = #{email},
+		user_tel = #{userTel},
+		address = #{address}
+		where user_id = #{userId}
+	</update>
+
+	<delete id="deleteUser" parameterType="String">
+		delete from users
 		where user_id= user_id
-		and  password = #{passWord}
-   
-    </delete>
-    
-    <select id="selectUser">
-    	select *
-   		 from users
-   		 where user_id = #{id}
-    </select>
- 
+		and password = #{passWord}
+
+	</delete>
+
+	<select id="selectUser">
+		select *
+		from users
+		where user_id = #{userId}
+	</select>
+
 </mapper>

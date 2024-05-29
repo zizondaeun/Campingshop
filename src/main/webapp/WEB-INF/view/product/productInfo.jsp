@@ -137,9 +137,10 @@
 					<div class="tab-pane fade show active" id="tab-pane-1">
 						<h4 class="mb-3">Product Description</h4>
 						<div class="bodyImg">
-							<img src="productImg/${product.productImg }" alt="Image"
-								onclick="window.open(this.src)"> <img
-								src="productImg/${product.productImg2 }" alt="Image"
+							<img src="productImg/${product.productImg2 }" alt="Image"
+								onclick="window.open(this.src)"> 
+							<h3> ${product.explain }</h3>
+							<img src="productImg/${product.productImg3 }" alt="Image"
 								onclick="window.open(this.src)">
 						</div>
 					</div>

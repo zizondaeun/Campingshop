@@ -7,11 +7,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-#productList {
-	display: flex;
-	justify-content: space-around;
-}
-
 img {
 	width: 300px;
 	heitht: 300px;
@@ -21,17 +16,36 @@ img {
 p {
 	text-align: center;
 }
+
+h3 {
+	padding-left: 50px;
+}
+
+.center {
+	margin-top: 30px;
+	padding-bottom: 50px;
+}
+
+.row {
+	padding-left: 70px;
+}
+
+.trhead, tbody tr {
+	text-align: center;
+}
 </style>
 </head>
 <script>
-	var nameVal = document.querySelector('#product_name');
-	function check() {
-		if (nameVal.value == '') {
-			alret('상품명을 입력해주세요!');
-			nameVal.select();
-			nameVal.focus();
+	window.onload = function() {
+		var name = document.querySelector('#product_name');
+		function check() {
+			if (name.value == '') {
+				alret('상품명을 입력해주세요!');
+				return false;
+				nameVal.select();
+				nameVal.focus();
+			}
 		}
-		
 	}
 </script>
 <body>
@@ -59,15 +73,19 @@ p {
 			</tr>
 			<tr>
 				<th>상품이미지</th>
-				<td><input type="file" name="productImg"></td>
+				<td><input class="imgBtn" type="file" name="productImg"></td>
 			</tr>
 			<tr>
 				<th>상품상세이미지1</th>
-				<td><input type="file" name="productImg2"></td>
+				<td><input class="imgBtn" type="file" name="productImg2"></td>
+			</tr>
+			<tr>
+				<th>상품설명1</th>
+				<td><textarea cols="40" rows="5" name="explain"></textarea></td>
 			</tr>
 			<tr>
 				<th>상품상세이미지2</th>
-				<td><input type="file" name="productImg3"></td>
+				<td><input class="imgBtn"  type="file" name="productImg3"></td>
 			</tr>
 			<tr align="center">
 				<td colspan="2"><input type="submit" id="regist" value="등록"

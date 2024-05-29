@@ -21,6 +21,7 @@ public interface ProductMapper {
 	// 물품 카테고리 리스트
 	public List<Map<String, String>> categoryTemp();
 	
+	// (관리자) 상품등록
 	public int insertBoard(ProductVO product);
 	
 	// 상품카테고리 출력.

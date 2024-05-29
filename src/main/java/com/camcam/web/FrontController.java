@@ -21,6 +21,7 @@ import com.camcam.cart.command.ModifyCartControl;
 import com.camcam.cart.command.RemoveCartControl;
 import com.camcam.category.command.GetCategoryControl;
 import com.camcam.common.Control;
+import com.camcam.delivery.command.DeliManageControl;
 import com.camcam.home.command.HomeControl;
 import com.camcam.likes.command.AddLikesControl;
 import com.camcam.likes.command.RemoveLikesControl;
@@ -102,7 +103,6 @@ public class FrontController extends HttpServlet {
 		map.put("/removeCart.do", new RemoveCartControl()); // 장바구니 삭제
 		
 		
-		
 		// 카테고리
 		map.put("/getCategory.do", new GetCategoryControl());
 		
@@ -149,6 +149,8 @@ public class FrontController extends HttpServlet {
 		map.put("/boardList.do", new BoardListControl()); //qna 게시판으로 이동(리스트)
 		map.put("/boardInfo.do", new BoardInfoControl()); //qna 상세화면으로 이동
 		
+		// 배송관리
+		map.put("/deliveryManage.do", new DeliManageControl());
 	}
 
 	// service.

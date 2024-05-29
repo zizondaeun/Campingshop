@@ -29,6 +29,7 @@
 		<mapper resource="com/camcam/product/mapper/product-map.xml" />
 		<mapper resource="com/camcam/review/mapper/review-map.xml" />
 		<mapper resource="com/camcam/cart/mapper/cart-map.xml" />
+		<mapper resource="com/camcam/delivery/mapper/DeliveryMapper.xml" />
 <!-- 		<mapper resource="com/camcam/reply/mapper/reply-map.xml" /> -->
 <!-- 		<mapper resource="com/camcam/notice/mapper/notice-map.xml" /> -->
 <!-- 		<mapper resource="com/camcam/cart/mapper/cart-map.xml" /> -->

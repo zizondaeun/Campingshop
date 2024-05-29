@@ -21,7 +21,7 @@ public class UserListControl implements Control {
 		path = "admin/userList.tiles";
 		UserService svc = new UserServiceImpl();
 		List<UserVO> list = svc.userList();
-		System.out.println(list);
+		System.out.println("유저리스트확인" + list);
 		/*
 		 * UserServiceImpl uService = new UserServiceImpl(); List<UserVO> uList =
 		 * uService.userList(); if(!uList.isEmpty()) { req.setAttribute("users", uList);

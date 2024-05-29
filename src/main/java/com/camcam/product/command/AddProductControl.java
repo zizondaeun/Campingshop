@@ -32,6 +32,7 @@ public class AddProductControl implements Control {
 		String img = mr.getFilesystemName("productImg");
 		String img2 = mr.getFilesystemName("productImg2");
 		String img3 = mr.getFilesystemName("productImg3");
+		String explain = mr.getFilesystemName("explain");
 		
 		ProductService svc = new ProductServiceImpl();
 
@@ -42,6 +43,7 @@ public class AddProductControl implements Control {
 		vo.setProductImg(img);
 		vo.setProductImg2(img2);
 		vo.setProductImg3(img3);
+		vo.setExplain(explain);
 		
 		if (svc.addProduct(vo)) {
 			System.out.println("등록성공.");

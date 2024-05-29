@@ -39,7 +39,7 @@ public class ProductInfoControl implements Control {
 		
 		System.out.println("확인"+ productInfo);
 		System.out.println(productInfo.getProductImg());
-		
+		System.out.println("설명" + productInfo.getExplain());
 		
 		int truncRate;
 		if(reviewDetail.getTotalCnt() != 0) {

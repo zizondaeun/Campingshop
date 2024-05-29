@@ -12,4 +12,5 @@ public class SearchVO {
 	// 댓글관련
 	private int boardNo;
 	private int rpage;
+	
 }

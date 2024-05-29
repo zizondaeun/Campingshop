@@ -8,6 +8,7 @@ import com.camcam.board.mapper.BoardMapper;
 import com.camcam.board.service.BoardService;
 import com.camcam.board.vo.QnAVO;
 import com.camcam.common.DataSource;
+import com.camcam.common.SearchVO;
 
 public class BoardServiceImpl implements BoardService {
 	
@@ -15,13 +16,17 @@ public class BoardServiceImpl implements BoardService {
 	BoardMapper mapper = session.getMapper(BoardMapper.class);
 	
 	@Override
-	public List<QnAVO> boardList() {
-		return mapper.boardList();
+	public List<QnAVO> boardList(SearchVO search) {
+		return mapper.boardListPaging(search);
+	}
+
+	@Override
+	public int getTotal(SearchVO search) {
+		return mapper.getTotalCnt(search);
 	}
 
 	@Override
 	public QnAVO getBoard(int boardNo) {
 		return mapper.selectBoard(boardNo);
 	}
-
 }

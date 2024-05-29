@@ -14,7 +14,9 @@ public interface BoardMapper {
 	int getTotalCnt(SearchVO search);
 	
 	//QnA 상세화면
-	QnAVO selectBoard(int boardNo);
+	QnAVO selectBoard(QnAVO vo);
+	//QnA pw체크
+	QnAVO selectBoardPw(QnAVO vo);
 	
 
 

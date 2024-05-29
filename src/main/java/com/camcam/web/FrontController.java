@@ -154,6 +154,7 @@ public class FrontController extends HttpServlet {
 
 		// 배송관리
 		map.put("/deliveryManage.do", new DeliManageControl());
+
 	}
 
 	// service.

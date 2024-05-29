@@ -12,7 +12,9 @@ public interface BoardService {
 	int getTotal(SearchVO search);
 	
 	//QnA 상세화면
-	QnAVO getBoard(int boardNo);
+	QnAVO getBoard(QnAVO vo); //
+	//QnA pw체크
+	QnAVO getBoardPw(QnAVO vo);
 
 	
 }

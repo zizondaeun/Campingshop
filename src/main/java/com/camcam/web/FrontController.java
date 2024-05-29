@@ -34,6 +34,8 @@ import com.camcam.mypage.command.MyOrderListControl;
 import com.camcam.mypage.command.MyPageControl;
 import com.camcam.mypage.command.MyWishListControl;
 import com.camcam.mypage.command.UpdateMyBoardControl;
+import com.camcam.product.command.AddProductControl;
+import com.camcam.product.command.AddProductFormControl;
 import com.camcam.product.command.ProductInfoControl;
 import com.camcam.product.command.ProductListControl;
 import com.camcam.review.command.AddReviewControl;
@@ -124,6 +126,10 @@ public class FrontController extends HttpServlet {
 		
 		// 유저 관련(관리자)
 		map.put("/userList.do", new UserListControl());  // 회원 리스트
+		
+		// 제품 관련(관리자)
+		map.put("/addProductForm.do", new AddProductFormControl()); // 상품 등록화면
+		map.put("/addProduct.do", new AddProductControl()); 
 		
 		// 마이페이지
 		map.put("/myPage.do", new MyPageControl()); //마이페이지로 이동

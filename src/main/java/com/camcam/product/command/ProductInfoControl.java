@@ -37,7 +37,8 @@ public class ProductInfoControl implements Control {
 		
 		ReviewVO reviewDetail = reviewService.totalCount(Integer.parseInt(pNo));
 		
-		
+		System.out.println("확인"+ productInfo);
+		System.out.println(productInfo.getProductImg());
 		
 		
 		int truncRate;

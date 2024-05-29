@@ -56,6 +56,17 @@ public class ProductServiceImpl implements ProductService{
 		return mapper.deleteLike(product) == 1;
 	}
 
+	@Override
+	public boolean addProduct(ProductVO product) {
+		// TODO Auto-generated method stub
+		return mapper.insertBoard(product) == 1;
+	}
+
+	@Override
+	public List<Map<String, String>> categoryList() {
+		return mapper.categoryList();
+	}
+
 
 	
 	

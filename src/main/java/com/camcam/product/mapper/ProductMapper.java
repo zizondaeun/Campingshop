@@ -21,6 +21,11 @@ public interface ProductMapper {
 	// 물품 카테고리 리스트
 	public List<Map<String, String>> categoryTemp();
 	
+	public int insertBoard(ProductVO product);
+	
+	// 상품카테고리 출력.
+	public List<Map<String, String>> categoryList();
+	
 	// 찜하기 관련
 	public int getLikeVal(ProductVO product);
 	public int insertLike(ProductVO product); // 찜하기 추가

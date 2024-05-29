@@ -7,10 +7,14 @@ public class ProductVO {
 	private int productNo;
 	private String categoryCode;
 	private String productName;
-	private int price;
+	private String price;
 	private int offPrice;
 	private String explain;
+	
 	private String productImg;
+	private String productImg2;
+	private String productImg3;
+	
 	private int productCnt;
 	private double rating;
 	private String inputDate;

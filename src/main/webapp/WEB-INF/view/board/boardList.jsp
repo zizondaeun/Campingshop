@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="my" %>	
@@ -36,12 +35,17 @@
     width: 13px;
     height: 13px;
 }
+.center {
+    text-align: center; 
+}
+.center form {
+    display: inline-block; 
+}
 </style>
 <h3 align="center">Q&A</h3>
-
 <div class="table-container">
 	<div align="right">
-		<button type="submit" class="btn btn-dark" id="modBtn" style="margin-bottom: 10px; background-color: white; 
+		<button type="button" onclick="location.href='addForm.do'" class="btn btn-dark" id="modBtn" style="margin-bottom: 10px; background-color: white; 
     		color: black; border: 1px solid black;">WRITE</button>
 	</div>
 	<table class="table">

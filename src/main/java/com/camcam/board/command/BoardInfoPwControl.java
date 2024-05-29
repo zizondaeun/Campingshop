@@ -18,22 +18,16 @@ public class BoardInfoPwControl implements Control {
 		String path = "board/boardPwCheck.tiles";
 		String id = req.getParameter("userId");
 		String bno = req.getParameter("bno");
-		String pw = req.getParameter("boardPw"); //이거 맞아?
 		
 		BoardService svc = new BoardServiceImpl();
 		QnAVO vo = new QnAVO();
 		vo.setUserId(id);
 		vo.setBoardNo(Integer.parseInt(bno));
-		vo.setBoardPw(pw);
 
 		req.setAttribute("result", vo);
 		
-		if(svc.getBoardPw(vo).getUserId().equals(id)) { //*원래는 폼태그 넣어서 이동해야한대..
-//			resp.sendRedirect("boardInfoPw.do"); //두개 같이 못쓴대...
-			req.getRequestDispatcher(path).forward(req, resp);
-		}else {
-			resp.sendRedirect("error.do");
-		}
+		req.getRequestDispatcher(path).forward(req, resp);
+
 	}
 
 }

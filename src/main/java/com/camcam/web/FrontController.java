@@ -12,9 +12,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.camcam.board.command.AddBoardControl;
+import com.camcam.board.command.AddFormControl;
 import com.camcam.board.command.BoardInfoControl;
 import com.camcam.board.command.BoardInfoPwControl;
 import com.camcam.board.command.BoardListControl;
+import com.camcam.board.command.ModifyControl;
+import com.camcam.board.command.ModifyFormControl;
 import com.camcam.cart.command.AddCartControl;
 import com.camcam.cart.command.CartListControl;
 import com.camcam.cart.command.GetCartListControl;
@@ -160,7 +164,11 @@ public class FrontController extends HttpServlet {
 		map.put("/boardList.do", new BoardListControl()); // qna 게시판으로 이동(리스트)
 		map.put("/boardInfoPw.do", new BoardInfoPwControl()); // qna 상세로 가기위한 pw 체크창으로 이동
 		map.put("/boardInfo.do", new BoardInfoControl()); // qna 상세화면으로 이동
-
+		map.put("/addForm.do", new AddFormControl()); // qna 글 등록으로 이동
+		map.put("/addBoard.do", new AddBoardControl()); //qna 글 등록 기능
+		map.put("/modBoardForm.do", new ModifyFormControl()); //qna 글 수정으로 이동
+		map.put("/updateBoard.do", new ModifyControl()); //qna 글 수정 기능
+		
 		// 배송관리
 		map.put("/deliveryManage.do", new DeliManageControl());
 

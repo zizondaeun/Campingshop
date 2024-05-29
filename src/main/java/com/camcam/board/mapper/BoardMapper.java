@@ -13,10 +13,10 @@ public interface BoardMapper {
 	//QnA 전체건수 계산
 	int getTotalCnt(SearchVO search);
 	
-	//QnA 상세화면
-	QnAVO selectBoard(QnAVO vo);
-	//QnA pw체크
+	//QnA 상세화면 전 pw체크
 	QnAVO selectBoardPw(QnAVO vo);
+	//QnA 글 등록
+	int insertBoard(QnAVO vo);
 	
 
 

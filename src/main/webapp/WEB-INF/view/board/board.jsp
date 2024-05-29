@@ -23,25 +23,33 @@
 		<td>${result.boardNo }</td>
 		<th>WRITER</th>
 		<td>${result.userId }</td>
+		<th>DATE</th>
+		<td><fmt:formatDate value="${result.createDate }" pattern="yyyy/MM/dd" /></td>
 	</tr>
 	<tr>
 		<th>TITLE<td>
-		<td>${result.title }</td>
+		<td colspan="6">${result.title }</td>
 	</tr>
 	<tr>
 		<th>CONTENT<th>
-		<td>${result.content }</td>
+		<td colspan="6">${result.content }</td>
 	</tr>
-	<!-- <tr>
-		<th>DATE</th>
-		<td>${result.createDate }</td>
-	</tr> -->
 	<tr align="center">
-		<td colspan="3">
+		<td colspan="6">
 			<button class="btn btn-primary" id="modBtn">수정</button>
 			<button class="btn btn-danger" id="delBtn">삭제</button>
 		</td>
 	</tr>
 </table>
+<script>
+	const bno = '${result.boardNo }';
+	const id = '${result.userId }';
+	const title = '${result.title }';
+	const content = '${result.content }';
+	
+ 	document.querySelector('#modBtn').addEventListener('click', function(){
+ 		window.location.href = 'modBoardForm.do?bno=' + bno + '&userId=' + id + '&title=' + title + '&content=' + content;
+	}) 
+</script>
 
 

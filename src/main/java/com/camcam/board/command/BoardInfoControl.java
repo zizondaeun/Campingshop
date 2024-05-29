@@ -18,8 +18,8 @@ public class BoardInfoControl implements Control {
 		String path = "board/board.tiles";
 		String bno = req.getParameter("bno");
 		String id = req.getParameter("userId");
-		String pw = req.getParameter("boardPw"); //
-
+		String pw = req.getParameter("boardPw"); 
+		
 		//String page = req.getParameter("page");
 		//String sc = req.getParameter("searchCondition");
 		//String kw = req.getParameter("keyword");
@@ -29,16 +29,14 @@ public class BoardInfoControl implements Control {
 		vo.setBoardNo(Integer.parseInt(bno));
 		vo.setUserId(id);
 		vo.setBoardPw(pw);
-
-		QnAVO qvo = svc.getBoard(vo);
-		System.out.println("10000000"+qvo);
 		
-		if(qvo != null) { //
+		QnAVO qvo = svc.getBoardPw(vo);
+		System.out.println(qvo);
+		if(qvo != null) { 
 			req.setAttribute("result", qvo);
 			req.getRequestDispatcher(path).forward(req, resp);
-			
 		} else {
-			resp.sendRedirect("boardInfoPw.do");
+			resp.sendRedirect("boardInfoPw.do?bno=" + bno + "&userId=" + id);
 		}
 		
 		//req.setAttribute("page", page);

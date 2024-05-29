@@ -3,27 +3,29 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="my" %>	
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
- <style>
-        .table-container {
-            width: 80%;
-            margin: 0 auto;
-            border: 1px solid #ccc;
-            padding: 20px;
-        }
-        .seldel {
-            border: 1px solid grey;
-            padding: 20px;
-            font-size: 20px;
-            background-color: white;
-            color: black;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 20px;
-        }
-        .seldel:hover {
-            background-color: #f0f0f0;
-        }
-    </style>
+<style>
+.table-container {
+	width: 80%;
+	margin: 0 auto;
+	border: 1px solid #ccc;
+	padding: 20px;
+}
+
+.seldel {
+	border: 1px solid grey;
+	padding: 20px;
+	font-size: 20px;
+	background-color: white;
+	color: black;
+	text-decoration: none;
+	display: inline-block;
+	margin-top: 20px;
+}
+
+.seldel:hover {
+	background-color: #f0f0f0;
+}
+</style>
 </head>
 <body>
     <h3 align="center">MY WISHLIST</h3>

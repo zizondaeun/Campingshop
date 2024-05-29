@@ -38,6 +38,7 @@
 }
 </style>
 <h3 align="center">Q&A</h3>
+
 <div class="table-container">
 	<div align="right">
 		<button type="submit" class="btn btn-dark" id="modBtn" style="margin-bottom: 10px; background-color: white; 
@@ -58,7 +59,7 @@
 				<tr>
 					<td>${board.boardNo }</td>
 					<td><div><img src="productImg/게시판잠금이미지.gif"></div></td>
-					<td><a href="boardInfo.do?bno=${board.boardNo }&page=${paging.page}&keyword=${keyword }&searchCondition=${searchCondition}"><font color="#6c757d">${board.title }</font></a></td>
+					<td><a href="boardInfoPw.do?bno=${board.boardNo }&userId=${board.userId }"><font color="#6c757d">${board.title }</font></a></td>
 					<td>${board.userId }</td>
 					<td><fmt:formatDate value="${board.createDate }" pattern="yyyy/MM/dd" /></td>
 				</tr>
@@ -106,6 +107,7 @@
 		</nav>
 	</div>
 </div>
-<script></script>
+<script>
+</script>
 
 

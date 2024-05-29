@@ -50,10 +50,17 @@
 		</choose>
 	</select>
 	
-	<select id="selectBoard" resultType="com.camcam.board.vo.QnAVO" parameterType="int">
+	<select id="selectBoardPw" resultType="com.camcam.board.vo.QnAVO" parameterType="com.camcam.board.vo.QnAVO">
+		select *
+		from qna
+		where user_id = #{userId}
+		and board_no = #{boardNo}
+	</select>
+
+	<select id="selectBoard" resultType="com.camcam.board.vo.QnAVO" parameterType="com.camcam.board.vo.QnAVO">
 		select *
 		from qna 
 		where board_no = #{boardNo}
 	</select>
-
+	
 </mapper>

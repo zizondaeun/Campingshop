@@ -17,19 +17,34 @@ public class BoardInfoControl implements Control {
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String path = "board/board.tiles";
 		String bno = req.getParameter("bno");
-		String page = req.getParameter("page");
-		String sc = req.getParameter("searchCondition");
-		String kw = req.getParameter("keyword");
+		String id = req.getParameter("userId");
+		String pw = req.getParameter("boardPw"); //
+
+		//String page = req.getParameter("page");
+		//String sc = req.getParameter("searchCondition");
+		//String kw = req.getParameter("keyword");
 		
 		BoardService svc = new BoardServiceImpl();
-		QnAVO vo = svc.getBoard(Integer.parseInt(bno));
+		QnAVO vo = new QnAVO();
+		vo.setBoardNo(Integer.parseInt(bno));
+		vo.setUserId(id);
+		vo.setBoardPw(pw);
+
+		QnAVO qvo = svc.getBoard(vo);
+		System.out.println("10000000"+qvo);
 		
-		req.setAttribute("result", vo);
-		req.setAttribute("page", page);
-		req.setAttribute("searchCondition", sc);
-		req.setAttribute("keyword", kw);
+		if(qvo != null) { //
+			req.setAttribute("result", qvo);
+			req.getRequestDispatcher(path).forward(req, resp);
+			
+		} else {
+			resp.sendRedirect("boardInfoPw.do");
+		}
 		
-		req.getRequestDispatcher(path).forward(req, resp);
+		//req.setAttribute("page", page);
+		//req.setAttribute("searchCondition", sc);
+		//req.setAttribute("keyword", kw);
+		
 	}
 
 }

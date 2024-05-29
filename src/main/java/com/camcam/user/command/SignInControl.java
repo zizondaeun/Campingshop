@@ -22,21 +22,15 @@ public class SignInControl implements Control {
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("application/json;charset=utf-8");
         
-      
-
         String userId = req.getParameter("userId");
         String passWord = req.getParameter("passWord");
         String userName = req.getParameter("userName");
         String email = req.getParameter("email");
         String userTel = req.getParameter("userTel");
         String address = req.getParameter("address");
-        
-        System.out.print(userId + "@@@@@@@@@@@@@");
 
         UserService svc = new UserServiceImpl();
-        
-        
-        
+
         UserVO user = new UserVO();
         user.setUserId(userId);
         user.setPassWord(passWord);
@@ -46,16 +40,21 @@ public class SignInControl implements Control {
         user.setAddress(address);
 
         Map<String, Object> result = new HashMap<>();
-        result.put("exists", svc.checkUserId(userId));
+        boolean userExists = svc.checkUserId(userId);
+        result.put("exists", userExists);
 
-        if (svc.addUser(user)) {
-            System.out.println("등록성공.");
-            resp.sendRedirect("logForm.do");
+        if (userExists) {
+            result.put("success", false);
+            result.put("message", "이미 존재하는 아이디입니다.");
+        } else if (svc.addUser(user)) {
+            result.put("success", true);
+            result.put("message", "회원가입 성공!");
         } else {
-        	 resp.sendRedirect("signInForm.do?error=User ID already exists or another error occurred.");
+            result.put("success", false);
+            result.put("message", "회원가입 실패. 다시 시도해주세요.");
         }
+        
         Gson gson = new GsonBuilder().create();
         resp.getWriter().print(gson.toJson(result));
-        
     }
 }

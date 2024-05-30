@@ -49,7 +49,7 @@ public class ProductInfoControl implements Control {
 		System.out.println("ddddddddddddddddfdfsdfdfd" + userToProductCnt);
 		System.out.println("확인" + productInfo);
 		System.out.println(productInfo.getProductImg());
-		System.out.println("설명" + productInfo.getExplain());
+		System.out.println("설명" + productInfo.getExplainImg1());
 
 		int truncRate;
 		if (reviewDetail.getTotalCnt() != 0) {

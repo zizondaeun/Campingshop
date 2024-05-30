@@ -29,10 +29,12 @@ public class AddProductControl implements Control {
 		String category = mr.getParameter("category");
 		String productTitle = mr.getParameter("productTitle");
 		String productPrice = mr.getParameter("productPrice");
+		String offPrice = mr.getParameter("offPrice");
 		String img = mr.getFilesystemName("productImg");
 		String img2 = mr.getFilesystemName("productImg2");
 		String img3 = mr.getFilesystemName("productImg3");
-		String explain = mr.getFilesystemName("explain");
+		String explainImg1 = mr.getFilesystemName("explainImg1");
+		String explainImg2 = mr.getFilesystemName("explainImg2");
 		
 		ProductService svc = new ProductServiceImpl();
 
@@ -40,10 +42,12 @@ public class AddProductControl implements Control {
 		vo.setCategoryCode(category);
 		vo.setProductName(productTitle);
 		vo.setPrice(productPrice);
+		vo.setOffPrice(offPrice);
 		vo.setProductImg(img);
 		vo.setProductImg2(img2);
 		vo.setProductImg3(img3);
-		vo.setExplain(explain);
+		vo.setExplainImg1(explainImg1);
+		vo.setExplainImg2(explainImg2);
 		
 		if (svc.addProduct(vo)) {
 			System.out.println("등록성공.");

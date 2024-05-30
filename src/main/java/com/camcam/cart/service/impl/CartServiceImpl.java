@@ -43,4 +43,18 @@ public class CartServiceImpl implements CartService{
 		return mapper.getUserToProductCnt(cvo);
 	}
 
+
+	@Override
+	public boolean addCartDeleteWish(CartVO cart) {
+		List<CartVO> list = mapper.selectCartList(cart.getUserId());
+		for(CartVO vo : list) {
+			if(cart.getCartNo() == vo.getCartNo()) {
+				
+			}
+		}
+		return false;
+	}
+
+
+
 }

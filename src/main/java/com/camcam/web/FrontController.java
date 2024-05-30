@@ -40,6 +40,7 @@ import com.camcam.mypage.command.MyBoardModFormControl;
 import com.camcam.mypage.command.MyOrderDetailControl;
 import com.camcam.mypage.command.MyOrderListControl;
 import com.camcam.mypage.command.MyPageControl;
+import com.camcam.mypage.command.MyWishItemRemoveControl;
 import com.camcam.mypage.command.MyWishListControl;
 import com.camcam.mypage.command.UpdateMyBoardControl;
 import com.camcam.notice.command.AddnoticeControl;
@@ -170,6 +171,7 @@ public class FrontController extends HttpServlet {
 		map.put("/myOrderDetail.do", new MyOrderDetailControl()); // 상세주문 내역 이동
 		map.put("/myWishList.do", new MyWishListControl()); // 관심상품 리스트로 이동
 		map.put("/deleteMywish.do", new DeleteMyWishControl()); // 관심상품 삭제 기능
+		map.put("/mywishItemRemove.do", new MyWishItemRemoveControl()); // 관심상품 -> 장바구니 시 관심상품에서 삭제
 		map.put("/myinformationForm.do", new MyinformationFormControl());// 개인정보수정 화면
 		map.put("/myinformation.do", new MyinformationControl()); // 개인정보수정 기능
 

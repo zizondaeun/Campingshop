@@ -30,7 +30,6 @@ let basket = {
 					basket.cartCount += val.qty;
 					basket.cartTotal += val.qty * val.price;
 					basket.cartTotalDiscount += val.qty *(val.discount);
-					
 					const rowTr = document.querySelector('tr[data-id="0"]').cloneNode(true);
 					rowTr.style.display = 'table-row';
 					rowTr.setAttribute('data-id', val.cartNo);
@@ -145,20 +144,20 @@ let basket = {
 document.querySelector('#orderBtn').addEventListener('click', function(){
 	val = '';
 	
+	
+	document.querySelectorAll('#basket tr').forEach((item, idx) => {
+		let tr = item;
+		let cartNo = tr.getAttribute('data-id');
+		
+		val += cartNo + ',';
+		console.log(val);
+	})
 	let form = document.createElement('form');
 	form.setAttribute('action', 'order.do');
 	form.setAttribute('mothod', 'post');
 	let input = document.createElement('input');
-	input.setAttribute('name', 'productNo');
+	input.setAttribute('name', 'cno');
 	input.value = val;
-	
-	document.querySelectorAll('#basket tr').forEach((item, idx) => {
-		let tr = item;
-		let productNo = tr.getAttribute('data-id');
-		
-		console.log(productNo);
-		val += productNo + ',';
-	})
 	
 	form.appendChild(input);
 	

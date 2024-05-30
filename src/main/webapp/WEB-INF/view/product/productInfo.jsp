@@ -4,14 +4,18 @@
 <!-- Breadcrumb Start -->
 <style>
 .bodyImg {
-	width: 500px;
-	height: 500px;
-	overflow: hidden;
+	width:1100px;
+	height:1100px;
+	margin:0 auto;
+}
 
+.bodyImg img{
+	width:530px;
+	height:500px;
+	float:left;
+	margin:10px;
 }
-img{
-	display:blcok;
-}
+
 </style>
 <div class="container-fluid">
 	<div class="row px-xl-5">
@@ -142,12 +146,14 @@ img{
 					<div class="tab-pane fade show active" id="tab-pane-1">
 						<h4 class="mb-3">Product Description</h4>
 						<div class="bodyImg">
-							<img src="productImg/${product.productImg2 }" alt="Image"
-								onclick="window.open(this.src)"> 
-							<img src="productImg/${product.explain } " alt="Image"
-								onclick="window.open(this.src)">
-							<img src="productImg/${product.productImg3 }" alt="Image"
-								onclick="window.open(this.src)">
+								<img src="productImg/${product.productImg2 }" alt="Image"
+									onclick="window.open(this.src)"> 
+								<img src="productImg/${product.explainImg1 }" alt="Image"
+									onclick="window.open(this.src)">
+								<img src="productImg/${product.explainImg2 }" alt="Image"
+									onclick="window.open(this.src)">
+								<img src="productImg/${product.productImg3 }" alt="Image"
+									onclick="window.open(this.src)">
 						</div>
 					</div>
 					<div class="tab-pane fade" id="tab-pane-2">

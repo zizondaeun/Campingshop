@@ -81,11 +81,15 @@ h3 {
 			</tr>
 			<tr>
 				<th>상품설명1</th>
-				<td><input class="productExplain" type="file" name="explain"></td>
+				<td><input class="productExplain" type="file" name="explainImg1"></td>
 			</tr>
 			<tr>
 				<th>상품상세이미지2</th>
 				<td><input class="imgBtn" type="file" name="productImg3"></td>
+			</tr>
+			<tr>
+				<th>상품설명2</th>
+				<td><input class="productExplain" type="file" name="explainImg2"></td>
 			</tr>
 			<tr align="center">
 				<td colspan="2"><input type="submit" id="regist" value="등록"

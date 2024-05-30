@@ -15,6 +15,9 @@ public class ProductVO {
 	private String productImg2;
 	private String productImg3;
 	
+	private String explainImg1;
+	private String explainImg2;
+	
 	private int productCnt;
 	private double rating;
 	private String inputDate;

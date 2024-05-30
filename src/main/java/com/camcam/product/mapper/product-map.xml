@@ -90,8 +90,8 @@
 	
 		<!-- 관리자 상품등록  -->
 	<insert id="insertBoard" parameterType="com.camcam.product.vo.ProductVO">
-		insert into products (category_code, product_no, product_name, price, explain, product_Img, product_Img2, product_img3)
-		values (#{categoryCode}, PRODUCT_NO_SEQ.nextVal, #{productName}, #{price}, #{explain}, #{productImg}, #{productImg2}, #{productImg3})
+		insert into products (category_code, product_no, product_name, price, product_Img, product_Img2, product_img3, explain_img1, explain_img2)
+		values (#{categoryCode}, PRODUCT_NO_SEQ.nextVal, #{productName}, #{price}, #{productImg}, #{productImg2}, #{productImg3}, #{explainImg1}, #{explainImg2})
 	</insert>
 	
 	<select id="categoryList" resultType="map">

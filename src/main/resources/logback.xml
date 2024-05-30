@@ -8,13 +8,13 @@
 		</encoder>
 	</appender>
 
-	<logger name="com.camcam.mapper.BoardMapper">
+	<logger name="com.camcam.board.mapper.BoardMapper">
 		<level value="debug" />
 	</logger>
-	<logger name="com.camcam.mapper.ReplyMapper">
+	<logger name="com.camcam.reply.mapper.ReplyMapper">
 		<level value="debug" />
 	</logger>
-	<root level="trace">
+	<root level="debug">
 		<appender-ref ref="stdout" />
 	</root>
 

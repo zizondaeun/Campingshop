@@ -30,14 +30,14 @@ let order = {
 			.then(result => {
 				result.forEach((val, idx) => {
 					console.log(val);
-					//					let discount = val.PRICE - val.OFF_PRICE;
-					////
-					//					console.log("discount="+discount);
-					//					console.log("qty="+val.QTY)
-					////
+										let discount = val.PRICE - val.OFF_PRICE;
+					//
+										console.log("discount="+discount);
+										console.log("qty="+val.QTY)
+					//
 					order.totalCount += val.QTY;
-					//					order.totalPrice += val.QTY * val.PRICE;
-					//					order.totalDiscount += (val.QTY * discount);
+										order.totalPrice += val.QTY * val.PRICE;
+										order.totalDiscount += (val.QTY * discount);
 					const rowDiv = document.querySelector('div[data-id="0"]').cloneNode(true);
 					rowDiv.style.display = "block";
 					rowDiv.childNodes[1].textContent = val.PRODUCT_NAME;
@@ -47,10 +47,10 @@ let order = {
 					document.querySelector('#orderList').append(rowDiv);
 					order.totalPrice += Number(val.PRICE) * Number(val.QTY);
 					order.totalDiscount += (val.PRICE - val.OFF_PRICE);
-					//					console.log("qty2="+val.QTY)
-					//					console.log("totalCnt= "+order.totalCount)
-					//					console.log("totalPrice= "+order.totalPrice)
-					//					console.log("totalDiscount= "+order.totalDiscount)
+										console.log("qty2="+val.QTY)
+										console.log("totalCnt= "+order.totalCount)
+										console.log("totalPrice= "+order.totalPrice)
+										console.log("totalDiscount= "+order.totalDiscount)
 
 				})
 				document.querySelector('#totalPrice').innerText = order.totalPrice.numberFormat() + '원';
@@ -72,5 +72,17 @@ let order = {
 			})
 	}
 }
+
+document.querySelector('#purchase').addEventListener('click', function(){
+	if(document.querySelector('.customer').value == '' || document.querySelector('.cEmail').value == ''||document.querySelector('.cTel').value == '' || document.querySelector('.cAddr').value == '') {
+		alert('정보를 모두 입력해주세요.');
+		return;
+	}
+	
+	
+})
+
+
+
 order.cartList();
 order.userInfo();

@@ -141,4 +141,32 @@ let basket = {
 	}
 
 }
+
+document.querySelector('#orderBtn').addEventListener('click', function(){
+	val = '';
+	
+	let form = document.createElement('form');
+	form.setAttribute('action', 'order.do');
+	form.setAttribute('mothod', 'post');
+	let input = document.createElement('input');
+	input.setAttribute('name', 'productNo');
+	input.value = val;
+	
+	document.querySelectorAll('#basket tr').forEach((item, idx) => {
+		let tr = item;
+		let productNo = tr.getAttribute('data-id');
+		
+		console.log(productNo);
+		val += productNo + ',';
+	})
+	
+	form.appendChild(input);
+	
+	document.querySelector('body').appendChild(form);
+	
+	form.submit();
+	
+	
+})
+
 basket.list();

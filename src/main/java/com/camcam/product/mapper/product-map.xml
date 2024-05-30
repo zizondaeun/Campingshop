@@ -102,5 +102,10 @@
 	  ORDER SIBLINGS BY CATEGORY_CODE
 	</select>
 	
+	<insert id="insertWish" parameterType="com.camcam.product.vo.ProductVO">
+		insert into likes (user_id, product_no)
+		values (#{userId}, #{productNo})
+	</insert>
+	
 	
 </mapper>

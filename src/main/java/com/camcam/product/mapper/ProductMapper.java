@@ -31,4 +31,5 @@ public interface ProductMapper {
 	public int getLikeVal(ProductVO product);
 	public int insertLike(ProductVO product); // 찜하기 추가
 	public int deleteLike(ProductVO product); // 찜하기 제거
+	public int insertWish(ProductVO vo); //관심상품 등록
 }

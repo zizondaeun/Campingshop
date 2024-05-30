@@ -50,10 +50,10 @@
 								<td><fmt:formatNumber value="${order.amount }"/>원</td>
 								<c:choose>
 									<c:when test="${order.orderStatus eq 1}">
-										<td>주문완료</td>
+										<td>배송완료</td>
 									</c:when>
 									<c:otherwise>
-										<td>일단 대기...</td>
+										<td>주문완료</td>
 									</c:otherwise>
 								</c:choose>
 								<td><button type="button"

@@ -107,6 +107,12 @@
 		and user_id = #{userId}
 	</delete>
 	
+	<select id="selectMywish" resultType="com.camcam.product.vo.ProductVO">
+		select *
+		from likes
+		where user_id = #{userId}
+	</select>
+	
 	<select id="selectMydelivery" resultType="com.camcam.delivery.vo.DeliveryVO" parameterType="string">
 		select *
 		from delivery

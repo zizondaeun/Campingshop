@@ -19,6 +19,8 @@ public interface BoardMapper {
 	int insertBoard(QnAVO vo);
 	//QnA 글 수정
 	int updateBoard(QnAVO vo);
+	//QnA 글 삭제
+	int deleteBoard(int boardNo);
 	
 
 

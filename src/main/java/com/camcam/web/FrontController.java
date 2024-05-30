@@ -53,6 +53,7 @@ import com.camcam.order.command.OrderInfoControl;
 import com.camcam.order.command.OrderListControl;
 import com.camcam.product.command.ProductInfoControl;
 import com.camcam.product.command.ProductListControl;
+import com.camcam.reply.command.ReplyListControl;
 import com.camcam.review.command.AddReviewControl;
 import com.camcam.review.command.ModifyReviewControl;
 import com.camcam.review.command.RemoveReviewControl;
@@ -169,14 +170,17 @@ public class FrontController extends HttpServlet {
 		map.put("/myinformation.do", new MyinformationControl()); //개인정보수정 기능
 		
 		// QnA
-		map.put("/boardList.do", new BoardListControl()); // qna 게시판으로 이동(리스트)
-		map.put("/boardInfoPw.do", new BoardInfoPwControl()); // qna 상세로 가기위한 pw 체크창으로 이동
-		map.put("/boardInfo.do", new BoardInfoControl()); // qna 상세화면으로 이동
-		map.put("/addForm.do", new AddFormControl()); // qna 글 등록으로 이동
+		map.put("/boardList.do", new BoardListControl()); //qna 게시판으로 이동(리스트)
+		map.put("/boardInfoPw.do", new BoardInfoPwControl()); //qna 상세로 가기위한 pw 체크창으로 이동
+		map.put("/boardInfo.do", new BoardInfoControl()); //qna 상세화면으로 이동
+		map.put("/addForm.do", new AddFormControl()); //qna 글 등록으로 이동
 		map.put("/addBoard.do", new AddBoardControl()); //qna 글 등록 기능
 		map.put("/modBoardForm.do", new ModifyFormControl()); //qna 글 수정으로 이동
 		map.put("/updateBoard.do", new ModifyControl()); //qna 글 수정 기능
 		map.put("/deleteBoard.do", new DeleteControl()); //qna 글 삭제 기능
+		// QnA 댓글 관련
+		map.put("/replyList.do", new ReplyListControl()); //댓글 목록
+		
 		
 		// 배송관리
 		map.put("/deliveryManage.do", new DeliManageControl());

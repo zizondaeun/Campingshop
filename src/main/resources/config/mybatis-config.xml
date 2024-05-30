@@ -31,10 +31,10 @@
 		<mapper resource="com/camcam/cart/mapper/cart-map.xml" />
 		<mapper resource="com/camcam/order/mapper/order-map.xml" />
 		<mapper resource="com/camcam/delivery/mapper/DeliveryMapper.xml" />
-<!-- 		<mapper resource="com/camcam/reply/mapper/reply-map.xml" /> -->
 <!-- 		<mapper resource="com/camcam/notice/mapper/notice-map.xml" /> -->
 		<mapper resource="com/camcam/mypage/mapper/MyPageMapper.xml" />
 		<mapper resource="com/camcam/board/mapper/BoardMapper.xml" />
+ 		<mapper resource="com/camcam/reply/mapper/reply-map.xml" />
 		
 	</mappers>
 </configuration>

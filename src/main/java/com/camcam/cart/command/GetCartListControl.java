@@ -27,6 +27,13 @@ public class GetCartListControl implements Control {
 		
 		List<CartVO> cartList = cartservice.cartList(uid);
 		
+		for (CartVO cartVO : cartList) {
+			if(cartVO.getDiscount() == cartVO.getPrice()) {
+				cartVO.setDiscount(0);
+			}
+		}
+		
+		
 		Gson gson = new GsonBuilder().create();
 		resp.getWriter().print(gson.toJson(cartList));
 	}

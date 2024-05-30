@@ -7,7 +7,7 @@
 		join products p
 		on c.product_no = p.product_no
 		where c.user_id = #{userId}
-		and c.product_no = #{productNo}
+		and c.cart_no = #{cartNo}
 	</select>
 
 

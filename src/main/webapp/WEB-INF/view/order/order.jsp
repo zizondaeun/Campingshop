@@ -157,4 +157,6 @@
             </div>
         </div>
     </div>
+    
+    <script src="js/order.js"></script>
     <!-- Checkout End -->

@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <style>
 	#adminMenu a{
 		padding:10px;
@@ -27,8 +28,9 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
+                            <a class="nav-item nav-link" href="boardList.do">Q&A</a> 
+                            <a class="nav-item nav-link" href="ListnoticePage.do">공지사항</a>
                             <a href="productList.do" class="nav-item nav-link" >Shop</a>
-                            <a href="detail.html" class="nav-item nav-link">Shop Detail</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down mt-1"></i></a>
                                 <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
@@ -37,11 +39,15 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="adminMenu">
-                          	<a href="userList.do">유저관리</a>
-                          	<a href="addProductForm.do">상품등록</a>
-                          	<a href="deliveryManage.do">배송관리</a>
-                        </div>
+                        <c:choose>
+                        	<c:when test="${logId eq 'user05'}">
+                        	<div id="adminMenu">
+                          		<a href="userList.do" class="userControl">유저관리</a>
+                          		<a href="addProductForm.do" class="productAdd">상품등록</a>
+                          		<a href="deliveryManage.do" class="controldelivery">배송관리</a>
+                        	</div>
+                        	</c:when>
+                        </c:choose>
                         <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
                             <a href="" class="btn px-0">
                                 <i class="fas fa-heart text-primary"></i>

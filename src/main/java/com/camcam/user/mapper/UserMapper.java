@@ -10,8 +10,7 @@ public interface UserMapper {
 	int insertUser(UserVO user); //회원가입
 	 int selectUserCountById(String userId); //아이디 중복체크
 	 
-	 List<UserVO> selectUserList();
-	 
+	 List<UserVO> selectUserList(); // 관리자 유저목록
 	 
 	 UserVO selectMember(@Param("id") String id, @Param("pw") String pw); //로그인
 	 UserVO selectMember2(String id);
@@ -25,5 +24,4 @@ public interface UserMapper {
 	 
 	  UserVO selectUser(String userId);
 	 
-
 }

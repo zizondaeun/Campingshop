@@ -3,6 +3,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!-- Breadcrumb Start -->
 <style>
+.carousel-inner bg-light div img{
+	width:400px;
+	height:400px;
+}
+
+
 .bodyImg {
 	width:1100px;
 	height:1100px;
@@ -14,6 +20,7 @@
 	height:500px;
 	float:left;
 	margin:10px;
+	object-fit: contain;
 }
 
 </style>
@@ -149,9 +156,9 @@
 								<img src="productImg/${product.productImg2 }" alt="Image"
 									onclick="window.open(this.src)"> 
 								<img src="productImg/${product.explainImg1 }" alt="Image"
-									onclick="window.open(this.src)">
+									>
 								<img src="productImg/${product.explainImg2 }" alt="Image"
-									onclick="window.open(this.src)">
+									>
 								<img src="productImg/${product.productImg3 }" alt="Image"
 									onclick="window.open(this.src)">
 						</div>

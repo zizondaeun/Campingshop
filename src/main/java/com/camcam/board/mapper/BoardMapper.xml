@@ -29,9 +29,9 @@
 					</choose>
 					order by b.board_no desc) a
 			<![CDATA[
-			where rownum <= (#{page} * 12) or #{page} = 0)r
+			where rownum <= (#{page} * 9) or #{page} = 0)r
 			]]>
-		where r.rn > (#{page} - 1) * 12
+		where r.rn > (#{page} - 1) * 9
 	</select>
 	
 	<select id="getTotalCnt" resultType="int" parameterType="com.camcam.common.SearchVO">
@@ -69,5 +69,9 @@
 		where user_id = #{userId}
 		and board_no = #{boardNo}
 	</update>
+	
+	<delete id="deleteBoard" parameterType="int">
+		delete from qna where board_no = #{boardNo}
+	</delete>
 	
 </mapper>

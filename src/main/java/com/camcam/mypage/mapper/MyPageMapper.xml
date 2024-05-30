@@ -15,10 +15,10 @@
         				ORDER BY b.board_no DESC
     				) a
     				<![CDATA[
-   				WHERE rownum <= (#{page} * 12)
+   				WHERE rownum <= (#{page} * 9)
 				) r
 				]]>
-		WHERE r.rn > (#{page} - 1) * 12
+		WHERE r.rn > (#{page} - 1) * 9
 	</select>
 		
 	<select id="orderListPaging" parameterType="com.camcam.mypage.vo.PageVO"><!-- getMyorder -->
@@ -32,10 +32,10 @@
         				ORDER BY b.order_no DESC
     				) a
     				<![CDATA[
-   				WHERE rownum <= (#{page} * 12)
+   				WHERE rownum <= (#{page} * 9)
 				) r
 				]]>
-		WHERE r.rn > (#{page} - 1) * 12
+		WHERE r.rn > (#{page} - 1) * 9
 	</select>
 	
 	<select id="wishListPaging" parameterType="com.camcam.mypage.vo.PageVO"><!-- getMyorder -->
@@ -48,10 +48,10 @@
                         where user_id = #{userId}
                     ) a
                     <![CDATA[
-                   WHERE rownum <= (#{page} * 12)
+                   WHERE rownum <= (#{page} * 9)
                 ) r
                 ]]>
-        WHERE r.rn > (#{page} - 1) * 12
+        WHERE r.rn > (#{page} - 1) * 9
     </select>
 	
 	<select id="selectMypage" resultType="com.camcam.user.vo.UserVO">

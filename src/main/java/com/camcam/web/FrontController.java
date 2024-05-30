@@ -17,6 +17,7 @@ import com.camcam.board.command.AddFormControl;
 import com.camcam.board.command.BoardInfoControl;
 import com.camcam.board.command.BoardInfoPwControl;
 import com.camcam.board.command.BoardListControl;
+import com.camcam.board.command.DeleteControl;
 import com.camcam.board.command.ModifyControl;
 import com.camcam.board.command.ModifyFormControl;
 import com.camcam.cart.command.AddCartControl;
@@ -175,6 +176,7 @@ public class FrontController extends HttpServlet {
 		map.put("/addBoard.do", new AddBoardControl()); //qna 글 등록 기능
 		map.put("/modBoardForm.do", new ModifyFormControl()); //qna 글 수정으로 이동
 		map.put("/updateBoard.do", new ModifyControl()); //qna 글 수정 기능
+		map.put("/deleteBoard.do", new DeleteControl()); //qna 글 삭제 기능
 		
 		// 배송관리
 		map.put("/deliveryManage.do", new DeliManageControl());

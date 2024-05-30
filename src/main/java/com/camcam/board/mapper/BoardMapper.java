@@ -17,6 +17,8 @@ public interface BoardMapper {
 	QnAVO selectBoardPw(QnAVO vo);
 	//QnA 글 등록
 	int insertBoard(QnAVO vo);
+	//QnA 글 수정
+	int updateBoard(QnAVO vo);
 	
 
 

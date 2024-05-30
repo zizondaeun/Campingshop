@@ -63,4 +63,11 @@
 		values (qna_no_seq.nextval, #{userId}, #{title}, #{content}, sysdate, #{boardPw})
 	</insert>
 	
+	<update id="updateBoard" parameterType="com.camcam.board.vo.QnAVO">
+		update qna
+		set title = #{title}, content = #{content}
+		where user_id = #{userId}
+		and board_no = #{boardNo}
+	</update>
+	
 </mapper>

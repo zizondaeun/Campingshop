@@ -39,4 +39,9 @@ public class BoardServiceImpl implements BoardService {
 	public boolean addBoard(QnAVO vo) {
 		return mapper.insertBoard(vo) == 1;
 	}
+
+	@Override
+	public boolean modifyBoard(QnAVO vo) {
+		return mapper.updateBoard(vo) == 1;
+	}
 }

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.camcam.common.Control;
-import com.camcam.order.service.impl.OrderService;
+import com.camcam.order.service.OrderService;
 import com.camcam.order.service.impl.OrderServiceImpl;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -39,7 +39,7 @@ public class OrderListControl implements Control {
 		for(int i=1; i<cartNoNoList.length; i++) {
 			Map<String, Object> map = orderService.getCart(userId, Integer.parseInt(cartNoNoList[i]));
 			list.add(map);
-			System.out.println(list);
+			System.out.println("ddd" + map);
 		}
 		
 		Gson gson = new GsonBuilder().create();

@@ -9,6 +9,11 @@
 		where c.user_id = #{userId}
 		and c.cart_no = #{cartNo}
 	</select>
-
+	
+	<select id="selectUser" parameterType="String" resultType="com.camcam.user.vo.UserVO">
+		select user_name, user_tel, email, address
+		from users
+		where user_id=#{userId}
+	</select>
 
 </mapper>

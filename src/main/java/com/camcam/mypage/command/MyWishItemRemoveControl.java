@@ -26,7 +26,7 @@ public class MyWishItemRemoveControl implements Control {
 		cart.setQty(Integer.parseInt(cnt));
 		
 		CartService cartService = new CartServiceImpl();
-		if(cartService.addCartDeleteWish(cart)) { //
+		if(cartService.addCartDeleteWish(cart)) { 
 			resp.getWriter().print("{\"retCode\": \"OK\"}");
 		} else {
 			resp.getWriter().print("{\"retCode\": \"NG\"}");

@@ -32,5 +32,11 @@
 		from carts 
 		where user_id = #{userId} and product_no = #{productNo}
 	</select>
+	
+	<update id="updatePlusOne" parameterType="com.camcam.cart.vo.CartVO">
+		update carts 
+		set qty = #{qty} + 1
+		where product_no = #{productNo}
+	</update>
 
 </mapper>

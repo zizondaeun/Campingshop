@@ -65,11 +65,11 @@ h3 {
 			</tr>
 			<tr>
 				<th>상품명</th>
-				<td><input type="text" id="product_name" name="productTitle"></td>
+				<td><input type="text" id="product_name" name="productTitle" required></td>
 			</tr>
 			<tr>
 				<th>가격</th>
-				<td><input type="text" id="product_price" name="productPrice"></td>
+				<td><input type="text" id="product_price" name="productPrice" required></td>
 			</tr>
 			<tr>
 				<th>할인적용가격</th>

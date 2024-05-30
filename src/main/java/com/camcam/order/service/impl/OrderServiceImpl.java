@@ -12,8 +12,8 @@ public class OrderServiceImpl implements OrderService{
 	OrderMapper mapper = session.getMapper(OrderMapper.class);
 	
 	@Override
-	public Map<String, Object> getCart(String userId, int productNo) {
-		return mapper.selectCart(userId, productNo);
+	public Map<String, Object> getCart(String userId, int cartNo) {
+		return mapper.selectCart(userId, cartNo);
 	}
 
 }

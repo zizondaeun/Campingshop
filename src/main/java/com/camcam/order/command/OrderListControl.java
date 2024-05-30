@@ -20,19 +20,24 @@ public class OrderListControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		resp.setContentType("text/json;charset=utf-8");
 		HttpSession session = req.getSession();
 		
 		String userId = (String)session.getAttribute("logId");
-		String productNo = req.getParameter("pno");
+		System.out.println("dddddddd" + userId);
+		String cartNo = req.getParameter("cno");
+		System.out.println("dddddddd" + cartNo);
 		
-		String[] productNoList = productNo.split(",");
+		String[] cartNoNoList = cartNo.split(",");
+		for (String string : cartNoNoList) {
+			System.out.println("dddddddda"+string);
+		}
 		
 		List<Map<String, Object>> list = new ArrayList<>();
 		OrderService orderService = new OrderServiceImpl();
 		
-		for(int i=1; i<productNoList.length; i++) {
-			Map<String, Object> map = orderService.getCart(userId, Integer.parseInt(productNo));
+		for(int i=1; i<cartNoNoList.length; i++) {
+			Map<String, Object> map = orderService.getCart(userId, Integer.parseInt(cartNoNoList[i]));
 			list.add(map);
 			System.out.println(list);
 		}

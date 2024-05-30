@@ -38,5 +38,10 @@
 		set qty = #{qty} + 1
 		where product_no = #{productNo}
 	</update>
+	
+	<delete id="cleanCart" parameterType="com.camcam.cart.vo.CartVO">
+		delete carts
+		where user_id = #{userId}
+	</delete>
 
 </mapper>

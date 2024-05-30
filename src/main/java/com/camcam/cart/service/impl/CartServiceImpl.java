@@ -80,5 +80,11 @@ public class CartServiceImpl implements CartService{
 	}
 
 
+	@Override
+	public boolean cleanCart(CartVO cart) {
+		return mapper.cleanCart(cart) > 0;
+	}
+
+
 
 }

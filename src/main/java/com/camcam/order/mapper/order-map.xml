@@ -17,8 +17,8 @@
 	</select>
 	
 	<insert id="insertOrder" parameterType="com.camcam.order.vo.OrderVO">
-		insert into orders(order_no, user_id, address, amount)
-		values (order_no_seq.nextval, #{userId}, #{address}, #{amount})
+		insert into orders(order_no,cart_no, user_id, address, amount)
+		values (order_no_seq.nextval,1 ,#{userId}, #{address}, #{amount})
 	</insert>
 	
 	<select id="selectOrderNo" resultType="int">
@@ -32,7 +32,7 @@
 	</select>
 	
 	<insert id="insertOrderDetail" parameterType="com.camcam.order.vo.OrderDetailVO">
-		insert into order_detail(order_detail_no, order_no, user_id, quantity, product_name, price )
+		insert into orderdetail(order_detail_no, order_no, user_id, quantity, product_name, price )
 		values (order_detail_seq.nextval, #{orderNo}, #{userId}, #{quantity}, #{productName}, #{price})
 	</insert>
 	

@@ -29,6 +29,7 @@ public class AddProductControl implements Control {
 		String category = mr.getParameter("category");
 		String productTitle = mr.getParameter("productTitle");
 		String productPrice = mr.getParameter("productPrice");
+		String offPrice = mr.getParameter("offPrice");
 		String img = mr.getFilesystemName("productImg");
 		String img2 = mr.getFilesystemName("productImg2");
 		String img3 = mr.getFilesystemName("productImg3");
@@ -41,6 +42,7 @@ public class AddProductControl implements Control {
 		vo.setCategoryCode(category);
 		vo.setProductName(productTitle);
 		vo.setPrice(productPrice);
+		vo.setOffPrice(offPrice);
 		vo.setProductImg(img);
 		vo.setProductImg2(img2);
 		vo.setProductImg3(img3);

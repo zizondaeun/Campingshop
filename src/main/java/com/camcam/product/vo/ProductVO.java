@@ -8,7 +8,7 @@ public class ProductVO {
 	private String categoryCode;
 	private String productName;
 	private String price;
-	private int offPrice;
+	private String offPrice;
 	private String explain;
 	
 	private String productImg;

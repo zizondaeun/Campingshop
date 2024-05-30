@@ -72,6 +72,10 @@ h3 {
 				<td><input type="text" id="product_price" name="productPrice"></td>
 			</tr>
 			<tr>
+				<th>할인적용가격</th>
+				<td><input type="text" id="product_price" name="offPrice"></td>
+			</tr>
+			<tr>
 				<th>상품이미지</th>
 				<td><input class="imgBtn" type="file" name="productImg"></td>
 			</tr>

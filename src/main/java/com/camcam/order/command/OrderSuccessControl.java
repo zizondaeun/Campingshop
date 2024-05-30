@@ -31,7 +31,7 @@ public class OrderSuccessControl implements Control {
 			cvo.setUserId(userId);
 			cvo.setProductNo(Integer.parseInt(prodNoList[i]));
 
-//			svc.cleanCart(cvo);
+			svc.cleanCart(cvo);
 		}
 
 		req.getRequestDispatcher(path).forward(req, resp);

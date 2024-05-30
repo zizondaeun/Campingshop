@@ -17,4 +17,6 @@ public interface CartMapper {
 	int getUserToProductCnt(CartVO cvo);
 	
 	int updatePlusOne(CartVO cart);
+	// 성공시 카트 비우기 
+	int cleanCart(CartVO cvo);
 }

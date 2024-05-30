@@ -174,7 +174,7 @@
 		// moveCart
 		function moveCart(pno, uid) {
 			console.log(pno, uid);
-			fetch('addCart.do?pno=' + pno + '&uid=' + uid + '&cnt=1')
+			fetch('mywishItemRemove.do?pno=' + pno + '&uid=' + uid + '&cnt=1')
 				.then(response => response.json())
 				.then(result => {
 					console.log(result);

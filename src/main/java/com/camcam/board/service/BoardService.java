@@ -15,6 +15,10 @@ public interface BoardService {
 	QnAVO getBoardPw(QnAVO vo);
 	//QnA 글 등록
 	boolean addBoard(QnAVO vo);
+	//QnA 글 수정
+	boolean modifyBoard(QnAVO vo);
+	//QnA 글 삭제
+	boolean removeBoard(int boardNo);
 
 	
 }

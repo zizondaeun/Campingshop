@@ -1,7 +1,6 @@
 <%@ page import="com.camcam.board.vo.QnAVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib tagdir="/WEB-INF/tags" prefix="my" %>	
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <style>
@@ -37,7 +36,7 @@
 	<tr align="center">
 		<td colspan="6">
 			<button class="btn btn-primary" id="modBtn">수정</button>
-			<button class="btn btn-danger" id="delBtn">삭제</button>
+			<button type="button" class="btn btn-danger" id="delBtn" onclick="location.href='deleteBoard.do?bno=${result.boardNo}'">삭제</button>
 		</td>
 	</tr>
 </table>

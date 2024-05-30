@@ -47,6 +47,9 @@ import com.camcam.notice.command.ListnoticeControl;
 import com.camcam.notice.command.UpdatenoticeControl;
 import com.camcam.notice.command.deletenoticeControl;
 import com.camcam.notice.command.noticeControl;
+import com.camcam.order.command.OrderControl;
+import com.camcam.order.command.OrderInfoControl;
+import com.camcam.order.command.OrderListControl;
 import com.camcam.product.command.ProductInfoControl;
 import com.camcam.product.command.ProductListControl;
 import com.camcam.review.command.AddReviewControl;
@@ -111,6 +114,11 @@ public class FrontController extends HttpServlet {
 		map.put("/removeCart.do", new RemoveCartControl()); // 장바구니 삭제
 		map.put("/userTotalCartCnt.do", new UserTotalCartCntControl()); // 장바구니 삭제
 		
+		// 주문 관련
+		map.put("/order.do", new OrderControl()); // 주문 화면
+		map.put("/orderList.do", new OrderListControl()); // 장바구니에서 주문 리스트 가져오기
+		map.put("/orderInfo.do", new OrderInfoControl()); // 주문자 정보
+		
 		// 카테고리
 		map.put("/getCategory.do", new GetCategoryControl());
 		
@@ -170,14 +178,6 @@ public class FrontController extends HttpServlet {
 		
 		// 배송관리
 		map.put("/deliveryManage.do", new DeliManageControl());
-
-
-		map.put("/boardList.do", new BoardListControl()); //qna 게시판으로 이동(리스트)
-		map.put("/boardInfoPw.do", new BoardInfoPwControl()); //qna 상세로 가기위한 pw 체크창으로 이동
-		map.put("/boardInfo.do", new BoardInfoControl()); //qna 상세화면으로 이동
-		
-		
-
 	}
 
 	// service.

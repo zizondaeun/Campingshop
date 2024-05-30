@@ -11,4 +11,5 @@ public interface CartService {
 	boolean addCart(CartVO cvo);
 	int getUserToProductCnt(CartVO cvo);
 	boolean addCartDeleteWish(CartVO cart);
+	boolean cleanCart(CartVO cart);
 }

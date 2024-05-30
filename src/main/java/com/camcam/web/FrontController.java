@@ -3,7 +3,6 @@ package com.camcam.web;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -50,8 +49,11 @@ import com.camcam.notice.command.UpdatenoticeControl;
 import com.camcam.notice.command.deletenoticeControl;
 import com.camcam.notice.command.noticeControl;
 import com.camcam.order.command.OrderControl;
+import com.camcam.order.command.OrderFailedControl;
+import com.camcam.order.command.OrderFormControl;
 import com.camcam.order.command.OrderInfoControl;
 import com.camcam.order.command.OrderListControl;
+import com.camcam.order.command.OrderSuccessControl;
 import com.camcam.product.command.AddProductControl;
 import com.camcam.product.command.AddProductFormControl;
 import com.camcam.product.command.AddWishControl;
@@ -127,6 +129,9 @@ public class FrontController extends HttpServlet {
 		map.put("/order.do", new OrderControl()); // 주문 화면
 		map.put("/orderList.do", new OrderListControl()); // 장바구니에서 주문 리스트 가져오기
 		map.put("/orderInfo.do", new OrderInfoControl()); // 주문자 정보
+		map.put("/orderForm.do", new OrderFormControl()); // 주문 처리
+		map.put("/orderSuccess.do", new OrderSuccessControl()); // 주문 성공 페이지
+		map.put("/orderFailed.do", new OrderFailedControl()); // 주문 실패 페이지
 
 		// 카테고리
 		map.put("/getCategory.do", new GetCategoryControl());

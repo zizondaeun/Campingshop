@@ -15,5 +15,27 @@
 		from users
 		where user_id=#{userId}
 	</select>
+	
+	<insert id="insertOrder" parameterType="com.camcam.order.vo.OrderVO">
+		insert into orders(order_no,cart_no, user_id, address, amount)
+		values (order_no_seq.nextval,1 ,#{userId}, #{address}, #{amount})
+	</insert>
+	
+	<select id="selectOrderNo" resultType="int">
+		select order_no_seq.currval from dual
+	</select>
+	
+	<select id="selectProductInfo" parameterType="int" resultType="com.camcam.product.vo.ProductVO">
+		select product_name, price
+		from products
+		where product_no = #{productNo}
+	</select>
+	
+	<insert id="insertOrderDetail" parameterType="com.camcam.order.vo.OrderDetailVO">
+		insert into orderdetail(order_detail_no, order_no, user_id, quantity, product_name, price )
+		values (order_detail_seq.nextval, #{orderNo}, #{userId}, #{quantity}, #{productName}, #{price})
+	</insert>
+	
+	
 
 </mapper>

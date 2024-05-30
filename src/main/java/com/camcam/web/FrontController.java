@@ -160,7 +160,6 @@ public class FrontController extends HttpServlet {
 		map.put("/myinformation.do", new MyinformationControl()); //개인정보수정 기능
 		
 		// QnA
-
 		map.put("/boardList.do", new BoardListControl()); // qna 게시판으로 이동(리스트)
 		map.put("/boardInfoPw.do", new BoardInfoPwControl()); // qna 상세로 가기위한 pw 체크창으로 이동
 		map.put("/boardInfo.do", new BoardInfoControl()); // qna 상세화면으로 이동

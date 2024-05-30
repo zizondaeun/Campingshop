@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.camcam.common.DataSource;
 import com.camcam.common.SearchVO;
+import com.camcam.mypage.mapper.MyPageMapper;
 import com.camcam.product.mapper.ProductMapper;
 import com.camcam.product.service.ProductService;
 import com.camcam.product.vo.ProductVO;
@@ -15,6 +16,7 @@ public class ProductServiceImpl implements ProductService{
 
 	SqlSession session = DataSource.getInstance().openSession(true);
 	ProductMapper mapper = session.getMapper(ProductMapper.class);
+	MyPageMapper myWishMapper = session.getMapper(MyPageMapper.class);
 	
 	@Override
 	public List<ProductVO> recentProductList() {
@@ -65,6 +67,21 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public List<Map<String, String>> categoryList() {
 		return mapper.categoryList();
+	}
+
+	@Override
+	public boolean addWish(ProductVO vo) {
+		List<ProductVO> list = myWishMapper.selectMywish(vo);
+		for (ProductVO prd : list) {
+			if (prd.getProductNo() == vo.getProductNo()) {
+				myWishMapper.deleteMywish(vo);
+				return true;
+			}
+		}
+		if (mapper.insertWish(vo) == 1) {
+			return true;
+		}
+		return false;
 	}
 
 

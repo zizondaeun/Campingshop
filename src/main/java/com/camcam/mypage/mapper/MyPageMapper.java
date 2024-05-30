@@ -36,7 +36,7 @@ public interface MyPageMapper {
 	// 상세 주문 내역
 	List<OrderDetailVO> selectDetail(int ono);
 	// 내 관심상품 리스트
-	List<ProductVO> selectMywish(PageVO vo); //
+	List<ProductVO> selectMywish(ProductVO vo); //관심상품 불러오기
 	// 관심상품 삭제
 	int deleteMywish(ProductVO vo);
 	

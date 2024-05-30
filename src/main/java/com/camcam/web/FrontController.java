@@ -56,6 +56,7 @@ import com.camcam.order.command.OrderListControl;
 import com.camcam.order.command.OrderSuccessControl;
 import com.camcam.product.command.AddProductControl;
 import com.camcam.product.command.AddProductFormControl;
+import com.camcam.product.command.AddWishControl;
 import com.camcam.product.command.ProductInfoControl;
 import com.camcam.product.command.ProductListControl;
 import com.camcam.reply.command.ReplyListControl;
@@ -112,7 +113,10 @@ public class FrontController extends HttpServlet {
 		// 좋아요 변경 관련
 		map.put("/addLikes.do", new AddLikesControl()); // 좋아요 추가
 		map.put("/removeLikes.do", new RemoveLikesControl()); // 좋아요 추가
-
+		
+		// 관심상품 등록
+		map.put("/addWish.do", new AddWishControl()); 
+		
 		// 장바구니 관련
 		map.put("/getCartList.do", new GetCartListControl()); // 장바구니 리스트 JSON 변환
 		map.put("/cartList.do", new CartListControl()); // 장바구니 보기

@@ -77,7 +77,7 @@ public class MyPageServiceImpl implements MyPageService {
 	}
 
 //	@Override
-//	public List<ProductVO> getMywish(String id) {
+//	public List<ProductVO> getMywishAll(String id) {
 //		return mapper.selectMywish(id);
 //	}
 

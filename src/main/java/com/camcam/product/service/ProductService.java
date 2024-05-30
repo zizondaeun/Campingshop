@@ -27,4 +27,6 @@ public interface ProductService {
 	public boolean addLike(ProductVO product);
 
 	public boolean removeLike(ProductVO product);
+
+	public boolean addWish(ProductVO vo);
 }

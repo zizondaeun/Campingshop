@@ -17,6 +17,8 @@ public interface BoardService {
 	boolean addBoard(QnAVO vo);
 	//QnA 글 수정
 	boolean modifyBoard(QnAVO vo);
+	//QnA 글 삭제
+	boolean removeBoard(int boardNo);
 
 	
 }

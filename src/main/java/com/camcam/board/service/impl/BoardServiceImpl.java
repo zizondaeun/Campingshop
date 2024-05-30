@@ -44,4 +44,9 @@ public class BoardServiceImpl implements BoardService {
 	public boolean modifyBoard(QnAVO vo) {
 		return mapper.updateBoard(vo) == 1;
 	}
+
+	@Override
+	public boolean removeBoard(int boardNo) {
+		return mapper.deleteBoard(boardNo) == 1;
+	}
 }

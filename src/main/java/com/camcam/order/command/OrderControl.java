@@ -14,10 +14,10 @@ public class OrderControl implements Control {
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String path = "order/order.tiles";
 		
-		String pno = req.getParameter("pno");
+		String cno = req.getParameter("cno");
 		String cnt = req.getParameter("cnt");
 		
-		req.setAttribute("productNo", pno);
+		req.setAttribute("cartNo", cno);
 		req.setAttribute("cnt", cnt);
 		
 		req.getRequestDispatcher(path).forward(req, resp);

@@ -183,7 +183,7 @@
 							title: "이동하겠습니까?",
 							showDenyButton: true,
 							confirmButtonText: "이동",
-							denyButtonText: `쇼핑`
+							denyButtonText: `계속 쇼핑`
 						}).then((result) => {
 							/* Read more about isConfirmed, isDenied below */
 							if (result.isConfirmed) {

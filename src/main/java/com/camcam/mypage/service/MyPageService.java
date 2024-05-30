@@ -3,6 +3,7 @@ package com.camcam.mypage.service;
 import java.util.List;
 
 import com.camcam.board.vo.QnAVO;
+import com.camcam.cart.vo.CartVO;
 import com.camcam.delivery.vo.DeliveryVO;
 import com.camcam.mypage.vo.PageVO;
 import com.camcam.order.vo.OrderDetailVO;
@@ -36,6 +37,7 @@ public interface MyPageService {
 	int getBoardTotal(PageVO vo); //board
 	int getOrderTotal(PageVO vo); //order
 	int getWishTotal(PageVO vo); //wish
+	
 	
 
 }

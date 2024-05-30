@@ -1,6 +1,3 @@
-/**
- * 
- */
 /** 
  *board.js 1.목록먼저
 */
@@ -112,77 +109,6 @@ function makeRow(reply = {}) {
 	return tmpl;
 }
 
-//댓글 페이징 생성
-let pagination = document.querySelector('div.pagination');
 
-function makePageInfo(){
-	svc.getTotalCount(bno //param1
-		, createPageList //param2
-		, err => console.log(err))
-}
-
-function createPageList(result) {
-	console.log(result);
-	
-	let totalCnt = result.totalCount; //127
-	let startPage, endPage, realEnd;
-	let prev, next;
-
-	realEnd = Math.ceil(totalCnt / 5);
-
-	endPage = Math.ceil(page / 5) * 5;
-	startPage = endPage - 4;
-	endPage = endPage > realEnd ? realEnd : endPage;
-
-	prev = startPage > 1;
-	next = endPage < realEnd;
-
-	console.log(startPage, endPage, realEnd, prev, next);
-
-	//a 태그 생성
-	pagination.innerHTML = '';
-	//이전페이지 여부
-	if (prev) {
-		let aTag = document.createElement('a');
-		aTag.setAttribute('data-page', startPage - 1);
-		aTag.setAttribute('href', '#');
-		aTag.innerHTML = "&laquo;";
-		aTag.addEventListener('click', function(e) {
-			e.preventDefault(); //a 태그는 페이지 이동
-			page = e.target.dataset.page;
-			showList();
-		})
-		pagination.appendChild(aTag);
-	}
-	for (let pg = startPage; pg <= endPage; pg++) {
-		let aTag = document.createElement('a');
-		aTag.setAttribute('data-page', pg);
-		aTag.setAttribute('href', pg);
-		if (pg == page) {
-			aTag.className = 'active';
-		}
-		aTag.innerHTML = pg;
-		aTag.addEventListener('click', function(e) {
-			e.preventDefault(); //a 태그는 페이지 이동
-			page = e.target.dataset.page;
-			showList();
-		})
-		pagination.appendChild(aTag);
-	}
-	//이후페이지 여부
-	if (next) {
-		let aTag = document.createElement('a');
-		aTag.setAttribute('data-page', endPage + 1);
-		aTag.setAttribute('href', '#');
-		aTag.innerHTML = "&raquo;";
-		aTag.addEventListener('click', function(e) {
-			e.preventDefault();
-			page = e.target.dataset.page;
-			showList();
-		})
-		pagination.appendChild(aTag);
-	}
-}
-//page = 3;
 
 

@@ -5,9 +5,9 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.camcam.common.Control;
-import com.camcam.product.vo.ProductVO;
 
 public class AddLikesControl implements Control {
 
@@ -15,9 +15,10 @@ public class AddLikesControl implements Control {
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		
-		// 넘어와야할 파라미터 : pno, user
+		// 넘어와야할 파라미터 : pno
+		HttpSession session = req.getSession();
+		String userId = (String) session.getAttribute("logId");
 		String pno = req.getParameter("pno");
-		String uid = req.getParameter("uid");
 		String likeStatus = req.getParameter("status");
 		
 		

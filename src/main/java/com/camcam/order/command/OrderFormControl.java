@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.camcam.common.Control;
+import com.camcam.delivery.service.DeliveryService;
+import com.camcam.delivery.service.impl.DeliveryServiceImpl;
+import com.camcam.delivery.vo.DeliveryVO;
 import com.camcam.order.service.OrderService;
 import com.camcam.order.service.impl.OrderServiceImpl;
 import com.camcam.order.vo.OrderDetailVO;
@@ -33,7 +36,7 @@ public class OrderFormControl implements Control {
 		order.setAmount(Integer.parseInt(amount));
 
 		OrderService orderService = new OrderServiceImpl();
-
+		boolean orderComp = false;
 		if (orderService.addOrder(order)) {
 			int orderNo = orderService.getOrderNo();
 
@@ -50,8 +53,16 @@ public class OrderFormControl implements Control {
 				orderDetail.setProductName(product.getProductName());
 				orderDetail.setPrice(Integer.parseInt(product.getPrice()));
 				
-				orderService.addOrderDetail(orderDetail);
+				orderComp = orderService.addOrderDetail(orderDetail);
 			}
+			if(orderComp) {
+				DeliveryVO dvo = new DeliveryVO();
+				dvo.setUserId(userId);
+				dvo.setOrderNo(orderNo);
+				DeliveryService deliveryService = new DeliveryServiceImpl();
+				deliveryService.addDelivery(dvo);
+			}
+			
 			req.setAttribute("productNo", productNo);
 			String path = "orderSuccess.do";
 			req.getRequestDispatcher(path).forward(req, resp);

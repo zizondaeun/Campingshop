@@ -42,12 +42,6 @@ function deleteRow(e) {
 	const rno = e.target.parentElement.parentElement.dataset.rno;
 	//console.log(rno);
 
-	//댓글 작성자만 삭제할수있도록
-	if (userId != id) {
-		alert('삭제할 권한이 없습니다');
-		return;
-	}
-
 	//fetch 삭제 기능 구현
 	svc.removeReply(rno, //첫번째 param
 		result => {
@@ -70,13 +64,6 @@ function deleteRow(e) {
 document.getElementById('addReply').addEventListener('click', function(e) {
 	//console.log(document.querySelector('#addReply'));
 	let reply = document.getElementById('reply').value;
-	if (userId == '') { //댓글창에 로그인하지 않고 입력할때 뜨는 알림창
-		alert("로그인 후에 입력하세요");
-		return;
-	} else if (reply == '') { //빈 댓글을 입력할때 뜨는 알림창
-		alert("댓글을 입력하세요");
-		return;
-	}
 	svc.addReply({ bno: bno, writer: writer, reply: reply }, //첫번째 param
 		result => {
 			if (result.retCode == 'OK') {

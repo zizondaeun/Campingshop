@@ -7,7 +7,9 @@ import com.camcam.reply.vo.ReplyVO;
 
 public interface ReplyMapper {
 	//댓글 목록
-	List<ReplyVO> selectReplyList(int boardNo);
+	List<ReplyVO> replyList(SearchVO search);
+	//
+	List<ReplyVO> replyListPaging(SearchVO search);
 	//댓글 등록
 	int insertReply(ReplyVO rvo);
 	//댓글 삭제

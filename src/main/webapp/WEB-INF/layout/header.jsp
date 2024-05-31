@@ -51,8 +51,15 @@
 			</form>
 		</div>
 		<div class="col-lg-4 col-6 text-right">
-			<p class="m-0">Customer Service</p>
-			<h5 class="m-0">+012 345 6789</h5>
+		<c:choose>
+			<c:when test="${empty logId }">
+				<h5 class="m-0">[GUEST]님 환영합니다.</h5>
+			</c:when>
+			<c:otherwise>
+				<h5 class="m-0">[${logId }]님 환영합니다.
+				</h5>
+			</c:otherwise>
+		</c:choose>
 		</div>
 	</div>
 </div>

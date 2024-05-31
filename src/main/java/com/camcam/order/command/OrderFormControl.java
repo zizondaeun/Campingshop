@@ -42,27 +42,32 @@ public class OrderFormControl implements Control {
 
 			String[] productNoList = productNo.split(",");
 			String[] productCntList = qty.split(",");
-			
-			for(int i=0; i<productNoList.length; i++) {
+
+			for (int i = 0; i < productNoList.length; i++) {
 				OrderDetailVO orderDetail = new OrderDetailVO();
 				ProductVO product = orderService.getProductInfo(Integer.parseInt(productNoList[i]));
-				
+
 				orderDetail.setOrderNo(orderNo);
 				orderDetail.setUserId(userId);
 				orderDetail.setQuantity(Integer.parseInt(productCntList[i]));
 				orderDetail.setProductName(product.getProductName());
-				orderDetail.setPrice(Integer.parseInt(product.getPrice()));
-				
+
+				if (Integer.parseInt(product.getOffPrice()) == 0) {
+					orderDetail.setPrice(Integer.parseInt(product.getPrice()));
+				} else {
+					orderDetail.setPrice(Integer.parseInt(product.getOffPrice()));
+				}
+
 				orderComp = orderService.addOrderDetail(orderDetail);
 			}
-			if(orderComp) {
+			if (orderComp) {
 				DeliveryVO dvo = new DeliveryVO();
 				dvo.setUserId(userId);
 				dvo.setOrderNo(orderNo);
 				DeliveryService deliveryService = new DeliveryServiceImpl();
 				deliveryService.addDelivery(dvo);
 			}
-			
+
 			req.setAttribute("productNo", productNo);
 			String path = "orderSuccess.do";
 			req.getRequestDispatcher(path).forward(req, resp);
@@ -70,8 +75,6 @@ public class OrderFormControl implements Control {
 			System.out.println("주문 실패");
 			resp.sendRedirect("orderFailed.do");
 		}
-		
-		
 
 	}
 

@@ -8,6 +8,8 @@
 		from likes 
 		where user_id = #{userId} and product_no = #{productNo}
 	</select>
+	
+	
 
 
 </mapper>

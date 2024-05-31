@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.camcam.common.Control;
+import com.camcam.likes.service.LikesService;
+import com.camcam.likes.service.impl.LikeServiceImpl;
 
 public class AddLikesControl implements Control {
 
@@ -19,7 +21,10 @@ public class AddLikesControl implements Control {
 		HttpSession session = req.getSession();
 		String userId = (String) session.getAttribute("logId");
 		String pno = req.getParameter("pno");
-		String likeStatus = req.getParameter("status");
+		
+		
+		LikesService likeService = new LikeServiceImpl();
+		
 		
 		
 		

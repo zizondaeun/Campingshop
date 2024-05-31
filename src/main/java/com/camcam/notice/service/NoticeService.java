@@ -16,6 +16,9 @@ public interface NoticeService {
 	//삭제
 	boolean removeNotice(int noticeNo);
 	
+	//수정
+	boolean modifyNotice(NoticeVO vo);
+	
 	
 	
 

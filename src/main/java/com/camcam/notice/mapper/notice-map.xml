@@ -25,4 +25,10 @@
 	<delete id ="deleteNotice" parameterType="int">
 	delete from notice where notice_no = #{noticeNo}
 	</delete>
+	
+	<update id ="updateNotice">
+	update notice
+		set notice_subject = #{noticeSubject}, notice_content = {noticeContent}
+		where notice_no =  #{noticeNO}
+	</update>
 </mapper>

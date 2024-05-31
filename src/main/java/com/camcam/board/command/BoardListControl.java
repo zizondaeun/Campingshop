@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.camcam.board.service.BoardService;
 import com.camcam.board.service.impl.BoardServiceImpl;
@@ -20,11 +21,11 @@ public class BoardListControl implements Control {
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String path = "board/boardList.tiles";
-		
 		SearchVO search = new SearchVO();
 		String page = req.getParameter("page");
 		String sc = req.getParameter("searchCondition");
 		String kw = req.getParameter("keyword");
+		
 		
 		page = page == null ? "1" : page;
 		search.setPage(Integer.parseInt(page));

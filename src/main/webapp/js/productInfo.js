@@ -5,7 +5,8 @@
 document.querySelector('.addBtn').addEventListener('click', plusNumber);
 document.querySelector('.minusBtn').addEventListener('click', minusNumber);
 document.querySelector('#addCart').addEventListener('click', addCart);
-document.querySelector('#likeBtn').addEventListener('click', modLike);
+document.querySelector('#addLikeBtn').addEventListener('click', addLike);
+document.querySelector('#removeLikeBtn').addEventListener('click', removeLike);
 
 function plusNumber(){
 	if(Number(document.querySelector('.cntInput').value) < 9) {
@@ -50,6 +51,20 @@ function addCart() {
 	}
 }
 
-function modLike(){
+function addLike(e){
+	console.log(e.target);
+	e.target.style.display = 'none';
+	document.querySelector('#removeLikeBtn').style.display = 'block';
 	
 }
+function removeLike(e){
+	console.log(e.target);
+	e.target.style.display = 'none';
+	document.querySelector('#addLikeBtn').style.display = 'block';
+}
+
+
+
+
+
+

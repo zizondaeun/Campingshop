@@ -10,6 +10,8 @@ import com.camcam.cart.service.CartService;
 import com.camcam.cart.service.impl.CartServiceImpl;
 import com.camcam.cart.vo.CartVO;
 import com.camcam.common.Control;
+import com.camcam.likes.service.LikesService;
+import com.camcam.likes.service.impl.LikeServiceImpl;
 import com.camcam.product.service.ProductService;
 import com.camcam.product.service.impl.ProductServiceImpl;
 import com.camcam.product.vo.ProductVO;
@@ -59,12 +61,18 @@ public class ProductInfoControl implements Control {
 		}
 
 		reviewDetail.setTruncRating(truncRate);
+		ProductVO product = new ProductVO();
+		product.setUserId(userId);
+		product.setProductNo(Integer.parseInt(pNo));
+		LikesService likeService = new LikeServiceImpl();
+		int userLikeCnt = likeService.getUserLikeCnt(product);
 
 		req.setAttribute("product", productInfo);
 		req.setAttribute("keyword", keyword);
 		req.setAttribute("reviewDetail", reviewDetail);
 		req.setAttribute("userReviewCnt", userReviewCnt);
 		req.setAttribute("userToProductCnt", userToProductCnt);
+		req.setAttribute("userLikeCnt", userLikeCnt);
 
 		req.getRequestDispatcher(path).forward(req, resp);
 

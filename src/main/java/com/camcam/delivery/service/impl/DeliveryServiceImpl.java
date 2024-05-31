@@ -19,4 +19,9 @@ public class DeliveryServiceImpl implements DeliveryService {
 		return mapper.selectDeliveryList();
 	}
 
+	@Override
+	public boolean addDelivery(DeliveryVO dvo) {
+		return mapper.insertDelivery(dvo)==1;
+	}
+
 }

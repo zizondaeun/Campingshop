@@ -60,7 +60,11 @@ import com.camcam.product.command.AddProductFormControl;
 import com.camcam.product.command.AddWishControl;
 import com.camcam.product.command.ProductInfoControl;
 import com.camcam.product.command.ProductListControl;
+import com.camcam.reply.command.AddReplyControl;
+import com.camcam.reply.command.ModReplyControl;
+import com.camcam.reply.command.RemoveReplyControl;
 import com.camcam.reply.command.ReplyListControl;
+import com.camcam.reply.command.TotalCountControl;
 import com.camcam.review.command.AddReviewControl;
 import com.camcam.review.command.ModifyReviewControl;
 import com.camcam.review.command.RemoveReviewControl;
@@ -114,6 +118,9 @@ public class FrontController extends HttpServlet {
 		// 좋아요 변경 관련
 		map.put("/addLikes.do", new AddLikesControl()); // 좋아요 추가
 		map.put("/removeLikes.do", new RemoveLikesControl()); // 좋아요 추가
+		
+		// 관심상품 등록
+		map.put("/addWish.do", new AddWishControl()); 
 
 		// 장바구니 관련
 		map.put("/getCartList.do", new GetCartListControl()); // 장바구니 리스트 JSON 변환
@@ -194,6 +201,12 @@ public class FrontController extends HttpServlet {
 		map.put("/deleteBoard.do", new DeleteControl()); // qna 글 삭제 기능
 		// QnA 댓글 관련
 		map.put("/replyList.do", new ReplyListControl()); // 댓글 목록
+		map.put("/addReply.do", new AddReplyControl()); // 댓글 작성
+		map.put("/removeReply.do", new RemoveReplyControl()); // 댓글 삭제
+		//
+		map.put("/getTotalCnt.do", new TotalCountControl()); 
+		map.put("/modReply.do", new ModReplyControl());
+		
 
 		// 배송관리
 		map.put("/deliveryManage.do", new DeliManageControl());

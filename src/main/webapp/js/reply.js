@@ -1,12 +1,6 @@
 /** 
  *board.js 1.목록먼저
 */
-//수정버튼
-document.querySelector('#modBtn').addEventListener('click', function() {
-	document.forms.myFrm.action = "modBoardForm.do"; //수정화면 호출
-	document.forms.myFrm.submit(); //submit해야 form호출이 됨 /myfrm의 submit이벤트를 호출해줘
-})
-
 //삭제버튼
 document.querySelector('.btn-danger').addEventListener('click', function() {
 	document.forms.myFrm.action = "removeBoardForm.do"; //삭제화면 호출
@@ -49,7 +43,7 @@ function deleteRow(e) {
 	//console.log(rno);
 
 	//댓글 작성자만 삭제할수있도록
-	if (writer != id) {
+	if (userId != id) {
 		alert('삭제할 권한이 없습니다');
 		return;
 	}
@@ -76,7 +70,7 @@ function deleteRow(e) {
 document.getElementById('addReply').addEventListener('click', function(e) {
 	//console.log(document.querySelector('#addReply'));
 	let reply = document.getElementById('reply').value;
-	if (writer == '') { //댓글창에 로그인하지 않고 입력할때 뜨는 알림창
+	if (userId == '') { //댓글창에 로그인하지 않고 입력할때 뜨는 알림창
 		alert("로그인 후에 입력하세요");
 		return;
 	} else if (reply == '') { //빈 댓글을 입력할때 뜨는 알림창
@@ -89,7 +83,7 @@ document.getElementById('addReply').addEventListener('click', function(e) {
 				//location.reload(); /새로고침..?/reload 대신하기위해 makeRow를 생성
 				//const row = makeRow(result.retVal);
 				//document.querySelector('div.reply ul').appendChild(row);
-				showList(); //댓글등록 클릭 바로 후에도 5개씩만 보이도록 하기(과제!!!)
+				showList(); 
 				//댓글등록 후에 reply내용 초기화하기
 				document.getElementById('reply').value = "";		
 			}

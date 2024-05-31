@@ -10,4 +10,27 @@
 		where board_no = #{boardNo}
 	</select>
 
+	<insert id="insertReply"  parameterType="com.camcam.reply.vo.ReplyVO">
+		<selectKey resultType="int" keyProperty="replyNo" order="BEFORE">
+			select reply_no_seq.nextval from dual
+		</selectKey>
+		insert into reply(reply_no, board_no, reply)
+		values (reply_no_seq.nextval, #{boardNo }, #{reply })	
+	</insert>
+	
+	<delete id="deleteReply" parameterType="int">
+		delete from reply where reply_no = #{replyNo}
+	</delete>
+	
+	<select id="selectCount" resultType="int">
+		select count(1) from reply
+		where board_no = #{boardNo}
+	</select>
+	
+	<update id="updateReply" parameterType="com.camcam.reply.vo.ReplyVO">
+		update reply
+		set reply = #{reply}
+		where reply_no = #{replyNo}
+	</update>
+	
 </mapper>

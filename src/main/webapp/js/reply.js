@@ -64,7 +64,7 @@ function deleteRow(e) {
 document.getElementById('addReply').addEventListener('click', function(e) {
 	//console.log(document.querySelector('#addReply'));
 	let reply = document.getElementById('reply').value;
-	svc.addReply({ bno: bno, writer: writer, reply: reply }, //첫번째 param
+	svc.addReply({ bno: bno, writer: id, reply: reply }, //첫번째 param
 		result => {
 			if (result.retCode == 'OK') {
 				//location.reload(); /새로고침..?/reload 대신하기위해 makeRow를 생성
@@ -84,9 +84,7 @@ function makeRow(reply = {}) {
 	console.log(tmpl);
 	tmpl.style.display = 'block';
 	tmpl.setAttribute('data-rno', reply.replyNo);
-	tmpl.querySelector('span:nth-of-type(1)').innerText = reply.replyNo;
-	tmpl.querySelector('span:nth-of-type(2)').innerText = reply.reply;
-	tmpl.querySelector('span:nth-of-type(3)').innerText = reply.replyer;
+	tmpl.querySelector('span:nth-of-type(1)').innerText = reply.reply;
 	return tmpl;
 }
 

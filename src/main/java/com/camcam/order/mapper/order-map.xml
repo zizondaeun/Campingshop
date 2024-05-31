@@ -26,7 +26,7 @@
 	</select>
 	
 	<select id="selectProductInfo" parameterType="int" resultType="com.camcam.product.vo.ProductVO">
-		select product_name, price
+		select product_name, price, off_price
 		from products
 		where product_no = #{productNo}
 	</select>

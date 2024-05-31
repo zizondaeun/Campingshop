@@ -117,12 +117,6 @@ ${userLikeCnt }
 				<p class="mb-4">${product.explain }</p>
 				<div class="d-flex mb-3"></div>
 				<div class="d-flex mb-4" id="likeBtn">
-<!-- 					<button class="btn btn-primary px-3" id="addLikeBtn"> -->
-<!-- 						<i class="far fa-heart"></i> Add To Wish List -->
-<!-- 					</button> -->
-<!-- 					<button class="btn btn-primary px-3" id="removeLikeBtn"> -->
-<!-- 						<i class="fas fa-heart"></i> Remove To Wish List -->
-<!-- 					</button> -->
 				</div>
 				<div class="d-flex align-items-center mb-4 pt-2">
 					<div class="input-group quantity mr-3" style="width: 150px;">

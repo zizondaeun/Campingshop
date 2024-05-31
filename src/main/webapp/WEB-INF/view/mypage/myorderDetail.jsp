@@ -56,7 +56,6 @@
 				<th scope="col">PRODUCT_NAME</th>
 				<th scope="col">QUANTITY</th>
 				<th scope="col">PRICE</th>
-				<th scope="col">AMOUNT</th>
 			</tr>
 		</thead>
 		<tbody class="table-body">
@@ -74,7 +73,6 @@
 							<td>${detail.productName }</td>
 							<td>${detail.quantity }개</td>
 							<td><fmt:formatNumber value="${detail.price }"/>원</td>
-							<td><fmt:formatNumber value="${detail.amount }"/>원</td>
 						</tr>
 					</c:forEach>
 				</c:otherwise>

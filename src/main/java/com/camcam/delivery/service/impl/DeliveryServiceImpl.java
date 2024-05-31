@@ -24,4 +24,10 @@ public class DeliveryServiceImpl implements DeliveryService {
 		return mapper.insertDelivery(dvo)==1;
 	}
 
+	@Override
+	public boolean modifyDelivery(int deliNo) {
+		// TODO Auto-generated method stub
+		return mapper.updateDelivery(deliNo) == 1;
+	}
+
 }

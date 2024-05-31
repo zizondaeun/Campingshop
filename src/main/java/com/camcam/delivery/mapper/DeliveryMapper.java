@@ -9,6 +9,8 @@ public interface DeliveryMapper {
 	// 배송 목록
 	List<DeliveryVO> selectDeliveryList();
 	
+	int updateDelivery(int deliNo);
+	
 	// 배송 등록
 	int insertDelivery(DeliveryVO dvo);
 }

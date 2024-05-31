@@ -24,27 +24,34 @@ h3 {
 }
 </style>
 <script>
-	window.onload = function(){
-		
-	 	let allTd = document.querySelectorAll('tbody td:nth-of-type(5)');
+	window.onload = function() {
+
+		let allTd = document.querySelectorAll('tbody td:nth-of-type(5)');
 		let allTr = document.querySelectorAll('tbody tr');
-		
+		let delBtn = document.querySelectorAll('.delBtn');
+
 		function change() {
-			for(let i=0; i<allTr.length; i++){
+			for (let i = 0; i < allTr.length; i++) {
 				console.log(allTd[i]);
 				console.log(allTd[i].innerHTML);
-				if(allTd[i].innerHTML == 0){
+				if (allTd[i].innerHTML == 0) {
 					allTd[i].innerHTML = '배송중';
-				} else if(allTd[i].innerHTML == 1){
+				} else if (allTd[i].innerHTML == 1) {
 					allTd[i].innerHTML = '배송완료';
 				}
 			}
 		}
-		
-		change(); 
-	}
-	
 
+		function change2() {
+			for (let i = 0; i <= allTd.length; i++) {
+				if (allTd[i].innerHTML == '배송완료') {
+					delBtn[i].style.display = "none";
+				}
+			}
+		}
+		change();
+		change2();
+	}
 </script>
 <head>
 <meta charset="UTF-8">
@@ -96,11 +103,12 @@ h3 {
 					<td>${delivery.orderNo }</td>
 					<td>${delivery.deliDate }</td>
 					<td>${delivery.deliStatus }</td>
-					<!-- <td>
-						<button class="delBtn" onclick="delUser()">삭제</button>
-					</td> -->
+					<td>
+						<button class="delBtn" data-id="${delivery.deliNo }">배송완료</button>
+					</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
+	<script src="js/delivery.js"></script>
 </body>

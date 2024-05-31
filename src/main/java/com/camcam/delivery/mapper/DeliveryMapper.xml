@@ -13,4 +13,10 @@
 		insert into delivery (deli_no, user_id, order_no)
 		values (deli_no_ceq.nextval, #{userId}, #{orderNo})
 	</insert>
+	
+	<update id="updateDelivery" parameterType="int">
+		update delivery
+		set deli_status = 1
+		where deli_no = ${deliNo }
+	</update>
 </mapper>

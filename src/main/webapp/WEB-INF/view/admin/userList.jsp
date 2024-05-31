@@ -70,27 +70,9 @@ h3 {
 					<td>${users.userTel }</td>
 					<td>${users.email }</td>
 					<td>${users.hireDate }</td>
-					<td>
-						<button class="delBtn" onclick="delUser()">삭제</button>
-					</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
-	<script>
- 		function delUser(){
-			if(confirm("유저를 삭제하시겠습니까?")){
-				delRow(event);
-				alert("삭제되었습니다.")
-			} 
-		} 
-		 
-	function delRow(){
-			let tr = event.target;
-			console.log(tr);
-			tr.parentElement.parentElement.remove();
-			
-		}
-	</script>
 </body>
 </html>

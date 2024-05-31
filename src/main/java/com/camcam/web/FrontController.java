@@ -28,6 +28,7 @@ import com.camcam.cart.command.UserTotalCartCntControl;
 import com.camcam.category.command.GetCategoryControl;
 import com.camcam.common.Control;
 import com.camcam.delivery.command.DeliManageControl;
+import com.camcam.delivery.command.DeliveryStatusControl;
 import com.camcam.home.command.HomeControl;
 import com.camcam.likes.command.AddLikesControl;
 import com.camcam.likes.command.RemoveLikesControl;
@@ -212,6 +213,7 @@ public class FrontController extends HttpServlet {
 
 		// 배송관리
 		map.put("/deliveryManage.do", new DeliManageControl());
+		map.put("/deliveryState.do", new DeliveryStatusControl());
 	}
 
 	// service.

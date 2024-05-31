@@ -11,4 +11,6 @@ public interface DeliveryService {
 	// 배송 등록
 	public boolean addDelivery(DeliveryVO dvo);
 	
+	public boolean modifyDelivery(int deliNo);
+	
 }

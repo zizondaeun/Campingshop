@@ -5,8 +5,33 @@
 document.querySelector('.addBtn').addEventListener('click', plusNumber);
 document.querySelector('.minusBtn').addEventListener('click', minusNumber);
 document.querySelector('#addCart').addEventListener('click', addCart);
-document.querySelector('#addLikeBtn').addEventListener('click', addLike);
-document.querySelector('#removeLikeBtn').addEventListener('click', removeLike);
+//document.querySelector('#addLikeBtn').addEventListener('click', addLike);
+//document.querySelector('#removeLikeBtn').addEventListener('click', removeLike);
+
+function init(){
+	let addLikeBtn = document.createElement('button');
+	addLikeBtn.className = "btn btn-primary px-3";
+	addLikeBtn.setAttribute('id', 'addLikeBtn');
+	addLikeBtn.innerHTML = "<i class='far fa-heart'></i> Add To Wish List";
+	addLikeBtn.addEventListener('click', addLike);
+	
+	let removeLikeBtn = document.createElement('button');
+	removeLikeBtn.className = "btn btn-primary px-3";
+	removeLikeBtn.setAttribute('id', 'removeLikeBtn');
+	removeLikeBtn.innerHTML = "<i class='fas fa-heart'></i> Remove To Wish List";
+	removeLikeBtn.addEventListener('click', removeLike);
+	
+	if(userLikeCnt == 0) {
+		addLikeBtn.style.display = 'block';
+		removeLikeBtn.style.display = 'none';
+	} else if(userLikeCnt > 0) {
+		addLikeBtn.style.display = 'none';
+		removeLikeBtn.style.display = 'block';
+	}
+	document.querySelector('#likeBtn').appendChild(addLikeBtn);
+	document.querySelector('#likeBtn').appendChild(removeLikeBtn);
+}
+
 
 function plusNumber() {
 	if (Number(document.querySelector('.cntInput').value) < 9) {
@@ -55,23 +80,46 @@ function addLike(e) {
 	console.log(e.target);
 	let pno = document.querySelector('#productDetail').getAttribute('data-id');
 	console.log(pno);
-	e.target.style.display = 'none';
-	document.querySelector('#removeLikeBtn').style.display = 'block';
+	
 	fetch('addLikes.do', {
 		method: 'post',
 		headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
 		body: `pno=${pno}`
 	})
 		.then(resolve => resolve.json())
-		.then(result => result)
+		.then(result => {
+			console.log(result)
+			if(result.retCode == 'OK') {
+				e.target.style.display = 'none';
+				document.querySelector('#removeLikeBtn').style.display = 'block';
+				alert('위시리스트에 담았습니다.')
+			}
+		})
+		.catch(err => console.log(err));
 
 }
 function removeLike(e) {
 	console.log(e.target);
-	e.target.style.display = 'none';
-	document.querySelector('#addLikeBtn').style.display = 'block';
+	
+	
+	fetch('removeLikes.do', {
+		method: 'post',
+		headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+		body: `pno=${pno}`
+	})
+		.then(resolve => resolve.json())
+		.then(result => {
+			console.log(result)
+			if(result.retCode == 'OK') {
+				e.target.style.display = 'none';
+				document.querySelector('#addLikeBtn').style.display = 'block';
+				alert('위시리스트에서 제거했습니다.')
+			}
+		})
+		.catch(err => console.log(err));
 }
 
+init();
 
 
 

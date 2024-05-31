@@ -59,7 +59,6 @@
 			<thead class="table-header">
 				<tr>
 					<th scope="col">NO</th>
-					<th scope="col">CART_NO</th>
 					<th scope="col">DATE</th>
 					<th scope="col">ADDRESS</th>
 					<th scope="col">AMOUNT</th>
@@ -78,7 +77,6 @@
 						<c:forEach var="order" items="${list }">
 							<tr>
 								<th scope="row">${order.orderNo }</th>
-								<td>${order.cartNo }</td>
 								<td><fmt:formatDate value="${order.orderDate }"
 										pattern="yyyy/MM/dd" /></td>
 								<td>${order.address }</td>

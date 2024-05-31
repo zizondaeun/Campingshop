@@ -3,26 +3,24 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!-- Breadcrumb Start -->
 <style>
-.carousel-inner bg-light div img{
-	width:400px;
-	height:400px;
+.carousel-inner bg-light div img {
+	width: 400px;
+	height: 400px;
 }
-
 
 .bodyImg {
-	width:1100px;
-	height:1100px;
-	margin:0 auto;
+	width: 1100px;
+	height: 1100px;
+	margin: 0 auto;
 }
 
-.bodyImg img{
-	width:530px;
-	height:500px;
-	float:left;
-	margin:10px;
+.bodyImg img {
+	width: 530px;
+	height: 500px;
+	float: left;
+	margin: 10px;
 	object-fit: contain;
 }
-
 </style>
 <div class="container-fluid">
 	<div class="row px-xl-5">
@@ -31,8 +29,8 @@
 				<a class="breadcrumb-item text-dark" href="home.do">Home</a> <a class="breadcrumb-item text-dark" href="productList.do?keyword=${keyword }">Shop</a> <span class="breadcrumb-item active">Shop Detail</span>
 			</nav>
 		</div>
-		
-	</div> 
+
+	</div>
 </div>
 <!-- Breadcrumb End -->
 
@@ -95,8 +93,8 @@ ${userLikeCnt }
 							</c:forEach>
 						</c:if>
 						<!-- 						<small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star-half-alt"></small> <small class="far fa-star"></small> -->
-						
-						
+
+
 					</div>
 					<small class="pt-1">(${reviewDetail.totalCnt } Reviews)</small>
 				</div>
@@ -118,13 +116,13 @@ ${userLikeCnt }
 
 				<p class="mb-4">${product.explain }</p>
 				<div class="d-flex mb-3"></div>
-				<div class="d-flex mb-4">
-					<button class="btn btn-primary px-3" id="addLikeBtn">
-						<i class="far fa-heart"></i> Add To Wish List
-					</button>
-					<button class="btn btn-primary px-3" id="removeLikeBtn" style="display:none;">
-						<i class="fas fa-heart"></i> Remove To Wish List
-					</button>
+				<div class="d-flex mb-4" id="likeBtn">
+<!-- 					<button class="btn btn-primary px-3" id="addLikeBtn"> -->
+<!-- 						<i class="far fa-heart"></i> Add To Wish List -->
+<!-- 					</button> -->
+<!-- 					<button class="btn btn-primary px-3" id="removeLikeBtn"> -->
+<!-- 						<i class="fas fa-heart"></i> Remove To Wish List -->
+<!-- 					</button> -->
 				</div>
 				<div class="d-flex align-items-center mb-4 pt-2">
 					<div class="input-group quantity mr-3" style="width: 150px;">
@@ -157,14 +155,7 @@ ${userLikeCnt }
 					<div class="tab-pane fade show active" id="tab-pane-1">
 						<h4 class="mb-3">Product Description</h4>
 						<div class="bodyImg">
-								<img src="productImg/${product.productImg2 }" alt="Image"
-									onclick="window.open(this.src)"> 
-								<img src="productImg/${product.explainImg1 }" alt="Image"
-									>
-								<img src="productImg/${product.explainImg2 }" alt="Image"
-									>
-								<img src="productImg/${product.productImg3 }" alt="Image"
-									onclick="window.open(this.src)">
+							<img src="productImg/${product.productImg2 }" alt="Image" onclick="window.open(this.src)"> <img src="productImg/${product.explainImg1 }" alt="Image"> <img src="productImg/${product.explainImg2 }" alt="Image"> <img src="productImg/${product.productImg3 }" alt="Image" onclick="window.open(this.src)">
 						</div>
 					</div>
 					<div class="tab-pane fade" id="tab-pane-2">
@@ -231,7 +222,7 @@ ${userLikeCnt }
 						<div class="row">
 							<div class="col-md-6">
 								<div class="reviewHeader">
-									<h4 class="mb-4">${reviewDetail.totalCnt } review for "${product.productName }"</h4>
+									<h4 class="mb-4">${reviewDetail.totalCnt }reviewfor "${product.productName }"</h4>
 									<div class="media mb-4 reviewTemplate" style="display: none;">
 										<div class="media-body">
 											<h6 class="reviewer">
@@ -404,12 +395,13 @@ ${userLikeCnt }
 <script>
 	const userReviewCnt = '${userReviewCnt}'
 	const pno = '${product.productNo}';
- 	const writer = '${logId}';
+	const writer = '${logId}';
 </script>
 <script src="js/review.js"></script>
 <script>
 	const pno2 = '${product.productNo}';
- 	const logId = '${logId}';
-	const cartUserToProduct = '${userToProductCnt}'
+	const logId = '${logId}';
+	const cartUserToProduct = '${userToProductCnt}';
+	const userLikeCnt ='${userLikeCnt }';
 </script>
 <script src="js/productInfo.js"></script>

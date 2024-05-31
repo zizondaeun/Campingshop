@@ -15,6 +15,17 @@ public class LikeServiceImpl implements LikesService{
 	public int getUserLikeCnt(ProductVO pvo) {
 		return mapper.getUserLikeCnt(pvo);
 	}
+
+	@Override
+	public boolean addLike(ProductVO pvo) {
+		return mapper.insertLike(pvo) == 1;
+	}
+
+	@Override
+	public boolean removeLike(ProductVO pvo) {
+		// TODO Auto-generated method stub
+		return mapper.deleteLike(pvo) == 1;
+	}
 	
 	
 	

@@ -41,7 +41,7 @@ public interface MyPageMapper {
 	int deleteMywish(ProductVO vo);
 	
 	// 내 배송정보 내역
-	List<DeliveryVO> selectMydelivery(String id);
+	List<DeliveryVO> selectMydelivery(PageVO vo);
 	
 	// 페이징
 	int getBoardTotalCnt(PageVO vo); //board

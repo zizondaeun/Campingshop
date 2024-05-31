@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.camcam.common.Control;
+import com.camcam.common.SearchVO;
 import com.camcam.reply.service.ReplyService;
 import com.camcam.reply.service.impl.ReplyServiceImpl;
 import com.camcam.reply.vo.ReplyVO;
@@ -22,9 +23,15 @@ public class ReplyListControl implements Control {
 		
 		String bno = req.getParameter("bno");
 		System.out.println(bno + "1004"); //js해주니까 bno나와
+		String page = req.getParameter("page");
+		page = page == null ? "1" : page;
+		 
+		SearchVO search = new SearchVO();
+		search.setBoardNo(Integer.parseInt(bno));
+		search.setRpage(Integer.parseInt(page));
 		
 		ReplyService svc = new ReplyServiceImpl();
-		List<ReplyVO> list = svc.replyList(Integer.parseInt(bno));
+		List<ReplyVO> list = svc.replyList(search);
 
 		Gson gson = new GsonBuilder().create();
 		String json = gson.toJson(list);

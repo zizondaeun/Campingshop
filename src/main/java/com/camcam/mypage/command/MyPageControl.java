@@ -8,25 +8,33 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.camcam.common.Control;
+import com.camcam.common.PageDTO;
 import com.camcam.delivery.vo.DeliveryVO;
 import com.camcam.mypage.service.MyPageService;
 import com.camcam.mypage.service.impl.MyPageServiceImpl;
+import com.camcam.mypage.vo.PageVO;
 
 public class MyPageControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String path = "mypage/mypage.tiles";
 		String id = req.getParameter("userId");
-		//System.out.println(id + "119");
+		String page = req.getParameter("page");
+		
 		MyPageService svc = new MyPageServiceImpl();
 		//UserVO vo = svc.getMypage(id);
-
-		List<DeliveryVO> list = svc.getMydelivery(id);
-		//req.setAttribute("result", vo);
-		req.setAttribute("list", list);
-		//System.out.println(list + "1004");
+		page = page == null ? "1" : page;
+		PageVO vo = new PageVO();
+		vo.setUserId(id);
+		vo.setPage(Integer.parseInt(page));
 		
-		String path = "mypage/mypage.tiles";
+		List<DeliveryVO> list = svc.getMydelivery(vo);
+		//req.setAttribute("result", vo);
+		PageDTO pageDTO = new PageDTO(Integer.parseInt(page), svc.getBoardTotal(vo)); 
+		req.setAttribute("list", list);
+		req.setAttribute("paging", pageDTO);
+		
 		req.getRequestDispatcher(path).forward(req, resp);
 		//HttpUtils.forward(req, resp, path);
 		

@@ -7,13 +7,9 @@ import com.camcam.reply.vo.ReplyVO;
 
 public interface ReplyService {
 	//댓글 목록
-	List<ReplyVO> replyList(SearchVO search);
+	List<ReplyVO> replyList(ReplyVO vo);
 	//댓글 등록
 	boolean addReply(ReplyVO rvo);
 	//댓글 삭제
 	boolean removeReply(int replyNo);
-	//
-	int getReplyCnt(int boardNo);
-	boolean modReply(ReplyVO rvo);
-
 }

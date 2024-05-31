@@ -23,5 +23,15 @@ public class NoticeServiceImpl implements NoticeService{
 		// TODO Auto-generated method stub
 		return mapper.selectNotice(noticeNO);
 	}
+	@Override
+	public boolean addNotice(NoticeVO vo) {
+		// TODO Auto-generated method stub
+		return mapper.insertNotice(vo) == 1;
+	}
+	@Override
+	public boolean removeNotice(int noticeNO) {
+		// TODO Auto-generated method stub
+		return mapper.deleteNotice(noticeNO)==1;
+	}
 	
 }

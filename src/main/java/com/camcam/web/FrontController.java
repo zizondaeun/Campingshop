@@ -46,6 +46,7 @@ import com.camcam.notice.command.AddnoticeControl;
 import com.camcam.notice.command.AdminListnoticeControl;
 import com.camcam.notice.command.ListnoticeControl;
 import com.camcam.notice.command.UpdatenoticeControl;
+import com.camcam.notice.command.addnoticeForm;
 import com.camcam.notice.command.deletenoticeControl;
 import com.camcam.notice.command.noticeControl;
 import com.camcam.order.command.OrderControl;
@@ -113,10 +114,7 @@ public class FrontController extends HttpServlet {
 		// 좋아요 변경 관련
 		map.put("/addLikes.do", new AddLikesControl()); // 좋아요 추가
 		map.put("/removeLikes.do", new RemoveLikesControl()); // 좋아요 추가
-		
-		// 관심상품 등록
-		map.put("/addWish.do", new AddWishControl()); 
-		
+
 		// 장바구니 관련
 		map.put("/getCartList.do", new GetCartListControl()); // 장바구니 리스트 JSON 변환
 		map.put("/cartList.do", new CartListControl()); // 장바구니 보기
@@ -165,7 +163,8 @@ public class FrontController extends HttpServlet {
 
 		// 관리자 공지사항
 		map.put("/adminListnoticePage.do", new AdminListnoticeControl()); // 공지사항 리스트
-		map.put("/addnoticePage.do", new AddnoticeControl()); // 공지사항 추가
+		map.put("/addnoticeForm.do", new addnoticeForm()); // 공지사항 등록으로 이동
+		map.put("/addnoticePage.do", new AddnoticeControl()); // 공지사항 등록 기능
 		map.put("/updatenoticePage.do", new UpdatenoticeControl()); // 공지사항 수정
 		map.put("/updatenoticePage.do", new deletenoticeControl()); // 공지사항 삭제
 

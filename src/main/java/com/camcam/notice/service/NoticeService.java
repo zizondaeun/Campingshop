@@ -10,5 +10,14 @@ public interface NoticeService {
 	List<NoticeVO> noticeList();
 	
 	NoticeVO getNotice(int noticeNO);
+	
+	boolean addNotice(NoticeVO vo); //등록
+	
+	//삭제
+	boolean removeNotice(int noticeNO);
+	
+	
+	
+
 
 }

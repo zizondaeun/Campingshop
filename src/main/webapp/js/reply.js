@@ -1,17 +1,7 @@
 /** 
  *board.js 1.목록먼저
 */
-//삭제버튼
-document.querySelector('.btn-danger').addEventListener('click', function() {
-	document.forms.myFrm.action = "removeBoardForm.do"; //삭제화면 호출
-	document.forms.myFrm.submit(); //submit 이벤트 호출
-})
-
 //댓글목록 출력
-//const bno = 538;
-console.log('bno: ', bno);
-let page = 1;
-//목록출력
 showList();
 function showList() {
 	//댓글목록을 초기화
@@ -20,7 +10,7 @@ function showList() {
 			li.remove();
 		}
 	})
-	svc.replyList({ bno: bno, page: page }, //첫번째 param
+	svc.replyList({ bno: bno}, //첫번째 param
 		result => {
 			console.log(result);
 			result.forEach(reply => {
@@ -38,7 +28,6 @@ function showList() {
 //삭제버튼의 이벤트
 function deleteRow(e) {
 	console.log(e);
-	let id = e.target.parentElement.parentElement.children[2].innerHTML; //댓글작성자id
 	const rno = e.target.parentElement.parentElement.dataset.rno;
 	//console.log(rno);
 
@@ -48,7 +37,7 @@ function deleteRow(e) {
 			if (result.retCode == 'OK') {
 				alert('삭제완료');
 				//e.target.parentElement.parentElement.remove();
-				showList(); //댓글삭제하면 계속 5개 되도록			
+				showList();		
 			} else if (result.retCode == 'NG') {
 				alert('삭제를 완료할 수 없습니다');
 
@@ -64,7 +53,7 @@ function deleteRow(e) {
 document.getElementById('addReply').addEventListener('click', function(e) {
 	//console.log(document.querySelector('#addReply'));
 	let reply = document.getElementById('reply').value;
-	svc.addReply({ bno: bno, writer: id, reply: reply }, //첫번째 param
+	svc.addReply({ bno: bno, reply: reply }, //첫번째 param
 		result => {
 			if (result.retCode == 'OK') {
 				//location.reload(); /새로고침..?/reload 대신하기위해 makeRow를 생성

@@ -19,6 +19,10 @@ public class AddWishControl implements Control {
 		HttpSession session = req.getSession();
 		String pno = req.getParameter("pno");
 		String id = (String) session.getAttribute("logId");
+		if(id == null) {
+			resp.sendRedirect("logForm.do");
+			return;
+		}
 		
 		ProductVO vo = new ProductVO();
 		vo.setProductNo(Integer.parseInt(pno));

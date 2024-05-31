@@ -15,8 +15,8 @@ public class ReplyServiceImpl implements ReplyService{
 	ReplyMapper mapper = session.getMapper(ReplyMapper.class);
 	
 	@Override
-	public List<ReplyVO> replyList(SearchVO search) {
-		return mapper.replyListPaging(search);
+	public List<ReplyVO> replyList(ReplyVO vo) {
+		return mapper.selectReplyList(vo);
 	}
 
 	@Override
@@ -27,16 +27,6 @@ public class ReplyServiceImpl implements ReplyService{
 	@Override
 	public boolean removeReply(int replyNo) {
 		return mapper.deleteReply(replyNo) == 1;
-	}
-
-	@Override
-	public int getReplyCnt(int boardNo) {
-		return mapper.selectCount(boardNo);
-	}
-
-	@Override
-	public boolean modReply(ReplyVO rvo) {
-		return mapper.updateReply(rvo) == 1;
 	}
 
 }

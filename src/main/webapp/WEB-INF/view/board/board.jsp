@@ -91,19 +91,23 @@ div.reply span {
 	<div class="container reply">
 		<!-- 댓글등록 -->
 		<div class="header">
-			<input class="col-sm-8" id="reply">
-			<button class="col-sm-3" id="addReply">답변등록</button>
+			<c:if test="${logId eq 'admin' }">
+				<input class="col-sm-8" id="reply">
+				<button class="col-sm-3" id="addReply">답변등록</button>
+			</c:if>
 		</div>
 		<div class="content">
 			<ul>
 				<li>
 					<span class="col-sm-5">답변</span>
+					<span class="col-sm-2">답변삭제</span>
 				</li>
 				<li>
 					<hr />
 				</li>
 				<li style="display: none;">
 					<span class="col-sm-5"></span> 
+					<span class="col-sm-2"><button onclick="deleteRow(event)" class="btn btn-warning">삭제</button></span> 
 				</li>
 			</ul>
 		</div>

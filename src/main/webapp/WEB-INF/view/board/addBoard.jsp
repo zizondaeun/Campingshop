@@ -76,6 +76,12 @@
             console.error(error);
         });
     </script>
+    <script type="text/javascript">
+    	console.log('${error}');
+    	    var errorMessage = '<%=request.getAttribute("error") != null ? request.getAttribute("error") : ""%>';
+    	    if (errorMessage) {
+    	        alert(errorMessage);
+    	    }
+    </script>
 </body>
 </html>
-

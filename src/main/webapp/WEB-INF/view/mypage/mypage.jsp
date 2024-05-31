@@ -47,53 +47,85 @@
 		</div>
 	</div>
 </div>
-<div>
-	<h4 align="center">MY DELIVERY</h4>
-<div class="table-container">
-	<div class="description">
-		<span
-			style="display: inline-block; width: 100%; font-size: 15px; padding: 10px; text-align: right;">
-			<span>[${logId }]</span> 님의 배송정보입니다.
-		</span>
-	</div>
-	<table class="table">
-		<thead class="table-header">
-			<tr>
-				<th scope="col">배송번호</th>
-				<th scope="col">주문번호</th>
-				<th scope="col">주문일자</th>
-				<th scope="col">배송상태</th>
-			</tr>
-		</thead>
-		<tbody class="table-body">
-			<c:choose>
-				<c:when test="${empty list }">
-					<tr align="center">
-						<td colspan="5">조회된 결과가 없습니다</td>
+<c:choose>
+	<c:when test="${not empty logId }">
+		<div>
+		<h4 align="center">MY DELIVERY</h4>
+		<div class="table-container">
+			<div class="description">
+				<span
+					style="display: inline-block; width: 100%; font-size: 15px; padding: 10px; text-align: right;">
+					<span>[${logId }]</span> 님의 배송정보입니다.
+				</span>
+			</div>
+			<table class="table">
+				<thead class="table-header">
+					<tr>
+						<th scope="col">배송번호</th>
+						<th scope="col">주문번호</th>
+						<th scope="col">주문일자</th>
+						<th scope="col">배송상태</th>
 					</tr>
-				</c:when>
-				<c:otherwise>
-					<c:forEach var="delivery" items="${list }">
-						<tr>
-							<td scope="row">${delivery.deliNo }</td>
-							<td>${delivery.orderNo }</td>
-							<td><fmt:formatDate value="${delivery.deliDate }" pattern="yyyy/MM/dd" /></td>
-							<c:choose>
-								<c:when test="${delivery.deliStatus eq 1 }">
-									<td>배송완료</td>
-								</c:when>
-								<c:otherwise>
-									<td>배송 중</td>
-								</c:otherwise>
-							</c:choose>
-						</tr>
+				</thead>
+				<tbody class="table-body">
+					<c:choose>
+						<c:when test="${empty list }">
+							<tr align="center">
+								<td colspan="5">조회된 결과가 없습니다</td>
+							</tr>
+						</c:when>
+						<c:otherwise>
+							<c:forEach var="delivery" items="${list }">
+								<tr>
+									<td scope="row">${delivery.deliNo }</td>
+									<td>${delivery.orderNo }</td>
+									<td><fmt:formatDate value="${delivery.deliDate }" pattern="yyyy/MM/dd" /></td>
+									<c:choose>
+										<c:when test="${delivery.deliStatus eq 1 }">
+											<td>배송완료</td>
+										</c:when>
+										<c:otherwise>
+											<td>배송 중</td>
+										</c:otherwise>
+									</c:choose>
+								</tr>
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>
+				</tbody>
+			</table>
+				<div class="center">
+				<nav>
+					<ul class="pagination justify-content-center">
+					<c:if test="${paging.prev }">
+						<!-- 이전페이지 여부 체크 -->
+						<li class="page-item"><a class="page-link" href="myPage.do?page=${paging.startPage - 1}"><span>&laquo;</span></a></li>
+					</c:if>
+		
+					<c:forEach var="p" begin="${paging.startPage}" end="${paging.endPage}">
+						<li class="${p == paging.page ? 'page-item active' : 'page-item'}"><a class="page-link" href="myPage.do?page=${p}"><span>${p}</span></a></li>
 					</c:forEach>
-				</c:otherwise>
-			</c:choose>
-		</tbody>
-	</table>
-</div>
-</div>
+		
+					<c:if test="${paging.next }">
+						<!-- 이후페이지 여부 체크 -->
+						<li class="page-item"><a class="page-link" href="myPage.do?page=${paging.endPage + 1}"><span>&raquo;</span></a></li>
+					</c:if>
+					</ul>
+				</nav>
+			</div>
+		</div>
+		</div>
+	</c:when>
+	<c:otherwise>
+		<div align="center">
+			<table border="1">
+				<tr>
+					<td>로그인 정보가 없습니다.</td>
+				</tr>
+			</table>
+		</div>
+	</c:otherwise>
+</c:choose>
 <script>
 
 </script>

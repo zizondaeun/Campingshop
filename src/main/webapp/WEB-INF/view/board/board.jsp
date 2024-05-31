@@ -85,32 +85,33 @@ div.reply span {
 	<div>
 	<hr />
 	<!-- 댓글목록 -->
-	<div class="container reply">
-	<!-- 댓글등록 -->
-		<div class="header">
-			<input class="col-sm-8" id="reply">
-			<button class="col-sm-3" id="addReply">댓글등록</button>
+	<c:choose>
+		<c:when test="${logId eq 'user05'}">
+		<!-- 관리자가 입력하는 댓글창 -->
+		<div class="container">
+			<div class="form-group">
+				<form method="post" encType="multipart/form-data" action="#">
+					<table class="table table-striped"
+						style="text-align: center; border: 1px solid #dddddd">
+						<tr>
+							<td style="border-bottom: none;" valign="middle"><br>
+							<br>${result.userId }</td>
+							<td><input type="text" style="height: 100px;"
+								class="form-control" name="commentText"></td>
+							<td><br>
+							<br>
+							<input type="submit" class="btn-primary pull" value="댓글 작성"></td>
+						</tr>
+					</table>
+				</form>
+			</div>
 		</div>
-		<div class="content">
-			<ul>
-				<li>
-					<span class="col-sm-2">글번호</span>
-					<span class="col-sm-5">댓글내용</span>
-					<span class="col-sm-2">작성자</span>
-					<span class="col-sm-2">삭제</span>
-				</li>
-				<li>
-					<hr />
-				</li>
-				<li style="display: none;">
-					<span class="col-sm-2"></span>
-					<span class="col-sm-5"></span>
-					<span class="col-sm-2"></span>
-					<span class="col-sm-2"><button onclick="deleteRow(event)" class="btn btn-warning">삭제</button></span>
-				</li>				
-			</ul>
-		</div><!-- div.content --><!-- 여기에 if써서 글이 없으면 페이징 안보이게 해보기 -->
-	</div><!-- div.container.reply -->
+		</c:when>
+		<c:otherwise>
+		<!-- 사용자가 보는 관리자 댓글 -->
+		
+		</c:otherwise>
+	</c:choose>
 	</div>
 </div>
 

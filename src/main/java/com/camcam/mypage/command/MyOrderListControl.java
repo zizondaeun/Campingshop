@@ -23,8 +23,11 @@ public class MyOrderListControl implements Control {
 		String path = "mypage/myorderList.tiles";
 		String id = (String) session.getAttribute("logId");
 		String page = req.getParameter("page");
-		if(id.equals("")) {
-			id = (String) session.getAttribute("logId");
+//		if(id.equals("")) {
+//			id = (String) session.getAttribute("logId");
+//		}
+		if(id == null) {
+			id = " ";
 		}
 		
 		MyPageService svc = new MyPageServiceImpl();

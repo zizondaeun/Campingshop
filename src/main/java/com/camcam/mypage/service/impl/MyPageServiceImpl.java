@@ -92,8 +92,8 @@ public class MyPageServiceImpl implements MyPageService {
 	}
 
 	@Override
-	public List<DeliveryVO> getMydelivery(String id) {
-		return mapper.selectMydelivery(id);
+	public List<DeliveryVO> getMydelivery(PageVO vo) {
+		return mapper.selectMydelivery(vo);
 	}
 
 	@Override

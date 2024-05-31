@@ -23,8 +23,8 @@ public class MyWishListControl implements Control {
 		String path = "mypage/mywishList.tiles";
 		String id = (String) session.getAttribute("logId");
 		String page = req.getParameter("page");
-		if(id.equals("")) {
-			id = (String) session.getAttribute("logId");
+		if(id == null) {
+			id = " ";
 		}
 		
 		MyPageService svc = new MyPageServiceImpl();

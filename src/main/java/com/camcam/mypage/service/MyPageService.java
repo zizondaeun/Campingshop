@@ -32,7 +32,7 @@ public interface MyPageService {
 	//관심상품 삭제
 	boolean removeMywish(ProductVO vo);
 	//내 배송정보 내역
-	List<DeliveryVO> getMydelivery(String id);
+	List<DeliveryVO> getMydelivery(PageVO vo);
 	//페이징
 	int getBoardTotal(PageVO vo); //board
 	int getOrderTotal(PageVO vo); //order

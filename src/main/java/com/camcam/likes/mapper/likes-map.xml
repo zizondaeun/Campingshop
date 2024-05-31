@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.camcam.likes.mapper.LikesMapper">
+	<select id="getUserLikeCnt" parameterType="com.camcam.product.vo.ProductVO">
+		select count(*) 
+		from likes 
+		where user_id = #{userId} and product_no = #{productNo}
+	</select>
+	
+	<insert id="insertLike" parameterType="com.camcam.product.vo.ProductVO">
+		insert into likes (user_id, product_no)
+		values (#{userId}, #{productNo})
+	</insert>
+	
+	<delete id="deleteLike" parameterType="com.camcam.product.vo.ProductVO">
+		delete likes 
+		where user_id = #{userId} and product_no = #{productNo}
+	</delete>
+	
+	
+
+
+</mapper>

@@ -8,5 +8,7 @@ public interface DeliveryService {
 	
 	// 배송목록
 	public List<DeliveryVO> deliveryList();
+	// 배송 등록
+	public boolean addDelivery(DeliveryVO dvo);
 	
 }

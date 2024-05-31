@@ -37,8 +37,9 @@
 <!-- Breadcrumb End -->
 
 <!-- Shop Detail Start -->
+${userLikeCnt }
 <div class="container-fluid pb-5">
-	<div class="row px-xl-5">
+	<div class="row px-xl-5" id="productDetail" data-id="${product.productNo }">
 		<div class="col-lg-5 mb-30">
 			<div id="product-carousel" class="carousel slide" data-ride="carousel">
 				<div class="carousel-inner bg-light">
@@ -118,8 +119,11 @@
 				<p class="mb-4">${product.explain }</p>
 				<div class="d-flex mb-3"></div>
 				<div class="d-flex mb-4">
-					<button class="btn btn-primary px-3" id="likeBtn">
-						<i class="fas fa-heart"></i> Add To Wish List
+					<button class="btn btn-primary px-3" id="addLikeBtn">
+						<i class="far fa-heart"></i> Add To Wish List
+					</button>
+					<button class="btn btn-primary px-3" id="removeLikeBtn" style="display:none;">
+						<i class="fas fa-heart"></i> Remove To Wish List
 					</button>
 				</div>
 				<div class="d-flex align-items-center mb-4 pt-2">

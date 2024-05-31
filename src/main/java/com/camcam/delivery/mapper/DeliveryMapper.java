@@ -8,4 +8,7 @@ public interface DeliveryMapper {
 	
 	// 배송 목록
 	List<DeliveryVO> selectDeliveryList();
+	
+	// 배송 등록
+	int insertDelivery(DeliveryVO dvo);
 }

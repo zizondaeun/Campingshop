@@ -86,7 +86,7 @@ div.reply span {
 	<hr />
 	<!-- 댓글목록 -->
 	<c:choose>
-		<c:when test="${logId eq 'user05'}">
+		<c:when test="${logId eq 'admin'}">
 		<!-- 관리자가 입력하는 댓글창 -->
 		<div class="container">
 			<div class="form-group">

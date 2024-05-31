@@ -16,7 +16,7 @@
 }
 
 h1{
-  color:#e91e63;
+  color:#FFD333;
   font-size:48px;
   letter-spacing:-3px;
   text-align:center;
@@ -122,7 +122,7 @@ form{
   }
   
   .signin__btn{
-     background:#e91e63;
+     background:#FFD333;
      color:white;
      display:block;
      width:92.5%;

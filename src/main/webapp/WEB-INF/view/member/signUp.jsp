@@ -24,7 +24,7 @@
 }
 
 h1{
-  color:#e91e63;
+  color:#FFD333;
   font-size:48px;
   letter-spacing:-3px;
   text-align:center;
@@ -129,7 +129,7 @@ form{
   }
   
   .signin__btn{
-     background:#e91e63;
+     background:#FFD333;
      color:white;
      display:block;
      width:92.5%;
@@ -267,7 +267,7 @@ footer{
     </li>
     
     <li>
-      <a href="idFindForm.do" id="reset">아이디/비밀번호 찾기</a>
+      <a href="idFindForm.do" id="reset">ID/PW찾기</a>
     </li>
     
   </ul>

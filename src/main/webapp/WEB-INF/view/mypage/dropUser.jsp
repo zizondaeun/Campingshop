@@ -6,6 +6,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Withdraw</title>
+    <Style>
+    h1{
+  color:#FFD333;
+  font-size:48px;
+  letter-spacing:-3px;
+  text-align:center;
+  margin:120px 0 80px 0 ;
+  transition:.2s linear;
+}
+    </Style>
 </head>
 <body>
     <div class="container">

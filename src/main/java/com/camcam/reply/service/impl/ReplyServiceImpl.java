@@ -15,8 +15,8 @@ public class ReplyServiceImpl implements ReplyService{
 	ReplyMapper mapper = session.getMapper(ReplyMapper.class);
 	
 	@Override
-	public List<ReplyVO> replyList(int boardNo) {
-		return mapper.selectReplyList(boardNo);
+	public List<ReplyVO> replyList(SearchVO search) {
+		return mapper.replyListPaging(search);
 	}
 
 	@Override

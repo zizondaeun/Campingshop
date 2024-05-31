@@ -46,6 +46,7 @@ import com.camcam.notice.command.AddnoticeControl;
 import com.camcam.notice.command.AdminListnoticeControl;
 import com.camcam.notice.command.ListnoticeControl;
 import com.camcam.notice.command.UpdatenoticeControl;
+import com.camcam.notice.command.UpdatenoticeForm;
 import com.camcam.notice.command.addnoticeForm;
 import com.camcam.notice.command.deletenoticeControl;
 import com.camcam.notice.command.noticeControl;
@@ -172,8 +173,9 @@ public class FrontController extends HttpServlet {
 		map.put("/adminListnoticePage.do", new AdminListnoticeControl()); // 공지사항 리스트
 		map.put("/addnoticeForm.do", new addnoticeForm()); // 공지사항 등록으로 이동
 		map.put("/addnoticePage.do", new AddnoticeControl()); // 공지사항 등록 기능
-		map.put("/updatenoticePage.do", new UpdatenoticeControl()); // 공지사항 수정
-		map.put("/updatenoticePage.do", new deletenoticeControl()); // 공지사항 삭제
+		map.put("/updatenoticeForm.do", new UpdatenoticeForm()); // 공지사항 수정 이동
+		map.put("/updatenoticePage.do", new UpdatenoticeControl()); // 공지사항 수정 기능
+		map.put("/deletedatenoticePage.do", new deletenoticeControl()); // 공지사항 삭제
 
 		// 마이페이지
 		map.put("/myPage.do", new MyPageControl()); // 마이페이지로 이동

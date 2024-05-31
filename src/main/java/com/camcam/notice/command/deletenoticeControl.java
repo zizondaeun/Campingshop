@@ -16,13 +16,14 @@ public class deletenoticeControl implements Control {
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String bno = req.getParameter("bno");
 		//System.out.println("~~~~~~~~~~~" + bno);
+		System.out.println(bno +"****************************************");
 		
 		NoticeService svc = new NoticeServiceImpl();
 		
 		if(svc.removeNotice(Integer.parseInt(bno))) {
-			resp.sendRedirect("boardList.do");
+			resp.sendRedirect("ListnoticePage.do");
 		}else {
-			resp.sendRedirect("boardInfo.do");
+			resp.sendRedirect("noticePage.do");
 		}
 	}
 

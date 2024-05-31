@@ -1,41 +1,106 @@
-<%@ page import="com.camcam.notice.vo.NoticeVO"%>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="com.camcam.notice.vo.NoticeVO" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <style>
-.detail-container {
-    width: 70%;
-    margin: 0 auto;
+.center {
+    text-align: center;
+}
+.table{
+    width: 60%; 
+    margin: 0 auto; 
     border: 1px solid #ccc;
     padding: 20px;
 }
-.detail-header {
-    text-align: center;
-    padding: 20px;
-    border-bottom: 1px solid #ddd;
+div.reply div {
+    margin: auto;
 }
-.detail-content {
-    padding: 20px;
-    border-bottom: 1px solid #ddd;
+
+div.reply ul {
+    list-style-type: none;
+    margin-top: 5px;
 }
-.detail-footer {
+
+div.reply li {
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+div.reply span {
+    display: inline-block;
+}
+
+.center {
     text-align: center;
-    padding: 20px;
+}
+
+.pagination {
+    display: inline-block;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
 }
 </style>
-<div class="detail-container">
-    <div class="detail-header">
-        <h3>공지사항 상세 정보</h3>
-    </div>
-    <div class="detail-content">
-        <p><strong>NO:</strong> ${notice.noticeNo}</p>
-        <p><strong>제목:</strong> ${notice.noticeSubject}</p>
-        <p><strong>내용:</strong> ${notice.noticeContent}</p>
-        <p><strong>작성자:</strong> ${notice.userId}</p>
-        <p><strong>작성일:</strong> <fmt:formatDate value="${notice.noticeDate}" pattern="yyyy/MM/dd" /></p>
-    </div>
-    <div class="detail-footer">
-        <button onclick="window.history.back()">뒤로가기</button>
-    </div>
+<h3 align="center">공지사항</h3>
+<div>
+    <table class="table">
+        <tr>
+           <th>NO</th>
+<td>${result.noticeNo}</td>
+<th>WRITER</th>
+<td>${result.userId}</td>
+<th>DATE</th>
+<%
+    Date date = (Date)request.getAttribute("result.noticeDate");
+    String formattedDate = "";
+    if(date != null) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+        formattedDate = sdf.format(date);
+    }
+%>
+<td><%= formattedDate %></td>
+</tr>
+<tr>
+    <th>TITLE</th><!-- td가 닫는 태그가 누락되어 있습니다. -->
+    <td colspan="6">${result.noticeSubject}</td>
+</tr>
+<tr>
+    <th>CONTENT</th><!-- th가 닫는 태그가 누락되어 있습니다. -->
+    <td colspan="6">${result.noticeContent}</td>
+</tr>
+<tr align="center">
+    <td colspan="6">
+        <!-- 링크 수정 -->
+        <button class="btn btn-primary" id="modBtn">수정</button>
+        <button type="button" class="btn btn-danger" id="delBtn" onclick="location.href='deletedatenoticePage.do?bno=${result.noticeNo}'">삭제</button>
+    </td>
+</tr>
+
+    </table>
+    
+
 </div>
+<script>
+document.querySelector('.btn-danger').addEventListener('click', function() {
+	document.forms.myFrm.action = "removeBoardForm.do"; //삭제화면 호출
+	document.forms.myFrm.submit(); //submit 이벤트 호출
+})
+</script>
+
+

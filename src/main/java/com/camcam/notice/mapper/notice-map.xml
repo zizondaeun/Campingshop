@@ -23,6 +23,6 @@
 	</insert>
 	
 	<delete id ="deleteNotice" parameterType="int">
-	delete from notice where notice_no = #{noticeNo};
+	delete from notice where notice_no = #{noticeNo}
 	</delete>
 </mapper>

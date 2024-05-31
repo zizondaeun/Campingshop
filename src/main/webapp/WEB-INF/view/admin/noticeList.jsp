@@ -68,7 +68,10 @@
             <c:forEach var="notice" items="${noticeList }"> <!-- board -> notice로 수정 -->
                 <tr>
                     <td class="no">${notice.noticeNo }</td>
-                    <td class="content">${notice.noticeSubject }</td>
+                    <td class="content">
+                   <a href="noticePage.do?bno=${notice.noticeNo }&userId=${notice.userId }">
+                   <font color="#6c757d">${notice.noticeSubject }
+                   </font></a></td>
                     <td class="writer">${notice.noticeDate }</td>
                 </tr>
             </c:forEach>

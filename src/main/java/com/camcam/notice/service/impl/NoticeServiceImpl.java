@@ -19,9 +19,9 @@ public class NoticeServiceImpl implements NoticeService{
 		return mapper.noticeList();
 	}
 	@Override
-	public NoticeVO getNotice(int noticeNO) {
+	public NoticeVO getNotice(int noticeNo) {
 		// TODO Auto-generated method stub
-		return mapper.selectNotice(noticeNO);
+		return mapper.selectNotice(noticeNo);
 	}
 	@Override
 	public boolean addNotice(NoticeVO vo) {
@@ -29,9 +29,9 @@ public class NoticeServiceImpl implements NoticeService{
 		return mapper.insertNotice(vo) == 1;
 	}
 	@Override
-	public boolean removeNotice(int noticeNO) {
+	public boolean removeNotice(int noticeNo) {
 		// TODO Auto-generated method stub
-		return mapper.deleteNotice(noticeNO)==1;
+		return mapper.deleteNotice(noticeNo)==1;
 	}
 	
 }

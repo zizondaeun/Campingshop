@@ -124,5 +124,6 @@ div.reply span {
  		window.location.href = 'modBoardForm.do?bno=' + bno + '&userId=' + id + '&title=' + title + '&content=' + content;
 	}) 
 </script>
+
 <script src="js/replyService.js"></script>
 <script src="js/reply.js"></script>

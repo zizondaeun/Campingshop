@@ -83,7 +83,18 @@ let order = {
 
 document.querySelector('#purchase').addEventListener('click', function() {
 	if (document.querySelector('.customer').value == '' || document.querySelector('.cEmail').value == '' || document.querySelector('.cTel').value == '' || document.querySelector('.cAddr').value == '') {
-		alert('정보를 모두 입력해주세요.');
+		Swal.fire({
+							title: "정보를 모두 입력해주세요.",
+							showDenyButton: false,
+							confirmButtonText: "확인",
+						}).then((result) => {
+							/* Read more about isConfirmed, isDenied below */
+							if (result.isConfirmed) {
+								// Swal.fire("Saved!", "", "success");
+							} else if (result.isDenied) {
+								// Swal.fire("Changes are not saved", "", "info");
+							}
+						});
 		return;
 	}
 

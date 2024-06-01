@@ -8,5 +8,10 @@ public class CategoryVO {
 	private String chCat;
 	private String ptName;
 	private String chName;
+	// 
+	private String categoryCode;
+	private String categoryName;
+	private String categoryImg;
+	private int productCnt;
 	
 }

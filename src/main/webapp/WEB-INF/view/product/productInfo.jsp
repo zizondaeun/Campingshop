@@ -35,7 +35,6 @@
 <!-- Breadcrumb End -->
 
 <!-- Shop Detail Start -->
-${userLikeCnt }
 <div class="container-fluid pb-5">
 	<div class="row px-xl-5" id="productDetail" data-id="${product.productNo }">
 		<div class="col-lg-5 mb-30">
@@ -216,7 +215,7 @@ ${userLikeCnt }
 						<div class="row">
 							<div class="col-md-6">
 								<div class="reviewHeader">
-									<h4 class="mb-4">${reviewDetail.totalCnt }reviewfor "${product.productName }"</h4>
+									<h4 class="mb-4">${reviewDetail.totalCnt } review for "${product.productName }"</h4>
 									<div class="media mb-4 reviewTemplate" style="display: none;">
 										<div class="media-body">
 											<h6 class="reviewer">

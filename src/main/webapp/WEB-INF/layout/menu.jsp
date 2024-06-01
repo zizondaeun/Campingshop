@@ -38,7 +38,7 @@
 					<c:if test="${logId != null}">
 						<div class="navbar-nav ml-auto py-0 d-none d-lg-block">
 							<a href="myWishList.do" class="btn px-0"> <i class="fas fa-heart text-primary"></i> 
-							</a> <a href="cartList.do" class="btn px-0 ml-3"> <i class="fas fa-shopping-cart text-primary"></i> <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
+							</a> <a href="cartList.do" class="btn px-0 ml-3"> <i class="fas fa-shopping-cart text-primary"></i> <span class="badge text-secondary border border-secondary rounded-circle" id="menuCartCnt" style="padding-bottom: 2px;">0</span>
 							</a>
 						</div>
 					</c:if>
@@ -48,3 +48,4 @@
 	</div>
 </div>
 <script type="text/javascript" src="js/category.js"></script>
+<script type="text/javascript" src="js/cartCount.js"></script>

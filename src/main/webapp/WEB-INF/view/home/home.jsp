@@ -94,7 +94,7 @@
 	</h2>
 	<div class="row px-xl-5 pb-3">
 		<c:forEach var="c" items="${cList }">
-			<div class="col-lg-6 col-md-4 col-sm-6 pb-1">
+			<div class="col-lg-12 col-md-4 col-sm-6 pb-1">
 				<a class="text-decoration-none" href="productList.do?pcode=${c.categoryCode}">
 					<div class="cat-item d-flex align-items-center mb-4">
 						<div class="overflow-hidden" style="width: 100px; height: 100px;">

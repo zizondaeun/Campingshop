@@ -215,7 +215,7 @@
 						<div class="row">
 							<div class="col-md-6">
 								<div class="reviewHeader">
-									<h4 class="mb-4">${reviewDetail.totalCnt }reviewfor "${product.productName }"</h4>
+									<h4 class="mb-4">${reviewDetail.totalCnt } review for "${product.productName }"</h4>
 									<div class="media mb-4 reviewTemplate" style="display: none;">
 										<div class="media-body">
 											<h6 class="reviewer">

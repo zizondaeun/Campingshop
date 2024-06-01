@@ -24,11 +24,13 @@ public class ProductListControl implements Control {
 		String category = req.getParameter("category");
 		String kw = req.getParameter("keyword");
 		String pCode = req.getParameter("pcode");
+		String sort = req.getParameter("sort");
 		
 		System.out.println("아ㅏ아아ㅏ아아" + pCode);
 		System.out.println("아ㅏ아아ㅏ아아" + category);
 
 		page = page ==null ? "1" : page; // 페이지 파라미터가 없을때 page = 1
+		sort = sort ==null ? "" : sort; // 정렬 파라미터가 없을때 sort = 공백
 		
 		if(kw == null) {
 			if(category != null) {
@@ -37,6 +39,19 @@ public class ProductListControl implements Control {
 				kw = "";
 			}
 		}
+		String sortCondition = "desc";
+		if(sort.equals("P")) {
+			sort = "price";
+			sortCondition = "asc";
+		} else if (sort.equals("H")) {
+			sort = "price";
+			sortCondition = "desc";
+		} else if (sort.equals("L")) {
+			sort = "input_date";
+			sortCondition = "desc";
+		} else {
+			sortCondition = "";		
+		}
 		
 		System.out.println("아아ㅏ아아아아ㅏ아아ㅏ아아ㅏㅇ" + kw);
 		
@@ -44,7 +59,10 @@ public class ProductListControl implements Control {
 		
 		search.setPage(Integer.parseInt(page));
 		search.setKeyword(kw);
-		search.setCategoryCode(pCode);;
+		search.setCategoryCode(pCode);
+		search.setSort(sort);
+		search.setSortCondition(sortCondition);
+		;
 		ProductService productService = new ProductServiceImpl();
 		
 		int total = productService.getTotal(search);
@@ -61,6 +79,7 @@ public class ProductListControl implements Control {
 		req.setAttribute("pList", pList);
 		req.setAttribute("keyword", kw);
 		req.setAttribute("pCode", pCode);
+		req.setAttribute("sort", sort);
 		
 		req.getRequestDispatcher(path).forward(req, resp);
 		

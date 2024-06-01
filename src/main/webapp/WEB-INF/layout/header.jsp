@@ -29,8 +29,8 @@
 				</div>
 			</div>
 			<div class="d-inline-flex align-items-center d-block d-lg-none">
-				<a href="" class="btn px-0 ml-2"> <i class="fas fa-heart text-dark"></i> <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;">0</span>
-				</a> <a href="" class="btn px-0 ml-2"> <i class="fas fa-shopping-cart text-dark"></i> <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;">0</span>
+				<a href="myWishList.do" class="btn px-0 ml-2"> <i class="fas fa-heart text-dark"></i>
+				</a> <a href="cartList.do" class="btn px-0 ml-2"> <i class="fas fa-shopping-cart text-dark"></i> <span class="badge text-dark border border-dark rounded-circle" id="headerCartCnt" style="padding-bottom: 2px;">0</span>
 				</a>
 			</div>
 		</div>
@@ -83,3 +83,4 @@ function logout() {
         });
 }
 </script>
+<script type="text/javascript" src="js/cartCount.js"></script>

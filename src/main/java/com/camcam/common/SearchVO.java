@@ -7,6 +7,8 @@ public class SearchVO {
 	private int page;
 	private String searchCondition;
 	private String keyword;
+	private String sort;
+	private String sortCondition;
 	
 	
 	// 댓글관련

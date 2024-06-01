@@ -43,5 +43,10 @@
 		delete carts
 		where user_id = #{userId}
 	</delete>
+	
+	<select id="cartCnt" resultType="int" parameterType="String">
+		select count(*) from carts 
+		where user_id = #{userId}
+	</select>
 
 </mapper>

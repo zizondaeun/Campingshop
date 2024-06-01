@@ -45,9 +45,14 @@
                        			AND (b.product_name LIKE '%' || #{keyword} || '%' OR b.category_code LIKE #{keyword})
                     		</if>
 			            </where>
-<!-- 			            where (c.category_code is null or c.category_code = #{categoryCode} or c.pre_category = #{categoryCode}) -->
-<!-- 			              and (b.product_name like '%' || #{keyword} || '%' or b.category_code like #{keyword}) -->
-			            order by b.product_no desc
+			            <choose>
+			                <when test="sort != ''">
+			                    ORDER BY ${sort} ${sortCondition}
+			                </when>
+			                <otherwise>
+			                    ORDER BY b.input_date DESC
+			                </otherwise>
+           				</choose>
 			        ) a
 				<![CDATA[ 
 			        where rownum <= (#{page} * 9)

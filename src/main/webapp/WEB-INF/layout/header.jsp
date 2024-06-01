@@ -74,12 +74,36 @@ function logout() {
                 location.reload();
             } else {
                 // 로그아웃이 실패하면 오류 메시지를 표시합니다.
-                alert('로그아웃에 실패했습니다. 다시 시도해주세요.');
+//                 alert('로그아웃에 실패했습니다. 다시 시도해주세요.');
+            	Swal.fire({
+					title: "로그아웃에 실패했습니다. 다시 시도해주세요.",
+					showDenyButton: false,
+					confirmButtonText: "확인",
+				}).then((result) => {
+					/* Read more about isConfirmed, isDenied below */
+					if (result.isConfirmed) {
+						// Swal.fire("Saved!", "", "success");
+					} else if (result.isDenied) {
+						// Swal.fire("Changes are not saved", "", "info");
+					}
+				});
             }
         })
         .catch(error => {
             console.error('로그아웃 요청 중 오류가 발생했습니다:', error);
-            alert('로그아웃 요청 중 오류가 발생했습니다.');
+//             alert('로그아웃 요청 중 오류가 발생했습니다.');
+            Swal.fire({
+				title: "로그아웃 요청 중 오류가 발생했습니다.",
+				showDenyButton: false,
+				confirmButtonText: "확인",
+			}).then((result) => {
+				/* Read more about isConfirmed, isDenied below */
+				if (result.isConfirmed) {
+					// Swal.fire("Saved!", "", "success");
+				} else if (result.isDenied) {
+					// Swal.fire("Changes are not saved", "", "info");
+				}
+			});
         });
 }
 </script>

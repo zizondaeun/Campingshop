@@ -10,7 +10,7 @@ function showList() {
 			li.remove();
 		}
 	})
-	svc.replyList({ bno: bno}, //첫번째 param
+	svc.replyList({ bno: bno }, //첫번째 param
 		result => {
 			console.log(result);
 			result.forEach(reply => {
@@ -35,14 +35,50 @@ function deleteRow(e) {
 	svc.removeReply(rno, //첫번째 param
 		result => {
 			if (result.retCode == 'OK') {
-				alert('삭제완료');
+				//				alert('삭제완료');
+				Swal.fire({
+					title: "삭제완료",
+					showDenyButton: false,
+					confirmButtonText: "확인",
+				}).then((result) => {
+					/* Read more about isConfirmed, isDenied below */
+					if (result.isConfirmed) {
+						// Swal.fire("Saved!", "", "success");
+					} else if (result.isDenied) {
+						// Swal.fire("Changes are not saved", "", "info");
+					}
+				});
 				//e.target.parentElement.parentElement.remove();
-				showList();		
+				showList();
 			} else if (result.retCode == 'NG') {
-				alert('삭제를 완료할 수 없습니다');
+				//				alert('삭제를 완료할 수 없습니다');
+				Swal.fire({
+					title: "삭제를 완료할 수 없습니다.",
+					showDenyButton: false,
+					confirmButtonText: "확인",
+				}).then((result) => {
+					/* Read more about isConfirmed, isDenied below */
+					if (result.isConfirmed) {
+						// Swal.fire("Saved!", "", "success");
+					} else if (result.isDenied) {
+						// Swal.fire("Changes are not saved", "", "info");
+					}
+				});
 
 			} else {
-				alert('알 수 없는 반환값');
+//				alert('알 수 없는 반환값');
+				Swal.fire({
+							title: "알 수 없는 반환값",
+							showDenyButton: false,
+							confirmButtonText: "확인",
+						}).then((result) => {
+							/* Read more about isConfirmed, isDenied below */
+							if (result.isConfirmed) {
+								// Swal.fire("Saved!", "", "success");
+							} else if (result.isDenied) {
+								// Swal.fire("Changes are not saved", "", "info");
+							}
+						});
 			}
 		}, //두번째 param
 		err => console.log(err)); //세번째 param
@@ -59,9 +95,9 @@ document.getElementById('addReply').addEventListener('click', function(e) {
 				//location.reload(); /새로고침..?/reload 대신하기위해 makeRow를 생성
 				//const row = makeRow(result.retVal);
 				//document.querySelector('div.reply ul').appendChild(row);
-				showList(); 
+				showList();
 				//댓글등록 후에 reply내용 초기화하기
-				document.getElementById('reply').value = "";		
+				document.getElementById('reply').value = "";
 			}
 		}, //두번째 param
 		err => console.log(err)); //세번째 param

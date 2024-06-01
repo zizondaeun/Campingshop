@@ -149,7 +149,7 @@
 								<li class="page-item disabled"><a class="page-link" href="productList.do?page=${paging.startPage-1}">Previous</span></a></li>
 							</c:if>
 							<c:forEach var="p" begin="${paging.startPage}" end="${paging.endPage}">
-								<li class="${p==paging.page?'page-item active':''}"><a class="page-link" href="productList.do?page=${p}&keyword=${keyword}">${p}</a></li>
+								<li class="${p==paging.page?'page-item active':''}"><a class="page-link" href="productList.do?page=${p}&keyword=${keyword}&pcode=${pCode}">${p}</a></li>
 							</c:forEach>
 							<c:if test="${pageInfo.next }">
 								<li class="page-item"><a class="page-link" href="productList.do?page=${paging.endPage+1}">Next</a></li>

@@ -13,4 +13,6 @@ public class SearchVO {
 	private int boardNo;
 	private int rpage;
 	
+	// 카테고리 관련
+	private String categoryCode;
 }

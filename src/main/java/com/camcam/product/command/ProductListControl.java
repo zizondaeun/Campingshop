@@ -23,8 +23,10 @@ public class ProductListControl implements Control {
 		String page = req.getParameter("page");
 		String category = req.getParameter("category");
 		String kw = req.getParameter("keyword");
+		String pCode = req.getParameter("pcode");
 		
-//		System.out.println("아ㅏ아아ㅏ아아" + category);
+		System.out.println("아ㅏ아아ㅏ아아" + pCode);
+		System.out.println("아ㅏ아아ㅏ아아" + category);
 
 		page = page ==null ? "1" : page; // 페이지 파라미터가 없을때 page = 1
 		
@@ -36,12 +38,13 @@ public class ProductListControl implements Control {
 			}
 		}
 		
-//		System.out.println("아아ㅏ아아아아ㅏ아아ㅏ아아ㅏㅇ" + kw);
+		System.out.println("아아ㅏ아아아아ㅏ아아ㅏ아아ㅏㅇ" + kw);
 		
 		SearchVO search = new SearchVO();
 		
 		search.setPage(Integer.parseInt(page));
 		search.setKeyword(kw);
+		search.setCategoryCode(pCode);;
 		ProductService productService = new ProductServiceImpl();
 		
 		int total = productService.getTotal(search);
@@ -57,6 +60,7 @@ public class ProductListControl implements Control {
 		req.setAttribute("paging", pageDTO);
 		req.setAttribute("pList", pList);
 		req.setAttribute("keyword", kw);
+		req.setAttribute("pCode", pCode);
 		
 		req.getRequestDispatcher(path).forward(req, resp);
 		

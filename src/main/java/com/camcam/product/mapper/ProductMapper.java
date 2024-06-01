@@ -3,6 +3,7 @@ package com.camcam.product.mapper;
 import java.util.List;
 import java.util.Map;
 
+import com.camcam.common.CategoryVO;
 import com.camcam.common.SearchVO;
 import com.camcam.product.vo.ProductVO;
 
@@ -20,6 +21,9 @@ public interface ProductMapper {
 	
 	// 물품 카테고리 리스트
 	public List<Map<String, String>> categoryTemp();
+	
+	// 메인페이지 대분류 카테고리 리스트, 해당 카테고리 상품 수 조회
+	public List<CategoryVO> parentsCategoryList();
 	
 	// (관리자) 상품등록
 	public int insertBoard(ProductVO product);

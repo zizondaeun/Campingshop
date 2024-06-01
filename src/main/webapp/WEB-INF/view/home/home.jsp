@@ -95,162 +95,21 @@
     <div class="container-fluid pt-5">
         <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Categories</span></h2>
         <div class="row px-xl-5 pb-3">
-            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <a class="text-decoration-none" href="">
-                    <div class="cat-item d-flex align-items-center mb-4">
-                        <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                            <img class="img-fluid" src="img/imgData/TERG/백팩/터그 데이팩1.jpg" alt="">
-                        </div>
-                        <div class="flex-fill pl-3">
-                            <h6>TERG Daypack</h6>
-                            <small class="text-body">100 Products</small>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <a class="text-decoration-none" href="">
-                    <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                        <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                            <img class="img-fluid" src="img/imgData/TERG/울르타 라이트/터그 사코슈 스탠다드2.jpg" alt="">
-                        </div>
-                        <div class="flex-fill pl-3">
-                            <h6>Pack</h6>
-                            <small class="text-body">100 Products</small>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <a class="text-decoration-none" href="">
-                    <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                        <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                            <img class="img-fluid" src="img/imgData/아웃도어라인/쉐이드/로얄박스 쉐이드  샌드1.jpg" alt="">
-                        </div>
-                        <div class="flex-fill pl-3">
-                            <h6>Loyalbox Shade</h6>
-                            <small class="text-body">100 Products</small>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <a class="text-decoration-none" href="">
-                    <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                        <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                            <img class="img-fluid" src="img/imgData/아웃도어라인/쉐이드/헬리녹스 퍼스널 쉐이드  스칼렛아이언 블록1.jpg" alt="">
-                        </div>
-                        <div class="flex-fill pl-3">
-                            <h6>Personal Shade</h6>
-                            <small class="text-body">100 Products</small>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <a class="text-decoration-none" href="">
-                    <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                        <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                            <img class="img-fluid" src="img/imgData/홈 데코 비치 라인/체어2/선셋체어 홈  그래블1.jpg" alt="">
-                        </div>
-                        <div class="flex-fill pl-3">
-                            <h6>Sunset Chair</h6>
-                            <small class="text-body">100 Products</small>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <a class="text-decoration-none" href="">
-                    <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                        <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                            <img class="img-fluid" src="img/imgData/홈 데코 비치 라인/코트2/하이 코트원 홈  펠리컨1.jpg" alt="">
-                        </div>
-                        <div class="flex-fill pl-3">
-                            <h6>High Cot One</h6>
-                            <small class="text-body">100 Products</small>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <a class="text-decoration-none" href="">
-                    <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                        <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                            <img class="img-fluid" src="img/imgData/홈 데코 비치 라인/테이블2/테이블오 홈 미디움  월넛1.jpg" alt="">
-                        </div>
-                        <div class="flex-fill pl-3">
-                            <h6>Table</h6>
-                            <small class="text-body">100 Products</small>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <a class="text-decoration-none" href="">
-                    <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                        <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                            <img class="img-fluid" src="img/imgData/택티컬 라인/체어3/택티컬 체어  멀티캠1.jpg" alt="">
-                        </div>
-                        <div class="flex-fill pl-3">
-                            <h6>Tactical Chair</h6>
-                            <small class="text-body">100 Products</small>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <a class="text-decoration-none" href="">
-                    <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                        <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                            <img class="img-fluid" src="img/imgData/택티컬 라인/코트3/헬리녹스 택티컬 코트 컨버터블  코요테 탄2.jpg" alt="">
-                        </div>
-                        <div class="flex-fill pl-3">
-                            <h6>Tactical Cot</h6>
-                            <small class="text-body">100 Products</small>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <a class="text-decoration-none" href="">
-                    <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                        <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                            <img class="img-fluid" src="img/imgData/택티컬 라인/택티컬 필드 오피스/헬리녹스 택티컬 필드 오피스 큐브  블랙2.jpg" alt="">
-                        </div>
-                        <div class="flex-fill pl-3">
-                            <h6>Tactical Field Office Cube</h6>
-                            <small class="text-body">100 Products</small>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <a class="text-decoration-none" href="">
-                    <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                        <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                            <img class="img-fluid" src="img/imgData/택티컬 라인/테이블3/택티컬 테이블 라지  블랙2.jpg" alt="">
-                        </div>
-                        <div class="flex-fill pl-3">
-                            <h6>Tactical Table</h6>
-                            <small class="text-body">100 Products</small>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <a class="text-decoration-none" href="">
-                    <div class="cat-item img-zoom d-flex align-items-center mb-4">
-                        <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                            <img class="img-fluid" src="img/imgData/택티컬 라인/텐트3/택티컬 노나돔 4.0  코요테탄1.jpg" alt="">
-                        </div>
-                        <div class="flex-fill pl-3">
-                            <h6>Tent</h6>
-                            <small class="text-body">100 Products</small>
-                        </div>
-                    </div>
-                </a>
-            </div>
+        	<c:forEach var="c" items="${cList }">
+	            <div class="col-lg-6 col-md-4 col-sm-6 pb-1">
+	                <a class="text-decoration-none" href="productList.do?pcode=${c.categoryCode}">
+	                    <div class="cat-item d-flex align-items-center mb-4">
+	                        <div class="overflow-hidden" style="width: 100px; height: 100px;">
+	                            <img class="img-fluid" src="productImg/${c.categoryImg }" alt="">
+	                        </div>
+	                        <div class="flex-fill pl-3">
+	                            <h6>${c.categoryName}</h6>
+	                            <small class="text-body">${c.productCnt } Products</small>
+	                        </div>
+	                    </div>
+	                </a>
+	            </div>
+        	</c:forEach>
         </div>
     </div>
     <!-- Categories End -->

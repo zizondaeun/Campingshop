@@ -9,20 +9,51 @@
 	</select>
 	
 	<select id="selectProductList" parameterType="com.camcam.common.SearchVO">
-        select r.*
-		from(select rownum rn,a.*
-				from (select b.*, trunc(b.rating) as trunc_rating ,nvl(s.count_review,0) as review_cnt
-					from products b
-					left join (select product_no, count(*) as count_review
-								from reviews
-								group by product_no) s
-					on	b.product_no = s.product_no
-					where product_name like '%'|| #{keyword} ||'%' or category_code like #{keyword}
-					order by b.product_no desc) a
-          <![CDATA[
-          where rownum <= (#{page} * 9)) r          
-          ]]>
-		where r.rn > (#{page} -1) * 9
+<!--         select r.* -->
+<!-- 		from(select rownum rn,a.* -->
+<!-- 				from (select b.*, trunc(b.rating) as trunc_rating ,nvl(s.count_review,0) as review_cnt -->
+<!-- 					from products b -->
+<!-- 					left join (select product_no, count(*) as count_review -->
+<!-- 								from reviews -->
+<!-- 								group by product_no) s -->
+<!-- 					on	b.product_no = s.product_no -->
+<!-- 					where product_name like '%'|| #{keyword} ||'%' or category_code like #{keyword} -->
+<!-- 					order by b.product_no desc) a -->
+<!--           <![CDATA[ -->
+<!--           where rownum <= (#{page} * 9)) r           -->
+<!--           ]]> -->
+<!-- 		where r.rn > (#{page} -1) * 9 -->
+			 select r.*
+			    from (
+			        select rownum rn, a.*
+			        from (
+			            select b.*, 
+			                   trunc(b.rating) as trunc_rating, 
+			                   nvl(s.count_review, 0) as review_cnt
+			            from products b
+			            left join (
+			                select product_no, count(*) as count_review
+			                from reviews
+			                group by product_no
+			            ) s on b.product_no = s.product_no
+			            join category c on b.category_code = c.category_code
+			            <where>
+			            	<if test="categoryCode != null and categoryCode != ''">
+			            		and (c.category_code = #{categoryCode} or c.pre_category = #{categoryCode})
+			            	</if>
+			            	 <if test="keyword != null and keyword != ''">
+                       			AND (b.product_name LIKE '%' || #{keyword} || '%' OR b.category_code LIKE #{keyword})
+                    		</if>
+			            </where>
+<!-- 			            where (c.category_code is null or c.category_code = #{categoryCode} or c.pre_category = #{categoryCode}) -->
+<!-- 			              and (b.product_name like '%' || #{keyword} || '%' or b.category_code like #{keyword}) -->
+			            order by b.product_no desc
+			        ) a
+				<![CDATA[ 
+			        where rownum <= (#{page} * 9)
+			     ]]>
+			    ) r
+			    where r.rn > (#{page} - 1) * 9
 	</select>
 	
 	<select id="selectProductInfo" parameterType="int" resultType="com.camcam.product.vo.ProductVO">
@@ -30,9 +61,14 @@
 	</select>
 	
 	<select id="getTotal" resultType="int" parameterType="com.camcam.common.SearchVO">
-		select count(1)
-		from products
-		where product_name like '%'|| #{keyword}||'%' or category_code like #{keyword}
+<!-- 		select count(1) -->
+<!-- 		from products -->
+<!-- 		where product_name like '%'|| #{keyword}||'%' or category_code like #{keyword} -->
+ 		SELECT COUNT(1)
+        FROM products b
+        JOIN category c ON b.category_code = c.category_code
+        WHERE (#{categoryCode} is null or c.category_code = #{categoryCode} OR c.pre_category = #{categoryCode})
+          and (b.product_name LIKE '%' || #{keyword} || '%' OR b.category_code LIKE #{keyword})
 	</select>
 	
 	<select id="getLikeVal" resultType="com.camcam.product.vo.ProductVO" parameterType="com.camcam.product.vo.ProductVO">
@@ -87,6 +123,28 @@
 		CONNECT BY PRE_CATEGORY = PRIOR CATEGORY_CODE
 		ORDER SIBLINGS BY CATEGORY_CODE DESC
 	</select>
+	
+	<select id="parentsCategoryList" resultType="com.camcam.common.CategoryVO">
+		select * from (
+				    select
+				                c.category_code,
+				                c.category_name,
+				                c.category_img,
+				                count(p.product_no) as product_cnt
+				    from category c
+				    left join category sc 
+				    on c.category_code = sc.pre_category
+				    left join products p 
+				    on sc.category_code = p.category_code
+				    where c.pre_category is null
+				    group by c.category_code, c.category_name, c.category_img
+				    order by c.category_code desc
+				)
+		  <![CDATA[
+		where rownum <= 5
+          ]]>
+	</select>
+	
 	
 		<!-- 관리자 상품등록  -->
 	<insert id="insertBoard" parameterType="com.camcam.product.vo.ProductVO">

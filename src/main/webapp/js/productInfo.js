@@ -5,8 +5,6 @@
 document.querySelector('.addBtn').addEventListener('click', plusNumber);
 document.querySelector('.minusBtn').addEventListener('click', minusNumber);
 document.querySelector('#addCart').addEventListener('click', addCart);
-//document.querySelector('#addLikeBtn').addEventListener('click', addLike);
-//document.querySelector('#removeLikeBtn').addEventListener('click', removeLike);
 
 function init() {
 	let addLikeBtn = document.createElement('button');
@@ -167,7 +165,6 @@ function addCart() {
 						if (result.isConfirmed) {
 							location.href = 'cartList.do';
 							// Swal.fire("Saved!", "", "success");
-							location.href = 'cartList.do';
 						} else if (result.isDenied) {
 							// Swal.fire("Changes are not saved", "", "info");
 						}

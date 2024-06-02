@@ -181,125 +181,264 @@ function executeRating(stars) {
 executeRating(ratingStars);
 
 document.getElementById('addReview').addEventListener('click', function(e) {
-	if (userReviewCnt > 0) {
-//		alert('이미 작성한 후기가 있습니다.')
-		Swal.fire({
-							title: "이미 작성한 후기가 있습니다.",
-							showDenyButton: false,
-							confirmButtonText: "확인",
-						}).then((result) => {
-							/* Read more about isConfirmed, isDenied below */
-							if (result.isConfirmed) {
-								// Swal.fire("Saved!", "", "success");
-							} else if (result.isDenied) {
-								// Swal.fire("Changes are not saved", "", "info");
-							}
-						});
-	} else {
-		let rating = document.getElementById('rating').value;
-		let content = document.getElementById('message').value;
-		if (content == "") {
-//			alert("리뷰를 입력해주세요.");
-			Swal.fire({
-							title: "리뷰를 입력해주세요",
-							showDenyButton: false,
-							confirmButtonText: "확인",
-						}).then((result) => {
-							/* Read more about isConfirmed, isDenied below */
-							if (result.isConfirmed) {
-								// Swal.fire("Saved!", "", "success");
-							} else if (result.isDenied) {
-								// Swal.fire("Changes are not saved", "", "info");
-							}
-						});
-		} else if (writer == "") {
-//			alert("로그인후 이용해주세요.");
-			Swal.fire({
-							title: "로그인 후 이용해주세요",
-							showDenyButton: true,
-							confirmButtonText: "로그인",
-							denyButtonText: `취소`
-						}).then((result) => {
-							/* Read more about isConfirmed, isDenied below */
-							if (result.isConfirmed) {
-								// Swal.fire("Saved!", "", "success");
-								location.href = 'logForm.do';
-							} else if (result.isDenied) {
-								// Swal.fire("Changes are not saved", "", "info");
-							}
-						});
-		} else if (rating == 0) {
-//			alert("평점을 입력하세요.");
-			Swal.fire({
-							title: "평점을 입력하세요",
-							showDenyButton: false,
-							confirmButtonText: "확인",
-						}).then((result) => {
-							/* Read more about isConfirmed, isDenied below */
-							if (result.isConfirmed) {
-								// Swal.fire("Saved!", "", "success");
-							} else if (result.isDenied) {
-								// Swal.fire("Changes are not saved", "", "info");
-							}
-						});
-		} else {
-			fetch('addReview.do', {
-				method: 'post',
-				headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-				body: 'pno=' + pno + '&user=' + writer + '&content=' + content + '&rating=' + rating
-			})
-				.then(resolve => resolve.json())
-				.then(result => {
-					if (result.retCode == 'OK') {
-						//location.reload();
-						showList();
-//						alert('등록완료');
-						Swal.fire({
-							title: "등록완료",
-							showDenyButton: false,
-							confirmButtonText: "확인",
-						}).then((result) => {
-							/* Read more about isConfirmed, isDenied below */
-							if (result.isConfirmed) {
-								// Swal.fire("Saved!", "", "success");
-							} else if (result.isDenied) {
-								// Swal.fire("Changes are not saved", "", "info");
-							}
-						});
-						document.getElementById('addReview').disabled = true;
-					} else if (result.retCode == 'NG') {
-//						alert('등록실패');
-						Swal.fire({
-							title: "등록실패",
-							showDenyButton: false,
-							confirmButtonText: "확인",
-						}).then((result) => {
-							/* Read more about isConfirmed, isDenied below */
-							if (result.isConfirmed) {
-								// Swal.fire("Saved!", "", "success");
-							} else if (result.isDenied) {
-								// Swal.fire("Changes are not saved", "", "info");
-							}
-						});
-					} else {
-//						alert('알수없는 반환값');
-						Swal.fire({
-							title: "알수없는 반환값",
-							showDenyButton: false,
-							confirmButtonText: "확인",
-						}).then((result) => {
-							/* Read more about isConfirmed, isDenied below */
-							if (result.isConfirmed) {
-								// Swal.fire("Saved!", "", "success");
-							} else if (result.isDenied) {
-								// Swal.fire("Changes are not saved", "", "info");
-							}
-						});
-					}
-					document.getElementById('message').value = "";
-				})
-				.catch(err => console.log(err))
 
-		}
-	}
+	fetch('getUserReviewCnt.do', {
+		method: 'post',
+		headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+		body: 'pno=' + pno
+	})
+		.then(resolve => resolve.json())
+		.then(cnt => {
+			if (cnt.userReviewCnt > 0) {
+				Swal.fire({
+					title: "이미 작성한 후기가 있습니다.",
+					showDenyButton: false,
+					confirmButtonText: "확인",
+				}).then((result) => {
+					/* Read more about isConfirmed, isDenied below */
+					if (result.isConfirmed) {
+						// Swal.fire("Saved!", "", "success");
+					} else if (result.isDenied) {
+						// Swal.fire("Changes are not saved", "", "info");
+					}
+				});
+			} else {
+				let rating = document.getElementById('rating').value;
+				let content = document.getElementById('message').value;
+				if (content == "") {
+					//			alert("리뷰를 입력해주세요.");
+					Swal.fire({
+						title: "리뷰를 입력해주세요",
+						showDenyButton: false,
+						confirmButtonText: "확인",
+					}).then((result) => {
+						/* Read more about isConfirmed, isDenied below */
+						if (result.isConfirmed) {
+							// Swal.fire("Saved!", "", "success");
+						} else if (result.isDenied) {
+							// Swal.fire("Changes are not saved", "", "info");
+						}
+					});
+				} else if (writer == "") {
+					//			alert("로그인후 이용해주세요.");
+					Swal.fire({
+						title: "로그인 후 이용해주세요",
+						showDenyButton: true,
+						confirmButtonText: "로그인",
+						denyButtonText: `취소`
+					}).then((result) => {
+						/* Read more about isConfirmed, isDenied below */
+						if (result.isConfirmed) {
+							// Swal.fire("Saved!", "", "success");
+							location.href = 'logForm.do';
+						} else if (result.isDenied) {
+							// Swal.fire("Changes are not saved", "", "info");
+						}
+					});
+				} else if (rating == 0) {
+					//			alert("평점을 입력하세요.");
+					Swal.fire({
+						title: "평점을 입력하세요",
+						showDenyButton: false,
+						confirmButtonText: "확인",
+					}).then((result) => {
+						/* Read more about isConfirmed, isDenied below */
+						if (result.isConfirmed) {
+							// Swal.fire("Saved!", "", "success");
+						} else if (result.isDenied) {
+							// Swal.fire("Changes are not saved", "", "info");
+						}
+					});
+				} else {
+					fetch('addReview.do', {
+						method: 'post',
+						headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+						body: 'pno=' + pno + '&user=' + writer + '&content=' + content + '&rating=' + rating
+					})
+						.then(resolve => resolve.json())
+						.then(result => {
+							if (result.retCode == 'OK') {
+								//location.reload();
+								document.querySelector('.reviewCount1').innerText = "("+(cnt.userReviewCnt + 1)+")";
+								document.querySelector('.reviewCount2').innerText = cnt.userReviewCnt + 1;
+								showList();
+								//						alert('등록완료');
+								Swal.fire({
+									title: "등록완료",
+									showDenyButton: false,
+									confirmButtonText: "확인",
+								}).then((result) => {
+									/* Read more about isConfirmed, isDenied below */
+									if (result.isConfirmed) {
+										// Swal.fire("Saved!", "", "success");
+									} else if (result.isDenied) {
+										// Swal.fire("Changes are not saved", "", "info");
+									}
+								});
+//								document.getElementById('addReview').disabled = true;
+							} else if (result.retCode == 'NG') {
+								//						alert('등록실패');
+								Swal.fire({
+									title: "등록실패",
+									showDenyButton: false,
+									confirmButtonText: "확인",
+								}).then((result) => {
+									/* Read more about isConfirmed, isDenied below */
+									if (result.isConfirmed) {
+										// Swal.fire("Saved!", "", "success");
+									} else if (result.isDenied) {
+										// Swal.fire("Changes are not saved", "", "info");
+									}
+								});
+							} else {
+								//						alert('알수없는 반환값');
+								Swal.fire({
+									title: "알수없는 반환값",
+									showDenyButton: false,
+									confirmButtonText: "확인",
+								}).then((result) => {
+									/* Read more about isConfirmed, isDenied below */
+									if (result.isConfirmed) {
+										// Swal.fire("Saved!", "", "success");
+									} else if (result.isDenied) {
+										// Swal.fire("Changes are not saved", "", "info");
+									}
+								});
+							}
+							document.getElementById('message').value = "";
+						})
+						.catch(err => console.log(err))
+
+				}
+
+
+			}
+
+
+		})
+		.catch(err => console.log(err));
+
+
+
+//	if (userReviewCnt > 0) {
+		//		alert('이미 작성한 후기가 있습니다.')
+		//		Swal.fire({
+		//							title: "이미 작성한 후기가 있습니다.",
+		//							showDenyButton: false,
+		//							confirmButtonText: "확인",
+		//						}).then((result) => {
+		//							/* Read more about isConfirmed, isDenied below */
+		//							if (result.isConfirmed) {
+		//								// Swal.fire("Saved!", "", "success");
+		//							} else if (result.isDenied) {
+		//								// Swal.fire("Changes are not saved", "", "info");
+		//							}
+		//						});
+//	} else {
+		//		let rating = document.getElementById('rating').value;
+		//		let content = document.getElementById('message').value;
+		//		if (content == "") {
+		////			alert("리뷰를 입력해주세요.");
+		//			Swal.fire({
+		//							title: "리뷰를 입력해주세요",
+		//							showDenyButton: false,
+		//							confirmButtonText: "확인",
+		//						}).then((result) => {
+		//							/* Read more about isConfirmed, isDenied below */
+		//							if (result.isConfirmed) {
+		//								// Swal.fire("Saved!", "", "success");
+		//							} else if (result.isDenied) {
+		//								// Swal.fire("Changes are not saved", "", "info");
+		//							}
+		//						});
+		//		} else if (writer == "") {
+		////			alert("로그인후 이용해주세요.");
+		//			Swal.fire({
+		//							title: "로그인 후 이용해주세요",
+		//							showDenyButton: true,
+		//							confirmButtonText: "로그인",
+		//							denyButtonText: `취소`
+		//						}).then((result) => {
+		//							/* Read more about isConfirmed, isDenied below */
+		//							if (result.isConfirmed) {
+		//								// Swal.fire("Saved!", "", "success");
+		//								location.href = 'logForm.do';
+		//							} else if (result.isDenied) {
+		//								// Swal.fire("Changes are not saved", "", "info");
+		//							}
+		//						});
+		//		} else if (rating == 0) {
+		////			alert("평점을 입력하세요.");
+		//			Swal.fire({
+		//							title: "평점을 입력하세요",
+		//							showDenyButton: false,
+		//							confirmButtonText: "확인",
+		//						}).then((result) => {
+		//							/* Read more about isConfirmed, isDenied below */
+		//							if (result.isConfirmed) {
+		//								// Swal.fire("Saved!", "", "success");
+		//							} else if (result.isDenied) {
+		//								// Swal.fire("Changes are not saved", "", "info");
+		//							}
+		//						});
+		//		} else {
+		//			fetch('addReview.do', {
+		//				method: 'post',
+		//				headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+		//				body: 'pno=' + pno + '&user=' + writer + '&content=' + content + '&rating=' + rating
+		//			})
+		//				.then(resolve => resolve.json())
+		//				.then(result => {
+		//					if (result.retCode == 'OK') {
+		//						//location.reload();
+		//						showList();
+		////						alert('등록완료');
+		//						Swal.fire({
+		//							title: "등록완료",
+		//							showDenyButton: false,
+		//							confirmButtonText: "확인",
+		//						}).then((result) => {
+		//							/* Read more about isConfirmed, isDenied below */
+		//							if (result.isConfirmed) {
+		//								// Swal.fire("Saved!", "", "success");
+		//							} else if (result.isDenied) {
+		//								// Swal.fire("Changes are not saved", "", "info");
+		//							}
+		//						});
+		//						document.getElementById('addReview').disabled = true;
+		//					} else if (result.retCode == 'NG') {
+		////						alert('등록실패');
+		//						Swal.fire({
+		//							title: "등록실패",
+		//							showDenyButton: false,
+		//							confirmButtonText: "확인",
+		//						}).then((result) => {
+		//							/* Read more about isConfirmed, isDenied below */
+		//							if (result.isConfirmed) {
+		//								// Swal.fire("Saved!", "", "success");
+		//							} else if (result.isDenied) {
+		//								// Swal.fire("Changes are not saved", "", "info");
+		//							}
+		//						});
+		//					} else {
+		////						alert('알수없는 반환값');
+		//						Swal.fire({
+		//							title: "알수없는 반환값",
+		//							showDenyButton: false,
+		//							confirmButtonText: "확인",
+		//						}).then((result) => {
+		//							/* Read more about isConfirmed, isDenied below */
+		//							if (result.isConfirmed) {
+		//								// Swal.fire("Saved!", "", "success");
+		//							} else if (result.isDenied) {
+		//								// Swal.fire("Changes are not saved", "", "info");
+		//							}
+		//						});
+		//					}
+		//					document.getElementById('message').value = "";
+		//				})
+		//				.catch(err => console.log(err))
+		//
+		//		}
+//	}
 })

@@ -72,6 +72,7 @@ import com.camcam.review.command.ModifyReviewControl;
 import com.camcam.review.command.RemoveReviewControl;
 import com.camcam.review.command.ReviewCountControl;
 import com.camcam.review.command.ReviewListControl;
+import com.camcam.review.command.UserReviewCountControl;
 import com.camcam.user.command.CheckInControl;
 import com.camcam.user.command.IdFindControl;
 import com.camcam.user.command.IdFindFormControl;
@@ -116,12 +117,12 @@ public class FrontController extends HttpServlet {
 //		map.put("/modReview.do", new ModifyReviewControl()); // 리뷰수정
 //		map.put("/removeReview.do", new RemoveReviewControl()); // 리뷰삭제
 		map.put("/getReviewTotalCnt.do", new ReviewCountControl()); // 리뷰 총 개수
+		map.put("/getUserReviewCnt.do", new UserReviewCountControl()); // 유저의 해당 제품에 다한 리뷰 수
 
 		// 좋아요 변경 관련
 		map.put("/addLikes.do", new AddLikesControl()); // 좋아요 추가
 		map.put("/removeLikes.do", new RemoveLikesControl()); // 좋아요 추가
 		map.put("/userLikesCnt.do", new UserLikesCntControl()); // 좋아요 여부 확인
-		
 		
 		// 관심상품 등록
 		map.put("/addWish.do", new AddWishControl()); 
@@ -141,7 +142,7 @@ public class FrontController extends HttpServlet {
 		map.put("/orderInfo.do", new OrderInfoControl()); // 주문자 정보
 		map.put("/orderForm.do", new OrderFormControl()); // 주문 처리
 		map.put("/orderSuccess.do", new OrderSuccessControl()); // 주문 성공 페이지
-		map.put("/orderFailed.do", new OrderFailedControl()); // 주문 실패 페이지
+//		map.put("/orderFailed.do", new OrderFailedControl()); // 주문 실패 페이지
 
 		// 카테고리
 		map.put("/getCategory.do", new GetCategoryControl());

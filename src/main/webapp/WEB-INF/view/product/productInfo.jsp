@@ -142,7 +142,7 @@
 		<div class="col">
 			<div class="bg-light p-30">
 				<div class="nav nav-tabs mb-4">
-					<a class="nav-item nav-link text-dark active" data-toggle="tab" href="#tab-pane-1">Description</a> <a class="nav-item nav-link text-dark" data-toggle="tab" href="#tab-pane-2">Information</a> <a class="nav-item nav-link text-dark reviewBtn" data-toggle="tab" href="#tab-pane-3">Reviews (${reviewDetail.totalCnt })</a>
+					<a class="nav-item nav-link text-dark active" data-toggle="tab" href="#tab-pane-1">Description</a> <a class="nav-item nav-link text-dark" data-toggle="tab" href="#tab-pane-2">Information</a> <a class="nav-item nav-link text-dark reviewBtn" data-toggle="tab" href="#tab-pane-3">Reviews <span class="reviewCount1">(${reviewDetail.totalCnt })</span></a>
 				</div>
 				<div class="tab-content">
 					<div class="tab-pane fade show active" id="tab-pane-1">
@@ -215,7 +215,7 @@
 						<div class="row">
 							<div class="col-md-6">
 								<div class="reviewHeader">
-									<h4 class="mb-4">${reviewDetail.totalCnt } review for "${product.productName }"</h4>
+									<h4 class="mb-4"><span class="reviewCount2">${reviewDetail.totalCnt }</span> review for "${product.productName }"</h4>
 									<div class="media mb-4 reviewTemplate" style="display: none;">
 										<div class="media-body">
 											<h6 class="reviewer">

@@ -49,15 +49,20 @@
 </head>
 <body>
     <div class="editor-container">
-        <h3 align="center">QnA 글 등록</h3>
+        <h3 align="center">공지사항 등록</h3>
         <form action="addnoticePage.do" method="POST">
+            <div class="form-group">
+                <label for="title">ID</label>
+        <input type="text" minlength="5" name="userId" id="userId" value="${user.userId}" class="input"  />
+            </div>
+            
             <div class="form-group">
                 <label for="title">noticeSubject</label>
                 <input type="text" name="noticeSubject" id="noticeSubject">
             </div>
             <div class="form-group">
-                <label for="editor">noticeConotent</label>
-                <textarea name="noticeConotent" id="noticeConotent"></textarea>
+                <label for="editor">noticeContent</label>
+                <textarea name="noticeContent" id="noticeContent"></textarea>
             </div>
             <input type="submit" value="전송">
         </form>

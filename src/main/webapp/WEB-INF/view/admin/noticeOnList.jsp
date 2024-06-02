@@ -101,6 +101,11 @@ document.querySelector('.btn-danger').addEventListener('click', function() {
 	document.forms.myFrm.action = "removeBoardForm.do"; //삭제화면 호출
 	document.forms.myFrm.submit(); //submit 이벤트 호출
 })
+document.querySelector('#modBtn').addEventListener('click', function() {
+    // 현재 공지의 noticeNo 값을 가져와서 수정 페이지로 이동
+    var noticeNo = ${result.noticeNo};
+    location.href = 'updatenoticeForm.do?noticeNo=' + noticeNo;
+});
 </script>
 
 

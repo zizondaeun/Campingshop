@@ -19,16 +19,16 @@
 	
 	<insert id="insertNotice" parameterType="com.camcam.notice.vo.NoticeVO">
 		INSERT INTO notice (notice_no, user_id, notice_subject, notice_content, notice_date)
-		VALUES (notice_no_seq.nextval, #{userId}, #{noticeSubject}, #{noticeContent}, SYSDATE);
+		VALUES (notice_no_seq.nextval, #{userId}, #{noticeSubject}, #{noticeContent}, SYSDATE)
 	</insert>
 	
 	<delete id ="deleteNotice" parameterType="int">
 	delete from notice where notice_no = #{noticeNo}
 	</delete>
 	
-	<update id ="updateNotice">
+	<update id ="updateNotice" parameterType="com.camcam.notice.vo.NoticeVO">
 	update notice
-		set notice_subject = #{noticeSubject}, notice_content = {noticeContent}
-		where notice_no =  #{noticeNO}
+		set notice_subject = #{noticeSubject}, notice_content = #{noticeContent}
+		where notice_no =  #{noticeNo}
 	</update>
 </mapper>

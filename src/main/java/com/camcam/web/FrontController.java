@@ -213,10 +213,6 @@ public class FrontController extends HttpServlet {
 		map.put("/addReply.do", new AddReplyControl()); // 댓글 작성
 		map.put("/removeReply.do", new RemoveReplyControl()); // 댓글 삭제
 
-		//
-		map.put("/getTotalCnt.do", new TotalCountControl()); 
-		map.put("/modReply.do", new ModReplyControl());
-		
 		// 배송관리
 		map.put("/deliveryManage.do", new DeliManageControl());
 		map.put("/deliveryState.do", new DeliveryStatusControl());

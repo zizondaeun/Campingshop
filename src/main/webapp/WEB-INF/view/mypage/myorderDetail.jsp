@@ -46,37 +46,56 @@
 		</div>
 	</div>
 </div>
-<h3 align="center">ORDER DETAIL</h3>
-<div class="table-container">
-	<table class="table">
-		<thead class="table-header">
-			<tr>
-				<th scope="col">ORDER_NO</th>
-				<th scope="col">ORDER DETAIL_NO</th>
-				<th scope="col">PRODUCT_NAME</th>
-				<th scope="col">QUANTITY</th>
-				<th scope="col">PRICE</th>
-			</tr>
-		</thead>
-		<tbody class="table-body">
-			<c:choose>
-				<c:when test="${empty list }">
-					<tr align="center">
-						<td colspan="7">조회된 결과가 없습니다</td>
+<c:choose>
+	<c:when test="${not empty logId }">
+		<h3 align="center">ORDER DETAIL</h3>
+		<div class="table-container">
+			<div class="description">
+				<span
+					style="display: inline-block; width: 100%; font-size: 15px; padding: 10px; text-align: right;">
+					<span>[${logId }]</span> 님의 주문 상세 내역입니다.
+				</span>
+			</div>
+			<table class="table">
+				<thead class="table-header">
+					<tr>
+						<th scope="col">주문번호</th>
+						<th scope="col">상세주문번호</th>
+						<th scope="col">상품명</th>
+						<th scope="col">수량</th>
+						<th scope="col">가격</th>
 					</tr>
-				</c:when>
-				<c:otherwise>
-					<c:forEach var="detail" items="${list }">
-						<tr>
-							<th scope="row">${detail.orderNo }</th>
-							<td>${detail.orderDetailNo }</td>
-							<td>${detail.productName }</td>
-							<td>${detail.quantity }개</td>
-							<td><fmt:formatNumber value="${detail.price }"/>원</td>
-						</tr>
-					</c:forEach>
-				</c:otherwise>
-			</c:choose>
-		</tbody>
-	</table>
-</div>
+				</thead>
+				<tbody class="table-body">
+					<c:choose>
+						<c:when test="${empty list }">
+							<tr align="center">
+								<td colspan="7">조회된 결과가 없습니다</td>
+							</tr>
+						</c:when>
+						<c:otherwise>
+							<c:forEach var="detail" items="${list }">
+								<tr>
+									<th scope="row">${detail.orderNo }</th>
+									<td>${detail.orderDetailNo }</td>
+									<td>${detail.productName }</td>
+									<td>${detail.quantity }개</td>
+									<td><fmt:formatNumber value="${detail.price }" />원</td>
+								</tr>
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>
+				</tbody>
+			</table>
+		</div>
+	</c:when>
+	<c:otherwise>
+		<div align="center">
+			<table border="1">
+				<tr>
+					<td>로그인 후 이용 가능합니다.</td>
+				</tr>
+			</table>
+		</div>
+	</c:otherwise>
+</c:choose>

@@ -26,12 +26,16 @@ public class BoardInfoControl implements Control {
 		
 		BoardService svc = new BoardServiceImpl();
 		QnAVO vo = new QnAVO();
-		vo.setBoardNo(Integer.parseInt(bno));
-		vo.setUserId(id);
-		vo.setBoardPw(pw);
-		
-		QnAVO qvo = svc.getBoardPw(vo);
-		System.out.println(qvo);
+		QnAVO qvo = new QnAVO();
+		if(id.equals("admin")) {
+			qvo = svc.getAdmin(Integer.parseInt(bno)); //관리자일때는 bno만
+		}else {
+			vo.setBoardNo(Integer.parseInt(bno));
+			vo.setUserId(id);
+			vo.setBoardPw(pw);
+			
+			qvo = svc.getBoardPw(vo); //유저일때는 bno,userid,pw 가져가네
+		}
 		if(qvo != null) { 
 			req.setAttribute("result", qvo);
 			req.getRequestDispatcher(path).forward(req, resp);

@@ -39,6 +39,14 @@ public class MyWishListControl implements Control {
 		req.setAttribute("list", list);
 		req.setAttribute("paging", pageDTO);
 		
+		int totalCnt = svc.getWishTotal(vo); // 총 관심상품 개수
+	    pageDTO = new PageDTO(Integer.parseInt(page), totalCnt);
+
+	    // 로그 출력
+	    System.out.println("현재 페이지: " + page);
+	    System.out.println("총 관심상품 개수: " + totalCnt);
+	    System.out.println("페이징 정보: " + pageDTO);
+		
 		req.getRequestDispatcher(path).forward(req, resp);
 		//HttpUtils.forward(req, resp, path);
 	}

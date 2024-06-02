@@ -21,6 +21,8 @@ public interface BoardMapper {
 	int updateBoard(QnAVO vo);
 	//QnA 글 삭제
 	int deleteBoard(int boardNo);
+	//관리자일때
+	QnAVO selectAdmin(int boardNo);
 	
 
 

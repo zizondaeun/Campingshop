@@ -244,7 +244,7 @@
 										<i class="far fa-star ratingStar"></i> <i class="far fa-star ratingStar"></i> <i class="far fa-star ratingStar"></i> <i class="far fa-star ratingStar"></i> <i class="far fa-star ratingStar"></i>
 									</div>
 								</div>
-								${userReviewCnt }
+<%-- 								${userReviewCnt } --%>
 								<div class="form-group">
 									<label for="content">Your Review *</label>
 									<textarea id="message" cols="30" rows="5" class="form-control"></textarea>
@@ -395,6 +395,6 @@
 	const pno2 = '${product.productNo}';
 	const logId = '${logId}';
 	const cartUserToProduct = '${userToProductCnt}';
-	const userLikeCnt ='${userLikeCnt }';
+// 	const userLikeCnt ='${userLikeCnt }';
 </script>
 <script src="js/productInfo.js"></script>

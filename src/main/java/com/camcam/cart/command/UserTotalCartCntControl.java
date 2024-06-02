@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.camcam.cart.service.CartService;
 import com.camcam.cart.service.impl.CartServiceImpl;
@@ -15,13 +16,14 @@ public class UserTotalCartCntControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String uid = req.getParameter("uid");
+		HttpSession session = req.getSession();
+		String userId = (String) session.getAttribute("logId");
 		String pno = req.getParameter("pno");
 		
 		
 		CartVO cart = new CartVO();
 		
-		cart.setUserId(uid);
+		cart.setUserId(userId);
 		cart.setProductNo(Integer.parseInt(pno));
 		
 		CartService cartService = new CartServiceImpl();

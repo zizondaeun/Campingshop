@@ -33,6 +33,7 @@ import com.camcam.delivery.command.DeliveryStatusControl;
 import com.camcam.home.command.HomeControl;
 import com.camcam.likes.command.AddLikesControl;
 import com.camcam.likes.command.RemoveLikesControl;
+import com.camcam.likes.command.UserLikesCntControl;
 import com.camcam.mypage.command.DeleteMyBoardControl;
 import com.camcam.mypage.command.DeleteMyWishControl;
 import com.camcam.mypage.command.MyBoardInfoControl;
@@ -112,13 +113,15 @@ public class FrontController extends HttpServlet {
 		// 리뷰 관련
 		map.put("/reviewList.do", new ReviewListControl()); // 리뷰보기
 		map.put("/addReview.do", new AddReviewControl()); // 리뷰작성
-		map.put("/modReview.do", new ModifyReviewControl()); // 리뷰수정
-		map.put("/removeReview.do", new RemoveReviewControl()); // 리뷰삭제
+//		map.put("/modReview.do", new ModifyReviewControl()); // 리뷰수정
+//		map.put("/removeReview.do", new RemoveReviewControl()); // 리뷰삭제
 		map.put("/getReviewTotalCnt.do", new ReviewCountControl()); // 리뷰 총 개수
 
 		// 좋아요 변경 관련
 		map.put("/addLikes.do", new AddLikesControl()); // 좋아요 추가
 		map.put("/removeLikes.do", new RemoveLikesControl()); // 좋아요 추가
+		map.put("/userLikesCnt.do", new UserLikesCntControl()); // 좋아요 여부 확인
+		
 		
 		// 관심상품 등록
 		map.put("/addWish.do", new AddWishControl()); 

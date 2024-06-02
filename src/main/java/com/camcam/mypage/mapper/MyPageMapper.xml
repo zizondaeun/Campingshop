@@ -38,7 +38,7 @@
 		WHERE r.rn > (#{page} - 1) * 9
 	</select>
 	
-	<select id="wishListPaging" parameterType="com.camcam.mypage.vo.PageVO"><!-- getMyorder -->
+	<select id="wishListPaging" parameterType="com.camcam.mypage.vo.PageVO"><!-- getMywish -->
         SELECT r.*
         FROM (
                 SELECT rownum rn, a.*
@@ -53,7 +53,24 @@
                 ]]>
         WHERE r.rn > (#{page} - 1) * 9
     </select>
-	
+    
+	<select id="deliListPaging" parameterType="com.camcam.mypage.vo.PageVO"><!-- getMydeli -->
+		SELECT r.*
+		FROM (
+    			SELECT rownum rn, a.*
+    			FROM (
+        				SELECT *
+        				FROM delivery b
+        				where b.user_id = #{userId}
+        				ORDER BY b.order_no DESC
+    				) a
+    				<![CDATA[
+   				WHERE rownum <= (#{page} * 9)
+				) r
+				]]>
+		WHERE r.rn > (#{page} - 1) * 9
+	</select>
+    
 	<select id="selectMypage" resultType="com.camcam.user.vo.UserVO">
 		select * 
 		from users
@@ -134,6 +151,12 @@
 	<select id="getWishTotalCnt" resultType="int" parameterType="com.camcam.mypage.vo.PageVO">
 		select count(1)
 		from likes
+		where user_id = #{userId}
+	</select>
+	
+	<select id="getDeliTotalCnt" resultType="int" parameterType="com.camcam.mypage.vo.PageVO">
+		select count(1)
+		from delivery
 		where user_id = #{userId}
 	</select>
 	

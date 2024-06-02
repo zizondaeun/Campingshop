@@ -37,6 +37,7 @@ public interface MyPageService {
 	int getBoardTotal(PageVO vo); //board
 	int getOrderTotal(PageVO vo); //order
 	int getWishTotal(PageVO vo); //wish
+	int getDeliTotal(PageVO vo); //delivery
 	
 	
 

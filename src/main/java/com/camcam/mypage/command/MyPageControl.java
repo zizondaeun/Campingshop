@@ -31,7 +31,7 @@ public class MyPageControl implements Control {
 		
 		List<DeliveryVO> list = svc.getMydelivery(vo);
 		//req.setAttribute("result", vo);
-		PageDTO pageDTO = new PageDTO(Integer.parseInt(page), svc.getBoardTotal(vo)); 
+		PageDTO pageDTO = new PageDTO(Integer.parseInt(page), svc.getDeliTotal(vo)); 
 		req.setAttribute("list", list);
 		req.setAttribute("paging", pageDTO);
 		

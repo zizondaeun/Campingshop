@@ -13,8 +13,15 @@
 	border: 1px solid #ccc;
 	padding: 20px;
 }
-div.reply div {
-	margin: auto;
+div.reply-container {
+	display: flex;
+	justify-content: center;
+	padding: 10px;
+}
+div.reply {
+	width: 60%;
+	margin: 0 auto;
+	
 }
 
 div.reply ul {
@@ -30,29 +37,8 @@ div.reply li {
 div.reply span {
 	display: inline-block;
 }
-
-.center {
-	text-align: center;
-}
-
-.pagination {
-	display: inline-block;
-}
-
-.pagination a {
-	color: black;
-	float: left;
-	padding: 8px 16px;
-	text-decoration: none;
-}
-
-.pagination a.active {
-	background-color: #4CAF50;
-	color: white;
-}
-
-.pagination a:hover:not(.active) {
-	background-color: #ddd;
+div.content {
+	padding: 10px;
 }
 </style>
 <h3 align="center">1:1 Q&A</h3>
@@ -88,33 +74,41 @@ div.reply span {
 
 
 	<hr />
-	<div class="container reply">
-		<!-- 댓글등록 -->
-		<div class="header">
-			<c:if test="${logId eq 'admin' }">
-				<input class="col-sm-8" id="reply">
-				<button class="col-sm-3" id="addReply">답변등록</button>
-			</c:if>
+	<div class="reply-container">
+		<div class="reply">
+			<!-- 댓글등록 -->
+			<div class="header">
+				<c:if test="${logId eq 'admin' }">
+					<input class="col-sm-8" id="reply">
+					<button class="col-sm-3" id="addReply">답변등록</button>
+				</c:if>
+			</div>
+			<div class="content">
+				<ul>
+					<li>
+						<span class="col-sm-8" style="font-weight: bold;">답변</span>
+						<c:if test="${logId eq 'admin' }">
+							<span class="col-sm-3" style="font-weight: bold;">답변삭제</span>
+						</c:if>
+					</li>
+					<li>
+						<hr />
+					</li>
+					<li style="display: none;">
+						<span class="col-sm-8"></span> 
+						<c:if test="${logId eq 'admin' }">
+							<span class="col-sm-3">
+								<button onclick="deleteRow(event)" class="btn btn-warning">삭제</button>
+							</span>
+						</c:if>
+					</li>
+				</ul>
+			</div>
+			<!-- div.content -->
 		</div>
-		<div class="content">
-			<ul>
-				<li>
-					<span class="col-sm-5">답변</span>
-					<span class="col-sm-2">답변삭제</span>
-				</li>
-				<li>
-					<hr />
-				</li>
-				<li style="display: none;">
-					<span class="col-sm-5"></span> 
-					<span class="col-sm-2"><button onclick="deleteRow(event)" class="btn btn-warning">삭제</button></span> 
-				</li>
-			</ul>
-		</div>
-		<!-- div.content -->
-		<!-- 여기에 if써서 글이 없으면 페이징 안보이게 해보기 -->
+		<!-- div.reply -->
 	</div>
-	<!-- div.container.reply -->
+	<!-- div.reply-container -->
 </div>
 
 

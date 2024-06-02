@@ -26,7 +26,11 @@
 				</button>
 				<div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
 					<div class="navbar-nav mr-auto py-0">
-						<a href="productList.do" class="nav-item nav-link">SHOP</a><a class="nav-item nav-link" href="ListnoticePage.do">NOTICE</a> <a class="nav-item nav-link" href="boardList.do">Q&A</a> 
+						<a href="productList.do" class="nav-item nav-link">SHOP</a>
+						<a class="nav-item nav-link" href="ListnoticePage.do">NOTICE</a> 
+						<c:if test="${logId != null}">
+							<a class="nav-item nav-link" href="boardList.do">Q&A</a> 
+						</c:if>
 					</div>
 					<c:choose>
 						<c:when test="${logId eq 'admin'}">

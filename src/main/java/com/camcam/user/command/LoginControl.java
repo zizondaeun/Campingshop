@@ -1,6 +1,7 @@
 package com.camcam.user.command;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -40,11 +41,25 @@ public class LoginControl implements Control {
             if ("Admin".equals(userResp)) {
                 resp.sendRedirect("userList.do");
             } else {
+                // 로그인 성공시 home.do로 이동합니다.
                 resp.sendRedirect("home.do");
+                // 로그인 성공 메시지를 클라이언트에게 보냅니다.
+                sendResponse(resp, "로그인 성공!!");
             }
         } else {
-            // 로그인 실패 시 로그인 폼으로 리다이렉트합니다.
-            resp.sendRedirect("logForm.do");
+            // 로그인 실패 메시지를 클라이언트에게 보냅니다.
+            sendResponse(resp, "로그인 실패!!");
         }
+    }
+
+    // 클라이언트에게 메시지를 보내는 메소드
+    private void sendResponse(HttpServletResponse resp, String message) throws IOException {
+        resp.setContentType("text/html; charset=UTF-8");
+        PrintWriter out = resp.getWriter();
+        out.println("<script>");
+        out.println("alert('" + message + "');");
+        out.println("location.href='logForm.do';");
+        out.println("</script>");
+        out.close();
     }
 }

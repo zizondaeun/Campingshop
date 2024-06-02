@@ -30,8 +30,7 @@ public class WithdrawControl implements Control {
             if (result) {
                 session.invalidate();
                 req.setAttribute("message", "회원 탈퇴가 완료되었습니다.");
-                req.getRequestDispatcher("home.do").forward(req, resp);
-                resp.sendRedirect("main.do");
+                resp.sendRedirect("home.do");
           
         } else {
             req.setAttribute("error", "비밀번호가 일치하지 않습니다.");

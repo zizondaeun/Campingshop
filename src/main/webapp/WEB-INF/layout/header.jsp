@@ -71,7 +71,7 @@ function logout() {
         .then(response => {
             if (response.ok) {
                 // 로그아웃이 성공하면 페이지를 새로 고칩니다.
-                location.reload();
+                window.location.href = 'home.do'; //메인페이지로 이동하게끔
             } else {
                 // 로그아웃이 실패하면 오류 메시지를 표시합니다.
 //                 alert('로그아웃에 실패했습니다. 다시 시도해주세요.');

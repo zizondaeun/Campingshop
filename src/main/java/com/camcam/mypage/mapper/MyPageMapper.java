@@ -47,11 +47,14 @@ public interface MyPageMapper {
 	int getBoardTotalCnt(PageVO vo); //board
 	int getOrderTotalCnt(PageVO vo); //order
 	int getWishTotalCnt(PageVO vo); //wish
+	int getDeliTotalCnt(PageVO vo); //delivery
 	
 	List<QnAVO> boardListPaging(PageVO vo); //게시글 페이징
 
 	List<OrderVO> orderListPaging(PageVO vo); //주문리스트 페이징
 
 	List<ProductVO> wishListPaging(PageVO vo); //위시리스트 페이징
+
+	List<DeliveryVO> deliListPaging(PageVO vo); //배송리스트 페이징
 
 }

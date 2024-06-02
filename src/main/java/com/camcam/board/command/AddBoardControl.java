@@ -24,7 +24,7 @@ public class AddBoardControl implements Control {
 		String pw = req.getParameter("boardPw");
 		
 		if(title == "" || content1 == "" || pw == "") {
-			req.setAttribute("error", "값을 입력해주세요.");
+			req.setAttribute("error", "내용을 입력해주세요.");
 			req.getRequestDispatcher("board/addBoard.tiles").forward(req, resp);
 			return;
 		}

@@ -91,9 +91,14 @@ public class MyPageServiceImpl implements MyPageService {
 		return mapper.deleteMywish(vo) == 1;
 	}
 
+//	@Override
+//	public List<DeliveryVO> getMydelivery(PageVO vo) {
+//		return mapper.selectMydelivery(vo);
+//	}
+
 	@Override
 	public List<DeliveryVO> getMydelivery(PageVO vo) {
-		return mapper.selectMydelivery(vo);
+		return mapper.deliListPaging(vo);
 	}
 
 	@Override
@@ -109,6 +114,11 @@ public class MyPageServiceImpl implements MyPageService {
 	@Override
 	public int getWishTotal(PageVO vo) {
 		return mapper.getWishTotalCnt(vo);
+	}
+
+	@Override
+	public int getDeliTotal(PageVO vo) {
+		return mapper.getDeliTotalCnt(vo);
 	}
 
 

@@ -29,6 +29,7 @@ public class ReplyListControl implements Control {
 		
 		ReplyService svc = new ReplyServiceImpl();
 		List<ReplyVO> list = svc.replyList(vo);
+		req.setAttribute("list", list);
 		
 		Gson gson = new GsonBuilder().create();
 		String json = gson.toJson(list);

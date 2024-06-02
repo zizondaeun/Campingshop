@@ -29,25 +29,38 @@ let basket = {
 				result.forEach((val, idx) => {
 					basket.cartCount += val.qty;
 					basket.cartTotal += val.qty * val.price;
-					basket.cartTotalDiscount += val.qty *(val.discount);
+					basket.cartTotalDiscount += val.qty * (val.discount);
 					const rowTr = document.querySelector('tr[data-id="0"]').cloneNode(true);
 					rowTr.style.display = 'table-row';
 					rowTr.setAttribute('data-id', val.cartNo);
 					rowTr.querySelector('.firstData').innerHTML = `<img src="productImg/${val.productImg}" alt="${val.productImg}" style="width: 50px;"> ${val.productName}</td>`;
 					rowTr.querySelector('.basketprice').childNodes[1].textContent = val.price.numberFormat() + "원";
 					rowTr.querySelector('td.basketprice input').value = val.price;
-					rowTr.querySelector('td.basketprice input').setAttribute('id', 'p_price'+ val.cartNo);
+					rowTr.querySelector('td.basketprice input').setAttribute('id', 'p_price' + val.cartNo);
 					rowTr.querySelector('.basketdiscount').childNodes[1].textContent = val.discount.numberFormat() + "원";
 					rowTr.querySelector('td.basketdiscount input').value = val.discount;
-					rowTr.querySelector('td.basketdiscount input').setAttribute('id', 'p_discount'+ val.cartNo);
+					rowTr.querySelector('td.basketdiscount input').setAttribute('id', 'p_discount' + val.cartNo);
 					rowTr.querySelector('div.updown input').value = val.qty;
-					rowTr.querySelector('div.updown input').setAttribute('id','p_num'+val.cartNo)
+					rowTr.querySelector('div.updown input').setAttribute('id', 'p_num' + val.cartNo)
 					// event
 					rowTr.querySelector('div.updown input').onkeyup = () => basket.changePNum(val.cartNo);
-					rowTr.querySelector('.minusBtn').onclick = () => basket.changePNum(val.cartNo);
-					rowTr.querySelector('.plusBtn').onclick = () => basket.changePNum(val.cartNo);
+					rowTr.querySelector('.minusBtn').onclick = () => {
+						if (rowTr.querySelector('div.updown input').value > 1) {
+							basket.changePNum(val.cartNo);
+						} else {
+							alert('0보다 큰 값을 입력하세요.')
+						}
+					}
+					rowTr.querySelector('.plusBtn').onclick = () => {
+						if (rowTr.querySelector('div.updown input').value < 9) {
+							basket.changePNum(val.cartNo);
+						} else {
+							alert('10보다 작은 값을 입력하세요.')
+						}
+						
+					}
 					// 개별합계
-					rowTr.querySelector('td.sum').textContent = (val.qty * (val.price-val.discount)).numberFormat() + "원";
+					rowTr.querySelector('td.sum').textContent = (val.qty * (val.price - val.discount)).numberFormat() + "원";
 					rowTr.querySelector('td.sum').setAttribute('id', 'p_sum' + val.cartNo)
 					document.querySelector('#basket').append(rowTr);
 				});
@@ -55,62 +68,63 @@ let basket = {
 			})
 			.catch(err => console.log(err));
 	}, // end of list
-	reCalc: function (){
+	reCalc: function() {
 		// 수량, 금액 합계 계산
 		// 합계 자리에 출력
 		console.log(basket.cartTotal)
-		document.querySelector('#sum_p_price h6:nth-child(2)').textContent = basket.cartTotal.numberFormat()+'원';
+		document.querySelector('#sum_p_price h6:nth-child(2)').textContent = basket.cartTotal.numberFormat() + '원';
 		console.log(basket.cartTotalDiscount);
-		document.querySelector('#sum_p_discount h6:nth-child(2)').textContent = "-"+ Number(basket.cartTotalDiscount).numberFormat()+'원';
-		document.querySelector('#sum_p_result h5:nth-child(2)').textContent = (basket.cartTotal - Number(basket.cartTotalDiscount)).numberFormat()+'원';
+		document.querySelector('#sum_p_discount h6:nth-child(2)').textContent = "-" + Number(basket.cartTotalDiscount).numberFormat() + '원';
+		document.querySelector('#sum_p_result h5:nth-child(2)').textContent = (basket.cartTotal - Number(basket.cartTotalDiscount)).numberFormat() + '원';
 	},
-	changePNum: function(no){
-		console.log(event);
+	changePNum: function(no) {
+		//		console.log(event);
+		console.log(event.target.previousElementSibling);
 		let qty = -1;
-			console.log(event.target.nodeName);
+		console.log(event.target.nodeName);
 		if (event.target.nodeName == "BUTTON" || event.target.nodeName == "I") {
 			console.log(event.target);
 			console.log(event.target.className)
-			if(event.target.className.indexOf("plus") != -1) {
+			if (event.target.className.indexOf("plus") != -1) {
 				qty = 1;
 			}
-		else if (event.target.nodeName == "INPUT") {
-			if(event.key == "ArrowUp") {
-				qty = 1;
+			else if (event.target.nodeName == "INPUT") {
+				if (event.key == "ArrowUp") {
+					qty = 1;
+				}
 			}
+			price = document.querySelector('#p_price' + no).value;
+			discount = Number(document.querySelector('#p_discount' + no).value);
+			qtyElem = document.querySelector('#p_num' + no);
+			sumElem = document.querySelector('#p_sum' + no);
+
+			fetch('modCart.do', {
+				method: 'post',
+				headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+				body: 'no=' + no + '&qty=' + qty
+			})
+				.then(resolve => resolve.json())
+				.then(result => {
+					console.log(result)
+					console.log(qtyElem);
+					console.log(sumElem);
+					qtyElem.value = parseInt(qtyElem.value) + qty; // 수량 변경
+					sumElem.innerText = ((price - discount) * qtyElem.value).numberFormat() + "원";
+
+					basket.cartCount += qty;
+					basket.cartTotal += (price * qty);
+					basket.cartTotalDiscount += (discount * qty)
+					basket.reCalc();
+				}),
+				err => console.log(err);
+
 		}
-		price = document.querySelector('#p_price' + no).value;
-		discount = Number(document.querySelector('#p_discount' + no).value);
-		qtyElem = document.querySelector('#p_num' + no);
-		sumElem = document.querySelector('#p_sum' + no);
-		
-		fetch('modCart.do', {
-			method: 'post',
-			headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-			body: 'no=' + no + '&qty=' + qty
-		})
-			.then(resolve => resolve.json())
-			.then(result => {
-				console.log(result)
-				console.log(qtyElem);
-				console.log(sumElem);
-				qtyElem.value = parseInt(qtyElem.value) + qty; // 수량 변경
-				sumElem.innerText = ((price-discount) * qtyElem.value).numberFormat() + "원";
-				
-				basket.cartCount += qty;
-				basket.cartTotal += (price * qty);
-				basket.cartTotalDiscount += (discount * qty)
-				basket.reCalc();
-			}),
-			err => console.log(err);
-			
-		}
-		
+
 	},
-	delItem: function(){
+	delItem: function() {
 		let no;
 		let removeEle;
-		if(event.target.nodeName == "BUTTON") {
+		if (event.target.nodeName == "BUTTON") {
 			no = event.target.parentElement.parentElement.dataset.id;
 			removeEle = event.target.parentElement.parentElement;
 		} else {
@@ -133,7 +147,7 @@ let basket = {
 				basket.cartTotal -= (price * qty);
 				basket.cartTotalDiscount -= (discount * qty)
 				basket.reCalc();
-				
+
 				removeEle.remove();
 			})
 			.catch(err => console.log(err));
@@ -141,14 +155,14 @@ let basket = {
 
 }
 
-document.querySelector('#orderBtn').addEventListener('click', function(){
+document.querySelector('#orderBtn').addEventListener('click', function() {
 	val = '';
-	
-	
+
+
 	document.querySelectorAll('#basket tr').forEach((item, idx) => {
 		let tr = item;
 		let cartNo = tr.getAttribute('data-id');
-		
+
 		val += cartNo + ',';
 		console.log(val);
 	})
@@ -158,14 +172,14 @@ document.querySelector('#orderBtn').addEventListener('click', function(){
 	let input = document.createElement('input');
 	input.setAttribute('name', 'cno');
 	input.value = val;
-	
+
 	form.appendChild(input);
-	
+
 	document.querySelector('body').appendChild(form);
-	
+
 	form.submit();
-	
-	
+
+
 })
 
 basket.list();

@@ -39,6 +39,4 @@ public interface MyPageService {
 	int getWishTotal(PageVO vo); //wish
 	int getDeliTotal(PageVO vo); //delivery
 	
-	
-
 }

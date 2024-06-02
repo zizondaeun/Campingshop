@@ -71,8 +71,6 @@ div.content {
 			</td>
 		</tr>
 	</table>
-
-
 	<hr />
 	<div class="reply-container">
 		<div class="reply">

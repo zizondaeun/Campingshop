@@ -54,7 +54,6 @@ import com.camcam.notice.command.addnoticeForm;
 import com.camcam.notice.command.deletenoticeControl;
 import com.camcam.notice.command.noticeControl;
 import com.camcam.order.command.OrderControl;
-import com.camcam.order.command.OrderFailedControl;
 import com.camcam.order.command.OrderFormControl;
 import com.camcam.order.command.OrderInfoControl;
 import com.camcam.order.command.OrderListControl;
@@ -69,8 +68,6 @@ import com.camcam.reply.command.AddReplyControl;
 import com.camcam.reply.command.RemoveReplyControl;
 import com.camcam.reply.command.ReplyListControl;
 import com.camcam.review.command.AddReviewControl;
-import com.camcam.review.command.ModifyReviewControl;
-import com.camcam.review.command.RemoveReviewControl;
 import com.camcam.review.command.ReviewCountControl;
 import com.camcam.review.command.ReviewListControl;
 import com.camcam.review.command.UserReviewCountControl;
@@ -135,7 +132,7 @@ public class FrontController extends HttpServlet {
 		map.put("/modCart.do", new ModifyCartControl()); // 장바구니 수정
 		map.put("/removeCart.do", new RemoveCartControl()); // 장바구니 삭제
 		map.put("/userTotalCartCnt.do", new UserTotalCartCntControl()); // 해당 물건이 장바구니에 담겨있는지 확인하기 위한 컨트롤
-		map.put("/userCartCnt.do", new UserCartCntControl()); // 유저가 장바구니에 담은수 
+		map.put("/userCartCnt.do", new UserCartCntControl()); // 유저가 장바구니에 담은수
 
 		// 주문 관련
 		map.put("/order.do", new OrderControl()); // 주문 화면

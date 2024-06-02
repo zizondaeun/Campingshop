@@ -64,6 +64,7 @@ import com.camcam.product.command.AddProductFormControl;
 import com.camcam.product.command.AddWishControl;
 import com.camcam.product.command.ProductInfoControl;
 import com.camcam.product.command.ProductListControl;
+import com.camcam.product.command.ProductListFormControl;
 import com.camcam.reply.command.AddReplyControl;
 import com.camcam.reply.command.RemoveReplyControl;
 import com.camcam.reply.command.ReplyListControl;
@@ -169,7 +170,8 @@ public class FrontController extends HttpServlet {
 		// 제품 관련(관리자)
 		map.put("/addProductForm.do", new AddProductFormControl()); // 상품 등록화면
 		map.put("/addProduct.do", new AddProductControl());
-
+		map.put("/ProductListForm.do", new ProductListFormControl());
+		
 		// 공지사항
 		map.put("/ListnoticePage.do", new ListnoticeControl()); // 공지사항 리스트
 		map.put("/noticePage.do", new noticeControl()); // 공지사항 상세화면 이동
@@ -211,6 +213,10 @@ public class FrontController extends HttpServlet {
 		map.put("/addReply.do", new AddReplyControl()); // 댓글 작성
 		map.put("/removeReply.do", new RemoveReplyControl()); // 댓글 삭제
 
+		//
+		map.put("/getTotalCnt.do", new TotalCountControl()); 
+		map.put("/modReply.do", new ModReplyControl());
+		
 		// 배송관리
 		map.put("/deliveryManage.do", new DeliManageControl());
 		map.put("/deliveryState.do", new DeliveryStatusControl());

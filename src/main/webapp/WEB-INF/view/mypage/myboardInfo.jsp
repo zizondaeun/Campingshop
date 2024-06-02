@@ -59,12 +59,36 @@
 			if (data.status == 'success') {
                 window.location.href = 'myBoardList.do?userId=' + userId;
             }else {
-                alert('비밀번호를 맞게 입력하세요');
+//                 alert('비밀번호를 맞게 입력하세요');
+            	Swal.fire({
+					title: "비밀번호를 맞게 입력하세요",
+					showDenyButton: false,
+					confirmButtonText: "확인",
+				}).then((result) => {
+					/* Read more about isConfirmed, isDenied below */
+					if (result.isConfirmed) {
+						// Swal.fire("Saved!", "", "success");
+					} else if (result.isDenied) {
+						// Swal.fire("Changes are not saved", "", "info");
+					}
+				});
             } 
 		})	            
         .catch(err => {
             console.log(err);
-            alert('오류 발생');
+//             alert('오류 발생');
+            Swal.fire({
+				title: "오류 발생",
+				showDenyButton: false,
+				confirmButtonText: "확인",
+			}).then((result) => {
+				/* Read more about isConfirmed, isDenied below */
+				if (result.isConfirmed) {
+					// Swal.fire("Saved!", "", "success");
+				} else if (result.isDenied) {
+					// Swal.fire("Changes are not saved", "", "info");
+				}
+			});
         });
     });
 </script>

@@ -26,13 +26,7 @@
 				</button>
 				<div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
 					<div class="navbar-nav mr-auto py-0">
-						<a class="nav-item nav-link" href="boardList.do">Q&A</a> <a class="nav-item nav-link" href="ListnoticePage.do">공지사항</a> <a href="productList.do" class="nav-item nav-link">Shop</a>
-						<div class="nav-item dropdown">
-							<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down mt-1"></i></a>
-							<div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
-								<a href="cartList.do" class="dropdown-item">Shopping Cart</a> <a href="checkout.html" class="dropdown-item">Checkout</a>
-							</div>
-						</div>
+						<a href="productList.do" class="nav-item nav-link">SHOP</a><a class="nav-item nav-link" href="ListnoticePage.do">NOTICE</a> <a class="nav-item nav-link" href="boardList.do">Q&A</a> 
 					</div>
 					<c:choose>
 						<c:when test="${logId eq 'admin'}">
@@ -43,8 +37,8 @@
 					</c:choose>
 					<c:if test="${logId != null}">
 						<div class="navbar-nav ml-auto py-0 d-none d-lg-block">
-							<a href="myWishList.do" class="btn px-0"> <i class="fas fa-heart text-primary"></i> <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
-							</a> <a href="cartList.do" class="btn px-0 ml-3"> <i class="fas fa-shopping-cart text-primary"></i> <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
+							<a href="myWishList.do" class="btn px-0"> <i class="fas fa-heart text-primary"></i> 
+							</a> <a href="cartList.do" class="btn px-0 ml-3"> <i class="fas fa-shopping-cart text-primary"></i> <span class="badge text-secondary border border-secondary rounded-circle" id="menuCartCnt" style="padding-bottom: 2px;">0</span>
 							</a>
 						</div>
 					</c:if>
@@ -54,3 +48,4 @@
 	</div>
 </div>
 <script type="text/javascript" src="js/category.js"></script>
+<script type="text/javascript" src="js/cartCount.js"></script>

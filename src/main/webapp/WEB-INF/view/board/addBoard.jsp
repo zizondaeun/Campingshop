@@ -6,7 +6,6 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>QnA 글 등록</title>
 <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
 <style>
 .editor-container {
@@ -18,8 +17,8 @@
 }
 
 .editor-container form {
-    width: 100%; /* 원하는 가로 길이 설정 */
-    max-width: 600px; /* 최대 가로 길이 설정 */
+    width: 100%; 
+    max-width: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,21 +28,21 @@
     display: flex;
     align-items: center;
     width: 100%;
-    margin-bottom: 10px; /* 각 요소 간의 간격 */
+    margin-bottom: 10px; 
 }
 
 .form-group label {
-    width: 100px; /* 레이블의 고정된 너비 */
-    margin-right: 10px; /* 레이블과 입력 필드 간의 간격 */
+    width: 100px; 
+    margin-right: 10px; 
 }
 
 .form-group select, .form-group input, .form-group textarea {
-    flex-grow: 1; /* 입력 필드와 텍스트에어가 레이블을 제외한 남은 공간을 차지하도록 함 */
-    margin-bottom: 10px; /* 각 요소 간의 간격 */
+    flex-grow: 1; 
+    margin-bottom: 10px; 
 }
 
 .ck-editor__editable_inline {
-    height: 300px; /* 원하는 높이 설정 */
+    height: 300px; 
 }
 </style>
 </head>
@@ -63,20 +62,38 @@
                 <label for="password">PASSWORD</label>
                 <input type="password" name="boardPw" id="password">
             </div>
-            <input type="submit" value="전송">
+            <input type="submit" value="COMPLETE">
         </form>
     </div>
     <script>
         ClassicEditor.create(document.querySelector('#editor'), {
             toolbar: {
                 items: [
-                    'heading', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', 'insertTable', 'mediaEmbed', 'undo', 'redo'
+                    'heading', 'bold', 'italic', 'bulletedList', 'numberedList', 'blockQuote', 'insertTable', 'mediaEmbed', 'undo', 'redo'
                 ]
             }
         }).catch(error => {
             console.error(error);
         });
     </script>
+    <script type="text/javascript">
+    	console.log('${error}');
+    	    var errorMessage = '<%=request.getAttribute("error") != null ? request.getAttribute("error") : ""%>';
+    	    if (errorMessage) {
+//     	        alert(errorMessage);
+    	    	Swal.fire({
+					title: errorMessage,
+					showDenyButton: false,
+					confirmButtonText: "확인",
+				}).then((result) => {
+					/* Read more about isConfirmed, isDenied below */
+					if (result.isConfirmed) {
+						// Swal.fire("Saved!", "", "success");
+					} else if (result.isDenied) {
+						// Swal.fire("Changes are not saved", "", "info");
+					}
+				});
+    	    }
+    </script>
 </body>
 </html>
-

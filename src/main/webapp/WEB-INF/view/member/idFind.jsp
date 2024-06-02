@@ -16,7 +16,7 @@
 }
 
 h1{
-  color:#e91e63;
+  color:#FFD333;
   font-size:48px;
   letter-spacing:-3px;
   text-align:center;
@@ -122,7 +122,7 @@ form{
   }
   
   .signin__btn{
-     background:#e91e63;
+     background:#FFD333;
      color:white;
      display:block;
      width:92.5%;
@@ -134,10 +134,10 @@ form{
      cursor:pointer;
      font-size:14px;
      font-family: 'Montserrat', sans-serif;
-     box-shadow:0 15px 30px rgba(#e91e63,.36);
+     box-shadow:0 15px 30px rgba(#FFD333,.36);
     transition:.2s linear;
     &:hover{
-      box-shadow:0 0 0 rgba(#e91e63,.0);
+      box-shadow:0 0 0 rgba(#FFD333,.0);
     }
   }
 }
@@ -218,7 +218,7 @@ footer{
   p{
     text-align:center;
     .fa{
-      color: #e91e63;
+      color: #FFD333;
     }
     a{
       text-decoration:none;
@@ -294,7 +294,19 @@ document.addEventListener("DOMContentLoaded", function() {
     document.querySelector(".signin__btn").addEventListener("click", function() {
         var userId = '<c:out value="${sessionScope.userId}" />';
         if (userId) {
-            alert('아이디는 : ' + userId + ' 입니다');
+//             alert('아이디는 : ' + userId + ' 입니다');
+        	Swal.fire({
+				title: "아이디는 : " + userId + "입니다.",
+				showDenyButton: false,
+				confirmButtonText: "확인",
+			}).then((result) => {
+				/* Read more about isConfirmed, isDenied below */
+				if (result.isConfirmed) {
+					// Swal.fire("Saved!", "", "success");
+				} else if (result.isDenied) {
+					// Swal.fire("Changes are not saved", "", "info");
+				}
+			});
         }
     });
 });

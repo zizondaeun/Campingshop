@@ -24,7 +24,7 @@ public class AddReplyControl implements Control {
 		// 원본 글, 댓글 작성자, 댓글 내용
 		String bno = req.getParameter("bno");
 		String reply = req.getParameter("reply");
-
+		
 		ReplyVO rvo = new ReplyVO();
 		rvo.setBoardNo(Integer.parseInt(bno));
 		rvo.setReply(reply);
@@ -32,6 +32,7 @@ public class AddReplyControl implements Control {
 		Map<String, Object> result = new HashMap<>();
 
 		ReplyService svc = new ReplyServiceImpl();
+		
 		if (svc.addReply(rvo)) {
 			result.put("retCode", "OK");
 			result.put("retVal", rvo); // 성공했을때 ReplyVO를 넣어

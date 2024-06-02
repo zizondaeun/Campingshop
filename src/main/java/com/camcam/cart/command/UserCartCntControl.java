@@ -9,30 +9,20 @@ import javax.servlet.http.HttpSession;
 
 import com.camcam.cart.service.CartService;
 import com.camcam.cart.service.impl.CartServiceImpl;
-import com.camcam.cart.vo.CartVO;
 import com.camcam.common.Control;
 
-public class UserTotalCartCntControl implements Control {
+public class UserCartCntControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setContentType("text/json;charset=utf-8");
 		HttpSession session = req.getSession();
 		String userId = (String) session.getAttribute("logId");
-		String pno = req.getParameter("pno");
-		
-		
-		CartVO cart = new CartVO();
-		
-		cart.setUserId(userId);
-		cart.setProductNo(Integer.parseInt(pno));
 		
 		CartService cartService = new CartServiceImpl();
+		int cartCnt = cartService.cartCnt(userId);
 		
-		int userToProductCnt = cartService.getUserToProductCnt(cart);
-		
-		resp.getWriter().print("{\"userToProductCnt\":" + userToProductCnt + "}");
-		
-		
+		resp.getWriter().print("{\"retCode\":"+ cartCnt +"}");
 		
 	}
 

@@ -3,7 +3,6 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="my" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <style>
 	.table-container {
 		width: 80%;
@@ -77,7 +76,6 @@
 					<th scope="col"><input type="checkbox" id="chkAll"></th>
 					<th scope="col">사진</th>
 					<th scope="col">상품명</th>
-					<th scope="col">수량</th>
 					<th scope="col">가격</th>
 					<th scope="col">장바구니</th>
 					<th scope="col">삭제</th>
@@ -98,9 +96,7 @@
 								<td><img src="productImg/${wish.productImg }" width="100"
 										height="100" />${wish.productImg }</td>
 								<td>${wish.productName }</td>
-								<td><input type="number" name="cnt" value="1" min="1" max="1" step="1">개</td>
-								<td>
-									<fmt:formatNumber value="${wish.price }" />원</td>
+								<td><fmt:formatNumber value="${wish.price }" />원</td>
 								<td><button type="button" class="cartBtn"
 										onclick="moveCart(${wish.productNo }, '${logId }')">CART</button></td>
 								<td><button type="button" class="delBtn">DELETE</button></td>

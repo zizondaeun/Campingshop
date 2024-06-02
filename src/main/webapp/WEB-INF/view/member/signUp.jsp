@@ -24,7 +24,7 @@
 }
 
 h1{
-  color:#e91e63;
+  color:#FFD333;
   font-size:48px;
   letter-spacing:-3px;
   text-align:center;
@@ -129,7 +129,7 @@ form{
   }
   
   .signin__btn{
-     background:#e91e63;
+     background:#FFD333;
      color:white;
      display:block;
      width:92.5%;
@@ -267,7 +267,7 @@ footer{
     </li>
     
     <li>
-      <a href="idFindForm.do" id="reset">아이디/비밀번호 찾기</a>
+      <a href="idFindForm.do" id="reset">ID/PW찾기</a>
     </li>
     
   </ul>
@@ -415,10 +415,34 @@ footer{
     	        if (xhr.readyState === 4 && xhr.status === 200) {
     	            var response = JSON.parse(xhr.responseText);
     	            if (response.status === "DUPLICATED") {
-    	                alert("아이디가 이미 존재합니다.");
+//     	                alert("아이디가 이미 존재합니다.")
+						Swal.fire({
+							title: "아이디가 이미 존재합니다.",
+							showDenyButton: false,
+							confirmButtonText: "확인",
+						}).then((result) => {
+							/* Read more about isConfirmed, isDenied below */
+							if (result.isConfirmed) {
+								// Swal.fire("Saved!", "", "success");
+							} else if (result.isDenied) {
+								// Swal.fire("Changes are not saved", "", "info");
+							}
+						});
     	                document.getElementById("submitButton").disabled = true;
     	            } else {
-    	                alert("사용 가능한 아이디입니다.");
+//     	                alert("사용 가능한 아이디입니다.");
+    	                Swal.fire({
+							title: "사용 가능한 아이디입니다.",
+							showDenyButton: false,
+							confirmButtonText: "확인",
+						}).then((result) => {
+							/* Read more about isConfirmed, isDenied below */
+							if (result.isConfirmed) {
+								// Swal.fire("Saved!", "", "success");
+							} else if (result.isDenied) {
+								// Swal.fire("Changes are not saved", "", "info");
+							}
+						});
     	                document.getElementById("submitButton").disabled = false;
     	            }
     	        }

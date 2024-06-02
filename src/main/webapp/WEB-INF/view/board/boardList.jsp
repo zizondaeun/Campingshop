@@ -74,7 +74,7 @@
 <div class="center">
 	<form action="boardList.do">
 		<div class="row" align="right">
-			<div class="col-sm-2">
+			<div class="col-sm-4">
 				<select name="searchCondition" class="form-control">
 					<option value="">선택하세요</option>
 					<option value="T" ${searchCondition == 'T' ? 'selected' : '' }>제목</option>

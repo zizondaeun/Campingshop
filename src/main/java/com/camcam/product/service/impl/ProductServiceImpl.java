@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.camcam.common.CategoryVO;
 import com.camcam.common.DataSource;
 import com.camcam.common.SearchVO;
 import com.camcam.mypage.mapper.MyPageMapper;
@@ -82,6 +83,11 @@ public class ProductServiceImpl implements ProductService{
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public List<CategoryVO> parentsCategoryList() {
+		return mapper.parentsCategoryList();
 	}
 
 

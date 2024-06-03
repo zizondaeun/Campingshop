@@ -168,7 +168,7 @@ public class FrontController extends HttpServlet {
 		// 제품 관련(관리자)
 		map.put("/addProductForm.do", new AddProductFormControl()); // 상품 등록화면
 		map.put("/addProduct.do", new AddProductControl());
-		map.put("/productList.do", new productControl());
+		map.put("/productControl.do", new productControl());
 		
 		// 공지사항
 		map.put("/adminListnoticePage.do", new AdminListnoticeControl()); // 공지사항 리스트

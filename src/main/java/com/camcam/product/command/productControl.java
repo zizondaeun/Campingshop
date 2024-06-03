@@ -17,7 +17,7 @@ public class productControl implements Control {
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String path = "admin/productList.tiles";
+		String path = "admin/productControl.tiles";
 
 		ProductService svc = new ProductServiceImpl();
 

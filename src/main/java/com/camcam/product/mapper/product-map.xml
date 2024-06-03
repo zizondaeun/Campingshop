@@ -170,5 +170,10 @@
 		values (#{userId}, #{productNo})
 	</insert>
 	
+	<select id="productList"
+		resultType="com.camcam.product.vo.ProductVO">
+		select * from products
+		order by product_no
+	</select>
 	
 </mapper>

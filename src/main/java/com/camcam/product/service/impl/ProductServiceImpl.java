@@ -90,6 +90,12 @@ public class ProductServiceImpl implements ProductService{
 		return mapper.parentsCategoryList();
 	}
 
+	@Override
+	public List<ProductVO> productList() {
+		// TODO Auto-generated method stub
+		return mapper.productList();
+	}
+
 
 	
 	

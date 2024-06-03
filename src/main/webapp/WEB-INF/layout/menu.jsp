@@ -36,7 +36,6 @@
 						<c:when test="${userResp eq 'admin'}">
 							<div id="adminMenu">
 							<a href="ListnoticePage.do" class="userControl">공지상항</a> 	<a href="userList.do" class="userControl">유저목록</a> <a href="addProductForm.do" class="productAdd">상품추가</a> <a href="productList.do" class="productList">상품관리</a><a href="deliveryManage.do" class="controldelivery">배송관리</a>
-								<a href="userList.do" class="userControl">유저목록</a> <a href="addProductForm.do" class="productAdd">상품추가</a> <a href="productControl.do" class="productList">상품관리</a><a href="deliveryManage.do" class="controldelivery">배송관리</a>
 							</div>
 						</c:when>
 					</c:choose>

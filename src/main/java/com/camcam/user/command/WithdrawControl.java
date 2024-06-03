@@ -25,7 +25,7 @@ public class WithdrawControl implements Control {
         UserVO user = svc.loginFinds(logId);
 
         if (user != null && user.getPassWord().equals(password)) {
-            boolean result = svc.modifyUser(password);
+            boolean result = svc.modifyUser(logId, password);
 
             if (result) {
                 session.invalidate();

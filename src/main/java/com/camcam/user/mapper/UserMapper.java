@@ -20,7 +20,7 @@ public interface UserMapper {
 	 UserVO selectPwFined(@Param("userId") String userId, @Param("userName")String userName,@Param("userTel") String userTel);
 	 
 	 int updateUser(UserVO userId);//개인정보수정
-	 int deleteUser(String passWord);//아이디삭제
+	 int deleteUser(@Param("userId") String userId, @Param("passWord") String passWord);//아이디삭제
 	 
 	  UserVO selectUser(String userId);
 	 

@@ -63,8 +63,8 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public boolean modifyUser(String passWord) {
-		return mapper.deleteUser(passWord) == 1;
+	public boolean modifyUser(String userId,String passWord) {
+		return mapper.deleteUser(userId, passWord) == 1;
 	}
 
 	@Override

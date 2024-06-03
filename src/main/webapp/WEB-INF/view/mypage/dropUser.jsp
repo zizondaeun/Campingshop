@@ -27,6 +27,8 @@
             <h2>회원 탈퇴</h2>
             <form action="withdraw.do" method="post">
                 <div>
+                <label for="logId">아이디:</label>
+                    <input type="text" minlength="5" name="userId" id="userId" value="${user.userId}" class="input"  />
                     <label for="password">비밀번호:</label>
                     <input type="password" id="password" name="password" required>
                 </div>

@@ -22,11 +22,11 @@ public class UpdateMyBoardControl implements Control {
 		String id = req.getParameter("userId");
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
+		//String content1 = content.replaceAll("<[^>]*>", "");
 		// String date = req.getParameter("createDate");
 		
 		MyPageService svc = new MyPageServiceImpl();
 		QnAVO vo = new QnAVO();
-		
 		vo.setBoardNo(Integer.parseInt(bno));
 		vo.setBoardPw(pw);
 		vo.setUserId(id);

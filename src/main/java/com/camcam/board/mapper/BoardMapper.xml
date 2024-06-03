@@ -58,6 +58,12 @@
 		and board_pw = #{boardPw}
 	</select>
 	
+	<select id="selectAdmin" resultType="com.camcam.board.vo.QnAVO" parameterType="int">
+		select *
+		from qna
+		where board_no = #{boardNo}
+	</select>
+	
 	<insert id="insertBoard" parameterType="com.camcam.board.vo.QnAVO">
 		insert into qna (board_no, user_id, title, content, create_date, board_pw)
 		values (qna_no_seq.nextval, #{userId}, #{title}, #{content}, sysdate, #{boardPw})

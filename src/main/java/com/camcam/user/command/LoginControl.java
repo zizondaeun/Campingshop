@@ -35,7 +35,7 @@ public class LoginControl implements Control {
             // 로그인 성공 시 세션에 사용자 ID를 저장합니다.
             HttpSession session = req.getSession();
             session.setAttribute("logId", uvo.getUserId());
-
+            session.setAttribute("userResp", uvo.getUserResp());
             // 사용자의 권한에 따라 리다이렉트 경로를 결정합니다.
             String userResp = uvo.getUserResp();
             if ("Admin".equals(userResp)) {

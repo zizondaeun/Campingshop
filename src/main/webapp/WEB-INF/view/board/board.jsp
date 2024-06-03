@@ -61,7 +61,7 @@ div.content {
 		<tr>
 			<th>CONTENT
 			<th>
-			<td colspan="6">${result.content }</td>
+			<td colspan="6" id="content">${result.content }</td>
 		</tr>
 		<tr align="center">
 			<td colspan="6">
@@ -71,14 +71,12 @@ div.content {
 			</td>
 		</tr>
 	</table>
-
-
 	<hr />
 	<div class="reply-container">
 		<div class="reply">
 			<!-- 댓글등록 -->
 			<div class="header">
-				<c:if test="${logId eq 'admin' }">
+				<c:if test="${userResp eq 'admin' }">
 					<input class="col-sm-8" id="reply">
 					<button class="col-sm-3" id="addReply">답변등록</button>
 				</c:if>
@@ -87,7 +85,7 @@ div.content {
 				<ul>
 					<li>
 						<span class="col-sm-8" style="font-weight: bold;">답변</span>
-						<c:if test="${logId eq 'admin' }">
+						<c:if test="${userResp eq 'admin' }">
 							<span class="col-sm-3" style="font-weight: bold;">답변삭제</span>
 						</c:if>
 					</li>
@@ -96,7 +94,7 @@ div.content {
 					</li>
 					<li style="display: none;">
 						<span class="col-sm-8"></span> 
-						<c:if test="${logId eq 'admin' }">
+						<c:if test="${userResp eq 'admin' }">
 							<span class="col-sm-3">
 								<button onclick="deleteRow(event)" class="btn btn-warning">삭제</button>
 							</span>

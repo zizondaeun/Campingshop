@@ -63,7 +63,7 @@ import com.camcam.product.command.AddProductFormControl;
 import com.camcam.product.command.AddWishControl;
 import com.camcam.product.command.ProductInfoControl;
 import com.camcam.product.command.ProductListControl;
-import com.camcam.product.command.ProductListFormControl;
+import com.camcam.product.command.productControl;
 import com.camcam.reply.command.AddReplyControl;
 import com.camcam.reply.command.RemoveReplyControl;
 import com.camcam.reply.command.ReplyListControl;
@@ -167,7 +167,7 @@ public class FrontController extends HttpServlet {
 		// 제품 관련(관리자)
 		map.put("/addProductForm.do", new AddProductFormControl()); // 상품 등록화면
 		map.put("/addProduct.do", new AddProductControl());
-		map.put("/ProductListForm.do", new ProductListFormControl());
+		map.put("/productList.do", new productControl());
 		
 		// 공지사항
 		map.put("/ListnoticePage.do", new ListnoticeControl()); // 공지사항 리스트

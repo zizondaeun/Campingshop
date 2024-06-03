@@ -13,6 +13,7 @@ public interface ProductMapper {
 	// 전체 제품 리스트 조회
 	public List<ProductVO> selectProductList(SearchVO search);
 	
+	public List<ProductVO> productList();
 	// 제품 상세조회
 	public ProductVO selectProductInfo(int productNo);
 	

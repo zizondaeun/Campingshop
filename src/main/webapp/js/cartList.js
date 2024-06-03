@@ -48,14 +48,36 @@ let basket = {
 						if (rowTr.querySelector('div.updown input').value > 1) {
 							basket.changePNum(val.cartNo);
 						} else {
-							alert('0보다 큰 값을 입력하세요.')
+							Swal.fire({
+							title: "0보다 큰 값을 입력하세요.",
+							showDenyButton: false,
+							confirmButtonText: "확인",
+						}).then((result) => {
+							/* Read more about isConfirmed, isDenied below */
+							if (result.isConfirmed) {
+								// Swal.fire("Saved!", "", "success");
+							} else if (result.isDenied) {
+								// Swal.fire("Changes are not saved", "", "info");
+							}
+						});
 						}
 					}
 					rowTr.querySelector('.plusBtn').onclick = () => {
 						if (rowTr.querySelector('div.updown input').value < 9) {
 							basket.changePNum(val.cartNo);
 						} else {
-							alert('10보다 작은 값을 입력하세요.')
+							Swal.fire({
+							title: "10보다 작은 값을 입력하세요.",
+							showDenyButton: false,
+							confirmButtonText: "확인",
+						}).then((result) => {
+							/* Read more about isConfirmed, isDenied below */
+							if (result.isConfirmed) {
+								// Swal.fire("Saved!", "", "success");
+							} else if (result.isDenied) {
+								// Swal.fire("Changes are not saved", "", "info");
+							}
+						});
 						}
 						
 					}

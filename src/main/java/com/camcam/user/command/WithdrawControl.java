@@ -19,18 +19,18 @@ public class WithdrawControl implements Control {
         String logId = (String) session.getAttribute("logId");
         String password = req.getParameter("password");
         
+        System.out.println(logId + "******************************************************************");
         System.out.println(password + "***********########################&&&&&&&&&&&&&&&&&&&&&&&&&");
-        System.out.println(logId);
+        
         UserService svc = new UserServiceImpl();
         UserVO user = svc.loginFinds(logId);
 
         if (user != null && user.getPassWord().equals(password)) {
-            boolean result = svc.modifyUser(password);
+            boolean result = svc.modifyUser(logId, password);
 
             if (result) {
                 session.invalidate();
                 req.setAttribute("message", "회원 탈퇴가 완료되었습니다.");
-                req.getRequestDispatcher("home.do").forward(req, resp);
                 resp.sendRedirect("home.do");
           
         } else {

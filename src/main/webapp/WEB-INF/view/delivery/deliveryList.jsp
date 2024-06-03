@@ -62,7 +62,6 @@ h3 {
 	
 </script>
 <body>
-	<h3>상품관리</h3>
 	<!-- <div class="center">
 	<form action="userList.do">
 		<div class="row">

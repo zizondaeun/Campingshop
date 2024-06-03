@@ -28,7 +28,6 @@ h3 {
 <title>Insert title here</title>
 </head>
 <body>
-	<h3>유저목록</h3>
 	<table class="table">
 		<thead>
 			<tr class="trhead">

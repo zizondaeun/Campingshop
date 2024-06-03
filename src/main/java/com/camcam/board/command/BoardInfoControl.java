@@ -21,7 +21,7 @@ public class BoardInfoControl implements Control {
 		String bno = req.getParameter("bno");
 		String id = req.getParameter("userId");
 		String pw = req.getParameter("boardPw"); 
-		String uResp = (String) session.getAttribute("userResp");
+		//String uResp = (String) session.getAttribute("userResp");
 		
 		//String page = req.getParameter("page");
 		//String sc = req.getParameter("searchCondition");
@@ -30,7 +30,7 @@ public class BoardInfoControl implements Control {
 		BoardService svc = new BoardServiceImpl();
 		QnAVO vo = new QnAVO();
 		QnAVO qvo = new QnAVO();
-		if(uResp.equals("admin")) {
+		if(id.equals("admin")) {
 			qvo = svc.getAdmin(Integer.parseInt(bno)); //관리자일때는 bno만
 		}else {
 			vo.setBoardNo(Integer.parseInt(bno));

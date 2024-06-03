@@ -23,7 +23,7 @@ public interface UserService {
 	boolean userModefy(UserVO userId);
 	
 	boolean modifyUser(String userId ,String passWord); //회원탈퇴
-	
+
     UserVO getUserById(String userId);
 
 	

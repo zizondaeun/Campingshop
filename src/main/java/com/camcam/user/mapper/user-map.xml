@@ -56,7 +56,7 @@
 		resultType="com.camcam.user.vo.UserVO">
 		select password
 		from users
-		where user_id = #{userName}
+		where user_id = #{userId}
 		and user_Tel = #{userTel}
 		and user_name = #{userName}
 	</select>
@@ -73,7 +73,7 @@
 
 	<delete id="deleteUser" parameterType="String">
 		delete from users
-		where user_id = #{userId}
+		where user_id= #{userId}
 		and password = #{passWord}
 
 	</delete>

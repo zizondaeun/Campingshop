@@ -23,16 +23,14 @@ public class ReplyListControl implements Control {
 		
 		String bno = req.getParameter("bno");
 		System.out.println(bno + "1004"); //js해주니까 bno나와
-		String page = req.getParameter("page");
-		page = page == null ? "1" : page;
-		 
-		SearchVO search = new SearchVO();
-		search.setBoardNo(Integer.parseInt(bno));
-		search.setRpage(Integer.parseInt(page));
+		
+		ReplyVO vo = new ReplyVO();
+		vo.setBoardNo(Integer.parseInt(bno));
 		
 		ReplyService svc = new ReplyServiceImpl();
-		List<ReplyVO> list = svc.replyList(search);
-
+		List<ReplyVO> list = svc.replyList(vo);
+		req.setAttribute("list", list);
+		
 		Gson gson = new GsonBuilder().create();
 		String json = gson.toJson(list);
 

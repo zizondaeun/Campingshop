@@ -22,7 +22,12 @@ public class AddBoardControl implements Control {
 		String content = req.getParameter("content");
 		String content1 = content.replaceAll("<[^>]*>", "");
 		String pw = req.getParameter("boardPw");
-		System.out.println(id + "88888" + title + content1 + pw);
+		
+		if(title == "" || content1 == "" || pw == "") {
+			req.setAttribute("error", "내용을 입력해주세요.");
+			req.getRequestDispatcher("board/addBoard.tiles").forward(req, resp);
+			return;
+		}
 		
 		BoardService svc = new BoardServiceImpl();
 		QnAVO vo = new QnAVO();

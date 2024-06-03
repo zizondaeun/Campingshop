@@ -120,7 +120,7 @@
 		<div align="center">
 			<table border="1">
 				<tr>
-					<td>로그인 정보가 없습니다.</td>
+					<td>로그인 후 이용 가능합니다.</td>
 				</tr>
 			</table>
 		</div>

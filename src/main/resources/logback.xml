@@ -9,10 +9,10 @@
 	</appender>
 
 	<logger name="com.camcam.board.mapper.BoardMapper">
-		<level value="debug" />
+		<level value="warn" />
 	</logger>
 	<logger name="com.camcam.reply.mapper.ReplyMapper">
-		<level value="debug" />
+		<level value="warn" />
 	</logger>
 	<root level="debug">
 		<appender-ref ref="stdout" />

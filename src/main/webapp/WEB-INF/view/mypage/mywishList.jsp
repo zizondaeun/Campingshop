@@ -3,7 +3,6 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="my" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <style>
 	.table-container {
 		width: 80%;
@@ -132,10 +131,11 @@
 		</div>
 
 		<hr />
-
+		<c:if test="${not empty list}">
 		<div align="center">
 			<button type="button" class="seldel">선택삭제</button>
 		</div>
+		</c:if>
 	</div>
 	<script>
 		let userId = '${logId}';

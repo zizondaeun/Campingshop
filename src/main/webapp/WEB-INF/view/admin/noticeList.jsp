@@ -53,8 +53,8 @@
 <h3 align="center">공지사항</h3>
 <div class="table-container">
     <div align="right">
-        <button type="submit" class="btn btn-dark" id="modBtn" style="margin-bottom: 10px; background-color: white; 
-            color: black; border: 1px solid black;">WRITE</button>
+        <button type="submit" class="btn btn-dark" id="modBtn" style="margin-bottom: 10px; background-color: white; color: black; border: 1px solid black;" onclick="location.href='addnoticeForm.do'">WRITE</button>
+
     </div>
     <table class="table">
         <thead class="table-header">

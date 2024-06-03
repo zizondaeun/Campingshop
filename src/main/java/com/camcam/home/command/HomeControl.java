@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.camcam.common.CategoryVO;
 import com.camcam.common.Control;
 import com.camcam.product.service.ProductService;
 import com.camcam.product.service.impl.ProductServiceImpl;
@@ -24,7 +25,10 @@ public class HomeControl implements Control {
 		for (ProductVO productVO : pList) {
 			System.out.println("productVO = " + productVO.toString());
 		}
+		List<CategoryVO> cList = productService.parentsCategoryList();		
+				
 		req.setAttribute("pList", pList);
+		req.setAttribute("cList", cList);
 		
 		req.getRequestDispatcher(path).forward(req, resp);
 	}

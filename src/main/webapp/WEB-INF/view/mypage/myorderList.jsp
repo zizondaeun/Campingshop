@@ -58,12 +58,12 @@
 		<table class="table">
 			<thead class="table-header">
 				<tr>
-					<th scope="col">NO</th>
-					<th scope="col">DATE</th>
-					<th scope="col">ADDRESS</th>
-					<th scope="col">AMOUNT</th>
-					<th scope="col">STATUS</th>
-					<th scope="col">DETAIL</th>
+					<th scope="col">주문번호</th>
+					<th scope="col">주문일</th>
+					<th scope="col">주소</th>
+					<th scope="col">총 결제금액</th>
+					<th scope="col">주문상태</th>
+					<th scope="col">주문상세</th>
 				</tr>
 			</thead>
 			<tbody class="table-body">
@@ -96,7 +96,7 @@
 					</c:otherwise>
 				</c:choose>
 			</tbody>
-			<p style="font-size: 13px;">- 주문상세의 조회 버튼을 클릭하시면, 주문상세 내역을 확인하실 수 있습니다.</p>
+			<p style="font-size: 13px;">- 상세보기 버튼을 클릭하시면, 주문 상세 내역을 확인하실 수 있습니다.</p>
 		</table>
 		<div class="center">
 			<nav>

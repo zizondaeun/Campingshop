@@ -76,6 +76,24 @@
             console.error(error);
         });
     </script>
+    <script type="text/javascript">
+    	console.log('${error}');
+    	    var errorMessage = '<%=request.getAttribute("error") != null ? request.getAttribute("error") : ""%>';
+    	    if (errorMessage) {
+//     	        alert(errorMessage);
+    	    	Swal.fire({
+					title: errorMessage,
+					showDenyButton: false,
+					confirmButtonText: "확인",
+				}).then((result) => {
+					/* Read more about isConfirmed, isDenied below */
+					if (result.isConfirmed) {
+						// Swal.fire("Saved!", "", "success");
+					} else if (result.isDenied) {
+						// Swal.fire("Changes are not saved", "", "info");
+					}
+				});
+    	    }
+    </script>
 </body>
 </html>
-

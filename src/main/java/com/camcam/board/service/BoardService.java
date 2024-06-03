@@ -19,6 +19,8 @@ public interface BoardService {
 	boolean modifyBoard(QnAVO vo);
 	//QnA 글 삭제
 	boolean removeBoard(int boardNo);
+	//관리자일때
+	QnAVO getAdmin(int boardNo);
 
 	
 }

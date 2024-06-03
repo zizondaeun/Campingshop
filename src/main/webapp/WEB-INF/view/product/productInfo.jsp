@@ -35,7 +35,6 @@
 <!-- Breadcrumb End -->
 
 <!-- Shop Detail Start -->
-${userLikeCnt }
 <div class="container-fluid pb-5">
 	<div class="row px-xl-5" id="productDetail" data-id="${product.productNo }">
 		<div class="col-lg-5 mb-30">
@@ -143,7 +142,7 @@ ${userLikeCnt }
 		<div class="col">
 			<div class="bg-light p-30">
 				<div class="nav nav-tabs mb-4">
-					<a class="nav-item nav-link text-dark active" data-toggle="tab" href="#tab-pane-1">Description</a> <a class="nav-item nav-link text-dark" data-toggle="tab" href="#tab-pane-2">Information</a> <a class="nav-item nav-link text-dark reviewBtn" data-toggle="tab" href="#tab-pane-3">Reviews (${reviewDetail.totalCnt })</a>
+					<a class="nav-item nav-link text-dark active" data-toggle="tab" href="#tab-pane-1">Description</a> <a class="nav-item nav-link text-dark" data-toggle="tab" href="#tab-pane-2">Information</a> <a class="nav-item nav-link text-dark reviewBtn" data-toggle="tab" href="#tab-pane-3">Reviews <span class="reviewCount1">(${reviewDetail.totalCnt })</span></a>
 				</div>
 				<div class="tab-content">
 					<div class="tab-pane fade show active" id="tab-pane-1">
@@ -216,7 +215,7 @@ ${userLikeCnt }
 						<div class="row">
 							<div class="col-md-6">
 								<div class="reviewHeader">
-									<h4 class="mb-4">${reviewDetail.totalCnt }reviewfor "${product.productName }"</h4>
+									<h4 class="mb-4"><span class="reviewCount2">${reviewDetail.totalCnt }</span> review for "${product.productName }"</h4>
 									<div class="media mb-4 reviewTemplate" style="display: none;">
 										<div class="media-body">
 											<h6 class="reviewer">
@@ -245,7 +244,7 @@ ${userLikeCnt }
 										<i class="far fa-star ratingStar"></i> <i class="far fa-star ratingStar"></i> <i class="far fa-star ratingStar"></i> <i class="far fa-star ratingStar"></i> <i class="far fa-star ratingStar"></i>
 									</div>
 								</div>
-								${userReviewCnt }
+<%-- 								${userReviewCnt } --%>
 								<div class="form-group">
 									<label for="content">Your Review *</label>
 									<textarea id="message" cols="30" rows="5" class="form-control"></textarea>
@@ -396,6 +395,6 @@ ${userLikeCnt }
 	const pno2 = '${product.productNo}';
 	const logId = '${logId}';
 	const cartUserToProduct = '${userToProductCnt}';
-	const userLikeCnt ='${userLikeCnt }';
+// 	const userLikeCnt ='${userLikeCnt }';
 </script>
 <script src="js/productInfo.js"></script>

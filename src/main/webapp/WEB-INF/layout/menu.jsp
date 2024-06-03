@@ -26,7 +26,11 @@
 				</button>
 				<div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
 					<div class="navbar-nav mr-auto py-0">
-						<a href="productList.do" class="nav-item nav-link">SHOP</a><a class="nav-item nav-link" href="ListnoticePage.do">NOTICE</a> <a class="nav-item nav-link" href="boardList.do">Q&A</a> 
+						<a href="productList.do" class="nav-item nav-link">SHOP</a>
+						<a class="nav-item nav-link" href="ListnoticePage.do">NOTICE</a> 
+						<c:if test="${logId != null}">
+							<a class="nav-item nav-link" href="boardList.do">Q&A</a> 
+						</c:if>
 					</div>
 					<c:choose>
 						<c:when test="${logId eq 'admin'}">
@@ -38,7 +42,7 @@
 					<c:if test="${logId != null}">
 						<div class="navbar-nav ml-auto py-0 d-none d-lg-block">
 							<a href="myWishList.do" class="btn px-0"> <i class="fas fa-heart text-primary"></i> 
-							</a> <a href="cartList.do" class="btn px-0 ml-3"> <i class="fas fa-shopping-cart text-primary"></i> <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
+							</a> <a href="cartList.do" class="btn px-0 ml-3"> <i class="fas fa-shopping-cart text-primary"></i> <span class="badge text-secondary border border-secondary rounded-circle" id="menuCartCnt" style="padding-bottom: 2px;">0</span>
 							</a>
 						</div>
 					</c:if>
@@ -48,3 +52,4 @@
 	</div>
 </div>
 <script type="text/javascript" src="js/category.js"></script>
+<script type="text/javascript" src="js/cartCount.js"></script>

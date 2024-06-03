@@ -20,10 +20,10 @@ public class AddBoardControl implements Control {
 		String id = (String) session.getAttribute("logId");
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
-		String content1 = content.replaceAll("<[^>]*>", "");
+		//String content1 = content.replaceAll("<[^>]*>", "");
 		String pw = req.getParameter("boardPw");
 		
-		if(title == "" || content1 == "" || pw == "") {
+		if(title == "" || content == "" || pw == "") {
 			req.setAttribute("error", "내용을 입력해주세요.");
 			req.getRequestDispatcher("board/addBoard.tiles").forward(req, resp);
 			return;
@@ -33,7 +33,7 @@ public class AddBoardControl implements Control {
 		QnAVO vo = new QnAVO();
 		vo.setUserId(id);
 		vo.setTitle(title);
-		vo.setContent(content1);
+		vo.setContent(content);
 		vo.setBoardPw(pw);
 		
 		req.setAttribute("result", vo);

@@ -3,6 +3,7 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <!DOCTYPE html>
 <html>
 <style>
@@ -30,7 +31,7 @@ h3 {
 		let allTr = document.querySelectorAll('tbody tr');
 		let delBtn = document.querySelectorAll('.delBtn');
 
-		function change() {
+	 	function change() {
 			for (let i = 0; i < allTr.length; i++) {
 				console.log(allTd[i]);
 				console.log(allTd[i].innerHTML);
@@ -40,10 +41,10 @@ h3 {
 					allTd[i].innerHTML = '배송완료';
 				}
 			}
-		}
+		} 
 
-		function change2() {
-			for (let i = 0; i <= allTd.length; i++) {
+	 	function change2() {
+			for (let i = 0; i < allTd.length; i++) {
 				if (allTd[i].innerHTML == '배송완료') {
 					delBtn[i].style.display = "none";
 				}
@@ -101,7 +102,7 @@ h3 {
 					<td>${delivery.deliNo }</td>
 					<td>${delivery.userId }</td>
 					<td>${delivery.orderNo }</td>
-					<td>${delivery.deliDate }</td>
+					<td><fmt:formatDate value="${delivery.deliDate }" pattern="yyyy-MM-dd" /></td>
 					<td>${delivery.deliStatus }</td>
 					<td>
 						<button class="delBtn" data-id="${delivery.deliNo }">배송완료</button>

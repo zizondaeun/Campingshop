@@ -21,6 +21,7 @@ public class BoardInfoPwControl implements Control {
 		String id = req.getParameter("userId");
 		String bno = req.getParameter("bno");
 		String nowId = (String) session.getAttribute("logId");
+		//String uResp = (String) session.getAttribute("userResp");
 		//System.out.println(id+ "797979" + nowId);
 		if(nowId.equals("admin")) {
 			resp.sendRedirect("boardInfo.do?bno=" + bno + "&userId=" + nowId);

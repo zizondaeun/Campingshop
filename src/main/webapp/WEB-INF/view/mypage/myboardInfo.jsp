@@ -31,9 +31,7 @@
 		</div>
 		<div class="mb-2 row">
 			<label for="staticEmail" class="col-sm-2 col-form-label" style="font-weight: bold;">CONTENT</label>
-			<div class="col-sm-10">
-				<textarea readonly class="form-control-plaintext" rows="5" cols="30">${result.content}</textarea>
-			</div>
+			<div class="col-sm-10">${result.content}</div>
 		</div>
  		<div class="mb-2 row">
 			<label for="inputPassword" class="col-sm-2 col-form-label" style="font-weight: bold;">PASSWORD</label>

@@ -32,7 +32,7 @@
 		<div class="mb-2 row">
 			<label for="staticEmail" class="col-sm-2 col-form-label" style="font-weight: bold;">CONTENT</label>
 			<div class="col-sm-10">
-	    		<textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="5" cols="30">${result.content}</textarea>
+				<textarea class="form-control" name="content" id="contentTextArea" rows="5" cols="30">${result.content}</textarea>
 			</div>
 		</div>
         <div align="center">
@@ -40,3 +40,9 @@
         </div>
 	</form>
 </div>
+<script>
+	document.addEventListener("DOMContentLoaded", function() {
+	    const contentTextArea = document.getElementById("contentTextArea");
+	    contentTextArea.value = contentTextArea.value.replace(/<[^>]*>?/gm, '');
+	});
+</script>

@@ -33,7 +33,7 @@
 						</c:if>
 					</div>
 					<c:choose>
-						<c:when test="${logId eq 'admin'}">
+						<c:when test="${userResp eq 'admin'}">
 							<div id="adminMenu">
 								<a href="userList.do" class="userControl">유저관리</a> <a href="addProductForm.do" class="productAdd">상품추가</a> <a href="deleteProductForm.do" class="productList">상품목록</a><a href="deliveryManage.do" class="controldelivery">배송관리</a>
 							</div>

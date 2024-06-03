@@ -245,75 +245,95 @@ footer{
 }
     </style>
 <div class="container">
-  <!-- Heading -->
-  <h1>Campcamp</h1>
-  
-  <!-- Links -->
-  <ul class="links">
-  	<li>
-      <a href="pwFindForm.do" id="pwFind">비밀번호 찾기</a>
-    </li>
-    <li>
-      <a href="idFindForm.do" id="idFind">아이디 찾기</a>
-    </li>    
-    <li>
-      <a href="logForm.do" id="login">로그인</a>
-    </li>
-  </ul>
-  
-  <!-- Form -->
-  <form action="idFind.do" method="post">
-    <!-- name input -->
-    <div class="first-input input__block first-input__block">
-      <input type="text" placeholder="아이디" class="input" id="id" name="id" required />
-    </div>
-    <!-- phone number input -->
-    <div class="input__block">
-      <input type="text" placeholder="name" class="input" id="name" name="name" required />
-    </div>
-    <div class="input__block">
-      <input type="text" placeholder="전화번호" class="input" id="tel" name="tel" required />
-    </div>
-    <!-- sign in button -->
-    <button type="submit" class="signin__btn">
-      Find ID
-    </button>
-  </form>
-  
-  <!-- Display userId if available -->
-  <c:set var="userId" value="${sessionScope.userId}" />
- 
-  
-  <!-- Display error message if available -->
-  <c:if test="${not empty sessionScope.errorMessage}">
-    <p style="color: red;">${sessionScope.errorMessage}</p>
-    <c:remove var="errorMessage" scope="session"/>
-  </c:if>
+    <!-- Heading -->
+    <h1>Campcamp</h1>
+    
+    <!-- Links -->
+    <ul class="links">
+   		  <li>
+            <a href="pwFindForm.do" id="pwFind">비밀번호 찾기</a>
+        </li>
+        <li>
+            <a href="idFindForm.do" id="idFind">아이디 찾기</a>
+        </li>
+       
+        <li>
+            <a href="logForm.do" id="login">로그인</a>
+        </li>
+    </ul>
+    
+    <!-- Form -->
+    <form id="findPwForm" method="post">
+        <!-- ID input -->
+        <div class="first-input input__block first-input__block">
+            <input type="text" placeholder="아이디" class="input" id="id" name="id" required />
+        </div>
+        <!-- name input -->
+        <div class="input__block">
+            <input type="text" placeholder="이름" class="input" id="name" name="name" required />
+        </div>
+        <!-- phone number input -->
+        <div class="input__block">
+            <input type="text" placeholder="전화번호" class="input" id="tel" name="tel" required />
+        </div>
+        <!-- sign in button -->
+        <button type="submit" class="signin__btn">
+            Find Password
+        </button>
+        
+        
+    </form>
+    
+    <!-- Display error message if available -->
+    <c:if test="${not empty sessionScope.errorMessage}">
+        <p style="color: red;">${sessionScope.errorMessage}</p>
+        <c:remove var="errorMessage" scope="session"/>
+    </c:if>
 </div>
 
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
-document.addEventListener("DOMContentLoaded", function() {
-    document.querySelector(".signin__btn").addEventListener("click", function() {
-        var userId = '<c:out value="${sessionScope.userId}" />';
-        if (userId) {
-//             alert('아이디는 : ' + userId + ' 입니다');
-        	Swal.fire({
-				title: "아이디는 : " + userId + " 입니다.",
-				showDenyButton: false,
-				confirmButtonText: "확인",
-			}).then((result) => {
-				/* Read more about isConfirmed, isDenied below */
-				if (result.isConfirmed) {
-					// Swal.fire("Saved!", "", "success");
-				} else if (result.isDenied) {
-					// Swal.fire("Changes are not saved", "", "info");
-				}
-			});
-        }
+$(document).ready(function() {
+    $("#findPwForm").submit(function(event) {
+        event.preventDefault(); // Prevent form from submitting normally
+
+        var formData = {
+            id: $("#id").val(),
+            name: $("#name").val(),
+            tel: $("#tel").val()
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "pwFind.do",
+            data: formData,
+            success: function(response) {
+                var userId = response.userId;
+                var errorMessage = response.errorMessage;
+
+                if (userId) {
+                    Swal.fire({
+                        title: "비밀번호는 " + userId + " 입니다.",
+                        showDenyButton: false,
+                        confirmButtonText: "확인",
+                    });
+                } else if (errorMessage) {
+                    Swal.fire({
+                        title: "Error",
+                        text: errorMessage,
+                        icon: "error",
+                        confirmButtonText: "확인"
+                    });
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('Error:', error);
+            }
+        });
     });
 });
-    </script>
+</script>
 <script>
 $(document).ready(function(){
     let signup = $(".links").find("li").find("#signup") ; 

@@ -14,30 +14,30 @@ import com.camcam.user.vo.UserVO;
 
 public class PwFindControl implements Control {
 
-	@Override
-	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String id = req.getParameter("id");
-		String name = req.getParameter("name");
+    @Override
+    public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String id = req.getParameter("id");
+        String name = req.getParameter("name");
         String tel = req.getParameter("tel");
-
-        System.out.println(id + "****************************");
-        System.out.println(name + "****************************");
-        System.out.println(tel + "****************************");
+        
+        System.out.println(id + name + tel + "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
 
         UserService svc = new UserServiceImpl();
+        UserVO uvo = svc.pwFind(id, name, tel);
 
-        UserVO uvo = svc.loginFind(name, tel);
+        HttpSession session = req.getSession();
+        String jsonResponse = "";
 
         if (uvo != null) {
-            HttpSession session = req.getSession();
-            session.setAttribute("name", uvo.getUserId());
-            resp.sendRedirect("pwFindForm.do");
-            
+            session.setAttribute("userId", uvo.getPassWord());
+            jsonResponse = "{\"userId\": \"" + uvo.getPassWord() + "\"}";
         } else {
-            resp.sendRedirect("pwFindForm.do");
+            session.setAttribute("errorMessage", "비밀번호를 찾을 수 없습니다. 다시 시도해 주세요.");
+            jsonResponse = "{\"errorMessage\": \"비밀번호를 찾을 수 없습니다. 다시 시도해 주세요.\"}";
         }
-	}
+
+        resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
+        resp.getWriter().write(jsonResponse);
+    }
 }
-
-

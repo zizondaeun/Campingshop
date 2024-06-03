@@ -134,7 +134,7 @@
 				    select
 				                c.category_code,
 				                c.category_name,
-				                
+				                c.category_img,
 				                count(p.product_no) as product_cnt
 				    from category c
 				    left join category sc 
@@ -142,7 +142,7 @@
 				    left join products p 
 				    on sc.category_code = p.category_code
 				    where c.pre_category is null
-				    group by c.category_code, c.category_name
+				    group by c.category_code, c.category_name, c.category_img
 				    order by c.category_code desc
 				)
 		  <![CDATA[

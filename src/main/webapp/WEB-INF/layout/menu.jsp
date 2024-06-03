@@ -27,7 +27,7 @@
 				<div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
 					<div class="navbar-nav mr-auto py-0">
 						<a href="productList.do" class="nav-item nav-link">SHOP</a>
-						<a class="nav-item nav-link" href="ListnoticePage.do">NOTICE</a> 
+						<a class="nav-item nav-link" href="adminListnoticePage.do">NOTICE</a> 
 						<c:if test="${logId != null}">
 							<a class="nav-item nav-link" href="boardList.do">Q&A</a> 
 						</c:if>
@@ -35,7 +35,7 @@
 					<c:choose>
 						<c:when test="${userResp eq 'admin'}">
 							<div id="adminMenu">
-								<a href="userList.do" class="userControl">유저목록</a> <a href="addProductForm.do" class="productAdd">상품추가</a> <a href="productList.do" class="productList">상품관리</a><a href="deliveryManage.do" class="controldelivery">배송관리</a>
+							<a href="ListnoticePage.do" class="userControl">공지상항</a> 	<a href="userList.do" class="userControl">유저목록</a> <a href="addProductForm.do" class="productAdd">상품추가</a> <a href="productList.do" class="productList">상품관리</a><a href="deliveryManage.do" class="controldelivery">배송관리</a>
 							</div>
 						</c:when>
 					</c:choose>

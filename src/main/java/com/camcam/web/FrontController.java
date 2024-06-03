@@ -47,6 +47,7 @@ import com.camcam.mypage.command.MyWishListControl;
 import com.camcam.mypage.command.UpdateMyBoardControl;
 import com.camcam.notice.command.AddnoticeControl;
 import com.camcam.notice.command.AdminListnoticeControl;
+import com.camcam.notice.command.AdminListnoticeformControl;
 import com.camcam.notice.command.ListnoticeControl;
 import com.camcam.notice.command.UpdatenoticeControl;
 import com.camcam.notice.command.UpdatenoticeForm;
@@ -170,11 +171,14 @@ public class FrontController extends HttpServlet {
 		map.put("/productList.do", new productControl());
 		
 		// 공지사항
-		map.put("/ListnoticePage.do", new ListnoticeControl()); // 공지사항 리스트
-		map.put("/noticePage.do", new noticeControl()); // 공지사항 상세화면 이동
+		map.put("/adminListnoticePage.do", new AdminListnoticeControl()); // 공지사항 리스트
+		map.put("/adminListnoticePageform.do", new AdminListnoticeformControl()); // 공지사항 상세화면 리스트
+		
+
 
 		// 관리자 공지사항
-		map.put("/adminListnoticePage.do", new AdminListnoticeControl()); // 공지사항 리스트
+		map.put("/ListnoticePage.do", new ListnoticeControl()); // 공지사항 리스트
+		map.put("/noticePage.do", new noticeControl()); // 공지사항 상세화면 이동
 		map.put("/addnoticeForm.do", new addnoticeForm()); // 공지사항 등록으로 이동
 		map.put("/addnoticePage.do", new AddnoticeControl()); // 공지사항 등록 기능
 		map.put("/updatenoticeForm.do", new UpdatenoticeForm()); // 공지사항 수정 이동

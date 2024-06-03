@@ -21,7 +21,7 @@ public class ModifyControl implements Control {
 		String bno = req.getParameter("bno");
 		String id = req.getParameter("userId");
 		String title = req.getParameter("title");
-		String content = req.getParameter("content").replaceAll("<[^>]*>", "");
+		String content1 = req.getParameter("content");
 //		String page = req.getParameter("page");
 //		String sc = req.getParameter("searchCondition");
 //		String kw = req.getParameter("keyword");
@@ -32,7 +32,7 @@ public class ModifyControl implements Control {
 		vo.setBoardNo(Integer.parseInt(bno));
 		vo.setUserId(id);
 		vo.setTitle(title);
-		vo.setContent(content);
+		vo.setContent(content1);
 		
 		req.setAttribute("result", vo);
 		//String encodeKW = URLEncoder.encode(kw, "UTF-8");
